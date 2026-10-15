@@ -87,18 +87,20 @@ templ GlossaryResults(s *data.Store, f GlossaryFilter) {
 				}
 			</div>
 		} else {
-			for _, g := range groups {
-				<section class="letter-group" id={ "letter-" + g.Letter } aria-labelledby={ "lh-" + g.Letter }>
-					<h3 class="letter-group__letter" id={ "lh-" + g.Letter }><span class="sr-only">Letter </span>{ g.Letter }</h3>
-					<ul class="signboards">
-						for _, t := range g.Terms {
-							<li>
-								@termBoard(t)
-							</li>
-						}
-					</ul>
-				</section>
-			}
+			<div class="letter-groups mt-6">
+				for _, g := range groups {
+					<section class="letter-group" id={ "letter-" + g.Letter } aria-labelledby={ "lh-" + g.Letter }>
+						<h3 class="letter-group__letter" id={ "lh-" + g.Letter }><span class="sr-only">Letter </span><span class="letter-group__badge">{ g.Letter }</span></h3>
+						<ul class="signboards">
+							for _, t := range g.Terms {
+								<li>
+									@termBoard(t)
+								</li>
+							}
+						</ul>
+					</section>
+				}
+			</div>
 		}
 	</div>
 }
@@ -106,7 +108,12 @@ templ GlossaryResults(s *data.Store, f GlossaryFilter) {
 templ termBoard(t data.Term) {
 	<article id={ termID(t.Term) } class={ "signboard", "signboard--" + LangSlug(t.Language) }>
 		<div class="signboard__head">
-			<h4 class="signboard__term" if langAttr(t.Language) != "" { lang={ langAttr(t.Language) } }>{ t.Term }</h4>
+			<h4
+				class="signboard__term"
+				if langAttr(t.Language) != "" {
+					lang={ langAttr(t.Language) }
+				}
+			>{ t.Term }</h4>
 			<span class={ "chip", "signboard__lang", "signboard__lang--" + LangSlug(t.Language) }>{ langLabel(t.Language) }</span>
 		</div>
 		<p class="signboard__meaning">{ t.Meaning }</p>
@@ -178,14 +185,14 @@ templ phrasebook(s *data.Store) {
 
 templ faqSection(faqs []data.FAQ) {
 	<section id="faq" class="section" aria-labelledby="faq-title">
-		<div class="wrap faq-wrap">
+		<div class="wrap">
 			<div class="section-head">
 				<p class="eyebrow">Questions · <span lang="sw">Maswali</span></p>
-				<h2 id="faq-title" class="display-lg">Things first-timers ask.</h2>
+				<h2 id="faq-title" class="display-lg">Things first‑timers ask.</h2>
 			</div>
 			<div class="faq mt-6">
 				for i, q := range faqs {
-					<details class="faq__item" id={ "faq-" + itoa(i+1) }>
+					<details class="faq__item" id={ "faq-" + itoa(i+1) } open?={ i == 0 }>
 						<summary class="faq__q">
 							<span class="faq__num num" aria-hidden="true">{ twoDigit(i + 1) }</span>
 							<span class="faq__text">{ q.Q }</span>

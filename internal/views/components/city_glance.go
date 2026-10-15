@@ -19,6 +19,8 @@ func noAirport(s string) bool { return strings.HasPrefix(strings.ToLower(s), "no
 
 func isApprox(s string) bool { return strings.HasPrefix(strings.TrimSpace(s), "~") }
 
-func trimApprox(s string) string { return strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(s), "~")) }
+func trimApprox(s string) string {
+	return strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(s), "~"))
+}
 
 func joinList(xs []string) string { return strings.Join(xs, " · ") }

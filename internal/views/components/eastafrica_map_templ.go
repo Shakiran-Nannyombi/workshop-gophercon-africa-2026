@@ -265,7 +265,7 @@ func EastAfricaMap(p EastAfricaMapProps) templ.Component {
 					}
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<text class=\"ea-water-label\" x=\"182\" y=\"676\">Lake Victoria</text> <text class=\"ea-water-label\" x=\"330\" y=\"470\" text-anchor=\"start\">L. Turkana</text> <text class=\"ea-water-label ea-water-label--sea\" x=\"545\" y=\"830\">Indian Ocean</text></g> <g class=\"ea-dodoma\" aria-hidden=\"true\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<text class=\"ea-water-label\" x=\"170\" y=\"690\">L. Victoria</text> <text class=\"ea-water-label\" x=\"330\" y=\"470\" text-anchor=\"start\">L. Turkana</text> <text class=\"ea-water-label ea-water-label--sea\" x=\"545\" y=\"830\">Indian Ocean</text></g> <g class=\"ea-dodoma\" aria-hidden=\"true\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -542,39 +542,70 @@ func EastAfricaMap(p EastAfricaMapProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if !p.Compact {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "<figcaption class=\"ea-map__legend\"><ul class=\"cluster\" style=\"--gap:.5rem 1.1rem\"><li class=\"legend-item\"><span class=\"ea-key ea-key--star\" aria-hidden=\"true\"></span> National capital</li><li class=\"legend-item\"><span class=\"ea-key ea-key--dot\" aria-hidden=\"true\"></span> Featured city</li><li class=\"legend-item\"><span class=\"ea-key ea-key--dodoma\" aria-hidden=\"true\"></span> Dodoma, Tanzania’s capital (not featured)</li><li class=\"legend-item\"><span class=\"ea-key ea-key--land\" aria-hidden=\"true\"></span> Featured country</li><li class=\"legend-item\"><span class=\"ea-key ea-key--lake\" aria-hidden=\"true\"></span> Lake</li></ul><p class=\"small muted mt-2\">Borders: ")
+		if p.Compact {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "<figcaption class=\"ea-map__legend ea-map__legend--compact\"><span class=\"ea-key ea-key--here\" aria-hidden=\"true\"></span> <span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var36 string
-			templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs(p.Geo.Source)
+			templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs(cityName(p))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/eastafrica_map.templ`, Line: 71, Col: 55}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/eastafrica_map.templ`, Line: 65, Col: 23}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var36))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, " (")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, " in ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var37 string
-			templ_7745c5c3_Var37, templ_7745c5c3_Err = templ.JoinStringErrs(p.Geo.License)
+			templ_7745c5c3_Var37, templ_7745c5c3_Err = templ.JoinStringErrs(p.Countries[cityCountry(p)])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/eastafrica_map.templ`, Line: 71, Col: 74}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/eastafrica_map.templ`, Line: 65, Col: 58}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var37))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 53, "), simplified. Dots are approximate. Select a city to open its guide.</p></figcaption>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 53, ". <a class=\"link\" href=\"/cities#map\">See all cities on the map</a></span></figcaption>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "<figcaption class=\"ea-map__legend\"><ul class=\"cluster\" style=\"--gap:.5rem 1.1rem\"><li class=\"legend-item\"><span class=\"ea-key ea-key--star\" aria-hidden=\"true\"></span> National capital</li><li class=\"legend-item\"><span class=\"ea-key ea-key--dot\" aria-hidden=\"true\"></span> Featured city</li><li class=\"legend-item\"><span class=\"ea-key ea-key--dodoma\" aria-hidden=\"true\"></span> Dodoma, Tanzania’s capital (not featured)</li><li class=\"legend-item\"><span class=\"ea-key ea-key--land\" aria-hidden=\"true\"></span> Featured country</li><li class=\"legend-item\"><span class=\"ea-key ea-key--lake\" aria-hidden=\"true\"></span> Lake</li></ul><p class=\"small muted mt-2\">Borders: ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var38 string
+			templ_7745c5c3_Var38, templ_7745c5c3_Err = templ.JoinStringErrs(p.Geo.Source)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/eastafrica_map.templ`, Line: 76, Col: 55}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var38))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, " (")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var39 string
+			templ_7745c5c3_Var39, templ_7745c5c3_Err = templ.JoinStringErrs(p.Geo.License)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/eastafrica_map.templ`, Line: 76, Col: 74}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var39))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 56, "), simplified. Dots are approximate. Select a city to open its guide.</p></figcaption>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "</figure>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 57, "</figure>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

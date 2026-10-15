@@ -515,7 +515,7 @@ func KenyaMap(p KenyaMapProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if !p.locator() {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "<g class=\"kmap__lake-labels\" aria-hidden=\"true\"><text x=\"215\" y=\"150\" text-anchor=\"middle\">L. Turkana</text> <text x=\"40\" y=\"600\" text-anchor=\"middle\">L. Victoria</text></g>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "<g class=\"kmap__lake-labels\" aria-hidden=\"true\"><text x=\"296\" y=\"200\" text-anchor=\"start\">L. Turkana</text> <text x=\"6\" y=\"706\" text-anchor=\"start\">L. Victoria</text></g>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

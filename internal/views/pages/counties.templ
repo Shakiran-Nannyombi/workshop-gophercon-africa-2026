@@ -1,0 +1,221 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+var countiesTOC = []struct{ ID, Label string }{
+	{"county-map", "The map"},
+	{"all-counties", "All 47 counties"},
+	{"levels", "County, constituency, ward?"},
+}
+
+templ Counties(m layouts.Meta, s *data.Store, f CountyFilter) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Kenya · 47 counties · 8 regions",
+			Title:   "Forty-seven counties, one country.",
+			Lede:    "Since 2013 Kenya has been run in two layers: a national government and 47 county governments. Find any county on the map, see what it’s like, and learn why your address might say a different county from the one you expected.",
+			Motif:   "rift",
+		}) {
+			<div class="cluster hero__actions">
+				<a class="btn btn--gold" href="#all-counties">Find a county</a>
+				<a class="btn" href="#levels">County, constituency or ward?</a>
+			</div>
+		}
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				for _, t := range countiesTOC {
+					<li><a href={ templ.SafeURL("#" + t.ID) }>{ t.Label }</a></li>
+				}
+			</ul>
+		</nav>
+		@countyMapSection(s, f)
+		@countyGridSection(s, f)
+		@levelsSection(s)
+		<div class="wrap mt-6">
+			@components.LastReviewed(s.Site.LastReviewed)
+		</div>
+	}
+}
+
+templ countyMapSection(s *data.Store, f CountyFilter) {
+	{{ matches := FilterCounties(s, f) }}
+	<section id="county-map" class="section section--alt" aria-labelledby="cmap-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">The map</p>
+				<h2 id="cmap-title" class="display-lg">Tap a county. Any county.</h2>
+				<p class="lede">Colours show the eight old provinces, which Kenyans still use as regions. Hover, tap or tab through to see each county’s name and seat.</p>
+			</div>
+			<div class="cmap-layout mt-6">
+				<div class="card cmap-card">
+					if f.Active() {
+						@components.KenyaMap(components.KenyaMapProps{Store: s, Slugs: slugList(matches)})
+					} else {
+						@components.KenyaMap(components.KenyaMapProps{Store: s})
+					}
+				</div>
+				<div class="cmap-legend">
+					<h3 class="cmap-legend__title">Regions</h3>
+					<p class="small soft mt-2">Pick one to filter the list below.</p>
+					<ul class="cmap-legend__list mt-4">
+						for _, r := range regionOrder {
+							<li>
+								<a
+									class={ "legend-region", "region-tint--" + r }
+									href={ templ.SafeURL(regionFilterHref(r)) }
+									data-region-filter={ r }
+									if f.Region == r {
+										aria-current="true"
+									}
+								>
+									<span class={ "legend-region__swatch", "region-fill-swatch--" + r } aria-hidden="true"></span>
+									<span class="legend-region__name">{ countyRegionName(s, r) }</span>
+									<span class="legend-region__count num">{ itoa(regionCount(s, r)) }</span>
+								</a>
+							</li>
+						}
+					</ul>
+					<a class="link-arrow mt-4" href="/counties#all-counties" data-region-filter="">
+						Show all regions
+						@components.Icon("arrow", "icon-sm")
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+
+templ countyGridSection(s *data.Store, f CountyFilter) {
+	<section id="all-counties" class="section" aria-labelledby="grid-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">All 47</p>
+				<h2 id="grid-title" class="display-lg">Every county, by its official number.</h2>
+				<p class="lede">Every county has an official code, from 01 (Mombasa) to 47 (Nairobi City), in the order the constitution lists them. Search by name, seat, town or what it’s known for.</p>
+			</div>
+			<form class="filters county-filters card mt-6" action="/counties#all-counties" method="get" hx-get="/counties" hx-target="#county-results" hx-swap="outerHTML" hx-push-url="true" hx-trigger="input delay:300ms from:#county-q, change, submit">
+				<div class="field-wrap">
+					<label class="sr-only" for="county-q">Search counties</label>
+					@components.Icon("search", "icon-sm")
+					<input class="field" id="county-q" name="q" type="search" autocomplete="off" placeholder="Search: Diani, tea, Kisumu, 22…" value={ f.Q }/>
+				</div>
+				<fieldset class="filter-group">
+					<legend class="label">Region</legend>
+					<div class="cluster" style="--gap:.4rem">
+						<label class="pill-radio">
+							<input class="sr-only" type="radio" name="region" value="" checked?={ f.Region == "" }/>
+							<span class="pill">All</span>
+						</label>
+						for _, r := range regionOrder {
+							<label class="pill-radio">
+								<input class="sr-only" type="radio" name="region" value={ r } checked?={ f.Region == r }/>
+								<span class="pill"><span class={ "pill-dot", "region-fill-swatch--" + r } aria-hidden="true"></span>{ countyRegionName(s, r) }</span>
+							</label>
+						}
+					</div>
+				</fieldset>
+				<noscript><button class="btn btn--gold" type="submit">Filter</button></noscript>
+			</form>
+			@CountyResults(s, f)
+		</div>
+	</section>
+}
+
+templ CountyResults(s *data.Store, f CountyFilter) {
+	{{ cs := FilterCounties(s, f) }}
+	<div id="county-results" class="mt-6" data-slugs={ countySlugs(cs) } data-filtered?={ f.Active() } data-region={ f.Region }>
+		<p class="small soft" role="status">
+			Showing <strong>{ itoa(len(cs)) }</strong> of { itoa(len(s.Counties)) } counties
+			if f.Region != "" {
+				in <strong>{ countyRegionName(s, f.Region) }</strong>
+			}
+			if f.Active() {
+				· <a class="link" href="/counties#all-counties">Clear filters</a>
+			}
+		</p>
+		if r, ok := s.Region(f.Region); ok {
+			<div class={ "card card--pad region-note mt-4", "region-tint--" + r.Slug }>
+				<p class="eyebrow">{ r.Name } region</p>
+				<p class="mt-2">{ r.Blurb }</p>
+			</div>
+		}
+		if len(cs) == 0 {
+			<div class="mt-4">
+				@components.Callout("info", "No counties match") {
+					<p>Try a different spelling, or search for a town or the county seat instead.</p>
+				}
+			</div>
+		} else {
+			<div class="county-grid mt-4">
+				for _, c := range cs {
+					@components.CountyCard(c, countyRegionName(s, c.Region), countyShape(s, c.Slug))
+				}
+			</div>
+		}
+	</div>
+}
+
+templ levelsSection(s *data.Store) {
+	<section id="levels" class="section section--alt levels" aria-labelledby="levels-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">The big confusion</p>
+				<h2 id="levels-title" class="display-lg">County, constituency, ward, estate?</h2>
+				<p class="lede">Kenyan places sit inside each other like folded kangas. Officials, voters and your taxi driver each use a different layer, so the same street can have four “addresses”.</p>
+			</div>
+			<div class="levels-layout mt-6">
+				<ol class="tiers" aria-label="Kenya’s layers, from biggest to smallest">
+					for i, l := range s.Levels {
+						<li class={ "tier", levelTone(i), templ.KV("tier--informal", l.Count == "informal") }>
+							<div class="tier__count">
+								if l.Count == "informal" {
+									<span class="tier__num tier__num--word">no official status</span>
+								} else {
+									<span class="tier__num num">{ l.Count }</span>
+								}
+							</div>
+							<div class="tier__body">
+								<h3 class="tier__name">{ l.Name }</h3>
+								<p class="tier__who">{ l.Who }</p>
+								if l.Note != "" {
+									<p class="tier__note small">{ l.Note }</p>
+								}
+							</div>
+							if l.Example != "" {
+								<p class="tier__eg"><span>e.g.</span> { l.Example }</p>
+							}
+						</li>
+					}
+				</ol>
+				<aside class="levels-side">
+					<div class="card card--pad address-card">
+						<p class="eyebrow">One address, every layer</p>
+						<ol class="address-chain mt-3">
+							for i, l := range s.Levels {
+								<li class={ "address-chain__step", levelTone(i) }>
+									<span class="address-chain__level">{ l.Name }</span>
+									<span class="address-chain__place">{ l.Example }</span>
+								</li>
+							}
+						</ol>
+						<p class="small soft mt-4">Ask someone where they live and you’ll hear the last line, “Parklands”, not the ward or the constituency.</p>
+					</div>
+					<div class="mt-5">
+						@components.Callout("tip", "Why it matters") {
+							<ul>
+								<li><strong>Addresses.</strong> Kenya has few street addresses. People give an estate plus a landmark, and official forms ask for the county, sub-county and ward.</li>
+								<li><strong>County fees.</strong> Parking, business permits and market fees are set by each county, so prices change when you cross a county line.</li>
+								<li><strong>Voting.</strong> You vote for a governor, senator and woman rep by county, an MP by constituency and an MCA by ward.</li>
+								<li><strong>“Nairobi” isn’t always Nairobi.</strong> Ruaka, Rongai and Syokimau are in other counties. <a href="/nairobi#which-county">Check which county a place is really in</a>.</li>
+							</ul>
+						}
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+}

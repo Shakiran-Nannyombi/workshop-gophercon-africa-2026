@@ -31,7 +31,10 @@ func get(t *testing.T, h http.Handler, url string, headers map[string]string) (i
 
 func TestPagesRenderFullHTML(t *testing.T) {
 	h := newTestSite(t)
-	for _, url := range []string{"/", "/money", "/nairobi"} {
+	for _, url := range []string{
+		"/", "/money", "/nairobi", "/counties", "/counties/kiambu",
+		"/cities", "/cities/kampala", "/compare", "/glossary", "/about",
+	} {
 		code, body := get(t, h, url, nil)
 		if code != http.StatusOK {
 			t.Errorf("%s: status %d", url, code)
@@ -50,6 +53,9 @@ func TestHTMXReturnsPartials(t *testing.T) {
 		{"/nairobi?where=ruaka", "which-result", "Kiambu"},
 		{"/nairobi?county=kajiado", "area-results", `id="area-results"`},
 		{"/?country=UG", "", `id="city-picker"`},
+		{"/counties?region=rift-valley", "county-results", `id="county-results"`},
+		{"/glossary?q=matatu", "glossary-results", "matatu"},
+		{"/compare?a=nairobi&b=kigali", "compare-result", `id="compare-result"`},
 	}
 	for _, tt := range tests {
 		code, body := get(t, h, tt.url, map[string]string{"HX-Request": "true", "HX-Target": tt.target})

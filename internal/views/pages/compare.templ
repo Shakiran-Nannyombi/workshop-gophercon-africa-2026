@@ -159,7 +159,10 @@ templ compareTicket(s *data.Store, c data.City, country *data.Country, series st
 					}
 				</dl>
 			}
-			<a class="link-arrow cmp-ticket__link" href={ templ.SafeURL("/cities/" + c.Slug) }>Read the { c.Name } guide @components.Icon("arrow", "icon-sm")</a>
+			<a class="link-arrow cmp-ticket__link" href={ templ.SafeURL("/cities/" + c.Slug) }>
+				Read the { c.Name } guide
+				@components.Icon("arrow", "icon-sm")
+			</a>
 		</div>
 	</article>
 }

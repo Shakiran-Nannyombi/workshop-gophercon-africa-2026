@@ -30,7 +30,7 @@ templ EastAfricaMap(p EastAfricaMapProps) {
 							<text class={ "ea-country-label", templ.KV("ea-country-label--featured", featuredCountries[c.Code]) } x={ x } y={ y }>{ c.Name }</text>
 						}
 					}
-					<text class="ea-water-label" x="182" y="676">Lake Victoria</text>
+					<text class="ea-water-label" x="170" y="690">L. Victoria</text>
 					<text class="ea-water-label" x="330" y="470" text-anchor="start">L. Turkana</text>
 					<text class="ea-water-label ea-water-label--sea" x="545" y="830">Indian Ocean</text>
 				</g>
@@ -59,7 +59,12 @@ templ EastAfricaMap(p EastAfricaMapProps) {
 				}
 			</g>
 		</svg>
-		if !p.Compact {
+		if p.Compact {
+			<figcaption class="ea-map__legend ea-map__legend--compact">
+				<span class="ea-key ea-key--here" aria-hidden="true"></span>
+				<span>{ cityName(p) } in { p.Countries[cityCountry(p)] }. <a class="link" href="/cities#map">See all cities on the map</a></span>
+			</figcaption>
+		} else {
 			<figcaption class="ea-map__legend">
 				<ul class="cluster" style="--gap:.5rem 1.1rem">
 					<li class="legend-item"><span class="ea-key ea-key--star" aria-hidden="true"></span> National capital</li>

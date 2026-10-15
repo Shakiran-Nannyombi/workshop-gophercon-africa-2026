@@ -1,6 +1,7 @@
 package pages
 
 import (
+	"fmt"
 	"math"
 	"sort"
 	"strings"
@@ -93,3 +94,34 @@ func cityScoresEditorial(c data.City) bool {
 func cityCompareURL(a, b string) string { return "/compare?a=" + a + "&b=" + b }
 
 func cityPageURL(slug string) string { return "/cities/" + slug }
+
+func citiesPlural(n int) string {
+	if n == 1 {
+		return "city"
+	}
+	return "cities"
+}
+
+var cityTOC = []struct{ ID, Label string }{
+	{"glance", "At a glance"},
+	{"areas", "Areas"},
+	{"money", "Money"},
+	{"practical", "Transport, food, safety"},
+	{"suits", "Who it suits"},
+	{"locator", "Map & compare"},
+}
+
+func cityEyebrow(c data.City, country *data.Country) string {
+	if country == nil {
+		return "City guide"
+	}
+	return "City guide · " + country.Name
+}
+
+func hoodNum(i int) string { return fmt.Sprintf("%02d", i+1) }
+
+func suitTone(i int) string {
+	return []string{"chip--gold", "chip--green", "chip--red", "chip--surface"}[i%4]
+}
+
+func joinWords(xs []string) string { return strings.Join(xs, ", ") }

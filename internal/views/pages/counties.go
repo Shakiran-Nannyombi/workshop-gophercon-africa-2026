@@ -50,12 +50,14 @@ func FilterCounties(s *data.Store, f CountyFilter) []data.County {
 	return out
 }
 
-func countySlugs(cs []data.County) string {
-	slugs := make([]string, len(cs))
+func countySlugs(cs []data.County) string { return strings.Join(slugList(cs), " ") }
+
+func slugList(cs []data.County) []string {
+	out := make([]string, len(cs))
 	for i, c := range cs {
-		slugs[i] = c.Slug
+		out[i] = c.Slug
 	}
-	return strings.Join(slugs, " ")
+	return out
 }
 
 func countyRegionName(s *data.Store, slug string) string {

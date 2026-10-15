@@ -30,19 +30,19 @@ type mapLabel struct {
 
 // cityLabels keeps neighbouring labels apart (Kampala/Entebbe/Jinja, Nairobi/Nakuru, Dar/Zanzibar).
 var cityLabels = map[string]mapLabel{
-	"nairobi":       {12, 6, "start"},
+	"nairobi":       {15, 6, "start"},
 	"nakuru":        {11, 2, "start"},
 	"eldoret":       {0, -13, "middle"},
 	"kisumu":        {0, 24, "middle"},
 	"mombasa":       {12, 6, "start"},
-	"kampala":       {-12, 0, "end"},
+	"kampala":       {-15, 0, "end"},
 	"entebbe":       {-11, 18, "end"},
-	"jinja":         {6, -12, "start"},
+	"jinja":         {2, -14, "middle"},
 	"dar-es-salaam": {12, 10, "start"},
 	"zanzibar-city": {12, -4, "start"},
 	"arusha":        {-12, 6, "end"},
-	"kigali":        {12, 6, "start"},
-	"addis-ababa":   {13, 6, "start"},
+	"kigali":        {15, 6, "start"},
+	"addis-ababa":   {15, 6, "start"},
 }
 
 var capitals = map[string]bool{"nairobi": true, "kampala": true, "kigali": true, "addis-ababa": true}
@@ -51,8 +51,8 @@ var featuredCountries = map[string]bool{"KE": true, "UG": true, "TZ": true, "RW"
 
 // countryLabels are hand-placed so names sit clear of the city dots.
 var countryLabels = map[string][2]float64{
-	"KE": {425, 555}, "UG": {118, 520}, "TZ": {255, 820}, "RW": {57, 675}, "ET": {470, 345},
-	"SO": {560, 540}, "SS": {135, 390}, "BI": {58, 762}, "SD": {130, 200}, "CD": {40, 470},
+	"KE": {425, 555}, "UG": {118, 520}, "TZ": {255, 820}, "RW": {48, 668}, "ET": {470, 345},
+	"SO": {560, 540}, "SS": {135, 390}, "SD": {130, 200}, "CD": {40, 470},
 }
 
 const eaViewBox = "0 150 620 800"
@@ -64,6 +64,12 @@ func mapCities(p EastAfricaMapProps) []mapCity {
 		l, ok := cityLabels[c.Slug]
 		if !ok {
 			l = mapLabel{0, -12, "middle"}
+		}
+		if p.Compact {
+			l = mapLabel{20, 9, "start"}
+			if x > 360 {
+				l = mapLabel{-20, 9, "end"}
+			}
 		}
 		out = append(out, mapCity{
 			Slug: c.Slug, Name: c.Name, Country: c.Country, x: x, y: y,
@@ -141,6 +147,15 @@ func cityCountry(p EastAfricaMapProps) string {
 	for _, c := range p.Cities {
 		if c.Slug == p.Current {
 			return c.Country
+		}
+	}
+	return ""
+}
+
+func cityName(p EastAfricaMapProps) string {
+	for _, c := range p.Cities {
+		if c.Slug == p.Current {
+			return c.Name
 		}
 	}
 	return ""

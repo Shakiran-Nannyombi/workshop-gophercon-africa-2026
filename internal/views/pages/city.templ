@@ -1,0 +1,260 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ City(m layouts.Meta, s *data.Store, c data.City, country *data.Country) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: cityEyebrow(c, country),
+			Title:   c.Name,
+			Lede:    c.Tagline,
+			Motif:   c.Motif,
+		}) {
+			<div class="cluster hero__actions">
+				<a class="btn" href="/cities">
+					@components.Icon("back", "icon-sm")
+					All cities
+				</a>
+				if c.Slug == "nairobi" {
+					<a class="btn btn--gold" href="/nairobi">
+						Nairobi deep dive
+						@components.Icon("arrow", "icon-sm")
+					</a>
+				}
+				@components.LastReviewed(s.Site.LastReviewed)
+			</div>
+		}
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				for _, t := range cityTOC {
+					<li><a href={ templ.SafeURL("#" + t.ID) }>{ t.Label }</a></li>
+				}
+			</ul>
+		</nav>
+		@cityGlanceSection(c, country)
+		@cityAreas(c)
+		@cityMoney(s, c, country)
+		@cityPractical(c)
+		@citySuits(c)
+		@cityLocator(s, c)
+	}
+}
+
+templ cityGlanceSection(c data.City, country *data.Country) {
+	<section id="glance" class="section" aria-label="City at a glance">
+		<div class="wrap">
+			<p class="city-intro lede">{ c.Intro }</p>
+			if c.Confidence == "limited" {
+				<div class="mt-5 city-limited">
+					@components.Callout("warn", "Limited data for " + c.Name) {
+						<p>We have less first-hand information for { c.Name } than for the bigger cities, so treat the details below as a starting point and check locally.</p>
+						if c.Verify != "" {
+							<p class="small">Still to confirm: { string(c.Verify) }</p>
+						}
+					}
+				</div>
+			}
+			<div class="mt-6 reveal">
+				@components.CityGlance(c, country)
+			</div>
+		</div>
+	</section>
+}
+
+templ cityAreas(c data.City) {
+	<section id="areas" class="section section--alt" aria-labelledby="areas-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Neighbourhoods & areas</p>
+				<h2 id="areas-title" class="display-lg">Where’s where in { c.Name }.</h2>
+				<p class="lede">The names you’ll hear from drivers, hosts and colleagues, and what each place is like.</p>
+			</div>
+			if c.Slug == "nairobi" {
+				<a class="card card-link nairobi-link mt-6" href="/nairobi">
+					<span class="nairobi-link__icon" aria-hidden="true">
+						@components.Icon("map", "icon")
+					</span>
+					<span>
+						<strong class="nairobi-link__title">Nairobi has its own deep-dive guide</strong>
+						<span class="nairobi-link__text">A zoomable map, 50+ areas, and which “Nairobi” places are really in Kiambu, Kajiado or Machakos.</span>
+					</span>
+					@components.Icon("arrow", "icon nairobi-link__arrow")
+				</a>
+			}
+			<ul class="hood-grid reveal-stagger mt-6">
+				for i, n := range c.Neighbourhoods {
+					<li class="card hood">
+						<span class="hood__num num" aria-hidden="true">{ hoodNum(i) }</span>
+						<h3 class="hood__name">{ n.Name }</h3>
+						<p>{ n.Note }</p>
+					</li>
+				}
+			</ul>
+		</div>
+	</section>
+}
+
+templ cityMoney(s *data.Store, c data.City, country *data.Country) {
+	<section id="money" class="section" aria-labelledby="money-title">
+		<div class="wrap split city-split">
+			<div>
+				<p class="eyebrow">Money</p>
+				<h2 id="money-title" class="display-lg mt-3">Paying for things.</h2>
+				if country != nil {
+					<p class="lede mt-4">
+						{ c.Name } uses the <strong>{ country.Currency }</strong> (<span class="num">{ country.CurrencyCode }</span>), written <span class="num">{ country.Symbol }</span> on signs.
+						{ country.Scale }
+					</p>
+				}
+				<ul class="checklist mt-5">
+					for _, t := range c.MoneyTips {
+						<li>
+							@components.Icon("check", "icon-sm")
+							<span>{ t }</span>
+						</li>
+					}
+				</ul>
+				<a class="link-arrow mt-5" href="/money">
+					How money works, from notes to M-Pesa
+					@components.Icon("arrow", "icon-sm")
+				</a>
+			</div>
+			if country != nil {
+				<div class="card card--pad mobile-money">
+					<p class="eyebrow">Mobile money in { country.Name }</p>
+					<ul class="mobile-money__list mt-4">
+						for _, mm := range countryMoney(s, country.Code) {
+							<li>
+								<span class="mobile-money__icon" aria-hidden="true">
+									@components.Icon("phone", "icon-sm")
+								</span>
+								<div>
+									<p class="mobile-money__name">{ mm.Name }</p>
+									<p class="small soft">{ mm.Summary }</p>
+								</div>
+							</li>
+						}
+					</ul>
+					if len(countryMoney(s, country.Code)) == 0 {
+						<div class="cluster mt-4">
+							for _, mm := range country.MobileMoney {
+								<span class="chip">{ mm }</span>
+							}
+						</div>
+					}
+				</div>
+			}
+		</div>
+	</section>
+}
+
+templ cityPractical(c data.City) {
+	<section id="practical" class="section section--alt" aria-labelledby="practical-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">On the ground</p>
+				<h2 id="practical-title" class="display-lg">Getting around, eating, staying safe.</h2>
+			</div>
+			<div class="practical-grid reveal-stagger mt-6">
+				@cityPracticalCard("transport", "Getting around", "bus", c.Transport)
+				@cityPracticalCard("food", "What to eat", "food", c.Food)
+				@cityPracticalCard("safety", "Staying safe", "shield", c.Safety)
+			</div>
+		</div>
+	</section>
+}
+
+templ cityPracticalCard(id, title, icon string, items []string) {
+	<article id={ id } class={ "card practical", "practical--" + id } aria-labelledby={ id + "-title" }>
+		<div class="practical__head">
+			<span class="explain__icon" aria-hidden="true">
+				@components.Icon(icon, "icon")
+			</span>
+			<h3 id={ id + "-title" }>{ title }</h3>
+		</div>
+		<ul class="practical__list">
+			for _, it := range items {
+				<li>{ it }</li>
+			}
+		</ul>
+	</article>
+}
+
+templ citySuits(c data.City) {
+	<section id="suits" class="section" aria-labelledby="suits-title">
+		<div class="wrap suits">
+			<div>
+				<p class="eyebrow">Who { c.Name } suits</p>
+				<h2 id="suits-title" class="display-lg mt-3">
+					if c.Scores.Vibe != "" {
+						{ c.Scores.Vibe }.
+					} else {
+						Good for…
+					}
+				</h2>
+			</div>
+			<ul class="suits__chips cluster" aria-label={ "Who " + c.Name + " suits" }>
+				for i, w := range c.Suits {
+					<li class={ "chip", "suit-chip", suitTone(i) }>{ w }</li>
+				}
+			</ul>
+		</div>
+	</section>
+}
+
+templ cityLocator(s *data.Store, c data.City) {
+	{{ prev, next := cityPrevNext(s, c.Slug) }}
+	<section id="locator" class="section section--alt" aria-labelledby="locator-title">
+		<div class="wrap locator">
+			<div class="locator__map">
+				<h2 id="locator-title" class="sr-only">Where { c.Name } is, and where to go next</h2>
+				@components.EastAfricaMap(citiesMap(s, c.Slug, true))
+			</div>
+			<div class="locator__side">
+				<p class="eyebrow">Compare with…</p>
+				<h3 class="display-md mt-3">{ c.Name } vs</h3>
+				<ul class="compare-links mt-5">
+					for _, o := range cityCompareWith(s, c) {
+						<li>
+							<a class="compare-link" href={ templ.SafeURL(cityCompareURL(c.Slug, o.Slug)) }>
+								<span class="compare-link__vs num" aria-hidden="true">vs</span>
+								<span class="compare-link__name">{ o.Name }</span>
+								<span class="sr-only">Compare { c.Name } with { o.Name }</span>
+								@components.Icon("arrow", "icon-sm")
+							</a>
+						</li>
+					}
+				</ul>
+				if cityScoresEditorial(c) {
+					<p class="small muted mt-4 score-note">
+						@components.Icon("info", "icon-sm")
+						<span>Comparison scores are editorial estimates, not measurements.</span>
+					</p>
+				}
+				<nav class="city-pager mt-7" aria-label="More cities">
+					<a class="card card-link city-pager__link" href={ templ.SafeURL(cityPageURL(prev.Slug)) } rel="prev">
+						<span class="city-pager__dir">
+							@components.Icon("back", "icon-sm")
+							Previous
+						</span>
+						<span class="city-pager__name">{ prev.Name }</span>
+					</a>
+					<a class="card card-link city-pager__link city-pager__link--next" href={ templ.SafeURL(cityPageURL(next.Slug)) } rel="next">
+						<span class="city-pager__dir">
+							Next
+							@components.Icon("arrow", "icon-sm")
+						</span>
+						<span class="city-pager__name">{ next.Name }</span>
+					</a>
+				</nav>
+				<div class="mt-6">
+					@components.LastReviewed(s.Site.LastReviewed)
+				</div>
+			</div>
+		</div>
+	</section>
+}

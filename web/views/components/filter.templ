@@ -1,0 +1,41 @@
+package components
+
+import "workshop/internal/domain/sighting"
+
+type FilterProps struct {
+	Target string
+	Search bool
+	Groups []FilterGroup
+}
+
+type FilterGroup struct {
+	Key     string
+	Label   string
+	Options []sighting.Tally
+}
+
+templ Filter(props FilterProps) {
+	<form class="filter" data-filter={ props.Target } role="search" hidden>
+		if props.Search {
+			<label class="filter__search">
+				<span class="visually-hidden">Search sightings</span>
+				<input type="search" name="q" placeholder="Search by animal, place or who saw it" autocomplete="off"/>
+			</label>
+		}
+		for _, g := range props.Groups {
+			<fieldset class="filter__group">
+				<legend>{ g.Label }</legend>
+				for _, o := range g.Options {
+					<label class="chip">
+						<input type="checkbox" name={ g.Key } value={ o.Name }/>
+						{ o.Name } <small>{ o.Count }</small>
+					</label>
+				}
+			</fieldset>
+		}
+		<p class="filter__status">
+			<output class="filter__count" aria-live="polite"></output>
+			<button type="reset">Clear</button>
+		</p>
+	</form>
+}

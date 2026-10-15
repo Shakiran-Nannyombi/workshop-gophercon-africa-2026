@@ -11,10 +11,9 @@ templ Gallery(items []sighting.Media) {
 	} else {
 		<ul class="gallery">
 			for _, m := range items {
-				<!-- Items -->
 				<li class="gallery__item">
 					if m.Type == "StillImage" {
-						<img src={ m.URL } alt={ altText(m) } loading="lazy"/>
+						<img src={ m.URL } alt={ altText(m) } width="640" height="480" loading="lazy"/>
 					} else {
 						<a href={ templ.URL(m.URL) } rel="noopener">{ altText(m) }</a>
 					}

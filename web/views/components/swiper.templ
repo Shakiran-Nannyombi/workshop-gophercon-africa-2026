@@ -1,0 +1,27 @@
+package components
+
+import (
+	"cmp"
+	"strconv"
+)
+
+type SwiperProps struct {
+	DesktopSlides  int
+	Dark           bool
+	HidePagination bool
+	Class          string
+}
+
+templ Swiper(props SwiperProps) {
+	<div
+		class={ "swiper", "carousel", templ.KV("carousel--dark", props.Dark), props.Class }
+		data-swiper-desktop={ strconv.Itoa(cmp.Or(props.DesktopSlides, 3)) }
+	>
+		<div class="swiper-wrapper">
+			{ children... }
+		</div>
+		if !props.HidePagination {
+			<div class="swiper-pagination"></div>
+		}
+	</div>
+}

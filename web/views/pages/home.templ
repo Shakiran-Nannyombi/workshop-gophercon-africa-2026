@@ -1,6 +1,7 @@
 package pages
 
 import (
+	"fmt"
 	"workshop/internal/domain/sighting"
 	"workshop/web/views/components"
 	"workshop/web/views/layout"
@@ -8,20 +9,73 @@ import (
 
 templ Home(sightings []sighting.Sighting) {
 	@layout.Base(layout.BaseProps{
-		Title: "Sightings",
+		Title:       "Field Notes",
+		Description: "Animal sightings written down as they were seen, with the weather of the day.",
 	}) {
-		<h1>Sightings</h1>
-		if len(sightings) == 0 {
-			<p>No sightings have been ingested yet.</p>
-		} else {
-			<p>Total: { len(sightings) }</p>
-			<ul class="sightings">
-				for _, s := range sightings {
-					<li>
-						@components.SightingCard(s)
-					</li>
+		<section class="hero">
+			<div class="container">
+				<p class="hero__eyebrow">A field notebook of wild lives</p>
+				<h1>Notes from the field</h1>
+				<p class="hero__lead">Where each animal was seen, who wrote it down, and what the sky was doing that day.</p>
+				<p class="hero__count">{ countLabel(len(sightings)) }</p>
+			</div>
+		</section>
+		if photos := components.WithPhotos(sightings, 12); len(photos) > 0 {
+			<section id="photos" class="photos reveal">
+				<div class="container">
+					<h2>Recent photos</h2>
+				</div>
+				@components.Swiper(components.SwiperProps{DesktopSlides: 4}) {
+					for _, s := range photos {
+						<div class="swiper-slide">
+							@components.PhotoSlide(s)
+						</div>
+					}
 				}
-			</ul>
+			</section>
 		}
+		<section id="map" class="map-section reveal">
+			<div class="container">
+				<h2>Where they were seen</h2>
+				<p class="section-lead">Dots group together when many records sit close. Open one to jump to its note.</p>
+				@components.Map(components.MapProps{
+					Points:  components.MapPoints(sightings),
+					Cluster: true,
+					Label:   "Where the sightings were",
+				})
+			</div>
+		</section>
+		<section class="notes reveal">
+			<div class="container">
+				<h2>The notes</h2>
+				if len(sightings) == 0 {
+					<p>No sightings have been ingested yet.</p>
+				} else {
+					@components.Filter(components.FilterProps{
+						Target: "sightings",
+						Search: true,
+						Groups: []components.FilterGroup{
+							{Key: "animal", Label: "Animal", Options: components.FilterOptions(sightings, 12, components.Animal)},
+							{Key: "country", Label: "Country", Options: components.FilterOptions(sightings, 12, components.Country)},
+						},
+					})
+					<ul id="sightings" class="sightings">
+						for _, s := range sightings {
+							<li id={ components.Anchor(s) } { components.FilterAttrs(s)... }>
+								@components.SightingCard(s)
+							</li>
+						}
+					</ul>
+					<p class="empty-filter" hidden>No notes match those filters.</p>
+				}
+			</div>
+		</section>
 	}
+}
+
+func countLabel(n int) string {
+	if n == 1 {
+		return "1 note on this page"
+	}
+	return fmt.Sprintf("%d notes on this page", n)
 }

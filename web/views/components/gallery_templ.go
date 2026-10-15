@@ -45,7 +45,7 @@ func Gallery(items []sighting.Media) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			for _, m := range items {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<!-- Items --> <li class=\"gallery__item\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<li class=\"gallery__item\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -57,7 +57,7 @@ func Gallery(items []sighting.Media) templ.Component {
 					var templ_7745c5c3_Var2 string
 					templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.ResolveAttributeValue(m.URL)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 17, Col: 22}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 16, Col: 22}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var2)
 					if templ_7745c5c3_Err != nil {
@@ -70,13 +70,13 @@ func Gallery(items []sighting.Media) templ.Component {
 					var templ_7745c5c3_Var3 string
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.ResolveAttributeValue(altText(m))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 17, Col: 41}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 16, Col: 41}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var3)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" loading=\"lazy\"> ")
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" width=\"640\" height=\"480\" loading=\"lazy\"> ")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -88,7 +88,7 @@ func Gallery(items []sighting.Media) templ.Component {
 					var templ_7745c5c3_Var4 templ.SafeURL
 					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL(m.URL))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 19, Col: 32}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 18, Col: 32}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 					if templ_7745c5c3_Err != nil {
@@ -101,7 +101,7 @@ func Gallery(items []sighting.Media) templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(altText(m))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 19, Col: 62}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 18, Col: 62}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -120,7 +120,7 @@ func Gallery(items []sighting.Media) templ.Component {
 					var templ_7745c5c3_Var6 string
 					templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(m.Creator)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 22, Col: 53}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/views/components/gallery.templ`, Line: 21, Col: 53}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 					if templ_7745c5c3_Err != nil {

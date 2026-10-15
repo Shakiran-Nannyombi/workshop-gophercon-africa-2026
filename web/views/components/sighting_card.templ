@@ -12,14 +12,15 @@ import (
 
 templ SightingCard(s sighting.Sighting) {
 	<article class="card">
-		<!-- Header -->
+		<div class="card__gallery">
+			@Gallery(s.Media)
+		</div>
 		<header class="card__header">
-			<h2>{ displayName(s.Species) }</h2>
+			<h3>{ displayName(s.Species) }</h3>
 			if s.Species.ScientificName != "" {
 				<p class="card__scientific">{ s.Species.ScientificName }</p>
 			}
 		</header>
-		<!-- Meta -->
 		<dl class="card__meta">
 			<dt>Seen</dt>
 			<dd>{ s.HappenedAt.Format("2 January 2006") }</dd>
@@ -33,21 +34,18 @@ templ SightingCard(s sighting.Sighting) {
 				<dt>Recorded by</dt>
 				<dd>{ s.RecordedBy }</dd>
 			}
+			<dt>Weather</dt>
+			<dd>
+				@Weather(s.Weather)
+			</dd>
 		</dl>
-		<!-- Gallery -->
-		<div class="card__gallery">
-			@Gallery(s.Media)
-		</div>
 	</article>
 }
 
-// displayName prefers the name a reader would recognise, falling back
-// through the taxonomy as GBIF records thin out.
 func displayName(sp species.Species) string {
 	return cmp.Or(sp.VernacularName, sp.CanonicalName, sp.ScientificName, "Unknown species")
 }
 
-// place joins whichever parts of the location GBIF supplied.
 func place(l sighting.Location) string {
 	parts := slices.DeleteFunc(
 		[]string{l.Locality, l.StateProvince, l.Country},
@@ -56,7 +54,6 @@ func place(l sighting.Location) string {
 	return cmp.Or(strings.Join(parts, ", "), "Location unknown")
 }
 
-// individuals renders how many animals were seen in a single sighting.
 func individuals(n int) string {
 	if n == 1 {
 		return "1 individual"

@@ -1,0 +1,17 @@
+package components
+
+import "workshop/internal/domain/sighting"
+
+templ PhotoSlide(s sighting.Sighting) {
+	<a class="photo-slide" href={ templ.SafeURL("#" + Anchor(s)) }>
+		if m, ok := stillImage(s); ok {
+			<img src={ m.URL } alt={ altText(m) } width="640" height="480" loading="lazy"/>
+		} else {
+			<span class="photo-slide__empty">No photo</span>
+		}
+		<span class="photo-slide__caption">
+			<strong>{ displayName(s.Species) }</strong>
+			<span>{ place(s.Location) }</span>
+		</span>
+	</a>
+}

@@ -1,0 +1,293 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ ComparePage(m layouts.Meta, s *data.Store, p ComparePair) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Compare",
+			Title:   "Two cities, side by side.",
+			Lede:    "Rough 1–5 ratings with a reason for each, plus how far your money goes and what getting around costs.",
+			Motif:   "skyline",
+		})
+		<section class="section-tight wrap" aria-label="Choose cities">
+			<form class="card compare-form" action="/compare" method="get" hx-get="/compare" hx-target="#compare-table" hx-select="#compare-table" hx-swap="outerHTML" hx-trigger="change from:select, submit" hx-push-url="true">
+				<div>
+					<label class="label" for="cmp-a">City one</label>
+					@compareSelect(s, "cmp-a", "a", p.A)
+				</div>
+				<span class="converter__swap muted" aria-hidden="true">vs</span>
+				<div>
+					<label class="label" for="cmp-b">City two</label>
+					@compareSelect(s, "cmp-b", "b", p.B)
+				</div>
+				<button class="btn btn--gold" type="submit">Compare</button>
+			</form>
+			<p class="mt-4"><strong>Capital vs capital:</strong></p>
+			<ul class="cluster mt-2">
+				for _, pr := range capitalPairs {
+					<li><a class="pill" href={ templ.SafeURL("/compare?a=" + pr[0] + "&b=" + pr[1]) }>{ cityName(s, pr[0]) } vs { cityName(s, pr[1]) }</a></li>
+				}
+			</ul>
+		</section>
+		<section class="wrap">
+			@CompareTable(s, p)
+			@components.LastReviewed(m.Site.LastReviewed)
+		</section>
+	}
+}
+
+templ compareSelect(s *data.Store, id, name string, sel *data.City) {
+	<select class="select" id={ id } name={ name }>
+		<optgroup label="Capitals">
+			for _, c := range citiesFor(s, "") {
+				if s.IsCapital(c.Slug) {
+					<option value={ c.Slug } selected?={ sel != nil && sel.Slug == c.Slug }>{ c.Name } ★</option>
+				}
+			}
+		</optgroup>
+		<optgroup label="Other cities">
+			for _, c := range citiesFor(s, "") {
+				if !s.IsCapital(c.Slug) {
+					<option value={ c.Slug } selected?={ sel != nil && sel.Slug == c.Slug }>{ c.Name }</option>
+				}
+			}
+		</optgroup>
+	</select>
+}
+
+templ CompareTable(s *data.Store, p ComparePair) {
+	<div id="compare-table" class="card table-card mt-5" aria-live="polite">
+		if p.A == nil || p.B == nil {
+			<p class="card--pad">Pick two cities.</p>
+		} else {
+			<div class="table-scroll">
+				<table class="data-table compare-table">
+					<caption class="sr-only">{ p.A.Name } compared with { p.B.Name }</caption>
+					<thead>
+						<tr>
+							<th scope="col">&nbsp;</th>
+							<th scope="col"><a class="link" href={ templ.SafeURL("/cities/" + p.A.Slug) }>{ p.A.Name }</a></th>
+							<th scope="col"><a class="link" href={ templ.SafeURL("/cities/" + p.B.Slug) }>{ p.B.Name }</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Country</th>
+							@cmpText(countryName(s, p.A), roleLabel(s.CityRole(p.A.Slug)))
+							@cmpText(countryName(s, p.B), roleLabel(s.CityRole(p.B.Slug)))
+						</tr>
+						<tr>
+							<th scope="row">Population</th>
+							@cmpText(p.A.Population, "")
+							@cmpText(p.B.Population, "")
+						</tr>
+						@scoreRow("Cost of living (5 = priciest)", p.A.Scores.Cost, p.B.Scores.Cost)
+						@scoreRow("Getting around (5 = easiest)", p.A.Scores.Transport, p.B.Scores.Transport)
+						@scoreRow("Climate (5 = mildest)", p.A.Scores.Climate, p.B.Scores.Climate)
+						@scoreRow("Feels relaxed (5 = most)", p.A.Scores.Safety, p.B.Scores.Safety)
+						@scoreRow("Nightlife (5 = liveliest)", p.A.Scores.Nightlife, p.B.Scores.Nightlife)
+						<tr>
+							<th scope="row">Currency scale</th>
+							@cmpText(currencyScale(s, p.A), "")
+							@cmpText(currencyScale(s, p.B), "")
+						</tr>
+						<tr>
+							<th scope="row">Cost of getting around <span class="approx">~</span></th>
+							<td>@cmpList(gettingAroundCost(s, p.A))</td>
+							<td>@cmpList(gettingAroundCost(s, p.B))</td>
+						</tr>
+						<tr>
+							<th scope="row">Vibe</th>
+							@cmpText(p.A.Scores.Vibe, "")
+							@cmpText(p.B.Scores.Vibe, "")
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="small muted card--pad">Scores are rough editorial judgements, not data. Cities in countries with travel advisories are not rated for safety or nightlife.</p>
+		}
+	</div>
+}
+
+templ cmpText(v, sub string) {
+	<td>
+		{ v }
+		if sub != "" {
+			<span class="chip chip--gold">{ sub }</span>
+		}
+	</td>
+}
+
+templ cmpList(items []string) {
+	if len(items) == 0 {
+		<span class="muted">—</span>
+	} else {
+		<ul class="small">
+			for _, it := range items {
+				<li class="num">{ it }</li>
+			}
+		</ul>
+	}
+}
+
+templ scoreRow(label string, a, b data.Score) {
+	<tr>
+		<th scope="row">{ label }</th>
+		@scoreCell(a)
+		@scoreCell(b)
+	</tr>
+}
+
+templ scoreCell(sc data.Score) {
+	<td>
+		if sc.Value <= 0 {
+			<span class="muted">Not rated</span>
+		} else {
+			<span class="dots" role="img" aria-label={ itoa(sc.Value) + " out of 5" }>
+				for _, on := range dots(sc.Value) {
+					<span class={ templ.KV("on", on) }></span>
+				}
+			</span>
+		}
+		if sc.Reason != "" {
+			<span class="small soft" style="display:block">{ sc.Reason }</span>
+		}
+	</td>
+}
+
+templ GlossaryPage(m layouts.Meta, s *data.Store) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Words",
+			Title:   "The words you’ll hear.",
+			Lede:    "Matatu, daladala, boda boda, paybill, MoMo: the everyday words for getting around and paying, explained from zero.",
+			Motif:   "savannah",
+		})
+		<nav class="toc" aria-label="Word groups">
+			<ul class="wrap">
+				for _, g := range termsByLanguage(s.Glossary) {
+					<li><a href={ templ.SafeURL("#" + slugify(g.Language)) }>{ g.Language }</a></li>
+				}
+				<li><a href="#phrasebook">Phrasebook</a></li>
+			</ul>
+		</nav>
+		for _, g := range termsByLanguage(s.Glossary) {
+			<section id={ slugify(g.Language) } class="section-tight wrap" aria-labelledby={ slugify(g.Language) + "-t" }>
+				<h2 id={ slugify(g.Language) + "-t" } class="display-md">{ g.Language }</h2>
+				<dl class="term-grid mt-4">
+					for _, t := range g.Terms {
+						<div class="card term" id={ "term-" + slugify(t.Term) }>
+							<dt>
+								<h3>{ t.Term }</h3>
+								if co := countryOf(s, t.Country); co != nil {
+									<span class="chip chip--surface term__lang">
+										@components.Flag(co)
+										{ co.Name }
+									</span>
+								}
+							</dt>
+							<dd class="mt-2 soft">{ t.Meaning }</dd>
+							if t.Example != "" {
+								<dd class="mt-2 small"><em>“{ t.Example }”</em></dd>
+							}
+						</div>
+					}
+				</dl>
+			</section>
+		}
+		<section id="phrasebook" class="section section--alt" aria-labelledby="pb-title">
+			<div class="wrap">
+				<h2 id="pb-title" class="display-lg">Swahili phrasebook</h2>
+				<div class="card table-card mt-5">
+					<div class="table-scroll">
+						<table class="data-table">
+							<thead><tr><th scope="col">Swahili</th><th scope="col">English</th><th scope="col">Say it</th></tr></thead>
+							<tbody>
+								for _, p := range s.Phrases {
+									<tr>
+										<th scope="row" lang="sw">{ p.Swahili }</th>
+										<td>{ p.English }</td>
+										<td class="num soft">{ p.Say }</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	}
+}
+
+templ AboutPage(m layouts.Meta, s *data.Store, verifyCount int) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "About & sources",
+			Title:   "Where this comes from.",
+			Lede:    "Karibu Guide is a beginner’s guide written for curious first-timers. It is not an official source.",
+			Motif:   "highland",
+		})
+		<section class="section-tight wrap-narrow prose">
+			<h2 class="display-md">How to read this guide</h2>
+			<ul>
+				<li><span class="approx">~ approx</span> marks a rough figure: prices, fares, populations and exchange rates.</li>
+				<li>“Less data so far” marks a page that is shorter for now and waiting to be expanded.</li>
+				<li>Facts still being checked are tracked in <code>VERIFY.md</code> ({ itoa(verifyCount) } notes at the last count). Visa, fee and entry rules are all on that list.</li>
+				<li>Exchange rates are as of <time class="num" datetime={ s.Site.Rates.AsOf }>{ s.Site.Rates.AsOf }</time>. { s.Site.Rates.Disclaimer }</li>
+			</ul>
+			@components.LastReviewed(m.Site.LastReviewed)
+		</section>
+		<section id="advisories" class="section section--alt" aria-labelledby="adv-title">
+			<div class="wrap-narrow">
+				<h2 id="adv-title" class="display-lg">Official travel advisories</h2>
+				<p class="lede mt-3">Check these before planning travel to any country, especially South Sudan, Somalia, Eritrea and parts of Ethiopia.</p>
+				@sourceList(s.SourcesOf("advisory"))
+			</div>
+		</section>
+		<section id="entry" class="section" aria-labelledby="entry-title">
+			<div class="wrap-narrow">
+				<h2 id="entry-title" class="display-lg">Visas and entry: official sites</h2>
+				@components.RulesChange()
+				@sourceList(s.SourcesOf("entry"))
+				<p class="small muted mt-3">Only use official government sites for visas and eTAs. Look-alike agent sites charge extra.</p>
+			</div>
+		</section>
+		<section id="sources" class="section section--alt" aria-labelledby="src-title">
+			<div class="wrap-narrow">
+				<h2 id="src-title" class="display-lg">Sources</h2>
+				@sourceList(s.SourcesOf(""))
+			</div>
+		</section>
+		if len(s.FAQ) > 0 {
+			<section class="section" aria-labelledby="faq-title">
+				<div class="wrap-narrow">
+					<h2 id="faq-title" class="display-lg">Questions</h2>
+					<div class="stack mt-5">
+						for _, f := range s.FAQ {
+							<details class="card card--pad">
+								<summary><strong>{ f.Q }</strong></summary>
+								<p class="mt-3 soft">{ f.A }</p>
+							</details>
+						}
+					</div>
+				</div>
+			</section>
+		}
+	}
+}
+
+templ sourceList(srcs []data.Source) {
+	<ul class="source-list mt-5">
+		for _, src := range srcs {
+			<li class="card">
+				<a class="link" href={ templ.URL(src.URL) } rel="noopener" target="_blank">{ src.Name }</a>
+				<p class="small soft mt-2">{ src.Usage }</p>
+			</li>
+		}
+	</ul>
+}

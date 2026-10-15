@@ -80,6 +80,22 @@
     if (reduce.matches) layers.forEach(function (l) { l.el.style.transform = ""; });
   });
 
+  // Routes map: show the hovered or focused line's details in the side panel.
+  function showRoute(line) {
+    var map = line.closest("[data-routes-map]");
+    if (!map) return;
+    map.querySelectorAll(".route-line.is-active").forEach(function (l) { l.classList.remove("is-active"); });
+    line.classList.add("is-active");
+    map.querySelector("[data-route-out-title]").textContent = line.getAttribute("data-route-title") || "";
+    map.querySelector("[data-route-out-detail]").textContent = line.getAttribute("data-route-detail") || "";
+  }
+  ["mouseover", "focusin"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) {
+      var line = e.target.closest && e.target.closest(".route-line");
+      if (line) showRoute(line);
+    });
+  });
+
   // Re-run enhancements on content htmx swaps in.
   document.addEventListener("htmx:afterSettle", function (e) {
     reveal(e.target);

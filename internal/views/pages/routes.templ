@@ -1,0 +1,293 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ RoutesPage(m layouts.Meta, s *data.Store, p Plan) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Routes",
+			Title:   "Getting between cities.",
+			Lede:    "Flights, buses, the SGR train, ferries and shared taxis between East Africa’s main cities, with rough times and fares.",
+			Motif:   "rift",
+		})
+		<section id="planner" class="section" aria-labelledby="planner-title">
+			<div class="wrap">
+				<div class="section-head">
+					<p class="eyebrow">Route planner</p>
+					<h2 id="planner-title" class="display-lg">From here to there</h2>
+					<p class="lede">Pick two cities. Times and fares are rough (~) and change often: check with the operator before you book.</p>
+				</div>
+				@Planner(s, p)
+			</div>
+		</section>
+		<section class="section section--alt" aria-labelledby="rmap-title">
+			<div class="wrap">
+				<div class="section-head">
+					<p class="eyebrow">The map</p>
+					<h2 id="rmap-title" class="display-lg">Every route we cover</h2>
+					<p class="lede">Hover over or tab to a line to see the options; click it to open the route in the planner. Dashed lines cross a border.</p>
+				</div>
+				@components.RoutesMap(s, routeLines(s))
+				<ul class="cluster mt-5" aria-label="All routes">
+					for _, r := range s.Routes {
+						<li>
+							<a class="pill" href={ templ.SafeURL("/routes?from=" + r.From + "&to=" + r.To + "#planner") }>{ cityName(s, r.From) } → { cityName(s, r.To) }</a>
+						</li>
+					}
+				</ul>
+			</div>
+		</section>
+		<section class="section">
+			<div class="wrap split split--even">
+				@components.Callout("info", "Crossing a border on the way?") {
+					<p>Read the <a href="/borders">cross-border guide</a>: what to prepare, how the East African Community works, and the main border posts.</p>
+				}
+				@components.Callout("tip", "Staying connected") {
+					<p>Local SIMs, eSIMs and roaming within the EAC are covered in <a href="/connectivity">SIM cards &amp; data</a>.</p>
+				}
+			</div>
+		</section>
+		<div class="wrap mt-6">
+			@components.LastReviewed(m.Site.LastReviewed)
+		</div>
+	}
+}
+
+templ Planner(s *data.Store, p Plan) {
+	<div class="card planner">
+		<form class="planner__form" action="/routes#planner" method="get" hx-get="/routes/plan" hx-target="#plan-result" hx-swap="outerHTML" hx-trigger="change from:select, submit" hx-push-url="false">
+			<div>
+				<label class="label" for="rp-from">From</label>
+				@citySelect(s, "rp-from", "from", p.From)
+			</div>
+			<span class="converter__swap muted" aria-hidden="true">
+				@components.Icon("arrow", "icon")
+			</span>
+			<div>
+				<label class="label" for="rp-to">To</label>
+				@citySelect(s, "rp-to", "to", p.To)
+			</div>
+			<button class="btn btn--gold" type="submit">Show options</button>
+		</form>
+		@PlanResult(s, p)
+	</div>
+}
+
+templ citySelect(s *data.Store, id, name, selected string) {
+	<select class="select" id={ id } name={ name }>
+		<option value="">Choose a city</option>
+		for _, g := range cityGroups(s) {
+			<optgroup label={ g.Country }>
+				for _, c := range g.Cities {
+					<option value={ c.Slug } selected?={ c.Slug == selected }>
+						{ c.Name }
+						if s.IsCapital(c.Slug) {
+							★
+						}
+					</option>
+				}
+			</optgroup>
+		}
+	</select>
+}
+
+templ PlanResult(s *data.Store, p Plan) {
+	<div id="plan-result" class="planner__result" aria-live="polite">
+		if p.From == "" || p.To == "" {
+			<p class="soft">Choose where you’re starting and where you’re going.</p>
+		} else if p.From == p.To {
+			<p class="soft">Those are the same city. Pick a different destination.</p>
+		} else if p.Route == nil {
+			<div class="card card--flat card--pad">
+				<p><strong>We haven’t written up { cityName(s, p.From) } → { cityName(s, p.To) } yet.</strong></p>
+				if rs := routesFrom(s, p.From); len(rs) > 0 {
+					<p class="soft mt-2">Routes we do cover from { cityName(s, p.From) }:</p>
+					@routeLinks(s, rs)
+				}
+			</div>
+		} else {
+			<h3 class="display-md">{ cityName(s, p.From) } → { cityName(s, p.To) }</h3>
+			if p.Route.Summary != "" {
+				<p class="lede mt-2">{ p.Route.Summary }</p>
+			}
+			if p.Route.Border != "" {
+				<p class="mt-3">
+					<a class="chip chip--surface" href={ templ.SafeURL("/borders#" + p.Route.Border) }>
+						@components.Icon("border", "icon-sm")
+						By road you cross at { borderName(s, p.Route.Border) }
+					</a>
+				</p>
+			}
+			<ul class="option-list">
+				for _, o := range p.Route.Options {
+					<li class="card option">
+						<span class="explain__icon">
+							@components.Icon(components.ModeIcon(o.Mode), "icon")
+						</span>
+						<div class="option__meta">
+							<span class="option__mode">{ o.Label }</span>
+							<span class="cluster">
+								if o.Duration != "" {
+									<span class="chip num">
+										@components.Icon("clock", "icon-sm")
+										{ o.Duration }
+									</span>
+								}
+								if c := costRange(o); c != "" {
+									<span class="chip chip--gold num">{ c }</span>
+								}
+							</span>
+						</div>
+						<p class="option__notes">
+							{ o.Notes }
+							if o.Verify != "" {
+								<span class="small muted"> Fare and times still to verify.</span>
+							}
+						</p>
+					</li>
+				}
+			</ul>
+		}
+	</div>
+}
+
+templ BordersPage(m layouts.Meta, s *data.Store) {
+	{{ b := s.Borders }}
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Crossing borders",
+			Title:   "Over the border, by road.",
+			Lede:    b.Intro,
+			Motif:   "savannah",
+		})
+		<div class="wrap mt-6">
+			@components.RulesChange()
+		</div>
+		<section class="section-tight wrap split split--even" aria-label="The East African Community and the tourist visa">
+			<div class="card card--pad">
+				<h2 class="display-md">The East African Community</h2>
+				@bulletList("globe", b.EAC)
+			</div>
+			<div class="card card--pad">
+				<h2 class="display-md">The East Africa Tourist Visa</h2>
+				@bulletList("info", b.EATV)
+				<p class="small muted mt-3">TODO: verify. Check each country’s official immigration site before relying on this.</p>
+			</div>
+		</section>
+		<section class="section section--alt" aria-labelledby="prep-title">
+			<div class="wrap-narrow">
+				<h2 id="prep-title" class="display-lg">What to prepare</h2>
+				@bulletList("check", b.Prepare)
+			</div>
+		</section>
+		<section class="section" aria-labelledby="xing-title">
+			<div class="wrap">
+				<h2 id="xing-title" class="display-lg">Main crossings</h2>
+				<ul class="crossing-grid mt-5">
+					for _, x := range b.Crossings {
+						<li id={ x.Slug } class="card crossing">
+							<p class="cluster">
+								for _, code := range x.Countries {
+									if co := countryOf(s, code); co != nil {
+										<a class="chip chip--surface" href={ templ.SafeURL("/countries/" + co.Slug) }>
+											@components.Flag(co)
+											{ co.Name }
+										</a>
+									}
+								}
+							</p>
+							<h3 class="mt-3">{ x.Name }</h3>
+							<p class="small muted">{ x.Towns }</p>
+							if x.OneStop {
+								<p class="mt-2"><span class="chip chip--green">One Stop Border Post</span></p>
+							}
+							if x.Road != "" {
+								<p class="mt-2"><strong>On the way:</strong> { x.Road }</p>
+							}
+							<p class="soft mt-2">{ x.Notes }</p>
+							if rs := routesVia(s, x.Slug); len(rs) > 0 {
+								@routeLinks(s, rs)
+							}
+							if x.Verify != "" {
+								<p class="small muted mt-2">Hours, fees and status still to verify.</p>
+							}
+						</li>
+					}
+				</ul>
+			</div>
+		</section>
+		<div class="wrap mt-6">
+			@components.LastReviewed(m.Site.LastReviewed)
+		</div>
+	}
+}
+
+templ ConnectivityPage(m layouts.Meta, s *data.Store) {
+	{{ cn := s.Connectivity }}
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "SIM cards & data",
+			Title:   "Getting online.",
+			Lede:    cn.Intro,
+			Motif:   "skyline",
+		})
+		<section class="section-tight wrap split split--even" aria-label="Roaming and eSIM">
+			<div class="card card--pad">
+				<h2 class="display-md">Roaming within the EAC</h2>
+				@bulletList("globe", cn.Roaming)
+			</div>
+			<div class="card card--pad">
+				<h2 class="display-md">eSIM</h2>
+				@bulletList("sim", cn.ESIM)
+			</div>
+		</section>
+		<section class="section section--alt" aria-labelledby="net-title">
+			<div class="wrap">
+				<h2 id="net-title" class="display-lg">Country by country</h2>
+				<ul class="grid-auto mt-5" style="--min:21rem">
+					for _, c := range s.Countries {
+						if n := netFor(s, c.Code); n != nil {
+							<li id={ "sim-" + c.Slug } class="card net-card">
+								<h3>
+									@components.Flag(&c)
+									<a class="link" href={ templ.SafeURL("/countries/" + c.Slug) }>{ c.Name }</a>
+								</h3>
+								@components.LessData(c.Depth)
+								<ul class="carriers">
+									for _, ca := range n.Carriers {
+										<li>
+											<strong>{ ca.Name }</strong>
+											<span class="small soft">{ ca.Note }</span>
+											if ca.Money != "" {
+												<span class="small"> · Mobile money: { ca.Money }</span>
+											}
+										</li>
+									}
+								</ul>
+								if n.SIM != "" {
+									<p class="mt-3"><strong>Getting a SIM:</strong> { n.SIM }</p>
+								}
+								if n.Data != "" {
+									<p class="mt-2"><strong>Data:</strong> { n.Data }</p>
+								}
+								if n.ESIM != "" {
+									<p class="mt-2"><strong>eSIM:</strong> { n.ESIM }</p>
+								}
+								if n.Verify != "" {
+									<p class="small muted mt-2">Some details still to verify.</p>
+								}
+							</li>
+						}
+					}
+				</ul>
+			</div>
+		</section>
+		<div class="wrap mt-6">
+			@components.LastReviewed(m.Site.LastReviewed)
+		</div>
+	}
+}

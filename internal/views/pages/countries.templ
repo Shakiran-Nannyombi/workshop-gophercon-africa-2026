@@ -222,6 +222,9 @@ templ CountryPage(m layouts.Meta, s *data.Store, c *data.Country) {
 						if capital != nil {
 							{ capital.Name }
 						}
+						if commercial != nil {
+							and { commercial.Name }
+						}
 					</h2>
 				</div>
 				if len(c.CapitalModes) > 0 {
@@ -347,8 +350,8 @@ templ CityPage(m layouts.Meta, s *data.Store, c *data.City) {
 		<section class="section" aria-labelledby="move-title">
 			<div class="wrap">
 				<h2 id="move-title" class="display-lg">Getting around</h2>
-				if co != nil && role == "capital" && len(co.CapitalModes) > 0 {
-					@components.ModeGrid(co.CapitalModes)
+				if ms := modesFor(s, c); len(ms) > 0 {
+					@components.ModeGrid(ms)
 				}
 				@bulletList("bus", c.Transport)
 				if rs := routesFor(s, "", c.Slug); len(rs) > 0 {

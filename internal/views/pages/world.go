@@ -104,6 +104,28 @@ func roleLabel(role string) string {
 	return ""
 }
 
+// modesFor is the country's capital-transport list as it applies to one of its two main cities,
+// leaving out modes labelled for the other city, e.g. "Mwendokasi BRT (Dar es Salaam)" for Dodoma.
+func modesFor(s *data.Store, city *data.City) []data.Mode {
+	co := countryOf(s, city.Country)
+	if co == nil || (co.Capital != city.Slug && co.CommercialCity != city.Slug) {
+		return nil
+	}
+	var out []data.Mode
+	for _, m := range co.CapitalModes {
+		other := false
+		for _, slug := range []string{co.Capital, co.CommercialCity} {
+			if slug != "" && slug != city.Slug && strings.Contains(m.Name, "("+cityName(s, slug)+")") {
+				other = true
+			}
+		}
+		if !other {
+			out = append(out, m)
+		}
+	}
+	return out
+}
+
 func roleIcon(role string) string {
 	if role == "capital" {
 		return "star"

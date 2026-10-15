@@ -8,7 +8,17 @@ import (
 
 // pagePaths lists every indexable URL, for the sitemap.
 func (s *site) pagePaths() []string {
-	return []string{"/"}
+	paths := []string{"/", "/countries", "/cities", "/currencies", "/routes", "/borders", "/connectivity", "/compare", "/glossary", "/about"}
+	for _, c := range s.store.Countries {
+		paths = append(paths, "/countries/"+c.Slug)
+	}
+	for _, c := range s.store.Cities {
+		paths = append(paths, "/cities/"+c.Slug)
+	}
+	for _, c := range s.store.Currencies {
+		paths = append(paths, "/currencies/"+c.Code)
+	}
+	return paths
 }
 
 func (s *site) sitemap(w http.ResponseWriter, r *http.Request) {

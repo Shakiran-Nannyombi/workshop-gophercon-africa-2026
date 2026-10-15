@@ -1,10 +1,13 @@
 package handlers
 
 import (
+	"bytes"
+	"io/fs"
 	"net/http"
 	"strconv"
 	"strings"
 
+	"workshop/internal/data"
 	"workshop/internal/views/pages"
 )
 
@@ -79,6 +82,78 @@ func (s *site) convert(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.render(w, r, http.StatusOK, pages.ConverterResult(s.store, c), nil)
+}
+
+func (s *site) plan(r *http.Request) pages.Plan {
+	p := pages.Plan{}
+	if _, ok := s.store.City(r.URL.Query().Get("from")); ok {
+		p.From = r.URL.Query().Get("from")
+	}
+	if _, ok := s.store.City(r.URL.Query().Get("to")); ok {
+		p.To = r.URL.Query().Get("to")
+	}
+	if p.From != "" && p.To != "" && p.From != p.To {
+		p.Route, _ = s.store.RouteBetween(p.From, p.To)
+	}
+	return p
+}
+
+func (s *site) routes(w http.ResponseWriter, r *http.Request) {
+	m := s.meta(r, "routes", "Routes between cities", "Flights, buses, the SGR train and ferries between East Africa's cities, with rough times and fares.")
+	s.render(w, r, http.StatusOK, pages.RoutesPage(m, s.store, s.plan(r)), nil)
+}
+
+func (s *site) planFragment(w http.ResponseWriter, r *http.Request) {
+	if !isHTMX(r) {
+		http.Redirect(w, r, "/routes?"+r.URL.RawQuery+"#planner", http.StatusSeeOther)
+		return
+	}
+	s.render(w, r, http.StatusOK, pages.PlanResult(s.store, s.plan(r)), nil)
+}
+
+func (s *site) borders(w http.ResponseWriter, r *http.Request) {
+	m := s.meta(r, "borders", "Crossing borders", "East Africa's main land border crossings, the East African Community and the East Africa Tourist Visa.")
+	s.render(w, r, http.StatusOK, pages.BordersPage(m, s.store), nil)
+}
+
+func (s *site) connectivity(w http.ResponseWriter, r *http.Request) {
+	m := s.meta(r, "connectivity", "SIM cards & data", "SIM cards, mobile data, eSIMs and roaming across East Africa, country by country.")
+	s.render(w, r, http.StatusOK, pages.ConnectivityPage(m, s.store), nil)
+}
+
+func (s *site) compare(w http.ResponseWriter, r *http.Request) {
+	pick := func(key, fallback string) *data.City {
+		if c, ok := s.store.City(r.URL.Query().Get(key)); ok {
+			return c
+		}
+		c, _ := s.store.City(fallback)
+		return c
+	}
+	p := pages.ComparePair{A: pick("a", "nairobi"), B: pick("b", "kampala")}
+	m := s.meta(r, "compare", "Compare cities", "Compare two East African cities side by side: cost, getting around, climate and currency.")
+	s.render(w, r, http.StatusOK, pages.ComparePage(m, s.store, p), nil)
+}
+
+func (s *site) glossary(w http.ResponseWriter, r *http.Request) {
+	m := s.meta(r, "glossary", "Words", "Everyday words for getting around and paying in East Africa: matatu, daladala, boda boda, paybill, MoMo and more.")
+	s.render(w, r, http.StatusOK, pages.GlossaryPage(m, s.store), nil)
+}
+
+func (s *site) about(w http.ResponseWriter, r *http.Request) {
+	m := s.meta(r, "about", "About & sources", "Where Karibu Guide's facts come from, official travel advisories and official visa sites.")
+	s.render(w, r, http.StatusOK, pages.AboutPage(m, s.store, s.verifyCount), nil)
+}
+
+// countVerify counts the "verify" notes in the content files, for the About page.
+func countVerify(fsys fs.FS) int {
+	n := 0
+	files, _ := fs.Glob(fsys, "*.json")
+	for _, f := range files {
+		if b, err := fs.ReadFile(fsys, f); err == nil {
+			n += bytes.Count(b, []byte(`"verify":`))
+		}
+	}
+	return n
 }
 
 func (s *site) currency(w http.ResponseWriter, r *http.Request) {

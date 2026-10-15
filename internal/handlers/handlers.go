@@ -32,6 +32,8 @@ type site struct {
 	log   *slog.Logger
 	store *data.Store
 	opts  Options
+
+	verifyCount int
 }
 
 // New loads the content and returns the site's handler.
@@ -50,7 +52,7 @@ func New(logger *slog.Logger, opts Options) (http.Handler, error) {
 	if opts.RateKES > 0 {
 		store.Site.Rates.PerUSD["KES"] = opts.RateKES
 	}
-	s := &site{log: logger, store: store, opts: opts}
+	s := &site{log: logger, store: store, opts: opts, verifyCount: countVerify(dataFS)}
 
 	mux := http.NewServeMux()
 	mux.Handle("GET /static/", s.static(staticFS))
@@ -62,6 +64,13 @@ func New(logger *slog.Logger, opts Options) (http.Handler, error) {
 	mux.HandleFunc("GET /currencies", s.currencies)
 	mux.HandleFunc("GET /currencies/convert", s.convert)
 	mux.HandleFunc("GET /currencies/{code}", s.currency)
+	mux.HandleFunc("GET /routes", s.routes)
+	mux.HandleFunc("GET /routes/plan", s.planFragment)
+	mux.HandleFunc("GET /borders", s.borders)
+	mux.HandleFunc("GET /connectivity", s.connectivity)
+	mux.HandleFunc("GET /compare", s.compare)
+	mux.HandleFunc("GET /glossary", s.glossary)
+	mux.HandleFunc("GET /about", s.about)
 	mux.Handle("GET /money", http.RedirectHandler("/currencies", http.StatusMovedPermanently))
 	mux.HandleFunc("GET /design-system", s.designSystem)
 	mux.HandleFunc("GET /sitemap.xml", s.sitemap)

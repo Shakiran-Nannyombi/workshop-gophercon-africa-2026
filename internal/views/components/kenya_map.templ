@@ -1,0 +1,69 @@
+package components
+
+templ KenyaMap(p KenyaMapProps) {
+	<figure class={ "kmap", templ.KV("kmap--locator", p.locator()) } data-kenya-map>
+		<div class="kmap__frame">
+			<svg class="kmap__svg" viewBox={ p.Store.Geo.Kenya.ViewBox } role="group" aria-labelledby={ "kmap-title-" + p.Current }>
+				if p.locator() {
+					<title id={ "kmap-title-" + p.Current }>Map of Kenya’s 47 counties with { CountyTitle(p.county(p.Current)) } highlighted</title>
+				} else {
+					<title id="kmap-title-">Map of Kenya’s 47 counties, coloured by region. Select a county to open its page.</title>
+				}
+				<g class="kmap__counties">
+					for _, s := range p.Store.Geo.Kenya.Counties {
+						{{ c := p.county(s.Slug) }}
+						<a
+							href={ templ.SafeURL("/counties/" + s.Slug) }
+							class={ p.mapClass(c) }
+							aria-label={ p.countyLabel(c) }
+							data-slug={ s.Slug }
+							data-name={ CountyTitle(c) }
+							data-seat={ c.Seat }
+							data-region={ p.regionName(c.Region) }
+							if c.Slug == p.Current {
+								aria-current="page"
+							}
+						>
+							<path d={ s.D }>
+								<title>{ CountyTitle(c) }</title>
+							</path>
+							if !p.locator() {
+								if co, ok := kmapCalloutFor(s.Slug); ok {
+									<g class="kmap__callout">
+										<circle class="kmap__hit" cx={ kmapNum(co.X1) } cy={ kmapNum(co.Y1) } r="16"></circle>
+										<line x1={ kmapNum(co.X1) } y1={ kmapNum(co.Y1) } x2={ kmapNum(co.X2) } y2={ kmapNum(co.Y2) }></line>
+										<circle class="kmap__pin" cx={ kmapNum(co.X1) } cy={ kmapNum(co.Y1) } r="4"></circle>
+										<text x={ kmapNum(co.TX) } y={ kmapNum(co.TY) } text-anchor={ co.Anchor }>{ c.Name }</text>
+									</g>
+								}
+							}
+						</a>
+					}
+				</g>
+				<path class="kmap__hl" d="" aria-hidden="true"></path>
+				if cur, ok := p.current(); ok {
+					<path class="kmap__current" d={ cur.D } aria-hidden="true"></path>
+					<circle class="kmap__ring" cx={ kmapNum(cur.CX) } cy={ kmapNum(cur.CY) } r={ kmapRing(cur) } aria-hidden="true"></circle>
+				}
+				<g class="kmap__lakes" aria-hidden="true">
+					for _, l := range p.Store.Geo.Kenya.Lakes {
+						<path d={ l.D }></path>
+					}
+				</g>
+				if !p.locator() {
+					<g class="kmap__lake-labels" aria-hidden="true">
+						<text x="215" y="150" text-anchor="middle">L. Turkana</text>
+						<text x="40" y="600" text-anchor="middle">L. Victoria</text>
+					</g>
+				}
+			</svg>
+			<div class="kmap__tip" aria-hidden="true" hidden>
+				<strong class="kmap__tip-name"></strong>
+				<span class="kmap__tip-meta"></span>
+			</div>
+		</div>
+		<figcaption class="kmap__source">
+			Boundaries: { p.Store.Geo.Kenya.Source } ({ p.Store.Geo.Kenya.License }). Simplified, not for navigation.
+		</figcaption>
+	</figure>
+}

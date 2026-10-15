@@ -1,0 +1,83 @@
+package components
+
+import "workshop/internal/data"
+
+templ glanceValue(v string) {
+	if isApprox(v) {
+		<span class="approx-tilde" title="Approximate figure">~</span>{ trimApprox(v) }
+	} else {
+		{ v }
+	}
+}
+
+templ CityGlance(c data.City, country *data.Country) {
+	<article class="glance" aria-labelledby="glance-title">
+		<div class="kanga-thin" aria-hidden="true"></div>
+		<div class="glance__body">
+			<div class="glance__art">
+				@Landscape(c.Motif, true)
+				<div class="glance__stamp" aria-hidden="true">
+					<span>Karibu</span>
+					<strong>{ c.Name }</strong>
+				</div>
+			</div>
+			<div class="glance__main">
+				<div class="glance__head">
+					<div>
+						<p class="eyebrow">City at a glance</p>
+						<h2 id="glance-title" class="glance__title">{ c.Name }</h2>
+						if country != nil {
+							<p class="glance__country">
+								@Flag(country)
+								{ country.Name }
+							</p>
+						}
+					</div>
+					<div class="glance__code">
+						<span class="glance__code-label">
+							if noAirport(c.Airport) {
+								Nearest airport
+							} else {
+								Fly into
+							}
+						</span>
+						<span class="glance__code-big num" aria-hidden="true">{ airportCode(c.Airport) }</span>
+					</div>
+				</div>
+				<dl class="glance__facts">
+					if country != nil {
+						<div class="glance__fact">
+							<dt>Currency</dt>
+							<dd><span class="num glance__money">{ country.CurrencyCode } · { country.Symbol }</span> { country.Currency }</dd>
+						</div>
+					}
+					<div class="glance__fact">
+						<dt>Population <span class="approx" title="Approximate figure: check before relying on it">~ approx</span></dt>
+						<dd>
+							@glanceValue(c.Population)
+						</dd>
+					</div>
+					<div class="glance__fact">
+						<dt>Elevation</dt>
+						<dd class="num">
+							@glanceValue(c.Elevation)
+						</dd>
+					</div>
+					<div class="glance__fact">
+						<dt>Languages you’ll hear</dt>
+						<dd>{ joinList(c.Languages) }</dd>
+					</div>
+					<div class="glance__fact glance__fact--wide">
+						<dt>Climate</dt>
+						<dd>{ c.Climate }</dd>
+					</div>
+					<div class="glance__fact glance__fact--wide">
+						<dt>Airport</dt>
+						<dd>{ c.Airport }</dd>
+					</div>
+				</dl>
+				<p class="glance__foot small muted"><span aria-hidden="true">~</span> marks an approximate figure. Check before relying on it.</p>
+			</div>
+		</div>
+	</article>
+}

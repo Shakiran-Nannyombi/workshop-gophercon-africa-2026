@@ -1,0 +1,202 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ Glossary(m layouts.Meta, s *data.Store, f GlossaryFilter) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Words · Maneno",
+			Title:   "Speak a little Kenyan.",
+			Lede:    "The Swahili, Sheng and Kenyan English you’ll hear from the airport onwards, plus a pocket phrasebook for greetings, money, matatus and emergencies.",
+			Motif:   "savannah",
+		}) {
+			<div class="cluster hero__actions">
+				<a class="btn btn--gold" href="#words">Browse { itoa(len(s.Glossary)) } words</a>
+				<a class="btn" href="#phrasebook">Open the phrasebook</a>
+			</div>
+		}
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				for _, t := range glossaryTOC {
+					<li><a href={ templ.SafeURL("#" + t.ID) }>{ t.Label }</a></li>
+				}
+			</ul>
+		</nav>
+		@glossaryWords(s, f)
+		@components.KangaBand()
+		@phrasebook(s)
+		@faqSection(s.FAQ)
+		<div class="wrap mt-6">
+			@components.LastReviewed(s.Site.LastReviewed)
+		</div>
+	}
+}
+
+templ glossaryWords(s *data.Store, f GlossaryFilter) {
+	<section id="words" class="section" aria-labelledby="words-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Glossary · A–Z</p>
+				<h2 id="words-title" class="display-lg">Words painted on every matatu.</h2>
+				<p class="lede">Search in English or Swahili. Sheng is Nairobi’s street slang: it changes fast, so treat it as a listening guide rather than words to show off with.</p>
+			</div>
+			<form class="filters card glossary-search mt-6" role="search" action="/glossary#words" method="get" hx-get="/glossary" hx-target="#glossary-results" hx-swap="outerHTML" hx-push-url="true" hx-trigger="input delay:250ms from:#gq, change from:.glossary-search fieldset, submit">
+				<div>
+					<label class="label" for="gq">Search the glossary</label>
+					<div class="field-wrap">
+						@components.Icon("search", "icon-sm")
+						<input class="field" id="gq" name="q" type="search" autocomplete="off" placeholder="e.g. matatu, money, thank you" value={ f.Q }/>
+					</div>
+				</div>
+				@filterGroup("Language", "lang", f.Lang, langOptions(s))
+				<noscript><button class="btn btn--gold" type="submit">Search</button></noscript>
+			</form>
+			@GlossaryResults(s, f)
+		</div>
+	</section>
+}
+
+templ GlossaryResults(s *data.Store, f GlossaryFilter) {
+	{{ groups, n := FilterTerms(s, f) }}
+	<div id="glossary-results" class="mt-6">
+		<p class="small soft" role="status">
+			Showing <strong>{ itoa(n) }</strong> of { itoa(len(s.Glossary)) } words
+			if f.active() {
+				· <a class="link" href="/glossary#words">Clear search</a>
+			}
+		</p>
+		<nav class="az mt-4" aria-label="Jump to letter">
+			<ol>
+				for _, l := range alphabet {
+					if hasLetter(groups, l) {
+						<li><a href={ templ.SafeURL("#letter-" + l) }>{ l }</a></li>
+					} else {
+						<li class="az__off" aria-hidden="true">{ l }</li>
+					}
+				}
+			</ol>
+		</nav>
+		if n == 0 {
+			<div class="mt-5">
+				@components.Callout("info", "No words match") {
+					<p>Nothing for “{ f.Q }” yet. Try a shorter word, the English meaning, or <a href="/glossary#words">all languages</a>.</p>
+				}
+			</div>
+		} else {
+			for _, g := range groups {
+				<section class="letter-group" id={ "letter-" + g.Letter } aria-labelledby={ "lh-" + g.Letter }>
+					<h3 class="letter-group__letter" id={ "lh-" + g.Letter }><span class="sr-only">Letter </span>{ g.Letter }</h3>
+					<ul class="signboards">
+						for _, t := range g.Terms {
+							<li>
+								@termBoard(t)
+							</li>
+						}
+					</ul>
+				</section>
+			}
+		}
+	</div>
+}
+
+templ termBoard(t data.Term) {
+	<article id={ termID(t.Term) } class={ "signboard", "signboard--" + LangSlug(t.Language) }>
+		<div class="signboard__head">
+			<h4 class="signboard__term" if langAttr(t.Language) != "" { lang={ langAttr(t.Language) } }>{ t.Term }</h4>
+			<span class={ "chip", "signboard__lang", "signboard__lang--" + LangSlug(t.Language) }>{ langLabel(t.Language) }</span>
+		</div>
+		<p class="signboard__meaning">{ t.Meaning }</p>
+		if t.Example != "" {
+			<p class="signboard__example"><em>{ t.Example }</em></p>
+		}
+	</article>
+}
+
+templ phrasebook(s *data.Store) {
+	{{ groups := PhraseGroups(s) }}
+	<section id="phrasebook" class="section section--alt phrasebook" aria-labelledby="pb-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Pocket phrasebook · <span lang="sw">Kitabu cha maneno</span></p>
+				<h2 id="pb-title" class="display-lg">Swahili for your first week.</h2>
+				<p class="lede">Swahili is spoken phonetically: every letter is said, and the stress almost always falls on the second-last syllable. The capital letters in each hint show the stressed part.</p>
+			</div>
+			<nav class="pb-tabs mt-6" aria-label="Phrasebook chapters">
+				<ul class="cluster" style="--gap:.5rem">
+					for i, g := range groups {
+						<li>
+							<a class="pill" href={ templ.SafeURL("#pb-" + g.Slug) }>
+								<span class="num pb-tabs__num" aria-hidden="true">{ twoDigit(i + 1) }</span>
+								{ g.English }
+							</a>
+						</li>
+					}
+				</ul>
+			</nav>
+			<div class="pb-pages mt-6">
+				for i, g := range groups {
+					<article id={ "pb-" + g.Slug } class="pb-page reveal" aria-labelledby={ "pbh-" + g.Slug }>
+						<div class="pb-page__inner">
+							<header class="pb-page__head">
+								<span class="pb-page__num num" aria-hidden="true">{ twoDigit(i + 1) }</span>
+								<div>
+									<h3 id={ "pbh-" + g.Slug } class="pb-page__title">{ g.English }</h3>
+									if g.Swahili != "" {
+										<p class="pb-page__sw" lang="sw">{ g.Swahili }</p>
+									}
+								</div>
+							</header>
+							<dl class="phrases">
+								for _, p := range g.Phrases {
+									<div class="phrase">
+										<dt class="phrase__sw" lang="sw">{ p.Swahili }</dt>
+										<dd class="phrase__en">{ p.English }</dd>
+										if p.Say != "" {
+											<dd class="phrase__say"><span class="sr-only">Say it: </span><span aria-hidden="true">say </span><span class="num">{ p.Say }</span></dd>
+										}
+									</div>
+								}
+							</dl>
+							if g.Proverb != "" {
+								<footer class="pb-page__jina">
+									<p class="jina" lang="sw">{ g.Proverb }</p>
+									<p class="small soft">{ g.ProverbEn }</p>
+								</footer>
+							}
+						</div>
+					</article>
+				}
+			</div>
+			<p class="small muted mt-5">The proverbs (<span lang="sw">methali</span>) are the kind printed along the border of a kanga cloth, its <span lang="sw">jina</span>.</p>
+		</div>
+	</section>
+}
+
+templ faqSection(faqs []data.FAQ) {
+	<section id="faq" class="section" aria-labelledby="faq-title">
+		<div class="wrap faq-wrap">
+			<div class="section-head">
+				<p class="eyebrow">Questions · <span lang="sw">Maswali</span></p>
+				<h2 id="faq-title" class="display-lg">Things first-timers ask.</h2>
+			</div>
+			<div class="faq mt-6">
+				for i, q := range faqs {
+					<details class="faq__item" id={ "faq-" + itoa(i+1) }>
+						<summary class="faq__q">
+							<span class="faq__num num" aria-hidden="true">{ twoDigit(i + 1) }</span>
+							<span class="faq__text">{ q.Q }</span>
+							<span class="faq__toggle" aria-hidden="true"></span>
+						</summary>
+						<div class="faq__a">
+							<p>{ q.A }</p>
+						</div>
+					</details>
+				}
+			</div>
+		</div>
+	</section>
+}

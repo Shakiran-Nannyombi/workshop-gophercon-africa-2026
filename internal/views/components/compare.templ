@@ -1,0 +1,132 @@
+package components
+
+import (
+	"strconv"
+	"workshop/internal/data"
+)
+
+templ CompareChart(a, b data.City) {
+	<figure class="card cmp-chart" aria-labelledby="cmp-chart-title">
+		<svg class="cmp-defs" width="0" height="0" aria-hidden="true" focusable="false">
+			<defs>
+				<pattern id="cmp-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+					<rect class="cmp-hatch__bg" width="6" height="6"></rect>
+					<line class="cmp-hatch__line" x1="1.5" y1="0" x2="1.5" y2="6"></line>
+				</pattern>
+			</defs>
+		</svg>
+		<figcaption class="cmp-chart__head">
+			<div>
+				<p id="cmp-chart-title" class="cmp-chart__title">{ a.Name } and { b.Name }, scored 1 to 5</p>
+				<p class="small soft">Hover, tap or tab to a bar to read why. Every row explains what a 5 means.</p>
+			</div>
+			<ul class="cmp-legend" aria-label="Legend">
+				<li class="cmp-legend__item">
+					<svg class="cmp-legend__swatch" width="28" height="14" aria-hidden="true"><rect class="cmp-bar__mark cmp-bar__mark--a" width="28" height="14" rx="4"></rect></svg>
+					<span><strong>{ a.Name }</strong> <span class="num soft">{ CityCode(a) }</span> <span class="sr-only">solid bars, listed first</span></span>
+				</li>
+				<li class="cmp-legend__item">
+					<svg class="cmp-legend__swatch" width="28" height="14" aria-hidden="true"><rect class="cmp-bar__mark cmp-bar__mark--b" width="28" height="14" rx="4"></rect></svg>
+					<span><strong>{ b.Name }</strong> <span class="num soft">{ CityCode(b) }</span> <span class="sr-only">hatched bars, listed second</span></span>
+				</li>
+			</ul>
+		</figcaption>
+		<div class="cmp-chart__rows">
+			for _, d := range CompareDims {
+				<div class="cmp-chart__row">
+					<div class="cmp-chart__label">
+						<span class="cmp-chart__dim">{ d.Label }</span>
+						<span class="cmp-chart__five num">{ d.Five }</span>
+					</div>
+					<div class="cmp-chart__plot">
+						<svg class="cmp-chart__svg" width="100%" height="38" role="group" aria-label={ cmpRowLabel(a, b, d) }>
+							for _, t := range cmpTicks() {
+								<line class={ templ.KV("chart__grid", t > 0), templ.KV("chart__base", t == 0) } x1={ cmpPct(t) } x2={ cmpPct(t) } y1="0" y2="38"></line>
+							}
+							@compareBar(a, d, d.Pick(a.Scores), "a", 0)
+							@compareBar(b, d, d.Pick(b.Scores), "b", 19)
+						</svg>
+						@compareTip(a, d.Pick(a.Scores), "a")
+						@compareTip(b, d.Pick(b.Scores), "b")
+					</div>
+				</div>
+			}
+			<div class="cmp-chart__row cmp-chart__row--axis" aria-hidden="true">
+				<div class="cmp-chart__label"><span class="cmp-chart__five num">score</span></div>
+				<div class="cmp-chart__plot">
+					<svg class="cmp-chart__svg" width="100%" height="16">
+						for _, t := range cmpTicks() {
+							<text class="chart__axis" x={ cmpPct(t) } y="12" text-anchor={ cmpTickAnchor(t) }>{ strconv.Itoa(t) }</text>
+						}
+					</svg>
+				</div>
+			</div>
+		</div>
+	</figure>
+}
+
+templ compareBar(c data.City, d CompareDim, sc data.Score, series string, top int) {
+	<g class={ "cmp-bar", "cmp-bar--" + series } tabindex="0" role="img" aria-label={ cmpTitle(c, d, sc) }>
+		<title>{ cmpTitle(c, d, sc) }</title>
+		<rect class="cmp-bar__hit" x="0" y={ strconv.Itoa(top) } width="100%" height="19"></rect>
+		<rect class={ "cmp-bar__mark", "cmp-bar__mark--" + series } x="0" y={ strconv.Itoa(top + 2) } width={ cmpPct(sc.Value) } height="15" rx="4"></rect>
+		<text class="cmp-bar__val" x={ cmpPct(sc.Value) } dx="7" y={ strconv.Itoa(top + 14) }>
+			<tspan class="cmp-bar__num">{ strconv.Itoa(sc.Value) }</tspan>
+			<tspan class="cmp-bar__code" dx="5">{ CityCode(c) }</tspan>
+		</text>
+	</g>
+}
+
+templ compareTip(c data.City, sc data.Score, series string) {
+	<p class={ "cmp-tip", "cmp-tip--" + series } aria-hidden="true">
+		<strong>{ c.Name } · { strconv.Itoa(sc.Value) }/5</strong>
+		{ sc.Reason }
+	</p>
+}
+
+templ CompareTable(a, b data.City, ca, cb *data.Country) {
+	<div class="card table-card cmp-table-card">
+		<table class="data-table cmp-table">
+			<caption class="sr-only">{ a.Name } and { b.Name } compared, with the reason behind each score</caption>
+			<thead>
+				<tr>
+					<th scope="col">What</th>
+					<th scope="col"><span class="cmp-key cmp-key--a" aria-hidden="true"></span>{ a.Name }</th>
+					<th scope="col"><span class="cmp-key cmp-key--b" aria-hidden="true"></span>{ b.Name }</th>
+				</tr>
+			</thead>
+			<tbody>
+				for _, d := range CompareDims {
+					<tr>
+						<th scope="row">{ d.Label } <span class="cmp-table__five num">{ d.Five }</span></th>
+						@compareScoreCell(a, d.Pick(a.Scores))
+						@compareScoreCell(b, d.Pick(b.Scores))
+					</tr>
+				}
+				@compareTextRow("Vibe", a.Name, a.Scores.Vibe, b.Name, b.Scores.Vibe)
+				@compareTextRow("Population", a.Name, a.Population, b.Name, b.Population)
+				@compareTextRow("Climate", a.Name, a.Climate, b.Name, b.Climate)
+				@compareTextRow("Airport", a.Name, a.Airport, b.Name, b.Airport)
+				@compareTextRow("Languages", a.Name, cmpList(a.Languages), b.Name, cmpList(b.Languages))
+				@compareTextRow("Currency", a.Name, cmpCurrency(ca), b.Name, cmpCurrency(cb))
+				@compareTextRow("Mobile money", a.Name, cmpList(cmpMobileMoney(ca)), b.Name, cmpList(cmpMobileMoney(cb)))
+				@compareTextRow("Suits", a.Name, cmpList(a.Suits), b.Name, cmpList(b.Suits))
+			</tbody>
+		</table>
+	</div>
+}
+
+templ compareScoreCell(c data.City, sc data.Score) {
+	<td data-label={ c.Name }>
+		<span class="cmp-score num">{ strconv.Itoa(sc.Value) }<span class="muted">/5</span></span>
+		<span class="cmp-table__reason">{ sc.Reason }</span>
+	</td>
+}
+
+templ compareTextRow(label, aName, aVal, bName, bVal string) {
+	<tr>
+		<th scope="row">{ label }</th>
+		<td data-label={ aName }>{ aVal }</td>
+		<td data-label={ bName }>{ bVal }</td>
+	</tr>
+}

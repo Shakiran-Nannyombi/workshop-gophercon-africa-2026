@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Country",
+    "count": "1",
+    "who": "The national government: the President, Parliament (National Assembly and Senate) and the courts.",
+    "example": "Kenya",
+    "note": "Passports, visas, police, the national ID card and income tax all sit at this level."
+  },
+  {
+    "name": "County",
+    "count": "47",
+    "who": "Elects a governor and a county assembly. Each county also sends a senator and a woman representative to Parliament.",
+    "example": "Nairobi City County",
+    "note": "Created by the 2010 constitution, with the first county governments in 2013. Counties run local health, roads, markets, parking and business permits."
+  },
+  {
+    "name": "Sub-county",
+    "count": "~300+",
+    "who": "A national-government administrative unit, headed by a deputy county commissioner. Below it come locations and sub-locations, run by chiefs and assistant chiefs.",
+    "example": "Westlands sub-county",
+    "note": "It often has the same name and boundary as a constituency, which is why people mix the two up.",
+    "verify": "The number of national-government sub-counties changes as new ones are gazetted; confirm the current total and that Westlands sub-county matches Westlands constituency."
+  },
+  {
+    "name": "Constituency",
+    "count": "290",
+    "who": "Elects one MP to the National Assembly. Boundaries are drawn by the IEBC (the electoral commission).",
+    "example": "Westlands constituency",
+    "note": "When someone says “my MP”, this is the area they mean."
+  },
+  {
+    "name": "Ward",
+    "count": "~1,450",
+    "who": "Elects one MCA (Member of the County Assembly), who represents the ward in the county government.",
+    "example": "Parklands/Highridge ward",
+    "note": "Wards are the smallest unit you vote in. Their names often join two neighbourhoods with a slash.",
+    "verify": "Confirm Parklands/Highridge is still one of the wards of Westlands constituency after the latest IEBC boundary review."
+  },
+  {
+    "name": "Estate or neighbourhood",
+    "count": "informal",
+    "who": "No official status at all. This is what people actually say when you ask where they live.",
+    "example": "Parklands",
+    "note": "“Estate” can mean a gated housing scheme or a whole neighbourhood. Its edges are fuzzy, and it may not match any ward."
+  }
+]

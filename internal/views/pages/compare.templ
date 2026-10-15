@@ -1,0 +1,165 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ Compare(m layouts.Meta, s *data.Store, v CompareView) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Compare · Two cities, one page",
+			Title:   "Which city feels like you?",
+			Lede:    "Put two East African cities side by side: what a coffee costs, how easy it is to get around, the weather, the nights out, and why.",
+			Motif:   "rift",
+		}) {
+			<div class="cluster hero__actions">
+				@components.LastReviewed(s.Site.LastReviewed)
+			</div>
+		}
+		<section class="section cmp-section" aria-labelledby="cmp-pick-title">
+			<div class="wrap">
+				<h2 id="cmp-pick-title" class="sr-only">Choose two cities</h2>
+				@ComparePicker(s, v, false)
+				<div class="cmp-live" aria-live="polite">
+					@CompareResult(s, v)
+				</div>
+			</div>
+		</section>
+	}
+}
+
+templ ComparePicker(s *data.Store, v CompareView, oob bool) {
+	<div id="compare-picker" class="card cmp-picker" if oob {
+		hx-swap-oob="true"
+	}>
+		<form id="compare-form" class="cmp-picker__form" action="/compare#compare-result" method="get" hx-get="/compare" hx-target="#compare-result" hx-swap="outerHTML" hx-push-url="true" hx-trigger="change, submit">
+			<div class="cmp-picker__field cmp-picker__field--a">
+				<label class="label" for="cmp-a"><span class="cmp-key cmp-key--a" aria-hidden="true"></span>City A</label>
+				@compareSelect(s, "a", "cmp-a", v.A.Slug)
+			</div>
+			<button class="icon-btn cmp-swap" type="submit" name="swap" value="1" aria-label="Swap city A and city B" title="Swap the two cities">
+				@components.Icon("swap", "icon-sm")
+			</button>
+			<div class="cmp-picker__field cmp-picker__field--b">
+				<label class="label" for="cmp-b"><span class="cmp-key cmp-key--b" aria-hidden="true"></span>City B</label>
+				@compareSelect(s, "b", "cmp-b", v.B.Slug)
+			</div>
+			<noscript><button class="btn btn--gold cmp-picker__submit" type="submit">Compare</button></noscript>
+		</form>
+		<div class="cmp-pairs">
+			<p class="cmp-pairs__title eyebrow" id="cmp-pairs-title">Popular pairs</p>
+			<ul class="cluster" aria-labelledby="cmp-pairs-title">
+				for _, p := range ComparePairs {
+					<li>
+						<a
+							class="pill cmp-pair"
+							href={ templ.SafeURL(CompareURL(p[0], p[1])) }
+							hx-get={ CompareURL(p[0], p[1]) }
+							hx-target="#compare-result"
+							hx-swap="outerHTML"
+							hx-push-url="true"
+							if p[0] == v.A.Slug && p[1] == v.B.Slug {
+								aria-current="true"
+							}
+						>{ compareCityName(s, p[0]) } <span class="cmp-pair__vs" aria-hidden="true">vs</span><span class="sr-only">versus</span> { compareCityName(s, p[1]) }</a>
+					</li>
+				}
+			</ul>
+		</div>
+	</div>
+}
+
+templ compareSelect(s *data.Store, name, id, selected string) {
+	<select class="select cmp-select" id={ id } name={ name }>
+		for _, c := range compareCountries(s) {
+			<optgroup label={ c.Name }>
+				for _, city := range citiesIn(s, c.Code) {
+					<option value={ city.Slug } selected?={ city.Slug == selected }>{ city.Name }</option>
+				}
+			</optgroup>
+		}
+	</select>
+}
+
+templ CompareResult(s *data.Store, v CompareView) {
+	<div id="compare-result" class="cmp-result">
+		<h2 class="sr-only">{ v.A.Name } vs { v.B.Name }</h2>
+		if v.Notice != "" {
+			<div class="cmp-notice">
+				@components.Callout("info", "Heads up") {
+					<p>{ v.Notice }</p>
+				}
+			</div>
+		}
+		<div class="cmp-tickets">
+			@compareTicket(s, v.A, v.CA, "a")
+			<p class="cmp-vs" aria-hidden="true">vs</p>
+			@compareTicket(s, v.B, v.CB, "b")
+		</div>
+		<p class="cmp-disclaimer">
+			@components.Icon("info", "icon-sm")
+			<span>
+				<strong>Scores are editorial estimates to help you compare, not measurements.</strong>
+				Safety perception is how relaxed a first-time visitor tends to feel in the busy, central areas. It isn’t a crime statistic or a judgement of the people who live there, and ordinary big-city care applies everywhere.
+			</span>
+		</p>
+		<div class="cmp-block">
+			<div class="cmp-block__head">
+				<p class="eyebrow">Scorecard</p>
+				<h3 class="display-md">At a glance</h3>
+			</div>
+			@components.CompareChart(v.A, v.B)
+		</div>
+		<div class="cmp-block">
+			<div class="cmp-block__head">
+				<p class="eyebrow">Table view</p>
+				<h3 class="display-md">The details, and the reasons</h3>
+			</div>
+			@components.CompareTable(v.A, v.B, v.CA, v.CB)
+		</div>
+	</div>
+	if v.OOB {
+		@ComparePicker(s, v, true)
+	}
+}
+
+templ compareTicket(s *data.Store, c data.City, country *data.Country, series string) {
+	<article class={ "card cmp-ticket", "cmp-ticket--" + series } aria-labelledby={ "cmp-ticket-" + series }>
+		<div class="cmp-ticket__stub" aria-hidden="true">
+			<span class="cmp-ticket__letter">{ seriesLetter(series) }</span>
+			<span class="cmp-ticket__code num">{ components.CityCode(c) }</span>
+		</div>
+		<div class="cmp-ticket__body">
+			<p class="cmp-ticket__eyebrow num">City { seriesLetter(series) }</p>
+			<h3 id={ "cmp-ticket-" + series } class="cmp-ticket__name">{ c.Name }</h3>
+			if country != nil {
+				<p class="cmp-ticket__country">
+					@components.Flag(country)
+					{ country.Name }
+				</p>
+			}
+			<p class="cmp-ticket__tag soft">{ c.Tagline }</p>
+			if country != nil {
+				<dl class="cmp-ticket__facts">
+					<div>
+						<dt>Currency</dt>
+						<dd>{ country.Currency } <span class="num muted">{ country.CurrencyCode }</span></dd>
+					</div>
+					if country.CoffeeLocal > 0 {
+						<div>
+							<dt>A café coffee</dt>
+							<dd>
+								<span class="num cmp-ticket__price">{ compareCoffee(country) }</span>
+								<span class="num soft">≈ US${ compareCoffeeUSD(s, country) }</span>
+								@components.Approx("")
+							</dd>
+						</div>
+					}
+				</dl>
+			}
+			<a class="link-arrow cmp-ticket__link" href={ templ.SafeURL("/cities/" + c.Slug) }>Read the { c.Name } guide @components.Icon("arrow", "icon-sm")</a>
+		</div>
+	</article>
+}

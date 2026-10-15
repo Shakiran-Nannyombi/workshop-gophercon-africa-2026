@@ -1,0 +1,249 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ About(m layouts.Meta, s *data.Store) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "About · Kuhusu",
+			Title:   "About Karibu Guide.",
+			Lede:    "A friendly, visual first guide to Kenya and its neighbours: money, counties, Nairobi, cities and words, written for someone arriving for the very first time.",
+			Motif:   "highland",
+		}) {
+			<div class="hero__actions">
+				@components.LastReviewed(s.Site.LastReviewed)
+			</div>
+		}
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				for _, t := range aboutTOC {
+					<li><a href={ templ.SafeURL("#" + t.ID) }>{ t.Label }</a></li>
+				}
+			</ul>
+		</nav>
+		@aboutWhat(s)
+		@aboutEdit()
+		@aboutFigures(s)
+		@aboutRates(s)
+		@aboutSources(s.Sources)
+		@aboutMaps(s)
+		@aboutFairUse()
+	}
+}
+
+templ aboutWhat(s *data.Store) {
+	<section id="what" class="section" aria-labelledby="what-title">
+		<div class="wrap split about-split">
+			<div>
+				<p class="eyebrow">What this is</p>
+				<h2 id="what-title" class="display-lg mt-3">A guide for day zero.</h2>
+				<div class="prose lede mt-5">
+					<p>{ s.Site.Name } explains the things nobody tells you before you land: what a KSh 1,000 note looks like, how to pay with M-Pesa, why “Nairobi” might really be Kiambu, and what the matatu conductor just shouted.</p>
+					<p>It isn’t a booking site or an official source. It’s a plain-language starting point, with links to the organisations that publish the real figures.</p>
+				</div>
+			</div>
+			<ul class="about-who reveal-stagger">
+				<li class="card card--pad">
+					<p class="eyebrow">For</p>
+					<h3 class="mt-2">First-time visitors</h3>
+					<p class="soft mt-2">Tourists, conference-goers and anyone with a ticket to JKIA and a lot of questions.</p>
+				</li>
+				<li class="card card--pad">
+					<p class="eyebrow">For</p>
+					<h3 class="mt-2">People moving here</h3>
+					<p class="soft mt-2">New students, remote workers and expats choosing an area to live in.</p>
+				</li>
+				<li class="card card--pad">
+					<p class="eyebrow">For</p>
+					<h3 class="mt-2">Kenyan hosts</h3>
+					<p class="soft mt-2">Friends and colleagues who want one link to send before a visit.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+}
+
+templ aboutEdit() {
+	<section id="edit" class="section section--alt" aria-labelledby="edit-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">For editors</p>
+				<h2 id="edit-title" class="display-lg">Edit the content, not the code.</h2>
+				<p class="lede">Every word, price and number on the site lives in plain JSON files in the <code class="code">/data</code> folder. Change a file, refresh the page.</p>
+			</div>
+			<ol class="steps mt-6 reveal-stagger">
+				<li class="card card--pad step">
+					<h3>Run the site</h3>
+					<p class="soft mt-2">From the project folder, start the dev server. It reads <code class="code">/data</code> and <code class="code">/static</code> straight from disk, so JSON and CSS edits show on refresh.</p>
+					<pre class="terminal mt-3"><code>make run</code></pre>
+					<p class="small muted mt-2">Then open <span class="num">http://localhost:8080</span>.</p>
+				</li>
+				<li class="card card--pad step">
+					<h3>Edit a JSON file</h3>
+					<p class="soft mt-2">Find the file for the page you want to change, edit the text and save. Keep the same field names; the server checks the files when it starts.</p>
+					<pre class="terminal mt-3"><code>data/glossary.json</code></pre>
+				</li>
+				<li class="card card--pad step">
+					<h3>Flag anything unsure</h3>
+					<p class="soft mt-2">Add a <code class="code">"verify"</code> note to any entry that still needs checking. Then rebuild the checklist:</p>
+					<pre class="terminal mt-3"><code>make verify</code></pre>
+					<p class="small muted mt-2">This regenerates <code class="code">VERIFY.md</code> with every note, file by file.</p>
+				</li>
+			</ol>
+			<details class="card card--pad files mt-6">
+				<summary class="files__summary">Which file holds what?</summary>
+				<div class="table-scroll mt-3">
+					<table class="data-table">
+						<caption class="sr-only">Content files in the data folder</caption>
+						<thead><tr><th scope="col">File</th><th scope="col">What’s in it</th></tr></thead>
+						<tbody>
+							for _, f := range dataFiles {
+								<tr><th scope="row" class="num nowrap">data/{ f.Name }</th><td>{ f.What }</td></tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</details>
+		</div>
+	</section>
+}
+
+templ aboutFigures(s *data.Store) {
+	<section id="figures" class="section" aria-labelledby="fig-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Reading the numbers</p>
+				<h2 id="fig-title" class="display-lg">Rough figures say so.</h2>
+				<p class="lede">Prices, populations, distances and the weather all move. Rather than pretend to be exact, the guide marks them.</p>
+			</div>
+			<div class="grid-auto mt-6 reveal-stagger" style="--min:19rem">
+				<article class="card card--pad">
+					<p class="figure-demo"><span class="num">~KSh 250</span></p>
+					<h3 class="mt-3">The tilde, “~”</h3>
+					<p class="soft mt-2">A <strong>~</strong> in front of a number means “about”. Where a whole block is approximate you’ll see this tag:</p>
+					<p class="mt-3">
+						@components.Approx("")
+					</p>
+				</article>
+				<article class="card card--pad">
+					<div class="figure-demo">
+						@components.LastReviewed(s.Site.LastReviewed)
+					</div>
+					<h3 class="mt-3">“Last reviewed”</h3>
+					<p class="soft mt-2">The date the content as a whole was last checked. It’s set once, in <code class="code">lastReviewed</code> in <code class="code">data/site.json</code>, and shown at the foot of the pages.</p>
+				</article>
+				<article class="card card--pad">
+					<p class="figure-demo limited">
+						@components.Icon("info", "icon-sm")
+						We have less data on this area.
+					</p>
+					<h3 class="mt-3">Gaps are marked</h3>
+					<p class="soft mt-2">Counties and areas we know less about are labelled, so a short entry isn’t mistaken for “nothing there”.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+}
+
+templ aboutRates(s *data.Store) {
+	{{ r := s.Site.Rates }}
+	<section id="rates" class="section section--alt" aria-labelledby="rates-title">
+		<div class="wrap split about-split">
+			<div>
+				<p class="eyebrow">Exchange rates</p>
+				<h2 id="rates-title" class="display-lg mt-3">Rates are fixed, on purpose.</h2>
+				<div class="prose mt-5">
+					<p>The currency converter doesn’t call a live API. It uses the rates in <code class="code">data/site.json</code> under <code class="code">rates.perUSD</code>: units of each currency per 1 US dollar.</p>
+					<p>To try a different shilling rate without editing the file, set an environment variable when you start the server:</p>
+				</div>
+				<pre class="terminal mt-3"><code>KARIBU_RATE_KES=130 make run</code></pre>
+				<p class="small muted mt-3">{ r.Source }</p>
+			</div>
+			<div class="card table-card">
+				<div class="table-scroll">
+					<table class="data-table">
+						<caption class="rates-caption">
+							Per 1 USD, as of <time class="num" datetime={ r.AsOf }>{ r.AsOf }</time>
+							@components.Approx("")
+						</caption>
+						<thead><tr><th scope="col">Currency</th><th scope="col">Rate</th></tr></thead>
+						<tbody>
+							for _, row := range rateRows(s) {
+								<tr><th scope="row" class="num">{ row.Code }</th><td class="num">~{ fmtNum(row.Rate) }</td></tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+
+templ aboutSources(sources []data.Source) {
+	<section id="sources" class="section" aria-labelledby="src-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Sources</p>
+				<h2 id="src-title" class="display-lg">Where the facts come from.</h2>
+				<p class="lede">Check these before relying on a figure: they publish the official, up-to-date versions.</p>
+			</div>
+			<ul class="sources mt-6">
+				for _, src := range sources {
+					<li class="card source">
+						<h3 class="source__name">{ src.Name }</h3>
+						if u, ok := sourceLink(src.URL); ok {
+							<a class="source__url num" href={ u } rel="noopener">{ displayURL(src.URL) }</a>
+						} else if src.URL != "" {
+							<p class="source__url num">{ src.URL }</p>
+						}
+						<p class="source__usage soft">{ src.Usage }</p>
+					</li>
+				}
+			</ul>
+		</div>
+	</section>
+}
+
+templ aboutMaps(s *data.Store) {
+	<section id="maps" class="section section--alt" aria-labelledby="maps-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Map data</p>
+				<h2 id="maps-title" class="display-lg">Map credits.</h2>
+				<p class="lede">The maps are drawn from open boundary data, simplified so they load fast. Borders are approximate and not authoritative.</p>
+			</div>
+			<div class="grid-auto mt-6" style="--min:20rem">
+				for _, c := range mapCredits(s) {
+					<article class="card card--pad credit">
+						@components.Icon("map", "icon credit__icon")
+						<h3 class="mt-3">{ c.Title }</h3>
+						<p class="soft mt-2 credit__src">{ c.Source }</p>
+						if c.License != "" {
+							<p class="mt-3"><span class="chip chip--green">Licence: { c.License }</span></p>
+						}
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+}
+
+templ aboutFairUse() {
+	<section id="fair-use" class="section" aria-labelledby="fair-title">
+		<div class="wrap wrap-narrow">
+			<p class="eyebrow">Fair use</p>
+			<h2 id="fair-title" class="display-lg mt-3">General notes, not official advice.</h2>
+			<div class="mt-6">
+				@components.Callout("warn", "Please read") {
+					<p>Safety and cost notes are general. They describe the same common sense that applies in any big city, and are written not to stereotype any area, county or community.</p>
+					<p>This guide is not official travel, legal, medical or financial advice. For entry rules, check the Kenya eTA site and your own government’s travel advice; for money, ask your bank or the Central Bank of Kenya.</p>
+					<p>Spotted something wrong or out of date? Fix it in <code class="code">/data</code> or add a <code class="code">"verify"</code> note.</p>
+				}
+			</div>
+		</div>
+	</section>
+}

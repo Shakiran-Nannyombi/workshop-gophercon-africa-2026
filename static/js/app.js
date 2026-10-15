@@ -80,6 +80,16 @@
     if (reduce.matches) layers.forEach(function (l) { l.el.style.transform = ""; });
   });
 
+  // Converter: swap the two currencies and re-run the conversion
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-swap-currencies]");
+    if (!btn) return;
+    var form = btn.closest("form");
+    var a = form.querySelector("[name=from]"), b = form.querySelector("[name=to]");
+    var t = a.value; a.value = b.value; b.value = t;
+    a.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+
   // Re-run enhancements on content htmx swaps in.
   document.addEventListener("htmx:afterSettle", function (e) {
     reveal(e.target);

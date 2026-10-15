@@ -11,3 +11,6 @@ func safeColour(c string) string {
 	}
 	return "#999999"
 }
+
+// SafeColour is safeColour for other packages.
+func SafeColour(c string) string { return safeColour(c) }

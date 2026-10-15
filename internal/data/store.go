@@ -22,6 +22,8 @@ type Store struct {
 	Phrases   []Phrase
 	FAQ       []FAQ
 	Sources   []Source
+	Nairobi   Nairobi
+	Levels    []Level
 	Geo       Geo
 
 	countyBySlug  map[string]*County
@@ -50,6 +52,8 @@ func Load(fsys fs.FS) (*Store, error) {
 		{"phrases.json", &s.Phrases, true},
 		{"faq.json", &s.FAQ, true},
 		{"sources.json", &s.Sources, true},
+		{"nairobi.json", &s.Nairobi, true},
+		{"levels.json", &s.Levels, true},
 		{"geo/kenya_counties.json", &s.Geo.Kenya, true},
 		{"geo/nairobi_region.json", &s.Geo.Nairobi, true},
 		{"geo/east_africa.json", &s.Geo.EastAfrica, true},

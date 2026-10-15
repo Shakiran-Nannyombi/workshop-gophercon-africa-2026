@@ -1,0 +1,405 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+var moneyTOC = []struct{ ID, Label string }{
+	{"shilling", "The shilling"},
+	{"mpesa", "M-Pesa"},
+	{"converter", "Converter"},
+	{"prices", "Prices"},
+	{"scams", "Scams & bargaining"},
+	{"east-africa", "Kenya vs neighbours"},
+}
+
+templ Money(m layouts.Meta, s *data.Store, flow string, conv Conversion) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Stop 1 · Money",
+			Title:   "Kenyan money, from zero.",
+			Lede:    "Shillings on paper, shillings on your phone, and what a ride, a meal or a coffee really costs.",
+			Motif:   "skyline",
+		}) {
+			<div class="cluster hero__actions">
+				@components.LastReviewed(s.Site.LastReviewed)
+			</div>
+		}
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				for _, t := range moneyTOC {
+					<li><a href={ templ.SafeURL("#" + t.ID) }>{ t.Label }</a></li>
+				}
+			</ul>
+		</nav>
+		@shillingSection(s)
+		@mpesaSection(s, flow)
+		@converterSection(s, conv)
+		@pricesSection(s)
+		@scamsSection(s)
+		@eastAfricaMoney(s)
+	}
+}
+
+templ shillingSection(s *data.Store) {
+	<section id="shilling" class="section" aria-labelledby="shilling-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">The Kenyan shilling · KES</p>
+				<h2 id="shilling-title" class="display-lg">Five notes, a few coins.</h2>
+				<p class="lede">
+					Kenya’s currency is the <strong>shilling</strong>. Its code is <span class="num">KES</span>, but on signs you’ll see
+					<span class="num">KSh</span>. There are 100 cents in a shilling, though you’ll rarely meet a cent.
+				</p>
+			</div>
+			<div class="note-grid reveal-stagger mt-7">
+				for i, n := range s.Money.Notes {
+					@components.Banknote(n, i)
+				}
+			</div>
+			<p class="small muted mt-4">Illustrations only: not to scale and not reproductions. Colours are approximate.</p>
+			<h3 class="mt-7">Coins</h3>
+			<div class="coin-row reveal-stagger mt-5">
+				for _, c := range s.Money.Coins {
+					@components.Coin(c)
+				}
+			</div>
+			<h3 class="mt-7">How prices are written</h3>
+			<p class="soft mt-2">Every one of these means the same currency. Don’t let the slashes fool you.</p>
+			<ul class="tag-grid reveal-stagger mt-5">
+				for _, f := range s.Money.PriceFormats {
+					<li class="card price-tag">
+						<p class="price-tag__example num">{ f.Example }</p>
+						<p>{ f.Meaning }</p>
+					</li>
+				}
+			</ul>
+		</div>
+	</section>
+}
+
+templ mpesaSection(s *data.Store, flow string) {
+	<section id="mpesa" class="section section--alt" aria-labelledby="mpesa-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Mobile money</p>
+				<h2 id="mpesa-title" class="display-lg">M-Pesa, explained like you’ve never heard of it.</h2>
+				<p class="lede">
+					M-Pesa is money that lives on your phone number. It isn’t an app you need a bank for: it’s built into a Safaricom SIM.
+					You put cash in at a shop, pay people and businesses from your phone, and take cash out again.
+				</p>
+			</div>
+			<ul class="explain-grid reveal-stagger mt-6">
+				<li class="card explain">
+					<span class="explain__icon">
+						@components.Icon("phone", "icon")
+					</span>
+					<h3>A wallet on your SIM</h3>
+					<p>Your Safaricom number <em>is</em> your account. A PIN protects it. Use the M-PESA app or the SIM menu.</p>
+				</li>
+				<li class="card explain">
+					<span class="explain__icon">
+						@components.Icon("money", "icon")
+					</span>
+					<h3>Agents are the ATMs</h3>
+					<p>Green M-Pesa signs are everywhere: small shops where you <strong>deposit</strong> cash into your phone or <strong>withdraw</strong> it.</p>
+				</li>
+				<li class="card explain">
+					<span class="explain__icon">
+						@components.Icon("check", "icon")
+					</span>
+					<h3>The SMS is the receipt</h3>
+					<p>Every payment sends an SMS from <strong>MPESA</strong> with a code, the name, the amount and your balance. Always check it.</p>
+				</li>
+			</ul>
+			<h3 class="mt-7">Ways to pay</h3>
+			<p class="soft mt-2">A shop or person will give you one of these. Each works a little differently.</p>
+			@MpesaFlow(s, flow)
+			<div class="split mt-7">
+				<div>
+					<h3>Why everyone prefers it to cash</h3>
+					<ul class="checklist mt-4">
+						for _, w := range s.Money.WhyMpesa {
+							<li>
+								@components.Icon("check", "icon-sm")
+								<span>{ w }</span>
+							</li>
+						}
+					</ul>
+					<div class="mt-6">
+						@components.Callout("info", "Not on Safaricom?") {
+							<p>
+								<strong>Airtel Money</strong> is the other big service in Kenya, and works much the same way.
+								Many tills and paybills accept both, but M-Pesa is far more widely accepted. Most visitors buy a Safaricom SIM.
+							</p>
+						}
+					</div>
+				</div>
+				<div>
+					<h3>Rough send-money fees</h3>
+					<div class="card table-card mt-4">
+						<table class="data-table">
+							<caption class="sr-only">Approximate M-Pesa send-money fees</caption>
+							<thead>
+								<tr><th scope="col">You send</th><th scope="col">Fee</th></tr>
+							</thead>
+							<tbody>
+								for _, f := range s.Money.MpesaFees {
+									<tr><td class="num">{ f.Range }</td><td class="num">{ f.Fee }</td></tr>
+								}
+							</tbody>
+						</table>
+					</div>
+					<p class="small soft mt-3">
+						@components.Approx("")
+						{ s.Money.MpesaFeesNote }
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+
+templ MpesaFlow(s *data.Store, slug string) {
+	{{ f := flowBySlug(s.Money, slug) }}
+	<div id="mpesa-flow" class="mt-5">
+		<div class="tabs" role="group" aria-label="Payment type">
+			for _, x := range s.Money.MpesaSteps {
+				<a
+					class="pill"
+					href={ templ.SafeURL("/money?flow=" + x.Slug + "#mpesa") }
+					hx-get={ "/money?flow=" + x.Slug }
+					hx-target="#mpesa-flow"
+					hx-swap="outerHTML"
+					if x.Slug == f.Slug {
+						aria-current="true"
+					}
+				>{ x.Title }</a>
+			}
+		</div>
+		<div class="flow">
+			<div>
+				<p class="flow__when"><strong>Use it for:</strong> { f.When }</p>
+				<div class="flow__example">
+					@components.Callout("tip", "Example") {
+						<p>{ f.Example }</p>
+					}
+				</div>
+			</div>
+			@components.Phone("Steps for " + f.Title) {
+				<p class="phone__app">
+					@components.Icon("phone", "icon-sm")
+					M-PESA · { f.Title }
+				</p>
+				<ol class="phone__steps">
+					for _, st := range f.Steps {
+						<li>{ st }</li>
+					}
+				</ol>
+			}
+		</div>
+	</div>
+}
+
+templ converterSection(s *data.Store, conv Conversion) {
+	<section id="converter" class="section" aria-labelledby="conv-title">
+		<div class="wrap" style="max-width:58rem">
+			<div class="section-head">
+				<p class="eyebrow">Converter</p>
+				<h2 id="conv-title" class="display-lg">How much is that, really?</h2>
+				<p class="lede">Type an amount. Uses one fixed rough rate, so treat the answer as a ballpark figure.</p>
+			</div>
+			<div class="card converter mt-6">
+				<form class="converter__form" action="/money#converter" method="get" hx-get="/money" hx-target="#convert-result" hx-swap="outerHTML" hx-trigger="input delay:250ms, change, submit">
+					<div>
+						<label class="label" for="amount">Amount</label>
+						<input class="field num" id="amount" name="amount" type="number" inputmode="decimal" min="0" step="any" value={ amountValue(conv.Amount) }/>
+					</div>
+					<div>
+						<label class="label" for="from">From</label>
+						@currencySelect("from", conv.From)
+					</div>
+					<button
+						type="button"
+						class="icon-btn converter__swap"
+						aria-label="Swap currencies"
+						data-swap-currencies
+					>
+						@components.Icon("swap", "icon-sm")
+					</button>
+					<div>
+						<label class="label" for="to">To</label>
+						@currencySelect("to", conv.To)
+					</div>
+					<noscript><button class="btn btn--gold converter__submit" type="submit">Convert</button></noscript>
+				</form>
+				@ConvertResult(conv)
+			</div>
+		</div>
+	</section>
+}
+
+templ currencySelect(name, selected string) {
+	<select class="select" id={ name } name={ name }>
+		for _, c := range ConverterCurrencies {
+			<option value={ c.Code } selected?={ c.Code == selected }>{ c.Code } · { c.Name }</option>
+		}
+	</select>
+}
+
+templ ConvertResult(c Conversion) {
+	<div id="convert-result" class="converter__result" aria-live="polite">
+		if c.Valid {
+			<p class="num">{ fmtAmount(c.Amount, c.From) } { c.From } is about</p>
+			<p class="converter__big num">{ components.Sym(c.To) } { fmtAmount(c.Result, c.To) }</p>
+			<p class="num small">1 { c.From } ≈ { fmtUnit(c.Unit) } { c.To }</p>
+			<p class="small">
+				@components.Approx("as of " + c.AsOf)
+				Rates change daily, and banks and forex bureaus add a margin.
+			</p>
+		} else {
+			<p>Enter an amount of 0 or more to convert.</p>
+		}
+	</div>
+}
+
+templ pricesSection(s *data.Store) {
+	<section id="prices" class="section section--alt" aria-labelledby="prices-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Real-world prices</p>
+				<h2 id="prices-title" class="display-lg">What things cost.</h2>
+				<p class="lede">
+					Typical ranges in Nairobi. Every figure is approximate: prices vary by area, season and haggling skill.
+					US$ figures use the converter’s rate.
+				</p>
+			</div>
+			for _, cat := range priceCategories {
+				if ps := pricesIn(s.Money.Prices, cat.Key); len(ps) > 0 {
+					<div class="reveal mt-6">
+						<h3 class="cluster">
+							@components.Icon(cat.Icon, "icon")
+							{ cat.Title }
+						</h3>
+						<div class="mt-3">
+							@components.PriceTable(ps, s.Site.Rates.PerUSD["KES"])
+						</div>
+					</div>
+				}
+			}
+		</div>
+	</section>
+}
+
+templ scamsSection(s *data.Store) {
+	<section id="scams" class="section" aria-labelledby="scams-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Stay sharp</p>
+				<h2 id="scams-title" class="display-lg">Scams, safety and bargaining.</h2>
+				<p class="lede">Most people you pay will be honest. These are the few tricks worth knowing about.</p>
+			</div>
+			<div class="grid-auto reveal-stagger mt-6" style="--min:20rem">
+				for _, t := range s.Money.Scams {
+					@components.Callout("warn", t.Title) {
+						<p>{ t.Body }</p>
+					}
+				}
+			</div>
+			<div class="mt-7 split">
+				<div>
+					<h3>Bargaining etiquette</h3>
+					<ul class="checklist mt-4">
+						for _, b := range s.Money.Bargaining {
+							<li>
+								@components.Icon("check", "icon-sm")
+								<span>{ b }</span>
+							</li>
+						}
+					</ul>
+				</div>
+				@components.Phone("Example of a genuine M-Pesa confirmation SMS") {
+					<p class="phone__app">Messages · MPESA</p>
+					<p class="sms">
+						<b>SFX1AB2CD3</b> Confirmed. You have received <b>Ksh500.00</b> from JANE WANJIKU 0712xxx678 on 15/10/26 at 2:41 PM. New M-PESA balance is Ksh1,250.00.
+					</p>
+					<p class="small mt-3"><strong>Real:</strong> sender shows as <strong>MPESA</strong>, and your balance has actually gone up.</p>
+					<p class="small mt-2"><strong>Fake:</strong> sent from a normal phone number, followed by a call saying “I sent it by mistake, please send it back”.</p>
+					<p class="small muted mt-2">Sample message, all details invented.</p>
+				}
+			</div>
+		</div>
+	</section>
+}
+
+templ eastAfricaMoney(s *data.Store) {
+	<section id="east-africa" class="section section--alt" aria-labelledby="ea-title">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Next door</p>
+				<h2 id="ea-title" class="display-lg">Kenya vs its neighbours.</h2>
+				<p class="lede">Crossing a border means new money, new mobile wallets and, in Uganda, a lot more zeros.</p>
+			</div>
+			<div class="card table-card mt-6">
+				<div class="table-scroll">
+					<table class="data-table" style="min-width:46rem">
+						<caption class="sr-only">Currencies and mobile money in East Africa</caption>
+						<thead>
+							<tr>
+								<th scope="col">Country</th>
+								<th scope="col">Currency</th>
+								<th scope="col">US$1 ≈</th>
+								<th scope="col">A café coffee</th>
+								<th scope="col">Mobile money</th>
+							</tr>
+						</thead>
+						<tbody>
+							for _, c := range s.Countries {
+								<tr>
+									<th scope="row"><span class="cluster" style="--gap:.5rem">@components.Flag(&c) { c.Name }</span></th>
+									<td>{ c.Currency } <span class="num muted">({ c.CurrencyCode }, { c.Symbol })</span></td>
+									<td class="num nowrap">~{ perUSD(s, c.CurrencyCode) }</td>
+									<td class="num nowrap">~{ c.Symbol } { components.Commas(c.CoffeeLocal) } <span class="muted">≈ US${ coffeeUSD(s, c) }</span></td>
+									<td>
+										<span class="cluster" style="--gap:.35rem">
+											for _, mm := range c.MobileMoney {
+												<span class="chip">{ mm }</span>
+											}
+										</span>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="split mt-7">
+				<div>
+					<h3>Why the numbers look huge in Uganda</h3>
+					<p class="soft mt-3">{ s.Money.BigNumbersNote }</p>
+					<div class="mt-5">
+						@components.Callout("tip", "Quick trick") {
+							<p>Find how many of the local currency buy one dollar, then divide. Or use the converter above.</p>
+						}
+					</div>
+				</div>
+				<figure class="card card--pad reveal">
+					<figcaption><strong>How many units buy one US dollar</strong> <span class="small muted">(log scale, approximate)</span></figcaption>
+					<div class="scale-bars mt-4">
+						for _, c := range s.Countries {
+							<div class="scale-bar">
+								<span class="scale-bar__name">@components.Flag(&c) { c.CurrencyCode }</span>
+								<span class="scale-bar__track">
+									<span class="scale-bar__fill" style={ templ.SafeCSS(scaleWidth(s.Site.Rates.PerUSD[c.CurrencyCode])) }></span>
+									<span class="scale-bar__label">{ perUSD(s, c.CurrencyCode) }</span>
+								</span>
+							</div>
+						}
+					</div>
+				</figure>
+			</div>
+		</div>
+	</section>
+}

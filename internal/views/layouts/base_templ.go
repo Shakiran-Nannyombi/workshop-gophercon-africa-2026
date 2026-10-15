@@ -151,7 +151,7 @@ func Base(m Meta) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"theme-color\" content=\"#f6eedc\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#12142e\" media=\"(prefers-color-scheme: dark)\"><link rel=\"icon\" href=\"/static/svg/logo.svg\" type=\"image/svg+xml\"><link rel=\"preload\" href=\"/static/fonts/bricolage.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><link rel=\"preload\" href=\"/static/fonts/figtree.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><script src=\"/static/js/theme.js\"></script><link rel=\"stylesheet\" href=\"/static/css/app.css\"><script src=\"/static/js/htmx.min.js\" defer></script><script src=\"/static/js/app.js\" defer></script></head><body class=\"flex min-h-dvh flex-col\" hx-indicator=\".page-loader\"><a class=\"skip-link\" href=\"#main\">Skip to content</a>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"theme-color\" content=\"#f6eedc\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#12142e\" media=\"(prefers-color-scheme: dark)\"><link rel=\"icon\" href=\"/static/svg/logo.svg\" type=\"image/svg+xml\"><link rel=\"preload\" href=\"/static/fonts/bricolage.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><link rel=\"preload\" href=\"/static/fonts/figtree.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><script src=\"/static/js/theme.js\"></script><link rel=\"stylesheet\" href=\"/static/css/app.css\"><link rel=\"stylesheet\" href=\"/static/css/counties.css\"><link rel=\"stylesheet\" href=\"/static/css/cities.css\"><link rel=\"stylesheet\" href=\"/static/css/compare.css\"><link rel=\"stylesheet\" href=\"/static/css/glossary.css\"><script src=\"/static/js/htmx.min.js\" defer></script><script src=\"/static/js/app.js\" defer></script><script src=\"/static/js/map.js\" defer></script><script src=\"/static/js/counties.js\" defer></script></head><body hx-indicator=\".page-loader\"><a class=\"skip-link\" href=\"#main\">Skip to content</a>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -159,7 +159,7 @@ func Base(m Meta) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<main id=\"main\" class=\"flex-1\" tabindex=\"-1\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<main id=\"main\" tabindex=\"-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -204,15 +204,15 @@ func siteHeader(m Meta) templ.Component {
 			templ_7745c5c3_Var10 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<header class=\"sticky top-0 z-40 border-b-[2.5px] border-line bg-paper/90 backdrop-blur-md\"><div class=\"wrap flex items-center gap-3 py-2\"><a href=\"/\" class=\"flex shrink-0 items-center gap-2.5 rounded-xl py-1 pr-2 no-underline\" aria-label=\"Karibu Guide home\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<header class=\"site-header\"><div class=\"wrap site-header__inner\"><a href=\"/\" class=\"brand\" aria-label=\"Karibu Guide, home\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Logo("h-10 w-10").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Logo("brand__mark").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<span class=\"font-display text-[1.45rem] leading-none font-extrabold tracking-tight\">Karibu<span class=\"text-red\">.</span> <span class=\"sr-only\">Guide</span></span></a><nav aria-label=\"Main\" class=\"ml-auto hidden lg:block\"><ul class=\"flex items-center gap-0.5\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<span class=\"brand__name\" aria-hidden=\"true\">Karibu<b>.</b></span></a><nav class=\"main-nav\" aria-label=\"Main\"><ul>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -224,7 +224,7 @@ func siteHeader(m Meta) templ.Component {
 			var templ_7745c5c3_Var11 templ.SafeURL
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(n.Href))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 63, Col: 36}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 64, Col: 55}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -247,7 +247,7 @@ func siteHeader(m Meta) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(n.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 67, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 64, Col: 117}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -258,7 +258,7 @@ func siteHeader(m Meta) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</ul></nav><div class=\"ml-auto flex items-center gap-1 lg:ml-2\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</ul></nav><div class=\"header-tools\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -266,19 +266,19 @@ func siteHeader(m Meta) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<details class=\"group relative lg:hidden\" data-menu><summary class=\"btn btn-ghost !min-h-11 !px-3.5 !shadow-none list-none [&::-webkit-details-marker]:hidden\" aria-label=\"Menu\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<details class=\"menu\" data-menu><summary class=\"icon-btn\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Icon("menu", "h-5 w-5 group-open:hidden").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Icon("menu", "icon-sm icon-menu").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Icon("close", "hidden h-5 w-5 group-open:block").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Icon("close", "icon-sm icon-close").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "<span class=\"text-base\">Menu</span></summary><nav aria-label=\"Main (mobile)\" class=\"card absolute right-0 mt-3 w-64 p-2\"><ul class=\"grid\"><li><a class=\"nav-link w-full\" href=\"/\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "Menu</summary><nav class=\"card menu__panel\" aria-label=\"Main (mobile)\"><ul><li><a class=\"nav-link\" href=\"/\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -293,14 +293,14 @@ func siteHeader(m Meta) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		for _, n := range Nav {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<li><a class=\"nav-link w-full\" href=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<li><a class=\"nav-link\" href=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var13 templ.SafeURL
 			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(n.Href))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 87, Col: 38}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 82, Col: 57}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 			if templ_7745c5c3_Err != nil {
@@ -323,7 +323,7 @@ func siteHeader(m Meta) templ.Component {
 			var templ_7745c5c3_Var14 string
 			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(n.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 91, Col: 19}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 82, Col: 119}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {
@@ -334,7 +334,7 @@ func siteHeader(m Meta) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<li><a class=\"nav-link w-full\" href=\"/about\">About &amp; sources</a></li></ul></nav></details></div></div><div class=\"page-loader kanga-thin htmx-indicator absolute inset-x-0 -bottom-[2.5px] !h-1 !border-0\" aria-hidden=\"true\"></div></header>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<li><a class=\"nav-link\" href=\"/about\">About &amp; sources</a></li></ul></nav></details></div></div><div class=\"page-loader\" aria-hidden=\"true\"></div></header>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -364,40 +364,40 @@ func siteFooter(m Meta) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		sw, en := m.Proverb()
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<footer class=\"mt-16 bg-[#1b1f4b] text-[#f3ead7] dark:bg-[#0b0d24]\"><div class=\"kanga\" aria-hidden=\"true\"></div><div class=\"wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]\"><div><p class=\"jina text-gold text-2xl md:text-3xl\" lang=\"sw\">“")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<footer class=\"site-footer\"><div class=\"kanga\" aria-hidden=\"true\"></div><div class=\"wrap site-footer__grid\"><div><p class=\"jina\" lang=\"sw\">“")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(sw)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 110, Col: 68}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 101, Col: 37}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "”</p><p class=\"mt-1 opacity-80\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "”</p><p class=\"mt-2 site-footer__note\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(en)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 111, Col: 35}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 102, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, " — printed the way a proverb sits on a kanga.</p><p class=\"mt-6 text-sm opacity-80\">Figures marked <span class=\"approx !text-[#f3ead7]\">~ approx</span> are rough. Content last reviewed <time class=\"num font-semibold\" datetime=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, ". Printed here the way a proverb sits on a kanga.</p><p class=\"mt-5 site-footer__note\">Figures marked <span class=\"approx\">~ approx</span> are rough. Content last reviewed <time class=\"num\" datetime=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.ResolveAttributeValue(m.Site.LastReviewed)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 114, Col: 67}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 105, Col: 53}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var18)
 		if templ_7745c5c3_Err != nil {
@@ -410,25 +410,25 @@ func siteFooter(m Meta) templ.Component {
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(m.Site.LastReviewed)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 114, Col: 91}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 105, Col: 77}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</time>.</p></div><nav aria-label=\"Footer\"><p class=\"eyebrow !text-gold\">Explore</p><ul class=\"mt-3 grid gap-1.5\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</time>.</p></div><nav aria-label=\"Footer\"><p class=\"eyebrow\">Explore</p><ul>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, n := range Nav {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "<li><a class=\"font-semibold hover:underline\" href=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "<li><a href=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var20 templ.SafeURL
 			templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(n.Href))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 121, Col: 79}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 112, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 			if templ_7745c5c3_Err != nil {
@@ -441,7 +441,7 @@ func siteFooter(m Meta) templ.Component {
 			var templ_7745c5c3_Var21 string
 			templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(n.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 121, Col: 91}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 112, Col: 53}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 			if templ_7745c5c3_Err != nil {
@@ -452,7 +452,7 @@ func siteFooter(m Meta) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "</ul></nav><div><p class=\"eyebrow !text-gold\">About</p><ul class=\"mt-3 grid gap-1.5\"><li><a class=\"font-semibold hover:underline\" href=\"/about\">About &amp; sources</a></li><li><a class=\"font-semibold hover:underline\" href=\"/glossary#phrasebook\">Swahili phrasebook</a></li><li><a class=\"font-semibold hover:underline\" href=\"/sitemap.xml\">Sitemap</a></li></ul><p class=\"mt-6 text-sm opacity-70\">A guide for curious first-timers. Not an official source. Check rates, fares and advisories before you travel.</p></div></div></footer>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "</ul></nav><div><p class=\"eyebrow\">About</p><ul><li><a href=\"/about\">About &amp; sources</a></li><li><a href=\"/glossary#phrasebook\">Swahili phrasebook</a></li><li><a href=\"/sitemap.xml\">Sitemap</a></li></ul><p class=\"mt-5 site-footer__note\">A guide for curious first-timers, not an official source. Check rates, fares and travel advisories before you go.</p></div></div></footer>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

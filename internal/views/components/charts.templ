@@ -1,0 +1,49 @@
+package components
+
+import "workshop/internal/data"
+
+templ TempChart(ms []data.Month) {
+	<figure class="card card--pad chart">
+		<figcaption class="chart__title"><strong>Temperature</strong> <span class="small muted">average daily low to high, °C</span></figcaption>
+		<svg viewBox="0 0 360 200" role="img" aria-label="Average temperature range by month in Nairobi; table view below">
+			for _, g := range []float64{10, 20, 30} {
+				<line class="chart__grid" x1="34" x2="352" y1={ gridY(g, 0, 30) } y2={ gridY(g, 0, 30) }></line>
+				<text class="chart__axis" x="28" y={ gridY(g, 0, 30) } dy="4" text-anchor="end">{ fmtInt(g) }°</text>
+			}
+			<line class="chart__base" x1="34" x2="352" y1="172" y2="172"></line>
+			for i, m := range ms {
+				{{ x, y, h := tempBar(m, i, len(ms)) }}
+				<g class="chart__col" tabindex="0">
+					<title>{ tempTip(m) }</title>
+					<rect class="chart__hit" x={ hitX(i, len(ms)) } y="14" width={ hitW(len(ms)) } height="158"></rect>
+					<rect class="chart__mark chart__mark--a" x={ x } y={ y } width="10" height={ h } rx="4"></rect>
+					<text class="chart__axis" x={ monthX(i, len(ms)) } y="190" text-anchor="middle">{ m.Name[:1] }</text>
+					<text class="chart__tip" x={ monthX(i, len(ms)) } y={ y } dy="-6" text-anchor="middle">{ fmtInt(m.HighC) }°/{ fmtInt(m.LowC) }°</text>
+				</g>
+			}
+		</svg>
+	</figure>
+}
+
+templ RainChart(ms []data.Month) {
+	<figure class="card card--pad chart">
+		<figcaption class="chart__title"><strong>Rainfall</strong> <span class="small muted">average per month, mm</span></figcaption>
+		<svg viewBox="0 0 360 200" role="img" aria-label="Average monthly rainfall in Nairobi; table view below">
+			for _, g := range []float64{50, 100, 150, 200} {
+				<line class="chart__grid" x1="34" x2="352" y1={ gridY(g, 0, 200) } y2={ gridY(g, 0, 200) }></line>
+				<text class="chart__axis" x="28" y={ gridY(g, 0, 200) } dy="4" text-anchor="end">{ fmtInt(g) }</text>
+			}
+			<line class="chart__base" x1="34" x2="352" y1="172" y2="172"></line>
+			for i, m := range ms {
+				{{ x, y, h := rainBar(m, i, len(ms)) }}
+				<g class="chart__col" tabindex="0">
+					<title>{ rainTip(m) }</title>
+					<rect class="chart__hit" x={ hitX(i, len(ms)) } y="14" width={ hitW(len(ms)) } height="158"></rect>
+					<rect class="chart__mark chart__mark--b" x={ x } y={ y } width="14" height={ h } rx="4"></rect>
+					<text class="chart__axis" x={ monthX(i, len(ms)) } y="190" text-anchor="middle">{ m.Name[:1] }</text>
+					<text class="chart__tip" x={ monthX(i, len(ms)) } y={ y } dy="-6" text-anchor="middle">{ fmtInt(m.RainMM) }</text>
+				</g>
+			}
+		</svg>
+	</figure>
+}

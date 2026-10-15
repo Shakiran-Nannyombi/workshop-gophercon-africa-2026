@@ -106,3 +106,14 @@ func countryMoney(s *data.Store, code string) []data.MobileMoney {
 	}
 	return out
 }
+
+// fmtUnit prints a unit rate with enough precision to be useful (0.0078, 28.3, 3,650).
+func fmtUnit(v float64) string {
+	switch {
+	case v < 0.1:
+		return strconv.FormatFloat(v, 'f', 5, 64)
+	case v < 100:
+		return strconv.FormatFloat(v, 'f', 2, 64)
+	}
+	return components.Commas(int(math.Round(v)))
+}

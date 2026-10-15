@@ -77,15 +77,15 @@ func ThemeToggle() templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<button type=\"button\" class=\"btn btn-ghost !min-h-11 !w-11 !justify-center !p-0 !shadow-none\" data-theme-toggle aria-pressed=\"false\" aria-label=\"Dark mode\" title=\"Toggle dark mode\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<button type=\"button\" class=\"icon-btn\" data-theme-toggle aria-pressed=\"false\" aria-label=\"Dark mode\" title=\"Toggle dark mode\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Icon("moon", "h-5 w-5 dark:hidden").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Icon("moon", "icon-sm theme-moon").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Icon("sun", "hidden h-5 w-5 dark:block").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Icon("sun", "icon-sm theme-sun").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -316,7 +316,7 @@ func Approx(label string) templ.Component {
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 109, Col: 10}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 102, Col: 10}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -352,11 +352,11 @@ func LastReviewed(date string) templ.Component {
 			templ_7745c5c3_Var10 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "<p class=\"inline-flex items-center gap-2 rounded-full border-[1.5px] border-line bg-surface px-3 py-1 text-sm font-semibold\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "<p class=\"reviewed\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Icon("check", "h-4 w-4 text-green").Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Icon("check", "icon-sm").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -367,7 +367,7 @@ func LastReviewed(date string) templ.Component {
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.ResolveAttributeValue(date)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 117, Col: 49}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 110, Col: 49}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var11)
 		if templ_7745c5c3_Err != nil {
@@ -380,7 +380,7 @@ func LastReviewed(date string) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(date)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 117, Col: 58}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 110, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -457,7 +457,7 @@ func PhotoSlot(src, alt, hint string) templ.Component {
 			var templ_7745c5c3_Var15 string
 			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.ResolveAttributeValue(src)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 129, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 122, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var15)
 			if templ_7745c5c3_Err != nil {
@@ -470,7 +470,7 @@ func PhotoSlot(src, alt, hint string) templ.Component {
 			var templ_7745c5c3_Var16 string
 			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.ResolveAttributeValue(alt)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 129, Col: 29}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 122, Col: 29}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var16)
 			if templ_7745c5c3_Err != nil {
@@ -481,14 +481,14 @@ func PhotoSlot(src, alt, hint string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		} else {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "<figcaption class=\"px-4\"><span class=\"block text-2xl\" aria-hidden=\"true\">▢</span> Photo slot: ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "<figcaption>Photo slot: ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var17 string
 			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(hint)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 133, Col: 22}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 125, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 			if templ_7745c5c3_Err != nil {
@@ -528,10 +528,7 @@ func Callout(tone, title string) templ.Component {
 			templ_7745c5c3_Var18 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var19 = []any{"card flex gap-4 p-5",
-			templ.KV("!bg-[color-mix(in_oklab,var(--gold)_22%,var(--surface))]", tone == "tip"),
-			templ.KV("!bg-[color-mix(in_oklab,var(--red)_14%,var(--surface))]", tone == "warn"),
-			templ.KV("!bg-[color-mix(in_oklab,var(--green)_14%,var(--surface))]", tone == "info")}
+		var templ_7745c5c3_Var19 = []any{"card callout", "callout--" + tone}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var19...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -549,40 +546,40 @@ func Callout(tone, title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 50, "\"><span class=\"grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-line bg-surface\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 50, "\"><span class=\"callout__icon\" aria-hidden=\"true\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		switch tone {
 		case "warn":
-			templ_7745c5c3_Err = Icon("alert", "h-5 w-5 text-red").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Icon("alert", "icon-sm").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "info":
-			templ_7745c5c3_Err = Icon("info", "h-5 w-5 text-green").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Icon("info", "icon-sm").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		default:
-			templ_7745c5c3_Err = Icon("sun", "h-5 w-5 text-[#9a6f00] dark:text-gold").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = Icon("sun", "icon-sm").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "</span><div class=\"min-w-0\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "</span><div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if title != "" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, "<p class=\"font-display text-lg font-extrabold\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, "<p class=\"callout__title\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var21 string
 			templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 158, Col: 58}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/base.templ`, Line: 145, Col: 37}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 			if templ_7745c5c3_Err != nil {
@@ -593,7 +590,7 @@ func Callout(tone, title string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "<div class=\"prose-k mt-1 text-ink-soft\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "<div class=\"callout__body prose\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

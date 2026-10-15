@@ -151,28 +151,28 @@ type Area struct {
 
 // City is a featured East African city; every city shares one page layout.
 type City struct {
-	Slug           string         `json:"slug"`
-	Name           string         `json:"name"`
-	Country        string         `json:"country"` // Country.Code
-	Tagline        string         `json:"tagline"`
-	Intro          string         `json:"intro"`
-	Population     string         `json:"population"` // "~4.4 million (2019 census)"
-	Elevation      string         `json:"elevation"`
-	Climate        string         `json:"climate"`
-	Airport        string         `json:"airport"`
-	Languages      []string       `json:"languages"`
-	Lat            float64        `json:"lat"`
-	Lon            float64        `json:"lon"`
-	Motif          string         `json:"motif"` // illustration key: skyline, coast, lake, mountain...
+	Slug           string          `json:"slug"`
+	Name           string          `json:"name"`
+	Country        string          `json:"country"` // Country.Code
+	Tagline        string          `json:"tagline"`
+	Intro          string          `json:"intro"`
+	Population     string          `json:"population"` // "~4.4 million (2019 census)"
+	Elevation      string          `json:"elevation"`
+	Climate        string          `json:"climate"`
+	Airport        string          `json:"airport"`
+	Languages      []string        `json:"languages"`
+	Lat            float64         `json:"lat"`
+	Lon            float64         `json:"lon"`
+	Motif          string          `json:"motif"` // illustration key: skyline, coast, lake, mountain...
 	Neighbourhoods []Neighbourhood `json:"neighbourhoods"`
-	MoneyTips      []string       `json:"moneyTips"`
-	Transport      []string       `json:"transport"`
-	Food           []string       `json:"food"`
-	Safety         []string       `json:"safety"`
-	Suits          []string       `json:"suits"`
-	Scores         Scores         `json:"scores"`
-	Confidence     string         `json:"confidence"`
-	Verify         Verify         `json:"verify,omitempty"`
+	MoneyTips      []string        `json:"moneyTips"`
+	Transport      []string        `json:"transport"`
+	Food           []string        `json:"food"`
+	Safety         []string        `json:"safety"`
+	Suits          []string        `json:"suits"`
+	Scores         Scores          `json:"scores"`
+	Confidence     string          `json:"confidence"`
+	Verify         Verify          `json:"verify,omitempty"`
 }
 
 type Neighbourhood struct {
@@ -182,11 +182,11 @@ type Neighbourhood struct {
 
 // Scores are rough 1-5 ratings for the compare tool, each with a reason.
 type Scores struct {
-	Cost      Score `json:"cost"`      // 5 = most expensive
-	Transport Score `json:"transport"` // 5 = easiest to get around
-	Climate   Score `json:"climate"`   // 5 = mildest
-	Safety    Score `json:"safety"`    // 5 = most relaxed perception
-	Nightlife Score `json:"nightlife"` // 5 = liveliest
+	Cost      Score  `json:"cost"`      // 5 = most expensive
+	Transport Score  `json:"transport"` // 5 = easiest to get around
+	Climate   Score  `json:"climate"`   // 5 = mildest
+	Safety    Score  `json:"safety"`    // 5 = most relaxed perception
+	Nightlife Score  `json:"nightlife"` // 5 = liveliest
 	Vibe      string `json:"vibe"`
 }
 

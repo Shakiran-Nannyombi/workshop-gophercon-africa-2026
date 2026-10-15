@@ -1,0 +1,84 @@
+package components
+
+import "workshop/internal/data"
+
+type NairobiMapProps struct {
+	Geo       data.ShapeSet
+	Areas     []data.Area
+	Roads     []data.Road
+	CountyFor func(string) string
+}
+
+templ NairobiMap(p NairobiMapProps) {
+	<figure class="zoom-map card" data-zoom-map>
+		<div class="zoom-map__bar">
+			<p class="zoom-map__title"><strong>Nairobi explained</strong> <span class="small muted">schematic, not for navigation</span></p>
+			<div class="cluster" style="--gap:.35rem">
+				<button type="button" class="icon-btn" data-zoom="in" aria-label="Zoom in">
+					@Icon("plus", "icon-sm")
+				</button>
+				<button type="button" class="icon-btn" data-zoom="out" aria-label="Zoom out">
+					@Icon("minus", "icon-sm")
+				</button>
+				<button type="button" class="icon-btn" data-zoom="reset" aria-label="Reset view">
+					@Icon("reset", "icon-sm")
+				</button>
+			</div>
+		</div>
+		<div class="zoom-map__viewport" tabindex="0" aria-label="Zoomable map. Use plus and minus to zoom and arrow keys to pan.">
+			<svg viewBox="150 150 700 700" data-home="150 150 700 700" data-full={ p.Geo.ViewBox } class="zoom-map__svg" role="group" aria-labelledby="nbo-map-title">
+				<title id="nbo-map-title">Schematic map of Nairobi City County and the neighbouring Kiambu, Kajiado and Machakos counties, with main roads and neighbourhoods</title>
+				<defs>
+					<pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+						<path d="M0 0 V10" stroke="var(--ink)" stroke-opacity=".12" stroke-width="3"></path>
+					</pattern>
+				</defs>
+				<rect x="0" y="0" width="1000" height="1001" fill="var(--paper-2)"></rect>
+				for _, c := range p.Geo.Counties {
+					<path class={ countyClass(c.Slug) } d={ c.D }>
+						<title>{ p.CountyFor(c.Slug) } County</title>
+					</path>
+					if c.Slug != "nairobi" {
+						<path d={ c.D } fill="url(#hatch)" pointer-events="none"></path>
+					}
+				}
+				<g class="map-roads" pointer-events="none">
+					for _, r := range p.Roads {
+						<path class={ "road road--" + r.Kind } d={ roadPath(p.Geo.Projection, r) }></path>
+					}
+				</g>
+				<g class="map-road-labels" pointer-events="none">
+					for _, r := range p.Roads {
+						{{ x, y := roadLabelPoint(p.Geo.Projection, r) }}
+						<text class="road-label" x={ x } y={ y }>{ r.Name }</text>
+					}
+				</g>
+				for _, c := range p.Geo.Counties {
+					{{ lx, ly := countyLabelXY(c) }}
+					<text class={ "county-label", templ.KV("county-label--nairobi", c.Slug == "nairobi") } x={ lx } y={ ly } pointer-events="none">{ p.CountyFor(c.Slug) }</text>
+				}
+				<g class="map-dots">
+					for _, a := range p.Areas {
+						{{ x, y := areaXY(p.Geo.Projection, a) }}
+						<a href={ templ.SafeURL("#area-" + a.Slug) } class={ dotClass(a) } aria-label={ a.Name + ", " + p.CountyFor(a.County) + " County" }>
+							<title>{ a.Name }: { p.CountyFor(a.County) } County</title>
+							<circle cx={ x } cy={ y } r="7"></circle>
+							<text x={ x } y={ y } dy="-12">{ a.Name }</text>
+						</a>
+					}
+				</g>
+			</svg>
+		</div>
+		<figcaption class="zoom-map__legend">
+			<ul class="cluster" style="--gap:1rem">
+				<li class="legend-item"><span class="legend-swatch" style="background:var(--c-nairobi)"></span> Nairobi City County</li>
+				<li class="legend-item"><span class="legend-swatch legend-swatch--hatch" style="background-color:var(--c-kiambu)"></span> Kiambu</li>
+				<li class="legend-item"><span class="legend-swatch legend-swatch--hatch" style="background-color:var(--c-kajiado)"></span> Kajiado</li>
+				<li class="legend-item"><span class="legend-swatch legend-swatch--hatch" style="background-color:var(--c-machakos)"></span> Machakos</li>
+				<li class="legend-item"><span class="legend-line"></span> Main road</li>
+				<li class="legend-item"><span class="legend-dot"></span> Neighbourhood (click to read about it)</li>
+			</ul>
+			<p class="small muted mt-2">County borders: { p.Geo.Source } ({ p.Geo.License }), simplified. Roads and dots are approximate.</p>
+		</figcaption>
+	</figure>
+}

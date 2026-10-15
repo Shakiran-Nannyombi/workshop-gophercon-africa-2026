@@ -175,27 +175,27 @@ func Banknote(n data.Denomination, i int) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, " SHILLINGS</text></svg><figcaption class=\"mt-3\"><span class=\"font-display text-xl font-extrabold num\">KSh ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, " SHILLINGS</text></svg><figcaption><span class=\"banknote__value num\">KSh ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(Commas(n.Value))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 32, Col: 78}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 32, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</span> <span class=\"block text-sm text-ink-soft\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</span> <span class=\"banknote__feature\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(n.Feature)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 33, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 33, Col: 46}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -230,14 +230,14 @@ func Coin(c data.Denomination) templ.Component {
 			templ_7745c5c3_Var15 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<figure class=\"coin-wrap text-center\"><svg class=\"coin mx-auto h-24 w-24\" viewBox=\"0 0 100 100\" role=\"img\" aria-labelledby=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<figure class=\"coin-wrap\"><svg class=\"coin\" viewBox=\"0 0 100 100\" role=\"img\" aria-labelledby=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.ResolveAttributeValue("coin-" + itoa(c.Value))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 40, Col: 112}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 40, Col: 94}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var16)
 		if templ_7745c5c3_Err != nil {
@@ -331,27 +331,27 @@ func Coin(c data.Denomination) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</text></svg><figcaption class=\"mt-2\"><span class=\"font-display text-lg font-extrabold num\">KSh ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</text></svg><figcaption><span class=\"coin__value num\">KSh ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var23 string
 		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(itoa(c.Value))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 57, Col: 76}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 57, Col: 52}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</span> <span class=\"block text-sm text-ink-soft\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</span> <span class=\"coin__feature\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var24 string
 		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(c.Feature)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 58, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 58, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
@@ -386,58 +386,58 @@ func PriceTable(prices []data.PriceExample, perUSD float64) templ.Component {
 			templ_7745c5c3_Var25 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"card overflow-hidden\"><div class=\"overflow-x-auto\"><table class=\"w-full min-w-[36rem] border-collapse text-left\"><caption class=\"sr-only\">Approximate prices in Kenyan shillings</caption> <thead class=\"bg-ink text-paper\"><tr><th scope=\"col\" class=\"px-4 py-3 font-display text-base\">What</th><th scope=\"col\" class=\"px-4 py-3 font-display text-base\">Price</th><th scope=\"col\" class=\"px-4 py-3 font-display text-base\">In US$</th><th scope=\"col\" class=\"px-4 py-3 font-display text-base\">Good to know</th></tr></thead> <tbody>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"card table-card\"><div class=\"table-scroll\"><table class=\"data-table price-table\"><caption class=\"sr-only\">Approximate prices in Kenyan shillings</caption> <thead><tr><th scope=\"col\">What</th><th scope=\"col\">Price</th><th scope=\"col\">In US$</th><th scope=\"col\">Good to know</th></tr></thead> <tbody>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, p := range prices {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<tr class=\"border-t-2 border-hairline align-top odd:bg-paper/40\"><th scope=\"row\" class=\"px-4 py-3 font-bold\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<tr><th scope=\"row\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var26 string
 			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(p.Item)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 79, Col: 59}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 79, Col: 31}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</th><td class=\"num whitespace-nowrap px-4 py-3 font-semibold\">~")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</th><td class=\"num nowrap\">~")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var27 string
 			templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(KESRange(p))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 80, Col: 79}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 80, Col: 44}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</td><td class=\"num whitespace-nowrap px-4 py-3 text-ink-soft\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</td><td class=\"num nowrap soft\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var28 string
 			templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(USDRange(p, perUSD))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 81, Col: 86}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 81, Col: 56}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "</td><td class=\"px-4 py-3 text-ink-soft\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "</td><td class=\"soft\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var29 string
 			templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(p.Note)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 82, Col: 51}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 82, Col: 32}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 			if templ_7745c5c3_Err != nil {
@@ -478,20 +478,20 @@ func Phone(label string) templ.Component {
 			templ_7745c5c3_Var30 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<figure class=\"phone mx-auto w-full max-w-[17rem]\" aria-label=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<figure class=\"phone\" role=\"group\" aria-label=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var31 string
 		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.ResolveAttributeValue(label)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 93, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/money.templ`, Line: 93, Col: 54}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var31)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "\"><div class=\"rounded-[2.2rem] border-[3px] border-line bg-ink p-2.5 shadow-[6px_6px_0_var(--line)]\"><div class=\"mx-auto mb-2 h-1.5 w-16 rounded-full bg-paper/30\"></div><div class=\"min-h-[22rem] rounded-[1.6rem] bg-[#f4f7f2] p-4 text-[#16301f]\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "\"><div class=\"phone__body\"><div class=\"phone__notch\"></div><div class=\"phone__screen\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

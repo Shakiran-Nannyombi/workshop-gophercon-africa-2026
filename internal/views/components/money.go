@@ -102,7 +102,7 @@ func guilloche(cx, cy, r float64, petals int) string {
 }
 
 func noteTilt(i int) string {
-	return fmt.Sprintf("--i:%d;--tilt:%ddeg", i, (i-2)*5)
+	return fmt.Sprintf("--i:%d;--tilt:%ddeg", i, []int{-3, 2, -1, 3, -2}[i%5])
 }
 
 func itoa(n int) string { return strconv.Itoa(n) }

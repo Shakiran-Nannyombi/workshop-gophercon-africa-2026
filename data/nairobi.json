@@ -1,0 +1,426 @@
+{
+  "cityVsCounty": [
+    "Nairobi is two things at once: a city, and one of Kenya's 47 counties. The county is officially called Nairobi City County.",
+    "The county boundary and the city boundary are the same line. By area it is the smallest county (~696 km²), yet it has the most people (~4.4 million at the 2019 census).",
+    "Like every county, it is run by an elected governor and a county assembly. They look after things like local roads, markets, parking, health clinics and business permits.",
+    "Here is the twist. The built-up \"Nairobi\" people talk about has spilled over that line into Kiambu, Kajiado and Machakos counties. So many people who say they \"live in Nairobi\" actually live, pay county fees and vote in another county."
+  ],
+  "metroNote": "You may also hear \"Nairobi Metropolitan Area\": an informal, wider idea that takes in Nairobi and the busy neighbouring parts of Kiambu, Kajiado, Machakos and sometimes Murang'a, rather than a single government.",
+  "ruaka": {
+    "title": "Spotlight: Ruaka",
+    "intro": "Ruaka is a fast-growing town in Kiambu County, just north of Nairobi's border and close to Gigiri and Runda. It is a good example of \"Nairobi\" that is not in Nairobi County.",
+    "sections": [
+      {
+        "slug": "where",
+        "title": "Where it is",
+        "icon": "walk",
+        "body": "Ruaka sits in Kiambu County, along Limuru Road just past the Nairobi boundary.",
+        "points": [
+          "County: Kiambu.",
+          "Constituency: Kiambaa.",
+          "On Limuru Road, a little north of Gigiri and Runda.",
+          "Close to the Northern Bypass."
+        ],
+        "verify": "Confirm Ruaka falls in Kiambaa constituency (and which ward)."
+      },
+      {
+        "slug": "connects",
+        "title": "How it connects",
+        "icon": "matatu",
+        "body": "Most journeys start on Limuru Road or the Northern Bypass.",
+        "points": [
+          "Limuru Road runs south into Parklands, Westlands and on to the CBD.",
+          "The Northern Bypass runs east towards Thika Road and Kiambu Road, and west towards Waiyaki Way.",
+          "Matatus run up and down Limuru Road.",
+          "Expect heavy traffic at peak hours, especially around the Ruaka junction."
+        ]
+      },
+      {
+        "slug": "shopping",
+        "title": "Shopping",
+        "icon": "food",
+        "body": "You are well placed for big malls as well as everyday shops.",
+        "points": [
+          "Two Rivers Mall is right next door, on the Limuru Road side, often described as at the Ruaka/Gigiri edge.",
+          "Village Market is a short drive south in Gigiri, near the UN offices.",
+          "Local supermarkets and small shops cover the daily basics."
+        ],
+        "verify": "Check which county Two Rivers Mall is officially in (Nairobi or Kiambu); it is near the boundary."
+      },
+      {
+        "slug": "daily-life",
+        "title": "Daily life",
+        "icon": "people",
+        "body": "Ruaka has grown very quickly, and it shows.",
+        "points": [
+          "Lots of new apartment blocks.",
+          "Popular with young professionals.",
+          "Rents are often lower than in the neighbouring Nairobi suburbs.",
+          "Water supply and roads are still catching up with the growth.",
+          "There is a lively nightlife strip, so some streets can be noisy at weekends."
+        ],
+        "verify": "Rent comparison is a general impression; check current listings."
+      },
+      {
+        "slug": "good-to-know",
+        "title": "Good to know",
+        "icon": "shield",
+        "body": "If you live in Ruaka, your address is in Kiambu County, not Nairobi.",
+        "points": [
+          "County services, permits and fees are Kiambu's.",
+          "You would vote in Kiambu County elections."
+        ]
+      }
+    ],
+    "verify": "General description of a fast-changing area; confirm details locally."
+  },
+  "transport": [
+    {
+      "slug": "matatu",
+      "title": "Matatus",
+      "icon": "matatu",
+      "body": "Matatus are privately run minibuses and the main way people get around Nairobi.",
+      "points": [
+        "Cheap, frequent and everywhere.",
+        "Board at a stage or wave one down along the route.",
+        "See the matatu guide below for colours, routes and tips."
+      ]
+    },
+    {
+      "slug": "boda",
+      "title": "Boda bodas",
+      "icon": "boda",
+      "body": "Boda bodas are motorbike taxis. They are quick in traffic but riskier than other options.",
+      "points": [
+        "Ask for a helmet and wear it.",
+        "Agree the fare before you get on, or book through an app.",
+        "Hold on, and keep bags in front of you."
+      ]
+    },
+    {
+      "slug": "ride-hailing",
+      "title": "Ride-hailing",
+      "icon": "ride",
+      "body": "App-based taxis are easy to use and a good choice at night.",
+      "points": [
+        "Common apps include Uber, Bolt, Little and Faras.",
+        "Check the number plate and driver before you get in.",
+        "Pay by card, cash or M-Pesa, depending on the app."
+      ],
+      "verify": "Confirm Faras is still operating in Nairobi; check payment options per app."
+    },
+    {
+      "slug": "buses",
+      "title": "Larger buses",
+      "icon": "bus",
+      "body": "Bigger buses run on many busy routes and can feel a bit calmer than matatus.",
+      "points": [
+        "Operators include Super Metro, Embassava and City Hoppa.",
+        "Kenya Bus Service also runs some routes.",
+        "Fares are usually collected on board."
+      ],
+      "verify": "Check that Kenya Bus Service still runs city routes, and current operator names."
+    },
+    {
+      "slug": "commuter-rail",
+      "title": "Commuter rail",
+      "icon": "train",
+      "body": "Kenya Railways runs commuter trains from Nairobi Central station out to the suburbs.",
+      "points": [
+        "Lines reach places like Syokimau, Ruiru, Kikuyu and Embakasi.",
+        "Trains are cheap but run mainly at peak times.",
+        "Check the timetable before you go."
+      ],
+      "verify": "Confirm current lines, stations and timetables with Kenya Railways."
+    },
+    {
+      "slug": "expressway",
+      "title": "Nairobi Expressway",
+      "icon": "ride",
+      "body": "The Nairobi Expressway is a tolled, elevated road between JKIA and Westlands. It opened in 2022.",
+      "points": [
+        "It can save a lot of time at peak hours, especially to and from the airport.",
+        "Tolls depend on how far you travel.",
+        "Ride-hailing drivers may add the toll to your fare."
+      ],
+      "verify": "Check current toll payment methods (tag, card, M-Pesa, cash) and rates."
+    },
+    {
+      "slug": "walking",
+      "title": "Walking",
+      "icon": "walk",
+      "body": "Walking is fine for short hops, especially in the CBD and around malls.",
+      "points": [
+        "Pavements are often busy or uneven, and some roads have none.",
+        "Take care crossing; drivers do not always stop.",
+        "Avoid walking alone in quiet areas after dark."
+      ]
+    }
+  ],
+  "matatu": {
+    "intro": "Matatus leave from stages: marked stops, or simply a known spot on the roadside. In the CBD, termini are grouped by destination, so matatus heading to the same part of town gather in the same area. Ask anyone at the stage and they will point you to the right one. Most leave when they are full.",
+    "colours": [
+      {
+        "swatch": "#F2C200",
+        "name": "Yellow band",
+        "meaning": "A yellow stripe along the side marks a licensed public-service vehicle, a rule dating from the 2004 \"Michuki rules\"."
+      },
+      {
+        "swatch": "#E4007C",
+        "name": "Nganya style",
+        "meaning": "Bright graffiti-art paint jobs, loud music and screens inside. Known as \"nganya\", they are part of Nairobi's street culture."
+      },
+      {
+        "swatch": "#1F3A93",
+        "name": "Corporate livery",
+        "meaning": "Plain, matching colours across a fleet, as with Super Metro. Usually calmer, with no loud music."
+      },
+      {
+        "swatch": "#FFFFFF",
+        "name": "Route board",
+        "meaning": "The route number and destination are shown on the front or side; read it before you climb in."
+      }
+    ],
+    "routes": [
+      { "number": "46", "to": "Kawangware", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "111", "to": "Ngong / Karen", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "125", "to": "Rongai", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "237", "to": "Thika", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "100", "to": "Kiambu", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "105", "to": "Kikuyu", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "33", "to": "Embakasi side", "from": "CBD", "verify": "Route numbers change; check at the stage." },
+      { "number": "34", "to": "Embakasi side", "from": "CBD", "verify": "Route numbers change; check at the stage." }
+    ],
+    "tips": [
+      "Pay the conductor (the makanga) in cash or by M-Pesa. Keep small notes handy.",
+      "Not sure? Ask \"Inaenda ...?\" (\"Does it go to ...?\").",
+      "To get off, say \"Shuka!\" or tap the roof as you near your stage.",
+      "Fares go up when it rains and at rush hour.",
+      "Keep your phone inside the vehicle, away from the window.",
+      "Avoid sitting by the door with a bag on your lap."
+    ],
+    "verify": "Confirm the yellow-band rule and its link to the 2004 Michuki rules; colour swatches are illustrative."
+  },
+  "traffic": {
+    "slug": "traffic",
+    "title": "Traffic",
+    "icon": "clock",
+    "body": "Nairobi traffic can be slow, so plan around the busiest times.",
+    "points": [
+      "Morning peak is roughly 6:30–9:30.",
+      "Evening peak is roughly 16:30–20:00.",
+      "Rain and Friday evenings make everything slower.",
+      "Give yourself at least an hour to reach JKIA at peak times.",
+      "The Nairobi Expressway helps a lot on the airport run.",
+      "Keep water and a charged phone with you in the car."
+    ]
+  },
+  "sim": {
+    "slug": "sim",
+    "title": "SIM cards and data",
+    "icon": "sim",
+    "body": "Getting a local SIM is easy and makes life much simpler.",
+    "points": [
+      "The main networks are Safaricom, Airtel and Telkom.",
+      "Register your SIM with your passport at an official shop. ID is required by law.",
+      "eSIMs are available from some networks for compatible phones.",
+      "Buy data bundles in the network's app or by dialling a USSD code.",
+      "M-Pesa needs a registered Safaricom line."
+    ],
+    "verify": "Confirm eSIM availability per network for visitors, and current registration requirements."
+  },
+  "food": {
+    "slug": "food",
+    "title": "Food",
+    "icon": "food",
+    "body": "Nairobi eats well at every budget.",
+    "points": [
+      "Kibandas (or kibandaski) are small roadside cafés serving cheap, filling meals.",
+      "Nyama choma (grilled meat) joints are a classic weekend outing; Carnivore is the best-known.",
+      "Swahili coast dishes such as pilau and biryani are easy to find in town.",
+      "Café chains like Java House and Artcaffé are everywhere and reliable.",
+      "Westlands and Kilimani have busy restaurant scenes with food from all over the world.",
+      "Street snacks: mutura (a local sausage), smokies with kachumbari, and roasted maize."
+    ]
+  },
+  "safety": {
+    "slug": "safety",
+    "title": "Staying safe",
+    "icon": "shield",
+    "body": "Most visits are trouble-free. A few habits help, as in any big city.",
+    "points": [
+      "Use ride-hailing at night rather than walking.",
+      "Keep your phone out of sight in crowds and in traffic jams, where window snatching happens.",
+      "Use ATMs inside malls and banks.",
+      "Emergency numbers: 999 or 112.",
+      "Be cautious near large gatherings and demonstrations, and move away if things get tense.",
+      "Check your government's current travel advice before you go."
+    ],
+    "verify": "Confirm 999 and 112 both work from all networks."
+  },
+  "etiquette": {
+    "slug": "etiquette",
+    "title": "Etiquette",
+    "icon": "people",
+    "body": "Kenyans are friendly and polite. A little courtesy goes a long way.",
+    "points": [
+      "Greet people before anything else: \"Habari?\" or the casual \"Mambo?\".",
+      "Use your right hand to give, take and shake hands.",
+      "Ask before photographing people.",
+      "Do not photograph government buildings or police.",
+      "Dress modestly in mosques, churches and other religious places.",
+      "Be patient. \"Pole pole\" means \"slowly, slowly\".",
+      "Call older men \"mzee\" and older women \"mama\"; it is a mark of respect."
+    ]
+  },
+  "weather": {
+    "summary": "Nairobi is mild all year thanks to its height of ~1,795 m above sea level. Days are warm, nights are cool, and there are two rainy seasons.",
+    "elevation": "~1,795 m",
+    "months": [
+      { "name": "Jan", "highC": 25, "lowC": 12, "rainMM": 55 },
+      { "name": "Feb", "highC": 26, "lowC": 12, "rainMM": 45 },
+      { "name": "Mar", "highC": 26, "lowC": 14, "rainMM": 75 },
+      { "name": "Apr", "highC": 24, "lowC": 15, "rainMM": 160 },
+      { "name": "May", "highC": 23, "lowC": 14, "rainMM": 130 },
+      { "name": "Jun", "highC": 22, "lowC": 12, "rainMM": 30 },
+      { "name": "Jul", "highC": 21, "lowC": 11, "rainMM": 15 },
+      { "name": "Aug", "highC": 21, "lowC": 11, "rainMM": 20 },
+      { "name": "Sep", "highC": 24, "lowC": 12, "rainMM": 25 },
+      { "name": "Oct", "highC": 25, "lowC": 13, "rainMM": 50 },
+      { "name": "Nov", "highC": 23, "lowC": 13, "rainMM": 120 },
+      { "name": "Dec", "highC": 23, "lowC": 13, "rainMM": 85 }
+    ],
+    "seasons": [
+      {
+        "slug": "long-rains",
+        "title": "Long rains (~Mar–May)",
+        "icon": "clock",
+        "body": "The wettest time of year, with April usually the peak.",
+        "points": [
+          "Heavy afternoon and evening showers.",
+          "Some roads flood and traffic gets worse.",
+          "Pack an umbrella and shoes that can get wet."
+        ]
+      },
+      {
+        "slug": "cool-dry",
+        "title": "Cool dry season (~Jun–Sep)",
+        "icon": "clock",
+        "body": "Dry and often grey, and the chilliest part of the year, especially July and August.",
+        "points": [
+          "Mornings and evenings can be cold; bring a jumper or light jacket.",
+          "Popular time for safaris."
+        ]
+      },
+      {
+        "slug": "short-rains",
+        "title": "Short rains (~Oct–Dec)",
+        "icon": "clock",
+        "body": "A second, usually lighter rainy season.",
+        "points": [
+          "Showers come and go, often in the afternoon.",
+          "Still plenty of sunny spells."
+        ]
+      },
+      {
+        "slug": "hot-dry",
+        "title": "Hot dry season (~Jan–Feb)",
+        "icon": "clock",
+        "body": "Warm, sunny and dry: the warmest months of the year.",
+        "points": [
+          "Use sunscreen; the sun is strong at altitude.",
+          "It is dusty, and nights are still cool."
+        ]
+      }
+    ],
+    "source": "Approximate climate normals compiled from Kenya Meteorological Department figures",
+    "verify": "Approximate climate normals; check KMD."
+  },
+  "roads": [
+    {
+      "name": "Thika Road (Thika Superhighway)",
+      "kind": "highway",
+      "points": [[-1.284, 36.825], [-1.268, 36.838], [-1.250, 36.852], [-1.218, 36.887], [-1.198, 36.913], [-1.150, 36.960], [-1.105, 37.013], [-1.045, 37.075]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Mombasa Road",
+      "kind": "highway",
+      "points": [[-1.300, 36.826], [-1.310, 36.838], [-1.318, 36.853], [-1.326, 36.880], [-1.340, 36.905], [-1.360, 36.930], [-1.385, 36.945], [-1.450, 36.980]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Uhuru Highway",
+      "kind": "highway",
+      "points": [[-1.300, 36.826], [-1.292, 36.823], [-1.283, 36.816], [-1.274, 36.812], [-1.267, 36.806]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Waiyaki Way",
+      "kind": "highway",
+      "points": [[-1.267, 36.806], [-1.262, 36.780], [-1.262, 36.750], [-1.262, 36.718], [-1.255, 36.690], [-1.245, 36.665], [-1.215, 36.650]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Limuru Road",
+      "kind": "road",
+      "points": [[-1.262, 36.820], [-1.250, 36.822], [-1.238, 36.812], [-1.228, 36.804], [-1.212, 36.796], [-1.202, 36.784], [-1.175, 36.765]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Ngong Road",
+      "kind": "road",
+      "points": [[-1.292, 36.815], [-1.298, 36.795], [-1.300, 36.778], [-1.308, 36.755], [-1.320, 36.715], [-1.340, 36.685], [-1.360, 36.660]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Langata Road",
+      "kind": "road",
+      "points": [[-1.306, 36.826], [-1.318, 36.815], [-1.328, 36.800], [-1.340, 36.770], [-1.340, 36.740], [-1.325, 36.712]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Jogoo Road",
+      "kind": "road",
+      "points": [[-1.288, 36.840], [-1.290, 36.860], [-1.288, 36.880], [-1.288, 36.895], [-1.292, 36.905]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Outer Ring Road",
+      "kind": "road",
+      "points": [[-1.240, 36.865], [-1.250, 36.885], [-1.268, 36.890], [-1.290, 36.895], [-1.312, 36.898], [-1.323, 36.886]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Kiambu Road",
+      "kind": "road",
+      "points": [[-1.250, 36.836], [-1.230, 36.836], [-1.210, 36.836], [-1.190, 36.836], [-1.172, 36.835]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Northern Bypass",
+      "kind": "bypass",
+      "points": [[-1.215, 36.885], [-1.205, 36.865], [-1.210, 36.840], [-1.205, 36.815], [-1.203, 36.787], [-1.228, 36.770], [-1.260, 36.720]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Southern Bypass",
+      "kind": "bypass",
+      "points": [[-1.330, 36.885], [-1.345, 36.840], [-1.345, 36.790], [-1.320, 36.735], [-1.280, 36.695], [-1.245, 36.662]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Eastern Bypass",
+      "kind": "bypass",
+      "points": [[-1.330, 36.885], [-1.320, 36.925], [-1.290, 36.965], [-1.245, 36.962], [-1.200, 36.952], [-1.165, 36.950]],
+      "verify": "Schematic waypoints, approximate."
+    },
+    {
+      "name": "Nairobi Expressway",
+      "kind": "expressway",
+      "points": [[-1.330, 36.920], [-1.326, 36.880], [-1.312, 36.845], [-1.302, 36.826], [-1.283, 36.816], [-1.267, 36.805], [-1.262, 36.772]],
+      "verify": "Schematic waypoints, approximate."
+    }
+  ],
+  "verify": "General doubts: population and area figures (2019 census, ~696 km²); operator and app names (Faras, Kenya Bus Service); matatu route numbers; commuter rail lines; expressway toll payment; emergency numbers; eSIM availability; Ruaka constituency and Two Rivers' county; weather figures are rough climate normals; road waypoints are schematic."
+}

@@ -5,9 +5,8 @@ UPSTREAM := ainsleyclark/workshop-gophercon-africa-2026
 include tools/setup.mk
 
 ##@ Karibu Guide
+# Plain CSS lives in static/css/app.css: no CSS build step.
 
-TAILWIND ?= tools/bin/tailwindcss
-TAILWIND_VERSION ?= latest
 AIR ?= $(shell command -v air 2>/dev/null || echo "go run github.com/air-verse/air@latest")
 PORT ?= 8080
 
@@ -15,30 +14,15 @@ generate: # Generate Go code from the templ components
 	go tool templ generate ./internal/views/...
 .PHONY: generate
 
-$(TAILWIND):
-	@mkdir -p $(dir $(TAILWIND))
-	curl -sSfL -o $(TAILWIND) https://github.com/tailwindlabs/tailwindcss/releases/$(TAILWIND_VERSION)/download/tailwindcss-$(shell uname -s | tr A-Z a-z | sed 's/darwin/macos/')-$(shell uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/')
-	chmod +x $(TAILWIND)
-
-css: $(TAILWIND) # Build static/css/app.css with the Tailwind standalone CLI
-	$(TAILWIND) -i static/css/input.css -o static/css/app.css --minify
-.PHONY: css
-
-css-watch: $(TAILWIND) # Rebuild the CSS whenever a template or input.css changes
-	$(TAILWIND) -i static/css/input.css -o static/css/app.css --watch
-.PHONY: css-watch
-
-build: generate css # Generate, build the CSS and compile bin/karibu
+build: generate # Generate and compile bin/karibu
 	go build -o bin/karibu ./cmd/web
 .PHONY: build
 
-run: generate css # Build everything and serve Karibu Guide on :8080
-	go run ./cmd/web -port $(PORT)
+run: generate # Serve Karibu Guide on :8080 (CSS/JSON edits show on refresh)
+	go run ./cmd/web -dev -port $(PORT)
 .PHONY: run
 
-dev: $(TAILWIND) # Live reload: air rebuilds Go/templ, Tailwind watches CSS
-	@trap 'kill 0' INT TERM; \
-	$(TAILWIND) -i static/css/input.css -o static/css/app.css --watch=always & \
+dev: # Live reload with air: open http://localhost:8090
 	$(AIR) -c .air.toml
 .PHONY: dev
 

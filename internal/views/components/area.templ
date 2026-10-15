@@ -1,0 +1,64 @@
+package components
+
+import "workshop/internal/data"
+
+templ CostLevel(cost string) {
+	<span class="cost" title={ "Rough cost level: " + costLabel(cost) }>
+		<span class="cost__dots" aria-hidden="true">
+			for i := 1; i <= 3; i++ {
+				<span class={ "cost__dot", templ.KV("is-on", i <= costRank(cost)) }></span>
+			}
+		</span>
+		{ costLabel(cost) }
+	</span>
+}
+
+templ AreaCard(a data.Area, countyName string) {
+	<article id={ "area-" + a.Slug } class={ "card area-card", templ.KV("area-card--outside", a.County != "nairobi") }>
+		<header class="area-card__head">
+			<div>
+				<p class="eyebrow">{ a.Zone }</p>
+				<h3>{ a.Name }</h3>
+				if len(a.AlsoCalled) > 0 {
+					<p class="small muted">Also: { join(a.AlsoCalled) }</p>
+				}
+			</div>
+			<span class={ "chip", templ.KV("chip--green", a.County == "nairobi"), templ.KV("chip--red", a.County != "nairobi") }>
+				@Icon("pin", "icon-sm")
+				{ countyName } County
+			</span>
+		</header>
+		<p class="area-card__character">{ a.Character }</p>
+		<div class="cluster mt-3" style="--gap:.4rem">
+			@CostLevel(a.Cost)
+			for _, s := range a.Suits {
+				<span class="chip">{ suitLabel(s) }</span>
+			}
+		</div>
+		<details class="area-card__more">
+			<summary>Landmarks, transport &amp; safety</summary>
+			<dl class="area-card__facts">
+			if len(a.Landmarks) > 0 {
+				<div>
+					<dt>Landmarks</dt>
+					<dd>{ join(a.Landmarks) }</dd>
+				</div>
+			}
+			<div>
+				<dt>Getting there</dt>
+				<dd>{ a.Transport }</dd>
+			</div>
+			<div>
+				<dt>Safety</dt>
+				<dd>{ a.SafetyNote }</dd>
+			</div>
+			</dl>
+		</details>
+		if a.Confidence == "limited" {
+			<p class="limited">
+				@Icon("info", "icon-sm")
+				We have less data on this area. Treat details as a starting point.
+			</p>
+		}
+	</article>
+}

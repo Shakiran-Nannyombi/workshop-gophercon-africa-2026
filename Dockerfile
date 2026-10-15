@@ -4,7 +4,8 @@ WORKDIR /src
 # Modules come from vendor/, and the generated templ code and CSS are committed,
 # so the build needs nothing from the network.
 COPY . .
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/karibu ./cmd/web
+# vendor/ is in the image context; do not reach the network for modules.
+RUN CGO_ENABLED=0 GOPROXY=off go build -mod=vendor -trimpath -ldflags="-s -w" -o /out/karibu ./cmd/web
 
 FROM gcr.io/distroless/static-debian12
 WORKDIR /app

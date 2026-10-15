@@ -120,7 +120,7 @@ func (s *site) home(w http.ResponseWriter, r *http.Request) {
 	if _, ok := s.store.Country(country); !ok {
 		country = "KE"
 	}
-	s.render(w, r, http.StatusOK, pages.Home(m, s.store, country), pages.CityPicker(s.store, country))
+	s.render(w, r, http.StatusOK, pages.Home(m, s.store, country), pages.HomeCountry(s.store, country))
 }
 
 func (s *site) designSystem(w http.ResponseWriter, r *http.Request) {

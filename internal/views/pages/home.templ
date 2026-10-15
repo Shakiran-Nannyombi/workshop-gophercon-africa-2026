@@ -19,13 +19,7 @@ var startSteps = []step{
 
 templ Home(m layouts.Meta, s *data.Store, country string) {
 	@layouts.Base(m) {
-		@components.SectionHero(components.HeroProps{
-			Eyebrow: "Karibu · welcome",
-			Title:   "Kenya, explained from zero.",
-			Lede:    "Confused by the money, the map, or why your Nairobi address says Kiambu? This guide starts where you are: never been, slightly lost, very curious.",
-			Motif:   "savannah",
-			Tall:    true,
-		}) {
+		@components.SectionHero(homeHero(country)) {
 			<div class="cluster hero__actions">
 				<a class="btn btn--gold" href="#start">
 					Start here
@@ -34,36 +28,68 @@ templ Home(m layouts.Meta, s *data.Store, country string) {
 				<a class="btn" href="#cities">Pick a city</a>
 			</div>
 		}
-		@quickFacts(s)
+		@homeGlance(s, country, false)
 		@startHere()
 		@components.KangaBand()
 		@cityPickerSection(s, country)
 	}
 }
 
-templ quickFacts(s *data.Store) {
-	<section class="wrap" aria-label="Three things that confuse everyone">
-		<ul class="facts reveal-stagger">
-			<li class="card fact">
-				<p class="eyebrow">Money</p>
-				<p class="fact__big num">KSh 1,000</p>
-				<p>
-					is about <strong class="num">US${ usdFor(s, 1000) }</strong>
-					@components.Approx("")
-				</p>
-			</li>
-			<li class="card fact">
-				<p class="eyebrow">Map</p>
-				<p class="fact__big">47 counties</p>
-				<p>Nairobi is one of them, and it’s also a city.</p>
-			</li>
-			<li class="card fact">
-				<p class="eyebrow">Surprise</p>
-				<p class="fact__big">Ruaka ≠ Nairobi</p>
-				<p>It’s in Kiambu County, just over the border.</p>
-			</li>
+// HomeCountry answers a country pill click: the city list, plus the hero
+// copy and Money/Map/Pay cards swapped in out of band.
+templ HomeCountry(s *data.Store, country string) {
+	@CityPicker(s, country)
+	@components.HeroCopy(homeHero(country), true)
+	@homeGlance(s, country, true)
+}
+
+templ homeGlance(s *data.Store, country string, oob bool) {
+	<section
+		id="home-glance"
+		class="wrap home-glance"
+		aria-label="Things that help you get oriented"
+		if oob {
+			hx-swap-oob="true"
+		}
+	>
+		@countryPills(s, country, "")
+		<ul class="facts reveal-stagger is-in" aria-live="polite">
+			for _, f := range homeFacts(s, country) {
+				<li class="card fact">
+					<p class="eyebrow">{ f.Eyebrow }</p>
+					<p class={ "fact__big", templ.KV("num", f.USD != "") }>{ f.Big }</p>
+					<p>
+						{ f.Body }
+						if f.USD != "" {
+							<strong class="num">US${ f.USD }</strong>
+							@components.Approx("")
+						}
+					</p>
+				</li>
+			}
 		</ul>
 	</section>
+}
+
+templ countryPills(s *data.Store, country, hash string) {
+	<div class="cluster home-glance__pills" role="group" aria-label="Choose a country">
+		for _, c := range s.Countries {
+			<a
+				class="pill"
+				href={ templ.SafeURL("/?country=" + c.Code + hash) }
+				hx-get={ "/?country=" + c.Code }
+				hx-target="#city-picker"
+				hx-swap="outerHTML"
+				hx-push-url={ "/?country=" + c.Code }
+				if c.Code == country {
+					aria-current="true"
+				}
+			>
+				@components.Flag(&c)
+				{ c.Name }
+			</a>
+		}
+	</div>
 }
 
 templ startHere() {
@@ -111,23 +137,7 @@ templ cityPickerSection(s *data.Store, country string) {
 
 templ CityPicker(s *data.Store, country string) {
 	<div id="city-picker" class="mt-6">
-		<div class="cluster" role="group" aria-label="Show cities in">
-			for _, c := range s.Countries {
-				<a
-					class="pill"
-					href={ templ.SafeURL("/?country=" + c.Code + "#cities") }
-					hx-get={ "/?country=" + c.Code }
-					hx-target="#city-picker"
-					hx-swap="outerHTML"
-					if c.Code == country {
-						aria-current="true"
-					}
-				>
-					@components.Flag(&c)
-					{ c.Name }
-				</a>
-			}
-		</div>
+		@countryPills(s, country, "#cities")
 		{{ cities := citiesIn(s, country) }}
 		if len(cities) == 0 {
 			<p class="card card--pad mt-6">No city guides here yet. See <a class="link" href="/cities">all cities</a>.</p>

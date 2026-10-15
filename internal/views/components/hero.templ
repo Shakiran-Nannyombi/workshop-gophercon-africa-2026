@@ -6,22 +6,55 @@ type HeroProps struct {
 	Lede    string
 	Motif   string // savannah, skyline, coast, lake, highland, island, hills, mountain, river, rift
 	Tall    bool
+	CopyID  string // when set, the copy block gets this id so htmx can swap it out of band
 }
 
 templ SectionHero(p HeroProps) {
 	<section class={ "hero", templ.KV("hero--tall", p.Tall) } data-parallax>
 		@Landscape(p.Motif, false)
 		<div class="wrap hero__inner">
-			if p.Eyebrow != "" {
-				<p class="eyebrow">{ p.Eyebrow }</p>
-			}
-			<h1 class={ "hero__title", templ.KV("display-xl", p.Tall), templ.KV("display-lg", !p.Tall) }>{ p.Title }</h1>
-			if p.Lede != "" {
-				<p class="lede">{ p.Lede }</p>
-			}
+			@HeroCopy(p, false)
 			{ children... }
 		</div>
 	</section>
+}
+
+// HeroCopy is the eyebrow, title and lede. With oob set it is sent alongside an
+// htmx response and replaces the copy already on the page (matched by CopyID).
+templ HeroCopy(p HeroProps, oob bool) {
+	<div
+		class="hero__copy"
+		if p.CopyID != "" {
+			id={ p.CopyID }
+			aria-live="polite"
+		}
+		if oob {
+			hx-swap-oob="innerHTML"
+		}
+	>
+		if p.Eyebrow != "" {
+			<p class="eyebrow">{ p.Eyebrow }</p>
+		}
+		<h1 class={ "hero__title", templ.KV("display-xl", p.Tall), templ.KV("display-lg", !p.Tall) }>{ p.Title }</h1>
+		if p.Lede != "" {
+			<p class="lede">{ p.Lede }</p>
+		}
+	</div>
+}
+
+// drift is one landscape layer: two copies of the scene side by side, the second
+// mirrored so the edges always meet, sliding sideways like the view from a car.
+templ drift(class, depth, viewBox, aspect string, scene templ.Component) {
+	<div class={ "layer", class } data-depth={ depth }>
+		<div class="layer__track">
+			<svg viewBox={ viewBox } preserveAspectRatio={ aspect }>
+				@scene
+			</svg>
+			<svg class="layer__mirror" viewBox={ viewBox } preserveAspectRatio={ aspect }>
+				@scene
+			</svg>
+		</div>
+	</div>
 }
 
 // Landscape is the layered parallax scene behind a hero; data-depth sets scroll speed.
@@ -30,76 +63,65 @@ templ Landscape(motif string, card bool) {
 		<div class="landscape__sky"></div>
 		<div class="landscape__stars"></div>
 		<div class="landscape__sun" data-depth="0.5"></div>
-		<svg class="layer layer--far" data-depth="0.35" viewBox="0 0 1200 300" preserveAspectRatio="none">
-			switch motif {
-				case "mountain":
-					<path d="M0 300 V210 L180 170 L330 190 L520 60 L560 52 L600 64 L760 170 L900 150 L1200 200 V300Z" fill="var(--ridge-far)"></path>
-					<path d="M505 74 L520 60 L560 52 L600 64 L585 78 L560 70 L540 82Z" fill="var(--sun)" opacity=".9"></path>
-				case "rift":
-					<path d="M0 300 V96 L300 88 L380 92 L410 120 L436 190 L470 226 L800 232 L850 206 L880 168 L920 150 L1200 140 V300Z" fill="var(--ridge-far)"></path>
-					<path d="M380 92 L410 120 L436 190 L470 226 L456 228 L424 196 L398 128Z" fill="var(--ridge-mid)" opacity=".55"></path>
-					<path d="M560 300 V236 L640 176 L660 170 L684 176 L770 236 V300Z" fill="var(--ridge-mid)" opacity=".7"></path>
-				case "hills":
-					<path d="M0 300 V150 C60 110 140 110 200 150 C250 120 330 100 400 140 C460 110 540 104 600 146 C660 116 740 110 800 150 C860 124 940 112 1000 146 C1060 118 1140 116 1200 140 V300Z" fill="var(--ridge-far)"></path>
-				case "island", "coast":
-					<path d="M0 300 V230 C200 220 380 236 600 226 S1000 222 1200 232 V300Z" fill="var(--ridge-far)"></path>
-				default:
-					<path d="M0 300 V170 L120 140 L210 155 L330 95 L420 120 L520 80 L640 130 L760 100 L900 140 L1010 90 L1200 130 V300Z" fill="var(--ridge-far)"></path>
-			}
-		</svg>
-		<svg class="layer layer--mid" data-depth="0.2" viewBox="0 0 1200 300" preserveAspectRatio="none">
-			switch motif {
-				case "mountain":
-					<path d="M0 300 V200 L120 186 L230 110 L250 104 L268 112 L380 190 C520 170 650 200 800 182 S1050 170 1200 178 V300Z" fill="var(--ridge-mid)"></path>
-				case "rift":
-					<path d="M0 300 V176 L260 170 L300 186 L330 230 C500 226 800 232 1200 224 V300Z" fill="var(--ridge-mid)"></path>
-				case "hills":
-					<path d="M0 300 V200 C80 150 180 150 260 196 C330 156 430 150 500 194 C580 150 690 146 760 196 C840 160 940 154 1010 196 C1070 166 1150 164 1200 186 V300Z" fill="var(--ridge-mid)"></path>
-				case "island":
-					<path d="M0 300 V250 C300 244 800 252 1200 246 V300Z" fill="var(--ridge-mid)"></path>
-				default:
-					<path d="M0 300 V190 C150 150 260 210 400 170 S650 120 800 175 S1050 150 1200 160 V300Z" fill="var(--ridge-mid)"></path>
-			}
-		</svg>
+		@drift("layer--far", "0.35", "0 0 1200 300", "none", farRidges(motif))
+		@drift("layer--mid", "0.2", "0 0 1200 300", "none", midRidges(motif))
 		switch motif {
 			case "skyline":
-				<svg class="layer layer--city" data-depth="0.1" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice">
-					@skyline()
-				</svg>
+				@drift("layer--city", "0.1", "0 0 1200 260", "xMidYMax slice", skyline())
 			case "coast":
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@coast(false)
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", coast(false))
 			case "island":
-				<svg class="layer layer--city" data-depth="0.08" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice">
-					@island()
-				</svg>
+				@drift("layer--city", "0.08", "0 0 1200 260", "xMidYMax slice", island())
 			case "lake":
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@lake()
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", lake())
 			case "river":
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@river()
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", river())
 			case "rift":
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@riftFloor()
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", riftFloor())
 			case "hills":
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@hills()
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", hills())
 			case "mountain":
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@foothills()
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", foothills())
 			default:
-				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
-					@savannah(motif == "highland")
-				</svg>
+				@drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", savannah(motif == "highland"))
+		}
+		if !card {
+			<div class="landscape__road"></div>
 		}
 	</div>
+}
+
+templ farRidges(motif string) {
+	switch motif {
+		case "mountain":
+			<path d="M0 300 V210 L180 170 L330 190 L520 60 L560 52 L600 64 L760 170 L900 150 L1200 200 V300Z" fill="var(--ridge-far)"></path>
+			<path d="M505 74 L520 60 L560 52 L600 64 L585 78 L560 70 L540 82Z" fill="var(--sun)" opacity=".9"></path>
+		case "rift":
+			<path d="M0 300 V96 L300 88 L380 92 L410 120 L436 190 L470 226 L800 232 L850 206 L880 168 L920 150 L1200 140 V300Z" fill="var(--ridge-far)"></path>
+			<path d="M380 92 L410 120 L436 190 L470 226 L456 228 L424 196 L398 128Z" fill="var(--ridge-mid)" opacity=".55"></path>
+			<path d="M560 300 V236 L640 176 L660 170 L684 176 L770 236 V300Z" fill="var(--ridge-mid)" opacity=".7"></path>
+		case "hills":
+			<path d="M0 300 V150 C60 110 140 110 200 150 C250 120 330 100 400 140 C460 110 540 104 600 146 C660 116 740 110 800 150 C860 124 940 112 1000 146 C1060 118 1140 116 1200 140 V300Z" fill="var(--ridge-far)"></path>
+		case "island", "coast":
+			<path d="M0 300 V230 C200 220 380 236 600 226 S1000 222 1200 232 V300Z" fill="var(--ridge-far)"></path>
+		default:
+			<path d="M0 300 V170 L120 140 L210 155 L330 95 L420 120 L520 80 L640 130 L760 100 L900 140 L1010 90 L1200 130 V300Z" fill="var(--ridge-far)"></path>
+	}
+}
+
+templ midRidges(motif string) {
+	switch motif {
+		case "mountain":
+			<path d="M0 300 V200 L120 186 L230 110 L250 104 L268 112 L380 190 C520 170 650 200 800 182 S1050 170 1200 178 V300Z" fill="var(--ridge-mid)"></path>
+		case "rift":
+			<path d="M0 300 V176 L260 170 L300 186 L330 230 C500 226 800 232 1200 224 V300Z" fill="var(--ridge-mid)"></path>
+		case "hills":
+			<path d="M0 300 V200 C80 150 180 150 260 196 C330 156 430 150 500 194 C580 150 690 146 760 196 C840 160 940 154 1010 196 C1070 166 1150 164 1200 186 V300Z" fill="var(--ridge-mid)"></path>
+		case "island":
+			<path d="M0 300 V250 C300 244 800 252 1200 246 V300Z" fill="var(--ridge-mid)"></path>
+		default:
+			<path d="M0 300 V190 C150 150 260 210 400 170 S650 120 800 175 S1050 150 1200 160 V300Z" fill="var(--ridge-mid)"></path>
+	}
 }
 
 templ acacia(x, y, s string) {

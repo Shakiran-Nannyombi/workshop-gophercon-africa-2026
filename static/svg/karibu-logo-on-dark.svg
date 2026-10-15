@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" role="img" aria-label="Karibu Guide">
+<title>Karibu Guide</title>
+<style>.word{fill:#F6EBD3}</style>
+<defs><clipPath id="pin"><path d="M100 14 C58 14 24 48 24 90 C24 136 100 206 100 206 C100 206 176 136 176 90 C176 48 142 14 100 14Z"/></clipPath></defs>
+<g clip-path="url(#pin)">
+<rect width="200" height="220" fill="#1B1F4B"/>
+<circle cx="100" cy="84" r="44" fill="#E8A838" opacity=".22"/>
+<circle cx="100" cy="84" r="28" fill="#F2B544"/>
+<path d="M20 128 Q60 92 100 118 T190 106 L190 220 L20 220Z" fill="#3E8A64"/>
+<path d="M20 152 Q70 124 112 146 T190 140 L190 220 L20 220Z" fill="#2F6B4F"/>
+<path d="M20 176 Q80 156 130 172 T190 168 L190 220 L20 220Z" fill="#B5472F"/>
+<path d="M122 148 Q123 132 117 120 M122 134 Q131 127 136 121" stroke="#14172F" stroke-width="4" fill="none" stroke-linecap="round"/>
+<ellipse cx="119" cy="116" rx="27" ry="6.5" fill="#14172F"/>
+<ellipse cx="106" cy="112" rx="13" ry="4.5" fill="#14172F"/>
+<ellipse cx="137" cy="119" rx="10" ry="3.5" fill="#14172F"/>
+</g>
+<path d="M100 14 C58 14 24 48 24 90 C24 136 100 206 100 206 C100 206 176 136 176 90 C176 48 142 14 100 14Z" fill="none" stroke="#E8A838" stroke-width="6" stroke-linejoin="round"/>
+<text class="word" x="205" y="112" font-family="'Fraunces','Playfair Display',Georgia,'Times New Roman',serif" font-size="84" font-weight="800" letter-spacing="-2">Karibu</text>
+<g transform="translate(209 128)">
+<path d="M0 0h14l-7 12z" fill="#E8A838"/><path d="M18 0h14l-7 12z" fill="#B5472F"/><path d="M36 0h14l-7 12z" fill="#2F6B4F"/>
+<path d="M54 0h14l-7 12z" fill="#E8A838"/><path d="M72 0h14l-7 12z" fill="#B5472F"/><path d="M90 0h14l-7 12z" fill="#2F6B4F"/>
+</g>
+<text x="207" y="178" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="14" fill="#B5472F">GUIDE</text>
+</svg>

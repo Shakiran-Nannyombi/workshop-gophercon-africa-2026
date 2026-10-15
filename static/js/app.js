@@ -54,12 +54,15 @@
   }
   reveal();
 
-  // Parallax hero: each [data-depth] layer moves at its own speed.
+  // Parallax hero: layers drift up as you scroll (down would vanish into overflow).
   var layers = [];
   function collect() {
     layers = [];
-    document.querySelectorAll("[data-parallax] [data-depth]").forEach(function (el) {
-      layers.push({ el: el, depth: parseFloat(el.getAttribute("data-depth")) || 0 });
+    document.querySelectorAll("[data-parallax]").forEach(function (hero) {
+      hero.classList.add("is-ready");
+      hero.querySelectorAll("[data-depth]").forEach(function (el) {
+        layers.push({ el: el, depth: parseFloat(el.getAttribute("data-depth")) || 0 });
+      });
     });
   }
   var ticking = false;
@@ -68,16 +71,45 @@
     ticking = true;
     requestAnimationFrame(function () {
       var y = window.scrollY;
-      if (y < window.innerHeight * 1.5) {
-        layers.forEach(function (l) { l.el.style.transform = "translate3d(0," + (y * l.depth).toFixed(1) + "px,0)"; });
+      if (y < window.innerHeight * 1.8) {
+        layers.forEach(function (l) {
+          l.el.style.setProperty("--parallax", (-y * l.depth * 1.35).toFixed(1) + "px");
+        });
       }
       ticking = false;
     });
   }
-  collect();
+  requestAnimationFrame(function () {
+    collect();
+    onScroll();
+  });
   window.addEventListener("scroll", onScroll, { passive: true });
   reduce.addEventListener("change", function () {
-    if (reduce.matches) layers.forEach(function (l) { l.el.style.transform = ""; });
+    if (reduce.matches) {
+      layers.forEach(function (l) { l.el.style.removeProperty("--parallax"); });
+    } else {
+      onScroll();
+    }
+  });
+
+  // Park the hero's drive while it is off screen so it costs nothing.
+  if ("IntersectionObserver" in window) {
+    var park = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle("is-parked", !en.isIntersecting); });
+    });
+    document.querySelectorAll(".hero[data-parallax]").forEach(function (h) { park.observe(h); });
+  }
+
+  // Ease in hero copy and Money/Map cards that arrive out of band.
+  document.addEventListener("htmx:oobAfterSwap", function (e) {
+    var el = e.detail.target;
+    if (!el) return;
+    var animate = el.classList.contains("hero__copy") || el.id === "home-glance";
+    if (!animate) return;
+    el.querySelectorAll(".reveal-stagger").forEach(function (n) { n.classList.add("is-in"); });
+    el.classList.remove("is-new");
+    void el.offsetWidth;
+    el.classList.add("is-new");
   });
 
   // Converter: swap the two currencies and re-run the conversion

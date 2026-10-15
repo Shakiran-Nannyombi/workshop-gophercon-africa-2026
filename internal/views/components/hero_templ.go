@@ -14,6 +14,7 @@ type HeroProps struct {
 	Lede    string
 	Motif   string // savannah, skyline, coast, lake, highland, island, hills, mountain, river, rift
 	Tall    bool
+	CopyID  string // when set, the copy block gets this id so htmx can swap it out of band
 }
 
 func SectionHero(p HeroProps) templ.Component {
@@ -67,84 +68,282 @@ func SectionHero(p HeroProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if p.Eyebrow != "" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p class=\"eyebrow\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var4 string
-			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(p.Eyebrow)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 16, Col: 34}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</p>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		var templ_7745c5c3_Var5 = []any{"hero__title", templ.KV("display-xl", p.Tall), templ.KV("display-lg", !p.Tall)}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var5...)
+		templ_7745c5c3_Err = HeroCopy(p, false).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<h1 class=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.ResolveAttributeValue(templ.CSSClasses(templ_7745c5c3_Var5).String())
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 1, Col: 0}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var6)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(p.Title)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 18, Col: 105}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</h1>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if p.Lede != "" {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<p class=\"lede\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var8 string
-			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(p.Lede)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 20, Col: 28}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</p>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
 		}
 		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></section>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+// HeroCopy is the eyebrow, title and lede. With oob set it is sent alongside an
+// htmx response and replaces the copy already on the page (matched by CopyID).
+func HeroCopy(p HeroProps, oob bool) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var4 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var4 == nil {
+			templ_7745c5c3_Var4 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<div class=\"hero__copy\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if p.CopyID != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, " id=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.ResolveAttributeValue(p.CopyID)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 28, Col: 16}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" aria-live=\"polite\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		if oob {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, " hx-swap-oob=\"innerHTML\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, ">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if p.Eyebrow != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<p class=\"eyebrow\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var6 string
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(p.Eyebrow)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 36, Col: 33}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		var templ_7745c5c3_Var7 = []any{"hero__title", templ.KV("display-xl", p.Tall), templ.KV("display-lg", !p.Tall)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var7...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<h1 class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.ResolveAttributeValue(templ.CSSClasses(templ_7745c5c3_Var7).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var8)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var9 string
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(p.Title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 38, Col: 104}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</h1>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if p.Lede != "" {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<p class=\"lede\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var10 string
+			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(p.Lede)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 40, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+// drift is one landscape layer: two copies of the scene side by side, the second
+// mirrored so the edges always meet, sliding sideways like the view from a car.
+func drift(class, depth, viewBox, aspect string, scene templ.Component) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var11 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var11 == nil {
+			templ_7745c5c3_Var11 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		var templ_7745c5c3_Var12 = []any{"layer", class}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var12...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "<div class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var13 string
+		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.ResolveAttributeValue(templ.CSSClasses(templ_7745c5c3_Var12).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var13)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\" data-depth=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.ResolveAttributeValue(depth)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 48, Col: 49}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var14)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "\"><div class=\"layer__track\"><svg viewBox=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var15 string
+		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.ResolveAttributeValue(viewBox)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 50, Col: 25}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var15)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "\" preserveAspectRatio=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.ResolveAttributeValue(aspect)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 50, Col: 56}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var16)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = scene.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</svg> <svg class=\"layer__mirror\" viewBox=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var17 string
+		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.ResolveAttributeValue(viewBox)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 53, Col: 47}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var17)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\" preserveAspectRatio=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var18 string
+		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.ResolveAttributeValue(aspect)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 53, Col: 78}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var18)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = scene.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</svg></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -169,217 +368,201 @@ func Landscape(motif string, card bool) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var9 == nil {
-			templ_7745c5c3_Var9 = templ.NopComponent
+		templ_7745c5c3_Var19 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var19 == nil {
+			templ_7745c5c3_Var19 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var10 = []any{"landscape", templ.KV("landscape--card", card)}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var10...)
+		var templ_7745c5c3_Var20 = []any{"landscape", templ.KV("landscape--card", card)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var20...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "<div class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var11 string
-		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.ResolveAttributeValue(templ.CSSClasses(templ_7745c5c3_Var10).String())
+		var templ_7745c5c3_Var21 string
+		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.ResolveAttributeValue(templ.CSSClasses(templ_7745c5c3_Var20).String())
 		if templ_7745c5c3_Err != nil {
 			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 1, Col: 0}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var11)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var21)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\" aria-hidden=\"true\"><div class=\"landscape__sky\"></div><div class=\"landscape__stars\"></div><div class=\"landscape__sun\" data-depth=\"0.5\"></div><svg class=\"layer layer--far\" data-depth=\"0.35\" viewBox=\"0 0 1200 300\" preserveAspectRatio=\"none\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "\" aria-hidden=\"true\"><div class=\"landscape__sky\"></div><div class=\"landscape__stars\"></div><div class=\"landscape__sun\" data-depth=\"0.5\"></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		switch motif {
-		case "mountain":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<path d=\"M0 300 V210 L180 170 L330 190 L520 60 L560 52 L600 64 L760 170 L900 150 L1200 200 V300Z\" fill=\"var(--ridge-far)\"></path> <path d=\"M505 74 L520 60 L560 52 L600 64 L585 78 L560 70 L540 82Z\" fill=\"var(--sun)\" opacity=\".9\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		case "rift":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<path d=\"M0 300 V96 L300 88 L380 92 L410 120 L436 190 L470 226 L800 232 L850 206 L880 168 L920 150 L1200 140 V300Z\" fill=\"var(--ridge-far)\"></path> <path d=\"M380 92 L410 120 L436 190 L470 226 L456 228 L424 196 L398 128Z\" fill=\"var(--ridge-mid)\" opacity=\".55\"></path> <path d=\"M560 300 V236 L640 176 L660 170 L684 176 L770 236 V300Z\" fill=\"var(--ridge-mid)\" opacity=\".7\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		case "hills":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<path d=\"M0 300 V150 C60 110 140 110 200 150 C250 120 330 100 400 140 C460 110 540 104 600 146 C660 116 740 110 800 150 C860 124 940 112 1000 146 C1060 118 1140 116 1200 140 V300Z\" fill=\"var(--ridge-far)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		case "island", "coast":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<path d=\"M0 300 V230 C200 220 380 236 600 226 S1000 222 1200 232 V300Z\" fill=\"var(--ridge-far)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		default:
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "<path d=\"M0 300 V170 L120 140 L210 155 L330 95 L420 120 L520 80 L640 130 L760 100 L900 140 L1010 90 L1200 130 V300Z\" fill=\"var(--ridge-far)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</svg> <svg class=\"layer layer--mid\" data-depth=\"0.2\" viewBox=\"0 0 1200 300\" preserveAspectRatio=\"none\">")
+		templ_7745c5c3_Err = drift("layer--far", "0.35", "0 0 1200 300", "none", farRidges(motif)).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		switch motif {
-		case "mountain":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "<path d=\"M0 300 V200 L120 186 L230 110 L250 104 L268 112 L380 190 C520 170 650 200 800 182 S1050 170 1200 178 V300Z\" fill=\"var(--ridge-mid)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		case "rift":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<path d=\"M0 300 V176 L260 170 L300 186 L330 230 C500 226 800 232 1200 224 V300Z\" fill=\"var(--ridge-mid)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		case "hills":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "<path d=\"M0 300 V200 C80 150 180 150 260 196 C330 156 430 150 500 194 C580 150 690 146 760 196 C840 160 940 154 1010 196 C1070 166 1150 164 1200 186 V300Z\" fill=\"var(--ridge-mid)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		case "island":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "<path d=\"M0 300 V250 C300 244 800 252 1200 246 V300Z\" fill=\"var(--ridge-mid)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		default:
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<path d=\"M0 300 V190 C150 150 260 210 400 170 S650 120 800 175 S1050 150 1200 160 V300Z\" fill=\"var(--ridge-mid)\"></path>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</svg> ")
+		templ_7745c5c3_Err = drift("layer--mid", "0.2", "0 0 1200 300", "none", midRidges(motif)).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		switch motif {
 		case "skyline":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "<svg class=\"layer layer--city\" data-depth=\"0.1\" viewBox=\"0 0 1200 260\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = skyline().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</svg>")
+			templ_7745c5c3_Err = drift("layer--city", "0.1", "0 0 1200 260", "xMidYMax slice", skyline()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "coast":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = coast(false).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", coast(false)).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "island":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "<svg class=\"layer layer--city\" data-depth=\"0.08\" viewBox=\"0 0 1200 260\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = island().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "</svg>")
+			templ_7745c5c3_Err = drift("layer--city", "0.08", "0 0 1200 260", "xMidYMax slice", island()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "lake":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = lake().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", lake()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "river":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = river().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", river()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "rift":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = riftFloor().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", riftFloor()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "hills":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = hills().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", hills()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "mountain":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = foothills().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", foothills()).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		default:
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "<svg class=\"layer layer--near\" data-depth=\"0.08\" viewBox=\"0 0 1200 240\" preserveAspectRatio=\"xMidYMax slice\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = savannah(motif == "highland").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 43, "</svg>")
+			templ_7745c5c3_Err = drift("layer--near", "0.08", "0 0 1200 240", "xMidYMax slice", savannah(motif == "highland")).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "</div>")
+		if !card {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<div class=\"landscape__road\"></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func farRidges(motif string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var22 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var22 == nil {
+			templ_7745c5c3_Var22 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		switch motif {
+		case "mountain":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "<path d=\"M0 300 V210 L180 170 L330 190 L520 60 L560 52 L600 64 L760 170 L900 150 L1200 200 V300Z\" fill=\"var(--ridge-far)\"></path> <path d=\"M505 74 L520 60 L560 52 L600 64 L585 78 L560 70 L540 82Z\" fill=\"var(--sun)\" opacity=\".9\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "rift":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "<path d=\"M0 300 V96 L300 88 L380 92 L410 120 L436 190 L470 226 L800 232 L850 206 L880 168 L920 150 L1200 140 V300Z\" fill=\"var(--ridge-far)\"></path> <path d=\"M380 92 L410 120 L436 190 L470 226 L456 228 L424 196 L398 128Z\" fill=\"var(--ridge-mid)\" opacity=\".55\"></path> <path d=\"M560 300 V236 L640 176 L660 170 L684 176 L770 236 V300Z\" fill=\"var(--ridge-mid)\" opacity=\".7\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "hills":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<path d=\"M0 300 V150 C60 110 140 110 200 150 C250 120 330 100 400 140 C460 110 540 104 600 146 C660 116 740 110 800 150 C860 124 940 112 1000 146 C1060 118 1140 116 1200 140 V300Z\" fill=\"var(--ridge-far)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "island", "coast":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<path d=\"M0 300 V230 C200 220 380 236 600 226 S1000 222 1200 232 V300Z\" fill=\"var(--ridge-far)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		default:
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "<path d=\"M0 300 V170 L120 140 L210 155 L330 95 L420 120 L520 80 L640 130 L760 100 L900 140 L1010 90 L1200 130 V300Z\" fill=\"var(--ridge-far)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		return nil
+	})
+}
+
+func midRidges(motif string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var23 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var23 == nil {
+			templ_7745c5c3_Var23 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		switch motif {
+		case "mountain":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "<path d=\"M0 300 V200 L120 186 L230 110 L250 104 L268 112 L380 190 C520 170 650 200 800 182 S1050 170 1200 178 V300Z\" fill=\"var(--ridge-mid)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "rift":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "<path d=\"M0 300 V176 L260 170 L300 186 L330 230 C500 226 800 232 1200 224 V300Z\" fill=\"var(--ridge-mid)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "hills":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "<path d=\"M0 300 V200 C80 150 180 150 260 196 C330 156 430 150 500 194 C580 150 690 146 760 196 C840 160 940 154 1010 196 C1070 166 1150 164 1200 186 V300Z\" fill=\"var(--ridge-mid)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "island":
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "<path d=\"M0 300 V250 C300 244 800 252 1200 246 V300Z\" fill=\"var(--ridge-mid)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		default:
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "<path d=\"M0 300 V190 C150 150 260 210 400 170 S650 120 800 175 S1050 150 1200 160 V300Z\" fill=\"var(--ridge-mid)\"></path>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
 		return nil
 	})
@@ -401,25 +584,25 @@ func acacia(x, y, s string) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var12 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var12 == nil {
-			templ_7745c5c3_Var12 = templ.NopComponent
+		templ_7745c5c3_Var24 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var24 == nil {
+			templ_7745c5c3_Var24 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 45, "<g transform=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "<g transform=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var13 string
-		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.ResolveAttributeValue("translate(" + x + " " + y + ") scale(" + s + ")")
+		var templ_7745c5c3_Var25 string
+		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.ResolveAttributeValue("translate(" + x + " " + y + ") scale(" + s + ")")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 106, Col: 65}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 128, Col: 65}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var13)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var25)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "\" fill=\"var(--ground)\"><path d=\"M-62 -58 C-40 -78 40 -82 66 -62 C78 -54 70 -46 52 -46 C20 -42 -24 -42 -56 -46 C-72 -48 -72 -52 -62 -58Z\"></path> <path d=\"M-3 0 L-2 -30 L-26 -48 L-22 -50 L0 -36 L4 -50 L8 -50 L5 -34 L30 -50 L33 -47 L6 -28 L5 0Z\"></path></g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "\" fill=\"var(--ground)\"><path d=\"M-62 -58 C-40 -78 40 -82 66 -62 C78 -54 70 -46 52 -46 C20 -42 -24 -42 -56 -46 C-72 -48 -72 -52 -62 -58Z\"></path> <path d=\"M-3 0 L-2 -30 L-26 -48 L-22 -50 L0 -36 L4 -50 L8 -50 L5 -34 L30 -50 L33 -47 L6 -28 L5 0Z\"></path></g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -443,40 +626,40 @@ func savannah(green bool) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var14 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var14 == nil {
-			templ_7745c5c3_Var14 = templ.NopComponent
+		templ_7745c5c3_Var26 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var26 == nil {
+			templ_7745c5c3_Var26 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 47, "<path d=\"M0 240 V150 C200 120 380 170 600 140 S980 120 1200 150 V240Z\" fill=\"var(--ridge-near)\"></path> ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 43, "<path d=\"M0 240 V150 C200 120 380 170 600 140 S980 120 1200 150 V240Z\" fill=\"var(--ridge-near)\"></path> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if green {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "<g fill=\"var(--ground)\" opacity=\".85\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "<g fill=\"var(--ground)\" opacity=\".85\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			for i := 0; i < 9; i++ {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 49, "<path d=\"")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 45, "<path d=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				var templ_7745c5c3_Var15 string
-				templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.ResolveAttributeValue(teaRow(i))
+				var templ_7745c5c3_Var27 string
+				templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.ResolveAttributeValue(teaRow(i))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 117, Col: 23}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 139, Col: 23}
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var15)
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var27)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 50, "\"></path>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "\"></path>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "</g>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 47, "</g>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -493,7 +676,7 @@ func savannah(green bool) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, "<path d=\"M0 240 V200 C300 186 600 210 900 196 S1150 200 1200 200 V240Z\" fill=\"var(--ground)\"></path> <g fill=\"var(--ground)\"><path d=\"M420 200 l6-16 3 16 4-12 2 12z\"></path> <path d=\"M640 204 l5-14 3 14 4-10 2 10z\"></path></g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "<path d=\"M0 240 V200 C300 186 600 210 900 196 S1150 200 1200 200 V240Z\" fill=\"var(--ground)\"></path> <g fill=\"var(--ground)\"><path d=\"M420 200 l6-16 3 16 4-12 2 12z\"></path> <path d=\"M640 204 l5-14 3 14 4-10 2 10z\"></path></g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -517,48 +700,48 @@ func skyline() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var16 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var16 == nil {
-			templ_7745c5c3_Var16 = templ.NopComponent
+		templ_7745c5c3_Var28 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var28 == nil {
+			templ_7745c5c3_Var28 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 53, "<path d=\"M0 260 V190 C200 170 400 200 600 180 S1000 170 1200 190 V260Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"var(--ground)\"><rect x=\"300\" y=\"150\" width=\"34\" height=\"110\"></rect> <rect x=\"340\" y=\"120\" width=\"44\" height=\"140\"></rect> <rect x=\"392\" y=\"160\" width=\"30\" height=\"100\"></rect> <path d=\"M440 260 V110 h28 v-10 h-14 a18 10 0 0 1 36 0 h-14 v10 h28 V260z\"></path> <rect x=\"512\" y=\"70\" width=\"40\" height=\"190\"></rect> <rect x=\"520\" y=\"56\" width=\"24\" height=\"14\"></rect> <rect x=\"560\" y=\"132\" width=\"36\" height=\"128\"></rect> <rect x=\"604\" y=\"96\" width=\"30\" height=\"164\"></rect> <path d=\"M644 260 V140 l24-18 24 18 V260z\"></path> <rect x=\"700\" y=\"160\" width=\"40\" height=\"100\"></rect> <rect x=\"748\" y=\"126\" width=\"28\" height=\"134\"></rect> <rect x=\"784\" y=\"170\" width=\"46\" height=\"90\"></rect></g> <g fill=\"var(--gold)\" opacity=\".75\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 49, "<path d=\"M0 260 V190 C200 170 400 200 600 180 S1000 170 1200 190 V260Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"var(--ground)\"><rect x=\"300\" y=\"150\" width=\"34\" height=\"110\"></rect> <rect x=\"340\" y=\"120\" width=\"44\" height=\"140\"></rect> <rect x=\"392\" y=\"160\" width=\"30\" height=\"100\"></rect> <path d=\"M440 260 V110 h28 v-10 h-14 a18 10 0 0 1 36 0 h-14 v10 h28 V260z\"></path> <rect x=\"512\" y=\"70\" width=\"40\" height=\"190\"></rect> <rect x=\"520\" y=\"56\" width=\"24\" height=\"14\"></rect> <rect x=\"560\" y=\"132\" width=\"36\" height=\"128\"></rect> <rect x=\"604\" y=\"96\" width=\"30\" height=\"164\"></rect> <path d=\"M644 260 V140 l24-18 24 18 V260z\"></path> <rect x=\"700\" y=\"160\" width=\"40\" height=\"100\"></rect> <rect x=\"748\" y=\"126\" width=\"28\" height=\"134\"></rect> <rect x=\"784\" y=\"170\" width=\"46\" height=\"90\"></rect></g> <g fill=\"var(--gold)\" opacity=\".75\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for i := 0; i < 14; i++ {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "<rect x=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 50, "<rect x=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var17 string
-			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.ResolveAttributeValue(windowX(i))
+			var templ_7745c5c3_Var29 string
+			templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.ResolveAttributeValue(windowX(i))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 149, Col: 23}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 171, Col: 23}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var17)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, "\" y=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var29)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var18 string
-			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.ResolveAttributeValue(windowY(i))
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 149, Col: 40}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var18)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "\" y=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 56, "\" width=\"4\" height=\"6\"></rect>")
+			var templ_7745c5c3_Var30 string
+			templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.ResolveAttributeValue(windowY(i))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 171, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var30)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, "\" width=\"4\" height=\"6\"></rect>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 57, "</g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 53, "</g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -570,7 +753,7 @@ func skyline() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 58, "<path d=\"M0 260 V226 C300 214 600 236 900 222 S1150 226 1200 226 V260Z\" fill=\"var(--ground)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "<path d=\"M0 260 V226 C300 214 600 236 900 222 S1150 226 1200 226 V260Z\" fill=\"var(--ground)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -594,27 +777,27 @@ func coast(island bool) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var19 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var19 == nil {
-			templ_7745c5c3_Var19 = templ.NopComponent
+		templ_7745c5c3_Var31 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var31 == nil {
+			templ_7745c5c3_Var31 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 59, "<path d=\"M0 240 V170 C300 150 700 180 1200 160 V240Z\" fill=\"var(--lake)\" opacity=\".85\"></path> <path d=\"M0 190 C120 184 240 196 360 190 S600 184 720 192 S960 186 1200 190\" stroke=\"var(--sun)\" stroke-width=\"2\" fill=\"none\" opacity=\".5\"></path> <g fill=\"var(--ground)\"><path d=\"M720 168 h70 l-10 12 h-50z\"></path> <path d=\"M752 168 V112 L790 160z\"></path></g> ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, "<path d=\"M0 240 V170 C300 150 700 180 1200 160 V240Z\" fill=\"var(--lake)\" opacity=\".85\"></path> <path d=\"M0 190 C120 184 240 196 360 190 S600 184 720 192 S960 186 1200 190\" stroke=\"var(--sun)\" stroke-width=\"2\" fill=\"none\" opacity=\".5\"></path> <g fill=\"var(--ground)\"><path d=\"M720 168 h70 l-10 12 h-50z\"></path> <path d=\"M752 168 V112 L790 160z\"></path></g> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if island {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 60, "<path d=\"M0 240 V200 C120 190 240 196 380 214 L420 240Z\" fill=\"var(--ridge-near)\"></path> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 56, "<path d=\"M0 240 V200 C120 190 240 196 380 214 L420 240Z\" fill=\"var(--ridge-near)\"></path> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		} else {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 61, "<path d=\"M0 240 V196 C160 184 320 192 460 210 L520 240Z\" fill=\"var(--ridge-near)\"></path> ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 57, "<path d=\"M0 240 V196 C160 184 320 192 460 210 L520 240Z\" fill=\"var(--ridge-near)\"></path> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 62, "<g fill=\"var(--ground)\"><path d=\"M140 200 C150 160 160 130 170 118 M170 118 c-24 -6 -40 4 -48 14 M170 118 c20 -10 40 -6 50 6 M170 118 c-8 -18 -22 -22 -36 -20 M170 118 c14 -16 30 -16 42 -10\" stroke=\"var(--ground)\" stroke-width=\"7\" fill=\"none\" stroke-linecap=\"round\"></path> <path d=\"M250 206 C256 176 262 154 270 146 M270 146 c-18 -4 -30 4 -36 10 M270 146 c16 -8 30 -4 38 4 M270 146 c-6 -14 -16 -16 -28 -14\" stroke=\"var(--ground)\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"></path></g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 58, "<g fill=\"var(--ground)\"><path d=\"M140 200 C150 160 160 130 170 118 M170 118 c-24 -6 -40 4 -48 14 M170 118 c20 -10 40 -6 50 6 M170 118 c-8 -18 -22 -22 -36 -20 M170 118 c14 -16 30 -16 42 -10\" stroke=\"var(--ground)\" stroke-width=\"7\" fill=\"none\" stroke-linecap=\"round\"></path> <path d=\"M250 206 C256 176 262 154 270 146 M270 146 c-18 -4 -30 4 -36 10 M270 146 c16 -8 30 -4 38 4 M270 146 c-6 -14 -16 -16 -28 -14\" stroke=\"var(--ground)\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"></path></g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -638,12 +821,12 @@ func lake() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var20 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var20 == nil {
-			templ_7745c5c3_Var20 = templ.NopComponent
+		templ_7745c5c3_Var32 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var32 == nil {
+			templ_7745c5c3_Var32 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 63, "<path d=\"M0 240 V176 C300 168 800 186 1200 172 V240Z\" fill=\"var(--lake)\" opacity=\".8\"></path> <g fill=\"var(--ground)\"><path d=\"M480 180 c20 6 50 6 70 0 l-8 8 h-54z\"></path> <path d=\"M514 180 v-30 l18 26z\"></path></g> <path d=\"M0 240 V206 C200 196 380 214 560 222 S900 210 1200 214 V240Z\" fill=\"var(--ridge-near)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 59, "<path d=\"M0 240 V176 C300 168 800 186 1200 172 V240Z\" fill=\"var(--lake)\" opacity=\".8\"></path> <g fill=\"var(--ground)\"><path d=\"M480 180 c20 6 50 6 70 0 l-8 8 h-54z\"></path> <path d=\"M514 180 v-30 l18 26z\"></path></g> <path d=\"M0 240 V206 C200 196 380 214 560 222 S900 210 1200 214 V240Z\" fill=\"var(--ridge-near)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -651,7 +834,7 @@ func lake() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 64, "<path d=\"M140 222 v-26 M150 222 v-34 M160 222 v-22 M170 222 v-30\" stroke=\"var(--ground)\" stroke-width=\"3\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 60, "<path d=\"M140 222 v-26 M150 222 v-34 M160 222 v-22 M170 222 v-30\" stroke=\"var(--ground)\" stroke-width=\"3\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -675,48 +858,48 @@ func riftFloor() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var21 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var21 == nil {
-			templ_7745c5c3_Var21 = templ.NopComponent
+		templ_7745c5c3_Var33 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var33 == nil {
+			templ_7745c5c3_Var33 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 65, "<path d=\"M0 240 V168 C300 160 900 172 1200 162 V240Z\" fill=\"var(--ridge-near)\"></path> <ellipse cx=\"640\" cy=\"186\" rx=\"300\" ry=\"16\" fill=\"var(--lake)\" opacity=\".85\"></ellipse> <g fill=\"var(--red)\" opacity=\".85\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 61, "<path d=\"M0 240 V168 C300 160 900 172 1200 162 V240Z\" fill=\"var(--ridge-near)\"></path> <ellipse cx=\"640\" cy=\"186\" rx=\"300\" ry=\"16\" fill=\"var(--lake)\" opacity=\".85\"></ellipse> <g fill=\"var(--red)\" opacity=\".85\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for i := 0; i < 16; i++ {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 66, "<ellipse cx=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 62, "<ellipse cx=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var22 string
-			templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.ResolveAttributeValue(flamingoX(i))
+			var templ_7745c5c3_Var34 string
+			templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.ResolveAttributeValue(flamingoX(i))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 191, Col: 29}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 213, Col: 29}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var22)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 67, "\" cy=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var34)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var23 string
-			templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.ResolveAttributeValue(flamingoY(i))
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 191, Col: 49}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var23)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 63, "\" cy=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 68, "\" rx=\"5\" ry=\"2.6\"></ellipse>")
+			var templ_7745c5c3_Var35 string
+			templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.ResolveAttributeValue(flamingoY(i))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 213, Col: 49}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var35)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 64, "\" rx=\"5\" ry=\"2.6\"></ellipse>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 69, "</g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 65, "</g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -728,7 +911,7 @@ func riftFloor() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 70, "<path d=\"M0 240 V214 C260 204 520 222 800 212 S1100 214 1200 210 V240Z\" fill=\"var(--ground)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 66, "<path d=\"M0 240 V214 C260 204 520 222 800 212 S1100 214 1200 210 V240Z\" fill=\"var(--ground)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -752,12 +935,12 @@ func hills() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var24 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var24 == nil {
-			templ_7745c5c3_Var24 = templ.NopComponent
+		templ_7745c5c3_Var36 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var36 == nil {
+			templ_7745c5c3_Var36 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 71, "<path d=\"M0 240 V170 C120 120 260 124 380 170 C480 130 620 126 740 172 C860 132 1020 128 1200 166 V240Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"none\" stroke=\"var(--ground)\" stroke-width=\"3\" opacity=\".7\"><path d=\"M30 190 C140 150 250 152 350 186\"></path> <path d=\"M60 206 C150 176 250 178 330 204\"></path> <path d=\"M420 188 C520 152 620 150 720 188\"></path> <path d=\"M800 190 C900 154 1040 152 1160 186\"></path> <path d=\"M840 206 C930 180 1030 178 1130 202\"></path></g> <g fill=\"var(--ground)\"><path d=\"M180 140 h26 v-10 l-13 -10 l-13 10z\"></path> <path d=\"M214 144 h20 v-8 l-10 -8 l-10 8z\"></path> <path d=\"M560 140 h24 v-10 l-12 -9 l-12 9z\"></path> <path d=\"M590 144 h18 v-7 l-9 -7 l-9 7z\"></path> <path d=\"M930 142 h26 v-10 l-13 -10 l-13 10z\"></path> <path d=\"M520 230 c0 -30 6 -50 12 -56 M532 174 c-14 -6 -26 0 -32 8 M532 174 c12 -8 26 -6 32 2\" stroke=\"var(--ground)\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"></path></g> <path d=\"M0 240 V214 C200 204 420 222 640 214 S1000 206 1200 216 V240Z\" fill=\"var(--ground)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 67, "<path d=\"M0 240 V170 C120 120 260 124 380 170 C480 130 620 126 740 172 C860 132 1020 128 1200 166 V240Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"none\" stroke=\"var(--ground)\" stroke-width=\"3\" opacity=\".7\"><path d=\"M30 190 C140 150 250 152 350 186\"></path> <path d=\"M60 206 C150 176 250 178 330 204\"></path> <path d=\"M420 188 C520 152 620 150 720 188\"></path> <path d=\"M800 190 C900 154 1040 152 1160 186\"></path> <path d=\"M840 206 C930 180 1030 178 1130 202\"></path></g> <g fill=\"var(--ground)\"><path d=\"M180 140 h26 v-10 l-13 -10 l-13 10z\"></path> <path d=\"M214 144 h20 v-8 l-10 -8 l-10 8z\"></path> <path d=\"M560 140 h24 v-10 l-12 -9 l-12 9z\"></path> <path d=\"M590 144 h18 v-7 l-9 -7 l-9 7z\"></path> <path d=\"M930 142 h26 v-10 l-13 -10 l-13 10z\"></path> <path d=\"M520 230 c0 -30 6 -50 12 -56 M532 174 c-14 -6 -26 0 -32 8 M532 174 c12 -8 26 -6 32 2\" stroke=\"var(--ground)\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"></path></g> <path d=\"M0 240 V214 C200 204 420 222 640 214 S1000 206 1200 216 V240Z\" fill=\"var(--ground)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -781,35 +964,35 @@ func foothills() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var25 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var25 == nil {
-			templ_7745c5c3_Var25 = templ.NopComponent
+		templ_7745c5c3_Var37 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var37 == nil {
+			templ_7745c5c3_Var37 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 72, "<path d=\"M0 240 V170 C200 146 360 176 560 156 S920 140 1200 162 V240Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"var(--ground)\" opacity=\".85\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 68, "<path d=\"M0 240 V170 C200 146 360 176 560 156 S920 140 1200 162 V240Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"var(--ground)\" opacity=\".85\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for i := 0; i < 5; i++ {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 73, "<path d=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 69, "<path d=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var26 string
-			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.ResolveAttributeValue(teaRow(i))
+			var templ_7745c5c3_Var38 string
+			templ_7745c5c3_Var38, templ_7745c5c3_Err = templ.ResolveAttributeValue(teaRow(i))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 223, Col: 22}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 245, Col: 22}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var26)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var38)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 74, "\"></path>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 70, "\"></path>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 75, "</g> <g fill=\"var(--ground)\"><path d=\"M300 180 l14 -40 l14 40z\"></path> <path d=\"M322 182 l10 -30 l10 30z\"></path> <path d=\"M760 170 l16 -46 l16 46z\"></path> <path d=\"M786 172 l12 -34 l12 34z\"></path> <path d=\"M812 174 l9 -26 l9 26z\"></path></g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 71, "</g> <g fill=\"var(--ground)\"><path d=\"M300 180 l14 -40 l14 40z\"></path> <path d=\"M322 182 l10 -30 l10 30z\"></path> <path d=\"M760 170 l16 -46 l16 46z\"></path> <path d=\"M786 172 l12 -34 l12 34z\"></path> <path d=\"M812 174 l9 -26 l9 26z\"></path></g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -817,7 +1000,7 @@ func foothills() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 76, "<path d=\"M0 240 V206 C300 194 600 214 900 200 S1150 204 1200 204 V240Z\" fill=\"var(--ground)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 72, "<path d=\"M0 240 V206 C300 194 600 214 900 200 S1150 204 1200 204 V240Z\" fill=\"var(--ground)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -841,12 +1024,12 @@ func river() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var27 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var27 == nil {
-			templ_7745c5c3_Var27 = templ.NopComponent
+		templ_7745c5c3_Var39 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var39 == nil {
+			templ_7745c5c3_Var39 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 77, "<path d=\"M0 240 V160 C300 150 900 166 1200 154 V240Z\" fill=\"var(--ridge-near)\"></path> <path d=\"M560 160 C600 170 640 172 620 184 C580 200 470 206 470 222 C470 232 520 236 560 240 H860 C780 232 700 226 720 212 C744 196 800 186 760 172 C730 164 680 160 640 158Z\" fill=\"var(--lake)\"></path> <path d=\"M560 214 c30 -4 60 -4 90 0 M600 226 c40 -4 80 -4 120 0 M640 178 c16 -2 32 -2 48 0\" stroke=\"var(--sun)\" stroke-width=\"2.5\" fill=\"none\" opacity=\".6\"></path> <g fill=\"var(--ground)\"><path d=\"M612 200 c14 4 40 4 54 0 l-6 7 h-42z\"></path> <path d=\"M628 200 v-8 h4 v8z M648 200 v-8 h4 v8z\"></path></g> <g stroke=\"var(--ground)\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M380 226 v-40 M380 186 l-10 -8 M380 186 l10 -8 M380 186 l0 -10\"></path> <path d=\"M404 228 v-34 M404 194 l-9 -7 M404 194 l9 -7\"></path> <path d=\"M900 222 v-38 M900 184 l-10 -8 M900 184 l10 -8 M900 184 l0 -10\"></path></g>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 73, "<path d=\"M0 240 V160 C300 150 900 166 1200 154 V240Z\" fill=\"var(--ridge-near)\"></path> <path d=\"M560 160 C600 170 640 172 620 184 C580 200 470 206 470 222 C470 232 520 236 560 240 H860 C780 232 700 226 720 212 C744 196 800 186 760 172 C730 164 680 160 640 158Z\" fill=\"var(--lake)\"></path> <path d=\"M560 214 c30 -4 60 -4 90 0 M600 226 c40 -4 80 -4 120 0 M640 178 c16 -2 32 -2 48 0\" stroke=\"var(--sun)\" stroke-width=\"2.5\" fill=\"none\" opacity=\".6\"></path> <g fill=\"var(--ground)\"><path d=\"M612 200 c14 4 40 4 54 0 l-6 7 h-42z\"></path> <path d=\"M628 200 v-8 h4 v8z M648 200 v-8 h4 v8z\"></path></g> <g stroke=\"var(--ground)\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M380 226 v-40 M380 186 l-10 -8 M380 186 l10 -8 M380 186 l0 -10\"></path> <path d=\"M404 228 v-34 M404 194 l-9 -7 M404 194 l9 -7\"></path> <path d=\"M900 222 v-38 M900 184 l-10 -8 M900 184 l10 -8 M900 184 l0 -10\"></path></g>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -858,7 +1041,7 @@ func river() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 78, "<path d=\"M0 240 V222 C160 214 320 226 460 230 L470 240Z\" fill=\"var(--ground)\"></path> <path d=\"M860 240 C960 226 1080 222 1200 224 V240Z\" fill=\"var(--ground)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 74, "<path d=\"M0 240 V222 C160 214 320 226 460 230 L470 240Z\" fill=\"var(--ground)\"></path> <path d=\"M860 240 C960 226 1080 222 1200 224 V240Z\" fill=\"var(--ground)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -882,48 +1065,48 @@ func island() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var28 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var28 == nil {
-			templ_7745c5c3_Var28 = templ.NopComponent
+		templ_7745c5c3_Var40 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var40 == nil {
+			templ_7745c5c3_Var40 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 79, "<path d=\"M0 260 V176 C300 168 800 184 1200 172 V260Z\" fill=\"var(--lake)\" opacity=\".85\"></path> <path d=\"M520 200 C640 194 760 204 880 198 S1100 196 1200 200\" stroke=\"var(--sun)\" stroke-width=\"2\" fill=\"none\" opacity=\".5\"></path> <g fill=\"var(--ground)\"><path d=\"M820 206 c30 12 110 12 140 0 l-14 14 h-112z\"></path> <path d=\"M880 206 V112 C930 140 960 176 968 200 C930 196 900 200 880 206z\"></path> <path d=\"M876 206 V100\" stroke=\"var(--ground)\" stroke-width=\"4\"></path></g> <path d=\"M0 260 V198 C140 190 300 192 520 204 L560 260Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"var(--ground)\"><rect x=\"40\" y=\"150\" width=\"56\" height=\"52\"></rect> <rect x=\"100\" y=\"164\" width=\"40\" height=\"38\"></rect> <rect x=\"146\" y=\"120\" width=\"70\" height=\"84\"></rect> <rect x=\"152\" y=\"108\" width=\"58\" height=\"12\"></rect> <rect x=\"170\" y=\"92\" width=\"22\" height=\"16\"></rect> <rect x=\"222\" y=\"156\" width=\"44\" height=\"50\"></rect> <path d=\"M272 208 V150 h10 v-28 l6 -10 l6 10 v28 h10 V208z\"></path> <rect x=\"312\" y=\"168\" width=\"52\" height=\"40\"></rect> <rect x=\"370\" y=\"176\" width=\"40\" height=\"34\"></rect></g> <g fill=\"var(--gold)\" opacity=\".8\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 75, "<path d=\"M0 260 V176 C300 168 800 184 1200 172 V260Z\" fill=\"var(--lake)\" opacity=\".85\"></path> <path d=\"M520 200 C640 194 760 204 880 198 S1100 196 1200 200\" stroke=\"var(--sun)\" stroke-width=\"2\" fill=\"none\" opacity=\".5\"></path> <g fill=\"var(--ground)\"><path d=\"M820 206 c30 12 110 12 140 0 l-14 14 h-112z\"></path> <path d=\"M880 206 V112 C930 140 960 176 968 200 C930 196 900 200 880 206z\"></path> <path d=\"M876 206 V100\" stroke=\"var(--ground)\" stroke-width=\"4\"></path></g> <path d=\"M0 260 V198 C140 190 300 192 520 204 L560 260Z\" fill=\"var(--ridge-near)\"></path> <g fill=\"var(--ground)\"><rect x=\"40\" y=\"150\" width=\"56\" height=\"52\"></rect> <rect x=\"100\" y=\"164\" width=\"40\" height=\"38\"></rect> <rect x=\"146\" y=\"120\" width=\"70\" height=\"84\"></rect> <rect x=\"152\" y=\"108\" width=\"58\" height=\"12\"></rect> <rect x=\"170\" y=\"92\" width=\"22\" height=\"16\"></rect> <rect x=\"222\" y=\"156\" width=\"44\" height=\"50\"></rect> <path d=\"M272 208 V150 h10 v-28 l6 -10 l6 10 v28 h10 V208z\"></path> <rect x=\"312\" y=\"168\" width=\"52\" height=\"40\"></rect> <rect x=\"370\" y=\"176\" width=\"40\" height=\"34\"></rect></g> <g fill=\"var(--gold)\" opacity=\".8\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for i := 0; i < 8; i++ {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 80, "<rect x=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 76, "<rect x=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var29 string
-			templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.ResolveAttributeValue(stoneTownX(i))
+			var templ_7745c5c3_Var41 string
+			templ_7745c5c3_Var41, templ_7745c5c3_Err = templ.ResolveAttributeValue(stoneTownX(i))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 278, Col: 26}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 300, Col: 26}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var29)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 81, "\" y=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var41)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var30 string
-			templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.ResolveAttributeValue(stoneTownY(i))
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 278, Col: 46}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var30)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 77, "\" y=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 82, "\" width=\"6\" height=\"9\" rx=\"3\"></rect>")
+			var templ_7745c5c3_Var42 string
+			templ_7745c5c3_Var42, templ_7745c5c3_Err = templ.ResolveAttributeValue(stoneTownY(i))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/hero.templ`, Line: 300, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var42)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 78, "\" width=\"6\" height=\"9\" rx=\"3\"></rect>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 83, "</g> <path d=\"M460 214 C470 170 482 144 494 134 M494 134 c-22 -6 -38 4 -46 14 M494 134 c20 -10 38 -6 48 6 M494 134 c-8 -18 -22 -22 -34 -20 M494 134 c14 -16 30 -16 40 -10\" stroke=\"var(--ground)\" stroke-width=\"7\" fill=\"none\" stroke-linecap=\"round\"></path> <path d=\"M0 260 V226 C200 218 400 228 600 240 L620 260Z\" fill=\"var(--ground)\"></path>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 79, "</g> <path d=\"M460 214 C470 170 482 144 494 134 M494 134 c-22 -6 -38 4 -46 14 M494 134 c20 -10 38 -6 48 6 M494 134 c-8 -18 -22 -22 -34 -20 M494 134 c14 -16 30 -16 40 -10\" stroke=\"var(--ground)\" stroke-width=\"7\" fill=\"none\" stroke-linecap=\"round\"></path> <path d=\"M0 260 V226 C200 218 400 228 600 240 L620 260Z\" fill=\"var(--ground)\"></path>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

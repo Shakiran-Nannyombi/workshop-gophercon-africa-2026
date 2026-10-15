@@ -63,7 +63,7 @@
   --ink: #f3ead7;
   --ink-soft: #ddd2bb;
   --muted: #b9ac94;
-  --line: #05060f;
+  --line: #6d70b8;
   --hairline: #2e3368;
 
   --green: #5fb98a;
@@ -84,6 +84,8 @@
   --ground: #0c0e22;
   --sun: #f3ead7;
 
+  --shadow: 5px 5px 0 #05060f;
+  --shadow-lift: 8px 8px 0 #05060f;
   --focus: #e8b931;
 }
 
@@ -112,7 +114,7 @@ main { flex: 1; }
 main:focus { outline: none; }
 img, svg { display: block; max-width: 100%; }
 button, input, select, textarea { font: inherit; color: inherit; }
-ul[class], ol[class] { list-style: none; padding: 0; }
+ul[class], ol[class], nav ul { list-style: none; padding: 0; }
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 800;
@@ -383,7 +385,7 @@ input:focus-visible + .pill { outline: 3px solid var(--focus); outline-offset: 3
 [data-theme="dark"] .landscape__stars { opacity: 0.9; }
 .landscape__sun { position: absolute; width: clamp(7rem, 18vw, 13rem); aspect-ratio: 1; border-radius: 50%; right: 12%; top: 16%;
   background: radial-gradient(circle, var(--sun) 55%, transparent 71%); }
-.layer { position: absolute; left: -2%; bottom: 0; width: 104%; will-change: transform; }
+.layer { position: absolute; left: -2%; bottom: 0; width: 104%; max-width: none; will-change: transform; }
 .layer--far { height: 52%; } .layer--mid { height: 40%; } .layer--near { height: 30%; } .layer--city { height: 34%; }
 .landscape--card .landscape__sun { width: 28%; top: 10%; }
 
@@ -440,7 +442,7 @@ input:focus-visible + .pill { outline: 3px solid var(--focus); outline-offset: 3
 .fact__big { margin-top: 0.4rem; font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; line-height: 1.1; }
 .fact p:last-child { margin-top: 0.3rem; color: var(--ink-soft); }
 .route { position: relative; margin-top: 3rem; display: grid; gap: 1.5rem; }
-.route::before { content: ""; position: absolute; left: 1.75rem; top: 1rem; bottom: 1rem; border-left: 3px dashed var(--muted); }
+.route::before { content: ""; position: absolute; left: 1.75rem; top: 1rem; bottom: 8rem; border-left: 3px dashed var(--muted); }
 .route__stop { position: relative; display: flex; gap: 1rem; }
 .route__num {
   position: relative; z-index: 1; display: grid; place-items: center; flex-shrink: 0;

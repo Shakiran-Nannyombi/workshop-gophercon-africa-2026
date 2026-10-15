@@ -10,11 +10,11 @@ type swatch struct{ Name, Var, Light, Dark, Use string }
 var swatches = []swatch{
 	{"Sand paper", "--paper", "#f6eedc", "#12142e", "Page background"},
 	{"Bone", "--surface", "#fff9ec", "#1b1f4b", "Cards"},
-	{"Ink", "--ink", "#1e1a16", "#f3ead7", "Text, outlines"},
+	{"Ink", "--ink", "#1e1a16", "#f3ead7", "Text and outlines"},
 	{"Rift Valley green", "--green", "#1f5c3f", "#5fb98a", "Links, primary"},
-	{"Laterite red", "--red", "#b4432a", "#e07a5f", "Eyebrows, warnings"},
-	{"Savannah gold", "--gold", "#d9a21b", "#e8b931", "Buttons, highlights (ink text)"},
-	{"Night indigo", "--indigo", "#1b1f4b", "#f3ead7", "Footer, dark mode"},
+	{"Laterite red", "--red", "#b4432a", "#e88a70", "Eyebrows, warnings"},
+	{"Savannah gold", "--gold", "#d9a21b", "#e8b931", "Buttons and highlights, always with ink text"},
+	{"Night indigo", "--night", "#1b1f4b", "#0b0d24", "Footer, result panels, dark mode"},
 	{"Lake blue", "--lake", "#2c7a9b", "#6fb3d2", "Water on maps"},
 	{"Dry grass", "--muted", "#6b5b45", "#b9ac94", "Secondary text"},
 }
@@ -23,67 +23,65 @@ var iconNames = []string{"money", "map", "bus", "city", "phone", "shield", "pin"
 
 templ DesignSystem(m layouts.Meta) {
 	@layouts.Base(m) {
-		@components.SectionHero(components.HeroProps{Eyebrow: "For editors", Title: "Design system", Lede: "The colours, lettering and building blocks every page uses.", Motif: "highland"})
-		<div class="wrap section grid gap-16">
+		@components.SectionHero(components.HeroProps{Eyebrow: "For editors", Title: "Design system", Lede: "The colours, lettering and building blocks every page uses. Edit them in static/css/app.css.", Motif: "highland"})
+		<div class="wrap section stack" style="--flow:4rem">
 			<section aria-labelledby="ds-colours">
 				<h2 id="ds-colours" class="display-md">Colours</h2>
-				<ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				<ul class="grid-auto mt-5">
 					for _, sw := range swatches {
-						<li class="card flex items-center gap-4 p-4">
-							<span class="h-14 w-14 shrink-0 rounded-xl border-[2.5px] border-line" style={ templ.SafeCSS("background:var(" + sw.Var + ")") }></span>
+						<li class="card swatch">
+							<span class="swatch__chip" style={ templ.SafeCSS("background:var(" + sw.Var + ")") }></span>
 							<div>
-								<p class="font-bold">{ sw.Name }</p>
-								<p class="num text-sm text-muted">{ sw.Light } / { sw.Dark }</p>
-								<p class="text-sm text-ink-soft">{ sw.Use }</p>
+								<p><strong>{ sw.Name }</strong></p>
+								<p class="num small muted">{ sw.Light } / { sw.Dark }</p>
+								<p class="small soft">{ sw.Use }</p>
 							</div>
 						</li>
 					}
 				</ul>
 			</section>
-			<section aria-labelledby="ds-type">
+			<section aria-labelledby="ds-type" class="stack">
 				<h2 id="ds-type" class="display-md">Lettering</h2>
-				<div class="mt-6 grid gap-4">
-					<p class="display-xl">Karibu sana</p>
-					<p class="display-lg">Bricolage Grotesque, headings</p>
-					<p class="lede">Figtree for reading: friendly, open, very legible at small sizes on a phone in the sun.</p>
-					<p class="num text-xl">KSh 1,250 · USh 45,000 · 07:30 EAT</p>
-					<p class="jina text-3xl text-red" lang="sw">“Haba na haba hujaza kibaba”</p>
-				</div>
+				<p class="display-xl">Karibu sana</p>
+				<p class="display-lg">Bricolage Grotesque for headings</p>
+				<p class="lede">Figtree for reading: friendly, open, and easy to read at small sizes on a phone in the sun.</p>
+				<p class="num">KSh 1,250 · USh 45,000 · 07:30 EAT</p>
+				<p class="jina display-md" lang="sw">“Haba na haba hujaza kibaba”</p>
 			</section>
-			<section aria-labelledby="ds-ui" class="grid gap-6">
-				<h2 id="ds-ui" class="display-md">Buttons, chips &amp; markers</h2>
-				<div class="flex flex-wrap gap-3">
-					<a class="btn btn-gold" href="#ds-ui">Gold button</a>
-					<a class="btn btn-green" href="#ds-ui">Green button</a>
-					<a class="btn btn-red" href="#ds-ui">Red button</a>
-					<a class="btn btn-ghost" href="#ds-ui">Ghost button</a>
+			<section aria-labelledby="ds-ui" class="stack" style="--flow:1.5rem">
+				<h2 id="ds-ui" class="display-md">Buttons, chips and markers</h2>
+				<div class="cluster">
+					<a class="btn btn--gold" href="#ds-ui">Gold button</a>
+					<a class="btn btn--green" href="#ds-ui">Green button</a>
+					<a class="btn btn--red" href="#ds-ui">Red button</a>
+					<a class="btn" href="#ds-ui">Plain button</a>
 				</div>
-				<div class="flex flex-wrap items-center gap-2">
+				<div class="cluster">
 					<span class="chip">Chip</span>
-					<span class="chip chip-gold">Upmarket</span>
-					<span class="chip chip-green">Good for families</span>
-					<span class="chip chip-red">Kiambu County</span>
+					<span class="chip chip--gold">Upmarket</span>
+					<span class="chip chip--green">Good for families</span>
+					<span class="chip chip--red">Kiambu County</span>
 					@components.Approx("")
 					@components.Approx("as of 2026")
 					@components.LastReviewed(m.Site.LastReviewed)
 				</div>
-				<div class="flex flex-wrap gap-2">
+				<div class="cluster">
 					<button type="button" class="pill" aria-pressed="true">All regions</button>
 					<button type="button" class="pill" aria-pressed="false">Coast</button>
 					<button type="button" class="pill" aria-pressed="false">Rift Valley</button>
 				</div>
-				<ul class="flex flex-wrap gap-4 text-green">
+				<ul class="icon-grid">
 					for _, n := range iconNames {
-						<li class="card grid h-16 w-16 place-items-center !shadow-none" title={ n }>
-							@components.Icon(n, "h-7 w-7")
+						<li class="card card--flat" title={ n }>
+							@components.Icon(n, "icon-lg")
 							<span class="sr-only">{ n }</span>
 						</li>
 					}
 				</ul>
 			</section>
-			<section aria-labelledby="ds-blocks" class="grid gap-6">
+			<section aria-labelledby="ds-blocks" class="stack" style="--flow:1.5rem">
 				<h2 id="ds-blocks" class="display-md">Blocks</h2>
-				<div class="grid gap-6 md:grid-cols-3">
+				<div class="grid-auto">
 					@components.Callout("tip", "A tip") {
 						<p>Gold callouts are for friendly hints.</p>
 					}
@@ -96,9 +94,9 @@ templ DesignSystem(m layouts.Meta) {
 				</div>
 				@components.KangaBand()
 				<div class="kanga-thin"></div>
-				<div class="grid gap-6 md:grid-cols-3">
-					<div class="card kitenge-dots h-40"></div>
-					<div class="card kitenge-waves h-40"></div>
+				<div class="grid-auto">
+					<div class="card kitenge-dots pattern-tile"></div>
+					<div class="card kitenge-waves pattern-tile"></div>
 					@components.PhotoSlot("", "", "Nairobi skyline at dusk, 4:3")
 				</div>
 			</section>
@@ -111,13 +109,13 @@ templ NotFound(m layouts.Meta) {
 		@components.SectionHero(components.HeroProps{
 			Eyebrow: "404 · Umepotea?",
 			Title:   "Looks like you took the wrong matatu.",
-			Lede:    "“Umepotea?” means “Are you lost?” No shame: even locals get lost. This page doesn’t exist, but these do:",
+			Lede:    "“Umepotea?” means “Are you lost?” It happens to everyone, locals included. This page doesn’t exist, but these do:",
 			Motif:   "savannah",
 		}) {
-			<div class="mt-8 flex flex-wrap gap-3">
-				<a class="btn btn-gold" href="/">Back to the start</a>
-				<a class="btn btn-ghost" href="/nairobi">Nairobi guide</a>
-				<a class="btn btn-ghost" href="/counties">Counties</a>
+			<div class="cluster hero__actions">
+				<a class="btn btn--gold" href="/">Back to the start</a>
+				<a class="btn" href="/money">Money</a>
+				<a class="btn" href="/nairobi">Nairobi guide</a>
 			</div>
 		}
 	}

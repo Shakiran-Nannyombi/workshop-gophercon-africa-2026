@@ -5,7 +5,7 @@ tmp_dir = "tmp"
 [build]
   cmd = "go tool templ generate ./internal/views/... && go build -o ./tmp/karibu ./cmd/web"
   entrypoint = ["./tmp/karibu", "-dev"]
-  include_ext = ["go", "templ"]
+  include_ext = ["go", "templ", "json"]
   include_dir = ["cmd", "internal", "data", "static"]
   exclude_regex = ["_templ\\.go$", "_test\\.go$"]
   exclude_dir = ["tmp", "vendor", "web", "static/fonts"]

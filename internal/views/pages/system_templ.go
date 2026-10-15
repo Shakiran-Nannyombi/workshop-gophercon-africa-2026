@@ -18,11 +18,11 @@ type swatch struct{ Name, Var, Light, Dark, Use string }
 var swatches = []swatch{
 	{"Sand paper", "--paper", "#f6eedc", "#12142e", "Page background"},
 	{"Bone", "--surface", "#fff9ec", "#1b1f4b", "Cards"},
-	{"Ink", "--ink", "#1e1a16", "#f3ead7", "Text, outlines"},
+	{"Ink", "--ink", "#1e1a16", "#f3ead7", "Text and outlines"},
 	{"Rift Valley green", "--green", "#1f5c3f", "#5fb98a", "Links, primary"},
-	{"Laterite red", "--red", "#b4432a", "#e07a5f", "Eyebrows, warnings"},
-	{"Savannah gold", "--gold", "#d9a21b", "#e8b931", "Buttons, highlights (ink text)"},
-	{"Night indigo", "--indigo", "#1b1f4b", "#f3ead7", "Footer, dark mode"},
+	{"Laterite red", "--red", "#b4432a", "#e88a70", "Eyebrows, warnings"},
+	{"Savannah gold", "--gold", "#d9a21b", "#e8b931", "Buttons and highlights, always with ink text"},
+	{"Night indigo", "--night", "#1b1f4b", "#0b0d24", "Footer, result panels, dark mode"},
 	{"Lake blue", "--lake", "#2c7a9b", "#6fb3d2", "Water on maps"},
 	{"Dry grass", "--muted", "#6b5b45", "#b9ac94", "Secondary text"},
 }
@@ -62,49 +62,49 @@ func DesignSystem(m layouts.Meta) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = components.SectionHero(components.HeroProps{Eyebrow: "For editors", Title: "Design system", Lede: "The colours, lettering and building blocks every page uses.", Motif: "highland"}).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.SectionHero(components.HeroProps{Eyebrow: "For editors", Title: "Design system", Lede: "The colours, lettering and building blocks every page uses. Edit them in static/css/app.css.", Motif: "highland"}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"wrap section grid gap-16\"><section aria-labelledby=\"ds-colours\"><h2 id=\"ds-colours\" class=\"display-md\">Colours</h2><ul class=\"mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"wrap section stack\" style=\"--flow:4rem\"><section aria-labelledby=\"ds-colours\"><h2 id=\"ds-colours\" class=\"display-md\">Colours</h2><ul class=\"grid-auto mt-5\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			for _, sw := range swatches {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<li class=\"card flex items-center gap-4 p-4\"><span class=\"h-14 w-14 shrink-0 rounded-xl border-[2.5px] border-line\" style=\"")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<li class=\"card swatch\"><span class=\"swatch__chip\" style=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templruntime.SanitizeStyleAttributeValues(templ.SafeCSS("background:var(" + sw.Var + ")"))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 33, Col: 133}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 33, Col: 89}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"></span><div><p class=\"font-bold\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"></span><div><p><strong>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(sw.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 35, Col: 38}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 35, Col: 28}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><p class=\"num text-sm text-muted\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</strong></p><p class=\"num small muted\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(sw.Light)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 36, Col: 52}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 36, Col: 45}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -117,20 +117,20 @@ func DesignSystem(m layouts.Meta) templ.Component {
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(sw.Dark)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 36, Col: 66}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 36, Col: 59}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p><p class=\"text-sm text-ink-soft\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p><p class=\"small soft\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(sw.Use)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 37, Col: 49}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 37, Col: 38}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -141,7 +141,7 @@ func DesignSystem(m layouts.Meta) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</ul></section><section aria-labelledby=\"ds-type\"><h2 id=\"ds-type\" class=\"display-md\">Lettering</h2><div class=\"mt-6 grid gap-4\"><p class=\"display-xl\">Karibu sana</p><p class=\"display-lg\">Bricolage Grotesque, headings</p><p class=\"lede\">Figtree for reading: friendly, open, very legible at small sizes on a phone in the sun.</p><p class=\"num text-xl\">KSh 1,250 · USh 45,000 · 07:30 EAT</p><p class=\"jina text-3xl text-red\" lang=\"sw\">“Haba na haba hujaza kibaba”</p></div></section><section aria-labelledby=\"ds-ui\" class=\"grid gap-6\"><h2 id=\"ds-ui\" class=\"display-md\">Buttons, chips &amp; markers</h2><div class=\"flex flex-wrap gap-3\"><a class=\"btn btn-gold\" href=\"#ds-ui\">Gold button</a> <a class=\"btn btn-green\" href=\"#ds-ui\">Green button</a> <a class=\"btn btn-red\" href=\"#ds-ui\">Red button</a> <a class=\"btn btn-ghost\" href=\"#ds-ui\">Ghost button</a></div><div class=\"flex flex-wrap items-center gap-2\"><span class=\"chip\">Chip</span> <span class=\"chip chip-gold\">Upmarket</span> <span class=\"chip chip-green\">Good for families</span> <span class=\"chip chip-red\">Kiambu County</span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</ul></section><section aria-labelledby=\"ds-type\" class=\"stack\"><h2 id=\"ds-type\" class=\"display-md\">Lettering</h2><p class=\"display-xl\">Karibu sana</p><p class=\"display-lg\">Bricolage Grotesque for headings</p><p class=\"lede\">Figtree for reading: friendly, open, and easy to read at small sizes on a phone in the sun.</p><p class=\"num\">KSh 1,250 · USh 45,000 · 07:30 EAT</p><p class=\"jina display-md\" lang=\"sw\">“Haba na haba hujaza kibaba”</p></section><section aria-labelledby=\"ds-ui\" class=\"stack\" style=\"--flow:1.5rem\"><h2 id=\"ds-ui\" class=\"display-md\">Buttons, chips and markers</h2><div class=\"cluster\"><a class=\"btn btn--gold\" href=\"#ds-ui\">Gold button</a> <a class=\"btn btn--green\" href=\"#ds-ui\">Green button</a> <a class=\"btn btn--red\" href=\"#ds-ui\">Red button</a> <a class=\"btn\" href=\"#ds-ui\">Plain button</a></div><div class=\"cluster\"><span class=\"chip\">Chip</span> <span class=\"chip chip--gold\">Upmarket</span> <span class=\"chip chip--green\">Good for families</span> <span class=\"chip chip--red\">Kiambu County</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -157,19 +157,19 @@ func DesignSystem(m layouts.Meta) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</div><div class=\"flex flex-wrap gap-2\"><button type=\"button\" class=\"pill\" aria-pressed=\"true\">All regions</button> <button type=\"button\" class=\"pill\" aria-pressed=\"false\">Coast</button> <button type=\"button\" class=\"pill\" aria-pressed=\"false\">Rift Valley</button></div><ul class=\"flex flex-wrap gap-4 text-green\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</div><div class=\"cluster\"><button type=\"button\" class=\"pill\" aria-pressed=\"true\">All regions</button> <button type=\"button\" class=\"pill\" aria-pressed=\"false\">Coast</button> <button type=\"button\" class=\"pill\" aria-pressed=\"false\">Rift Valley</button></div><ul class=\"icon-grid\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			for _, n := range iconNames {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<li class=\"card grid h-16 w-16 place-items-center !shadow-none\" title=\"")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<li class=\"card card--flat\" title=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.ResolveAttributeValue(n)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 77, Col: 79}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 75, Col: 43}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var8)
 				if templ_7745c5c3_Err != nil {
@@ -179,7 +179,7 @@ func DesignSystem(m layouts.Meta) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = components.Icon(n, "h-7 w-7").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.Icon(n, "icon-lg").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -190,7 +190,7 @@ func DesignSystem(m layouts.Meta) templ.Component {
 				var templ_7745c5c3_Var9 string
 				templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(n)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 79, Col: 32}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/pages/system.templ`, Line: 77, Col: 32}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 				if templ_7745c5c3_Err != nil {
@@ -201,7 +201,7 @@ func DesignSystem(m layouts.Meta) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</ul></section><section aria-labelledby=\"ds-blocks\" class=\"grid gap-6\"><h2 id=\"ds-blocks\" class=\"display-md\">Blocks</h2><div class=\"grid gap-6 md:grid-cols-3\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</ul></section><section aria-labelledby=\"ds-blocks\" class=\"stack\" style=\"--flow:1.5rem\"><h2 id=\"ds-blocks\" class=\"display-md\">Blocks</h2><div class=\"grid-auto\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -279,7 +279,7 @@ func DesignSystem(m layouts.Meta) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<div class=\"kanga-thin\"></div><div class=\"grid gap-6 md:grid-cols-3\"><div class=\"card kitenge-dots h-40\"></div><div class=\"card kitenge-waves h-40\"></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<div class=\"kanga-thin\"></div><div class=\"grid-auto\"><div class=\"card kitenge-dots pattern-tile\"></div><div class=\"card kitenge-waves pattern-tile\"></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -346,7 +346,7 @@ func NotFound(m layouts.Meta) templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"mt-8 flex flex-wrap gap-3\"><a class=\"btn btn-gold\" href=\"/\">Back to the start</a> <a class=\"btn btn-ghost\" href=\"/nairobi\">Nairobi guide</a> <a class=\"btn btn-ghost\" href=\"/counties\">Counties</a></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"cluster hero__actions\"><a class=\"btn btn--gold\" href=\"/\">Back to the start</a> <a class=\"btn\" href=\"/money\">Money</a> <a class=\"btn\" href=\"/nairobi\">Nairobi guide</a></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -355,7 +355,7 @@ func NotFound(m layouts.Meta) templ.Component {
 			templ_7745c5c3_Err = components.SectionHero(components.HeroProps{
 				Eyebrow: "404 · Umepotea?",
 				Title:   "Looks like you took the wrong matatu.",
-				Lede:    "“Umepotea?” means “Are you lost?” No shame: even locals get lost. This page doesn’t exist, but these do:",
+				Lede:    "“Umepotea?” means “Are you lost?” It happens to everyone, locals included. This page doesn’t exist, but these do:",
 				Motif:   "savannah",
 			}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var15), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {

@@ -3,7 +3,6 @@ package pages
 import (
 	"fmt"
 	"strconv"
-	"strings"
 
 	"workshop/internal/data"
 )
@@ -27,20 +26,4 @@ func citiesIn(s *data.Store, country string) []data.City {
 	return out
 }
 
-// Commas formats 1234567 as "1,234,567".
-func Commas(n int) string {
-	s := strconv.Itoa(n)
-	neg := strings.HasPrefix(s, "-")
-	s = strings.TrimPrefix(s, "-")
-	var b strings.Builder
-	for i, r := range s {
-		if i > 0 && (len(s)-i)%3 == 0 {
-			b.WriteByte(',')
-		}
-		b.WriteRune(r)
-	}
-	if neg {
-		return "-" + b.String()
-	}
-	return b.String()
-}
+func itoa(n int) string { return strconv.Itoa(n) }

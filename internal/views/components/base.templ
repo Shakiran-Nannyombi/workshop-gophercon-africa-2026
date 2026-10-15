@@ -1,14 +1,8 @@
 package components
 
-// Logo: a sun rising over three Rift Valley ridges, on a night-sky tile.
+// Logo: the Karibu pin, a sun setting behind an acacia on the ridges.
 templ Logo(class string) {
-	<svg class={ class } viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-		<rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#1b1f4b" stroke="#1e1a16" stroke-width="3"></rect>
-		<circle cx="24" cy="25" r="10" fill="#d9a21b"></circle>
-		<path d="M3 31 L13 24 L20 29 L30 21 L45 31 V44 a2 2 0 0 1 -2 2 H5 a2 2 0 0 1 -2 -2 Z" fill="#b4432a"></path>
-		<path d="M3 37 L16 31 L27 35 L36 30 L45 35 V44 a2 2 0 0 1 -2 2 H5 a2 2 0 0 1 -2 -2 Z" fill="#1f5c3f"></path>
-		<path d="M8 41 h32" stroke="#d9a21b" stroke-width="2" stroke-dasharray="3 3"></path>
-	</svg>
+	<img class={ class } src="/static/svg/karibu-logo-mark.svg" alt="" width="40" height="44"/>
 }
 
 templ ThemeToggle() {

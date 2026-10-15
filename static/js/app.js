@@ -90,6 +90,44 @@
     a.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
+  // In-page links: scroll to the section without leaving "#section" in the address bar.
+  var marked = null;
+  function goTo(el) {
+    if (marked) marked.classList.remove("is-target");
+    el.classList.add("is-target");
+    marked = el;
+    if (!el.hasAttribute("tabindex") && !el.matches("a[href], button, input, select, textarea, summary")) el.setAttribute("tabindex", "-1");
+    el.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
+    el.focus({ preventScroll: true });
+  }
+  function hashTarget(hash) {
+    if (!hash || hash.length < 2) return null;
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); } catch (err) { return null; }
+  }
+  document.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest("a[href*='#']");
+    if (!a || a.target || a.hasAttribute("download") || a.hasAttribute("hx-get")) return;
+    var url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search) return;
+    var el = hashTarget(url.hash);
+    if (!el) return;
+    e.preventDefault();
+    goTo(el);
+  });
+  // Arriving from another page with "#section": jump there, then tidy the URL.
+  if (location.hash) {
+    var arrived = hashTarget(location.hash);
+    history.replaceState(history.state, "", location.pathname + location.search);
+    if (arrived) {
+      arrived.classList.add("is-target");
+      marked = arrived;
+      arrived.scrollIntoView({ block: "start" });
+      var landed = window.scrollY;
+      window.addEventListener("load", function () { if (Math.abs(window.scrollY - landed) < 4) arrived.scrollIntoView({ block: "start" }); });
+    }
+  }
+
   // Re-run enhancements on content htmx swaps in.
   document.addEventListener("htmx:afterSettle", function (e) {
     reveal(e.target);

@@ -151,7 +151,7 @@ func Base(m Meta) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"theme-color\" content=\"#f6eedc\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#12142e\" media=\"(prefers-color-scheme: dark)\"><link rel=\"icon\" href=\"/static/svg/logo.svg\" type=\"image/svg+xml\"><link rel=\"preload\" href=\"/static/fonts/bricolage.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><link rel=\"preload\" href=\"/static/fonts/figtree.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><script src=\"/static/js/theme.js\"></script><link rel=\"stylesheet\" href=\"/static/css/app.css\"><link rel=\"stylesheet\" href=\"/static/css/counties.css\"><link rel=\"stylesheet\" href=\"/static/css/cities.css\"><link rel=\"stylesheet\" href=\"/static/css/compare.css\"><link rel=\"stylesheet\" href=\"/static/css/glossary.css\"><script src=\"/static/js/htmx.min.js\" defer></script><script src=\"/static/js/app.js\" defer></script><script src=\"/static/js/map.js\" defer></script><script src=\"/static/js/counties.js\" defer></script></head><body hx-indicator=\".page-loader\"><a class=\"skip-link\" href=\"#main\">Skip to content</a>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><meta name=\"twitter:card\" content=\"summary_large_image\"><meta name=\"theme-color\" content=\"#f6eedc\" media=\"(prefers-color-scheme: light)\"><meta name=\"theme-color\" content=\"#12142e\" media=\"(prefers-color-scheme: dark)\"><link rel=\"icon\" href=\"/static/svg/karibu-logo-mark.svg\" type=\"image/svg+xml\"><link rel=\"preload\" href=\"/static/fonts/bricolage.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><link rel=\"preload\" href=\"/static/fonts/figtree.woff2\" as=\"font\" type=\"font/woff2\" crossorigin><script src=\"/static/js/theme.js\"></script><link rel=\"stylesheet\" href=\"/static/css/app.css\"><link rel=\"stylesheet\" href=\"/static/css/counties.css\"><link rel=\"stylesheet\" href=\"/static/css/cities.css\"><link rel=\"stylesheet\" href=\"/static/css/compare.css\"><link rel=\"stylesheet\" href=\"/static/css/glossary.css\"><script src=\"/static/js/htmx.min.js\" defer></script><script src=\"/static/js/app.js\" defer></script><script src=\"/static/js/map.js\" defer></script><script src=\"/static/js/counties.js\" defer></script></head><body hx-indicator=\".page-loader\"><a class=\"skip-link\" href=\"#main\">Skip to content</a>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -364,14 +364,14 @@ func siteFooter(m Meta) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		sw, en := m.Proverb()
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<footer class=\"site-footer\"><div class=\"kanga\" aria-hidden=\"true\"></div><div class=\"wrap site-footer__grid\"><div><p class=\"jina\" lang=\"sw\">“")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "<footer class=\"site-footer\"><div class=\"kanga\" aria-hidden=\"true\"></div><div class=\"wrap site-footer__grid\"><div><img class=\"site-footer__logo\" src=\"/static/svg/karibu-logo-on-dark.svg\" alt=\"Karibu Guide\" width=\"224\" height=\"88\" loading=\"lazy\"><p class=\"jina mt-5\" lang=\"sw\">“")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(sw)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 101, Col: 37}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 102, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -384,7 +384,7 @@ func siteFooter(m Meta) templ.Component {
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(en)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 102, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 103, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -397,7 +397,7 @@ func siteFooter(m Meta) templ.Component {
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.ResolveAttributeValue(m.Site.LastReviewed)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 105, Col: 53}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 106, Col: 53}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var18)
 		if templ_7745c5c3_Err != nil {
@@ -410,7 +410,7 @@ func siteFooter(m Meta) templ.Component {
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(m.Site.LastReviewed)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 105, Col: 77}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 106, Col: 77}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
@@ -428,7 +428,7 @@ func siteFooter(m Meta) templ.Component {
 			var templ_7745c5c3_Var20 templ.SafeURL
 			templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(n.Href))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 112, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 113, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 			if templ_7745c5c3_Err != nil {
@@ -441,7 +441,7 @@ func siteFooter(m Meta) templ.Component {
 			var templ_7745c5c3_Var21 string
 			templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(n.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 112, Col: 53}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/layouts/base.templ`, Line: 113, Col: 53}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 			if templ_7745c5c3_Err != nil {

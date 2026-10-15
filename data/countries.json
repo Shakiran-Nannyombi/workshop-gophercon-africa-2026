@@ -9,7 +9,52 @@
     "languages": ["Swahili", "English"],
     "mobileMoney": ["M-Pesa", "Airtel Money"],
     "scale": "A coffee is roughly KSh 250–350 in a Nairobi café.",
-    "coffeeLocal": 300
+    "coffeeLocal": 300,
+    "slug": "kenya",
+    "depth": "full",
+    "capital": "nairobi",
+    "commercialCity": "",
+    "capitalNote": "Nairobi is both the capital and the main business city. Mombasa, on the coast, is the main port.",
+    "population": "~47.6 million (2019 census); likely over 50 million today",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+254",
+    "drivingSide": "left",
+    "plugs": ["G"],
+    "airports": [
+      { "iata": "NBO", "name": "Jomo Kenyatta International Airport", "city": "Nairobi", "main": true },
+      { "iata": "MBA", "name": "Moi International Airport", "city": "Mombasa" }
+    ],
+    "intro": "Kenya sits on the equator between the Indian Ocean and Lake Victoria, with the Great Rift Valley running through the middle. Nairobi is a regional hub for business, the UN and air travel. Swahili and English are both official languages, and M-Pesa mobile money is used for almost everything.",
+    "organisation": {
+      "summary": "Since the 2010 constitution Kenya has 47 counties, each with its own elected governor. Counties are split into sub-counties (which mostly match parliamentary constituencies) and then wards. In everyday life people give directions by estate, road and landmark rather than postcode.",
+      "levels": [
+        { "name": "County", "count": "47", "note": "Each has a governor and county assembly. Nairobi City is itself a county." },
+        { "name": "Sub-county / constituency", "count": "290 constituencies", "note": "Constituencies elect MPs; sub-counties are the matching administrative units and the counts differ slightly." },
+        { "name": "Ward", "count": "1,450", "note": "The smallest electoral unit; each elects a member of the county assembly (MCA)." }
+      ],
+      "addressExample": "Flat B4, [Building name], [Road name], Kilimani, Nairobi. Post is usually sent to a box: P.O. Box 00000-00100, Nairobi (00100 is the post office code, not a street postcode).",
+      "kenyaCompare": "This is the baseline: other country pages compare their divisions with Kenya's counties, constituencies and wards.",
+      "verify": "Check the sub-county count (it differs from the 290 constituencies). The old provinces (8) are still used informally in conversation."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi or ride-hail app", "cost": "~KSh 1,500–3,000", "time": "~30–90 min", "note": "The easiest option. Order Uber or Bolt from the arrivals area, or use an airport taxi desk and agree the fare first.", "verify": "Check current app and airport taxi fares to the CBD and Westlands." },
+        { "icon": "bus", "name": "City bus or matatu", "cost": "~KSh 100–200", "time": "~1–2 h", "note": "Buses and matatus run along Mombasa Road to the CBD. Cheap, but awkward with big luggage.", "verify": "Check which bus route serves the airport and the current fare." }
+      ],
+      "rideHail": ["Uber", "Bolt", "Little"],
+      "notes": [
+        "Traffic on Mombasa Road and the Nairobi Expressway decides your journey time; the toll Expressway is usually faster.",
+        "Pay apps by M-Pesa, card or cash depending on the app."
+      ],
+      "verify": "Fares are rough; check them before you travel."
+    },
+    "capitalModes": [
+      { "icon": "matatu", "name": "Matatu", "cost": "~KSh 50–150", "note": "Shared minibuses on numbered routes; the main way most Nairobians get around. Fares rise at rush hour and in rain.", "verify": "Check typical matatu fares." },
+      { "icon": "boda", "name": "Boda boda", "cost": "~KSh 100–300", "note": "Motorbike taxis for short hops through traffic. Ask for a helmet; also bookable on apps.", "verify": "Check typical short-trip boda fares." },
+      { "icon": "train", "name": "Nairobi commuter rail", "cost": "~KSh 50–150", "note": "Kenya Railways commuter trains run from the central station to suburbs such as Syokimau, Embakasi and Ruiru, mainly at peak times.", "verify": "Check commuter routes, timetable and fares." },
+      { "icon": "car", "name": "Ride-hail apps", "note": "Uber, Bolt and Little are widely used and are the easiest option at night." },
+      { "icon": "walk", "name": "Walking", "note": "The CBD is walkable by day; distances between suburbs are large." }
+    ]
   },
   {
     "code": "UG",
@@ -22,7 +67,52 @@
     "mobileMoney": ["MTN MoMo", "Airtel Money"],
     "scale": "A coffee is roughly USh 6,000–10,000 in a Kampala café.",
     "coffeeLocal": 8000,
-    "verify": "Flag is simplified to three stripes (the real flag repeats black, yellow, red twice). Café coffee price is a rough estimate."
+    "verify": "Flag is simplified to three stripes (the real flag repeats black, yellow, red twice). Café coffee price is a rough estimate.",
+    "slug": "uganda",
+    "depth": "full",
+    "capital": "kampala",
+    "commercialCity": "",
+    "capitalNote": "Kampala is the capital and main business city. The international airport is in Entebbe, about 40 km south on Lake Victoria.",
+    "population": "~45.9 million (2024 census)",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+256",
+    "drivingSide": "left",
+    "plugs": ["G"],
+    "airports": [
+      { "iata": "EBB", "name": "Entebbe International Airport", "city": "Entebbe", "main": true }
+    ],
+    "intro": "Uganda is a green, landlocked country on Lake Victoria and the source of the White Nile. Kampala is spread over hills and is known for its boda bodas and minibus 'taxis'. English and Swahili are official, and Luganda is widely spoken around Kampala.",
+    "organisation": {
+      "summary": "Uganda is run mainly through districts, which are split into counties, sub-counties, parishes and villages. The four regions (Central, Eastern, Northern, Western) are used for statistics and in conversation. Kampala is run separately by the Kampala Capital City Authority (KCCA) and has five divisions.",
+      "levels": [
+        { "name": "Region", "count": "4", "note": "Central, Eastern, Northern and Western; mostly informal. Buganda is also a traditional kingdom within Central." },
+        { "name": "District", "count": "~135+", "note": "The main level of local government; new districts are created often." },
+        { "name": "County", "count": "many", "note": "Groups of sub-counties; also used as parliamentary constituencies." },
+        { "name": "Sub-county", "count": "many", "note": "In towns the equivalent is a town council or division." },
+        { "name": "Parish", "count": "many", "note": "In towns, a ward." },
+        { "name": "Village", "local": "LC1", "count": "many", "note": "Each village has a Local Council I (LC1) chairperson, often the first person to ask about local matters." }
+      ],
+      "addressExample": "[Building or plot number], [Road name], Kololo, Central Division, Kampala. Many people add a nearby landmark, and post goes to a P.O. Box.",
+      "kenyaCompare": "A Ugandan district is roughly like a Kenyan county but usually much smaller, and there are about three times as many. Sub-counties and parishes are closer to Kenya's wards and locations.",
+      "verify": "Check district count; Uganda creates new districts often. Counts for lower levels were left general."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Special hire or ride-hail app", "cost": "~USh 100,000–150,000", "time": "~45 min–1.5 h", "note": "Most visitors take a 'special hire' (private taxi) or an app car. The Entebbe Expressway (toll) is usually quickest.", "verify": "Check current special hire and app fares from Entebbe to central Kampala." },
+        { "icon": "matatu", "name": "Minibus 'taxi'", "cost": "~USh 5,000–10,000", "time": "~1.5–2 h", "note": "Cheap shared minibuses run from Entebbe town to Kampala's taxi parks; you first need a short ride from the airport to Entebbe town.", "verify": "Check minibus fare and route." }
+      ],
+      "rideHail": ["Uber", "Bolt", "SafeBoda"],
+      "notes": [
+        "In Uganda 'taxi' usually means a shared minibus; a private car is called a 'special hire'.",
+        "Allow plenty of time for the drive to the airport, as Kampala traffic can be heavy."
+      ],
+      "verify": "Fares are rough; check them before you travel."
+    },
+    "capitalModes": [
+      { "icon": "matatu", "name": "Minibus 'taxi'", "cost": "~USh 1,000–3,000", "note": "White-and-blue shared minibuses, called 'taxis', run from the central taxi parks to every part of the city.", "verify": "Check typical minibus fares." },
+      { "icon": "boda", "name": "Boda boda", "cost": "~USh 2,000–10,000", "note": "Motorbike taxis are the fastest way through traffic. App-based bodas such as SafeBoda give fixed prices and helmets.", "verify": "Check typical boda fares." },
+      { "icon": "car", "name": "Special hire or app car", "note": "Private taxis and ride-hail apps (Uber, Bolt) are the comfortable option, especially at night." }
+    ]
   },
   {
     "code": "TZ",
@@ -35,7 +125,54 @@
     "mobileMoney": ["M-Pesa (Vodacom)", "Mixx by Yas (formerly Tigo Pesa)", "Airtel Money", "HaloPesa"],
     "scale": "A coffee is roughly TSh 4,000–7,000 in a Dar es Salaam café.",
     "coffeeLocal": 5000,
-    "verify": "Confirm the Tigo Pesa to 'Mixx by Yas' rebrand name and that HaloPesa is still operating. Flag is diagonal in reality; stripes here are an approximation. Coffee price is a rough estimate."
+    "verify": "Confirm the Tigo Pesa to 'Mixx by Yas' rebrand name and that HaloPesa is still operating. Flag is diagonal in reality; stripes here are an approximation. Coffee price is a rough estimate.",
+    "slug": "tanzania",
+    "depth": "full",
+    "capital": "dodoma",
+    "commercialCity": "dar-es-salaam",
+    "capitalNote": "Dodoma is the official capital, where Parliament and the government ministries sit. Dar es Salaam is the commercial hub: most embassies, businesses and the main international airport are there.",
+    "population": "~61.7 million (2022 census)",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+255",
+    "drivingSide": "left",
+    "plugs": ["D", "G"],
+    "airports": [
+      { "iata": "DAR", "name": "Julius Nyerere International Airport", "city": "Dar es Salaam", "main": true },
+      { "iata": "JRO", "name": "Kilimanjaro International Airport", "city": "Between Arusha and Moshi" },
+      { "iata": "ZNZ", "name": "Abeid Amani Karume International Airport", "city": "Zanzibar" }
+    ],
+    "intro": "Tanzania is East Africa's largest country, home to Mount Kilimanjaro, the Serengeti and the Zanzibar islands. It is a union of mainland Tanzania and semi-autonomous Zanzibar, which has its own president and government. Swahili is spoken almost everywhere and is the main language of daily life.",
+    "organisation": {
+      "summary": "Tanzania is divided into regions, then districts, then wards. Below the ward, towns are split into streets (mitaa) and rural areas into villages (vijiji). Zanzibar has its own regions and uses shehia as the smallest unit.",
+      "levels": [
+        { "name": "Region", "local": "mkoa", "count": "~31", "note": "~26 on the mainland and ~5 in Zanzibar." },
+        { "name": "District", "local": "wilaya", "count": "many", "note": "Each region has several districts and district or town councils." },
+        { "name": "Ward", "local": "kata", "count": "many", "note": "The smallest electoral unit for councillors." },
+        { "name": "Street or village", "local": "mtaa / kijiji", "count": "many", "note": "Mitaa (streets, plural of mtaa) in towns, vijiji (villages) in the countryside; each has a local chairperson." }
+      ],
+      "addressExample": "[House or plot number], [Street name], Mtaa wa [name], Kata ya [ward], Wilaya ya Kinondoni, Dar es Salaam. A newer postcode system exists, but most people still give landmarks.",
+      "kenyaCompare": "Tanzania has no counties: its regions are bigger than Kenyan counties but have far less self-government. Districts are roughly like Kenyan sub-counties and wards are like Kenyan wards.",
+      "verify": "Check the region count and district count; new ones have been created in recent years. Confirm how widely the national address and postcode system is used."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi or ride-hail app", "cost": "~TSh 30,000–50,000", "time": "~30–60 min", "note": "Taxis wait outside arrivals; agree the fare first, or book an app ride to the city centre or Masaki.", "verify": "Check current taxi and app fares from DAR to the city centre." },
+        { "icon": "matatu", "name": "Daladala", "cost": "~TSh 500–1,000", "time": "~1 h+", "note": "Shared minibuses pass on the main road near the airport. Very cheap but crowded and hard with luggage.", "verify": "Check daladala fare and nearest stop." }
+      ],
+      "rideHail": ["Bolt", "Uber"],
+      "notes": [
+        "Most international flights land in Dar es Salaam, not Dodoma.",
+        "To reach Dodoma, take a domestic flight or the electric SGR train from Dar es Salaam.",
+        "Safari travellers often fly straight into Kilimanjaro (JRO); beach travellers into Zanzibar (ZNZ)."
+      ],
+      "verify": "Fares are rough. Check Uber's current status in Tanzania and SGR timetable and fares to Dodoma."
+    },
+    "capitalModes": [
+      { "icon": "matatu", "name": "Daladala", "cost": "~TSh 500–1,000", "note": "Shared minibuses are the everyday transport in both Dodoma and Dar es Salaam.", "verify": "Check typical daladala fares." },
+      { "icon": "bus", "name": "Mwendokasi BRT (Dar es Salaam)", "cost": "~TSh 750", "note": "Dar es Salaam's rapid bus system runs in its own lanes, which helps a lot in traffic. Dodoma does not have one.", "verify": "Check current BRT fare, card system and open lines." },
+      { "icon": "tuktuk", "name": "Bajaj", "cost": "~TSh 2,000–5,000", "note": "Three-wheeled tuk-tuks for short trips; also bookable on apps.", "verify": "Check typical bajaj fares." },
+      { "icon": "boda", "name": "Boda boda", "cost": "~TSh 1,000–3,000", "note": "Motorbike taxis, fast but ask for a helmet.", "verify": "Check typical boda fares." }
+    ]
   },
   {
     "code": "RW",
@@ -48,7 +185,52 @@
     "mobileMoney": ["MTN MoMo", "Airtel Money"],
     "scale": "A coffee is roughly FRw 2,000–3,000 in a Kigali café.",
     "coffeeLocal": 2500,
-    "verify": "Airtel Money Rwanda's current status/brand should be confirmed. Coffee price is a rough estimate."
+    "verify": "Airtel Money Rwanda's current status/brand should be confirmed. Coffee price is a rough estimate.",
+    "slug": "rwanda",
+    "depth": "full",
+    "capital": "kigali",
+    "commercialCity": "",
+    "capitalNote": "Kigali is the capital and by far the largest city, and the centre of business and government.",
+    "population": "~13.2 million (2022 census)",
+    "timeZone": "CAT, UTC+2",
+    "callingCode": "+250",
+    "drivingSide": "right",
+    "plugs": ["C", "J"],
+    "airports": [
+      { "iata": "KGL", "name": "Kigali International Airport", "city": "Kigali", "main": true }
+    ],
+    "intro": "Rwanda is a small, hilly, landlocked country often called the 'land of a thousand hills'. Kigali is known for being clean and orderly, with a monthly community work day (umuganda). Kinyarwanda is spoken by almost everyone, alongside English, French and Swahili.",
+    "organisation": {
+      "summary": "Rwanda has four provinces plus the City of Kigali, divided into 30 districts. Districts split into sectors, cells and villages (imidugudu). The village is a real unit of everyday life: it is where community work, local meetings and many services are organised.",
+      "levels": [
+        { "name": "Province / Kigali City", "local": "intara", "count": "4 + Kigali City", "note": "Northern, Southern, Eastern and Western provinces, plus the City of Kigali." },
+        { "name": "District", "local": "akarere", "count": "30", "note": "Kigali City has three: Gasabo, Kicukiro and Nyarugenge." },
+        { "name": "Sector", "local": "umurenge", "count": "416", "note": "Sector offices handle many everyday services." },
+        { "name": "Cell", "local": "akagari", "count": "~2,100", "note": "A group of villages." },
+        { "name": "Village", "local": "umudugudu (plural imidugudu)", "count": "~14,800", "note": "The smallest unit, with its own local leader." }
+      ],
+      "addressExample": "KG 7 Ave, [house number], Kacyiru, Gasabo, Kigali. Kigali streets have codes: KG (Gasabo), KN (Nyarugenge) or KK (Kicukiro), then a number, then St or Ave.",
+      "kenyaCompare": "Rwanda's 30 districts are the closest match to Kenya's 47 counties, but each is much smaller. Sectors are roughly like Kenyan wards, and villages are much smaller than anything in Kenya's official structure.",
+      "verify": "Check cell and village counts; boundaries are occasionally revised."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi or app car", "cost": "~FRw 10,000–15,000", "time": "~20–30 min", "note": "Taxis wait outside arrivals; the airport is about 10 km from the city centre.", "verify": "Check current airport taxi fare to the city centre." },
+        { "icon": "bus", "name": "City bus", "cost": "~FRw 300–500", "time": "~30–45 min", "note": "Buses run along the airport road into town. You pay with a tap card, not cash.", "verify": "Check which routes serve the airport and how to get a card on arrival." }
+      ],
+      "rideHail": ["Yego Cabs", "Move"],
+      "notes": [
+        "Moto taxis are common, and the driver should give you a helmet.",
+        "Cash, card and MTN MoMo are all widely used."
+      ],
+      "verify": "Fares are rough. Check which ride-hail apps are currently operating in Kigali."
+    },
+    "capitalModes": [
+      { "icon": "bus", "name": "City bus with tap card", "cost": "~FRw 200–500", "note": "Buses on fixed routes; pay with a rechargeable tap card. Queues can be long at peak times.", "verify": "Check current fares and the name of the card system." },
+      { "icon": "boda", "name": "Moto taxi", "cost": "~FRw 500–2,000", "note": "Motorbike taxis are everywhere; drivers wear numbered vests and carry a passenger helmet.", "verify": "Check typical moto fares." },
+      { "icon": "car", "name": "Taxi or app car", "note": "Private taxis and app cars are available; agree the fare first if not using an app." },
+      { "icon": "walk", "name": "Walking", "note": "Pleasant in central areas, but Kigali is very hilly." }
+    ]
   },
   {
     "code": "ET",
@@ -61,6 +243,336 @@
     "mobileMoney": ["telebirr", "M-Pesa Ethiopia"],
     "scale": "A macchiato is roughly Br 50–150, depending on whether it is a local café or a smart chain.",
     "coffeeLocal": 80,
-    "verify": "Birr prices have risen quickly since the 2024 currency float; the coffee price and range are very rough. Mini flag omits the central emblem."
+    "verify": "Birr prices have risen quickly since the 2024 currency float; the coffee price and range are very rough. Mini flag omits the central emblem.",
+    "slug": "ethiopia",
+    "depth": "full",
+    "capital": "addis-ababa",
+    "commercialCity": "",
+    "capitalNote": "Addis Ababa is the capital, the main business city and the seat of the African Union.",
+    "population": "~130 million (2024 UN est.; last full census 2007)",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+251",
+    "drivingSide": "right",
+    "plugs": ["C", "F", "L"],
+    "airports": [
+      { "iata": "ADD", "name": "Addis Ababa Bole International Airport", "city": "Addis Ababa", "main": true }
+    ],
+    "intro": "Ethiopia is a large highland country in the Horn of Africa and one of the most populous in Africa. It has its own calendar and a clock that counts hours from sunrise. Addis Ababa's Bole airport is a major hub for flights across Africa.",
+    "organisation": {
+      "summary": "Ethiopia is a federation of regional states, largely drawn along ethnic and language lines, plus chartered cities. Regions are divided into zones, then woredas (districts), then kebeles (neighbourhoods or villages).",
+      "levels": [
+        { "name": "Regional state / chartered city", "local": "kilil", "count": "~12 regions + 2 chartered cities", "note": "Addis Ababa and Dire Dawa are the chartered cities. Several new regions have been created since 2019." },
+        { "name": "Zone", "count": "many", "note": "Sub-divisions of a region." },
+        { "name": "Woreda", "count": "~1,000+", "note": "District level; Addis Ababa uses sub-cities and woredas instead." },
+        { "name": "Kebele", "count": "many", "note": "The smallest unit: a neighbourhood in a town, or a group of villages." }
+      ],
+      "addressExample": "[Building name], near [landmark], Woreda 03, Bole Sub-city, Addis Ababa. Directions usually rely on landmarks such as churches, hotels and squares.",
+      "kenyaCompare": "Ethiopia's regional states are much larger and more powerful than Kenya's counties. Woredas are roughly like Kenyan sub-counties, and kebeles like wards.",
+      "verify": "Check the current number of regional states; the count has changed several times recently. Woreda count is approximate."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi or ride-hail app", "cost": "~Br 500–1,500", "time": "~15–40 min", "note": "Bole airport is close to the city; app cars and taxis are the simplest option.", "verify": "Prices have changed fast since 2024; check current fares." },
+        { "icon": "matatu", "name": "Minibus", "time": "~30–60 min", "note": "Blue-and-white minibuses pass near the airport and are very cheap, but crowded." }
+      ],
+      "rideHail": ["Ride", "Feres"],
+      "notes": [
+        "Check whether times are given in Ethiopian time or international time.",
+        "Change money at banks or official bureaus and keep receipts."
+      ],
+      "verify": "Fares are rough. Confirm ride-hail app names currently operating in Addis Ababa."
+    },
+    "capitalModes": [
+      { "icon": "train", "name": "Addis Ababa light rail", "note": "Two lines cross the city (north–south and east–west). Cheap but can be crowded.", "verify": "Check current lines, service levels and fare." },
+      { "icon": "matatu", "name": "Blue-and-white minibus", "note": "Shared minibuses on set routes; a conductor calls out the destination.", "verify": "Check typical minibus fares." },
+      { "icon": "bus", "name": "City buses", "note": "Large public buses run on main roads; very cheap and busy." },
+      { "icon": "car", "name": "Ride-hail apps", "note": "Ride, Feres and others are the easiest option for visitors.", "verify": "Confirm app names." },
+      { "icon": "tuktuk", "name": "Bajaj", "note": "Three-wheeled tuk-tuks, mostly in outer neighbourhoods rather than the centre.", "verify": "Check where bajaj are allowed in Addis Ababa." }
+    ],
+    "advisory": {
+      "summary": "Several governments advise against travel to parts of Ethiopia because of conflict and unrest in some regions. Conditions change quickly; check official advice before planning travel outside Addis Ababa.",
+      "reviewed": "2026-10-15",
+      "verify": "Check current government travel advice for specific regions."
+    }
+  },
+  {
+    "code": "BI",
+    "name": "Burundi",
+    "flag": ["#CE1126", "#FFFFFF", "#1EB53A"],
+    "currency": "Burundian franc",
+    "currencyCode": "BIF",
+    "symbol": "FBu",
+    "languages": ["Kirundi", "French", "English", "Swahili"],
+    "mobileMoney": ["Lumicash", "EcoCash"],
+    "scale": "Prices for visitors vary a lot; check locally.",
+    "coffeeLocal": 0,
+    "verify": "Flag is simplified to three stripes (the real flag has a white diagonal cross with red and green triangles and three stars). Check mobile money brands and whether a local coffee price can be added.",
+    "slug": "burundi",
+    "depth": "light",
+    "capital": "gitega",
+    "commercialCity": "bujumbura",
+    "capitalNote": "Gitega has been the political capital since around 2019. Bujumbura, on Lake Tanganyika, is the economic capital and largest city, where the airport and most businesses are.",
+    "population": "~14 million (2024 est.)",
+    "timeZone": "CAT, UTC+2",
+    "callingCode": "+257",
+    "drivingSide": "right",
+    "plugs": ["C", "E"],
+    "airports": [
+      { "iata": "BJM", "name": "Melchior Ndadaye International Airport", "city": "Bujumbura", "main": true }
+    ],
+    "intro": "Burundi is a small, hilly, landlocked country between Rwanda, Tanzania and the DR Congo, on the shores of Lake Tanganyika. Kirundi is spoken by almost everyone, with French and English also official. It is a member of the East African Community.",
+    "organisation": {
+      "summary": "Burundi reorganised its local government in 2025, merging its provinces into a small number of large ones and reducing the number of communes. Below the commune are zones and hills (collines).",
+      "levels": [
+        { "name": "Province", "count": "~5", "note": "Reduced from 18 in the 2025 reform." },
+        { "name": "Commune", "count": "~42", "note": "The main level of local government." },
+        { "name": "Zone", "count": "many", "note": "Groups of hills or urban quarters." },
+        { "name": "Hill / quarter", "local": "colline / quartier", "count": "many", "note": "The smallest unit: a hill in the countryside, a quarter in towns." }
+      ],
+      "addressExample": "[Avenue name], [quarter], Rohero, Bujumbura. Directions usually use avenues, quarters and landmarks.",
+      "kenyaCompare": "Burundi's new provinces are much bigger than Kenyan counties; communes are roughly like Kenyan sub-counties.",
+      "verify": "Check the 2025 reform: number and names of provinces and communes, and whether zones were kept."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi", "time": "~15–30 min", "note": "Taxis from the airport to central Bujumbura; agree the fare first or arrange a pickup with your hotel.", "verify": "Check typical airport taxi fare." }
+      ],
+      "rideHail": [],
+      "notes": [
+        "Gitega is roughly 2 hours by road from Bujumbura.",
+        "Foreign currency has been in short supply; check the latest money situation before travelling."
+      ],
+      "verify": "Check ride-hail availability, road time to Gitega and the current exchange situation."
+    },
+    "capitalModes": [
+      { "icon": "matatu", "name": "Minibus", "note": "Shared minibuses are the main public transport in Bujumbura and between towns." },
+      { "icon": "tuktuk", "name": "Tuk-tuk", "note": "Three-wheelers are common for short trips.", "verify": "Check current rules on moto, bicycle and tuk-tuk taxis in central Bujumbura." }
+    ]
+  },
+  {
+    "code": "SS",
+    "name": "South Sudan",
+    "flag": ["#000000", "#FFFFFF", "#DA121A", "#FFFFFF", "#078930"],
+    "currency": "South Sudanese pound",
+    "currencyCode": "SSP",
+    "symbol": "SSP",
+    "languages": ["English", "Juba Arabic", "Dinka", "Nuer", "Bari", "many other local languages"],
+    "mobileMoney": ["m-Gurush", "MTN MoMo"],
+    "scale": "Many larger prices for visitors are quoted in US dollars.",
+    "coffeeLocal": 0,
+    "verify": "Flag is simplified to stripes (the real flag has a blue triangle with a yellow star). Check that m-Gurush and MTN MoMo are operating and their current names. Check the symbol in common use.",
+    "slug": "south-sudan",
+    "depth": "light",
+    "capital": "juba",
+    "commercialCity": "",
+    "capitalNote": "Juba, on the White Nile, is the capital and largest city.",
+    "population": "~11 million (2024 est.; estimates vary)",
+    "timeZone": "CAT, UTC+2",
+    "callingCode": "+211",
+    "drivingSide": "right",
+    "plugs": ["C", "D"],
+    "airports": [
+      { "iata": "JUB", "name": "Juba International Airport", "city": "Juba", "main": true }
+    ],
+    "intro": "South Sudan became independent from Sudan in 2011, making it the world's newest country. It is landlocked, crossed by the White Nile, and home to many ethnic groups and languages. English is the official language and Juba Arabic is widely used.",
+    "organisation": {
+      "summary": "South Sudan has 10 states and 3 administrative areas. States are divided into counties, then payams and bomas.",
+      "levels": [
+        { "name": "State / administrative area", "count": "10 + 3", "note": "The administrative areas are Abyei, Greater Pibor and Ruweng." },
+        { "name": "County", "count": "many", "note": "Sub-divisions of a state." },
+        { "name": "Payam", "count": "many", "note": "Roughly a sub-county." },
+        { "name": "Boma", "count": "many", "note": "The smallest unit, a village or group of villages." }
+      ],
+      "addressExample": "[Organisation or building name], [area], Juba. Most addresses are given by area and landmark.",
+      "kenyaCompare": "South Sudan's states are roughly comparable to large Kenyan counties; counties and payams are closer to Kenya's sub-counties and wards.",
+      "verify": "Check the state structure and the status of Abyei; the number of states has changed several times since 2015."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "car", "name": "Arranged pickup", "time": "~10–20 min", "note": "Most visitors are met by their organisation or hotel; the airport is close to the centre." }
+      ],
+      "rideHail": [],
+      "notes": [
+        "Most visitors travel for work, often with organisations that arrange their transport.",
+        "Check visa and entry requirements well in advance."
+      ],
+      "verify": "Check entry requirements and whether any ride-hail apps operate in Juba."
+    },
+    "capitalModes": [
+      { "icon": "boda", "name": "Boda boda", "note": "Motorbike taxis are widely used for short trips." },
+      { "icon": "matatu", "name": "Minibus", "note": "Shared minibuses run on main roads." }
+    ],
+    "advisory": {
+      "summary": "Several governments advise against all or all-but-essential travel to South Sudan. Conditions change quickly; check official advice before planning any trip.",
+      "reviewed": "2026-10-15",
+      "verify": "Check current government travel advice."
+    }
+  },
+  {
+    "code": "SO",
+    "name": "Somalia",
+    "flag": ["#4189DD", "#FFFFFF", "#4189DD"],
+    "currency": "Somali shilling",
+    "currencyCode": "SOS",
+    "symbol": "Sh.So.",
+    "languages": ["Somali", "Arabic", "English", "Italian (some older speakers)"],
+    "mobileMoney": ["EVC Plus (Hormuud)", "Zaad (Telesom, mainly Somaliland)", "Sahal (Golis)"],
+    "scale": "US dollars and mobile money are used for most payments.",
+    "coffeeLocal": 0,
+    "verify": "Flag is simplified (the real flag is light blue with a single white star). Check the symbol in common use. Somaliland uses its own Somaliland shilling.",
+    "slug": "somalia",
+    "depth": "light",
+    "capital": "mogadishu",
+    "commercialCity": "",
+    "capitalNote": "Mogadishu, on the Indian Ocean coast, is the capital and largest city.",
+    "population": "~19 million (2024 est.; estimates vary)",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+252",
+    "drivingSide": "right",
+    "plugs": ["C"],
+    "airports": [
+      { "iata": "MGQ", "name": "Aden Adde International Airport", "city": "Mogadishu", "main": true }
+    ],
+    "intro": "Somalia has the longest coastline in mainland Africa, along the Gulf of Aden and the Indian Ocean. Mobile money is used for almost everything, and US dollars circulate widely. Somali is spoken nearly everywhere; Arabic is also official.",
+    "organisation": {
+      "summary": "Somalia is a federation of federal member states, plus the Banadir Regional Administration covering Mogadishu. Somaliland in the north-west has declared independence and runs its own administration; its status is disputed. The older regions and districts are still widely used.",
+      "levels": [
+        { "name": "Federal member state", "count": "~5 + Banadir", "note": "Puntland, Galmudug, Hirshabelle, South West and Jubaland, plus Banadir (Mogadishu)." },
+        { "name": "Region", "local": "gobol", "count": "~18", "note": "The pre-1991 regions, still used in everyday speech and statistics." },
+        { "name": "District", "local": "degmo", "count": "many", "note": "Mogadishu itself is divided into districts." }
+      ],
+      "addressExample": "[Building or landmark], [district], Mogadishu. Addresses are mostly given by district and landmark.",
+      "kenyaCompare": "Somalia's member states are much larger and more autonomous than Kenyan counties; its districts are closer to Kenyan sub-counties.",
+      "verify": "Check the number of federal member states and the current status of Somaliland and other administrations."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "car", "name": "Arranged pickup", "note": "Visitors normally have transport arranged by their organisation or host." }
+      ],
+      "rideHail": [],
+      "notes": [
+        "Most visitors travel for work, with transport and security arranged by their organisation.",
+        "Check visa and entry requirements well in advance."
+      ],
+      "verify": "Check entry requirements and current arrangements at Aden Adde airport."
+    },
+    "capitalModes": [
+      { "icon": "tuktuk", "name": "Bajaj", "note": "Three-wheeled tuk-tuks are common for short local trips." },
+      { "icon": "matatu", "name": "Minibus", "note": "Shared minibuses run on main roads." }
+    ],
+    "advisory": {
+      "summary": "Many governments advise against all travel to Somalia, with some differences for certain areas. Conditions change quickly; check official advice before planning any trip.",
+      "reviewed": "2026-10-15",
+      "verify": "Check current government travel advice, including separate guidance for Somaliland."
+    }
+  },
+  {
+    "code": "DJ",
+    "name": "Djibouti",
+    "flag": ["#6AB2E7", "#FFFFFF", "#12AD2B"],
+    "currency": "Djiboutian franc",
+    "currencyCode": "DJF",
+    "symbol": "Fdj",
+    "languages": ["French", "Arabic", "Somali", "Afar"],
+    "mobileMoney": ["D-Money"],
+    "scale": "Prices are high by regional standards, as most goods are imported.",
+    "coffeeLocal": 0,
+    "verify": "Flag is simplified (the real flag is light blue over green with a white triangle and red star). Check that D-Money is the main mobile money service and its current name.",
+    "slug": "djibouti",
+    "depth": "light",
+    "capital": "djibouti-city",
+    "commercialCity": "",
+    "capitalNote": "Djibouti City is the capital, main port and home to most of the country's people.",
+    "population": "~1.1 million (2024 est.)",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+253",
+    "drivingSide": "right",
+    "plugs": ["C", "E"],
+    "airports": [
+      { "iata": "JIB", "name": "Djibouti–Ambouli International Airport", "city": "Djibouti City", "main": true }
+    ],
+    "intro": "Djibouti is a small country at the entrance to the Red Sea, with one of the hottest climates in the world. Its port is a key gateway for Ethiopia's trade, linked by railway to Addis Ababa. French and Arabic are official; Somali and Afar are widely spoken.",
+    "organisation": {
+      "summary": "Djibouti is divided into the city of Djibouti and five regions, which are split into districts.",
+      "levels": [
+        { "name": "Region / city", "count": "5 + Djibouti City", "note": "Ali Sabieh, Arta, Dikhil, Obock and Tadjourah, plus the city of Djibouti." },
+        { "name": "District", "count": "many", "note": "Sub-divisions of regions." }
+      ],
+      "addressExample": "[Building name], [quarter], Djibouti City. Most people give a quarter and landmark.",
+      "kenyaCompare": "The whole country has a smaller population than Nairobi; its regions are similar in role to Kenyan counties but with far fewer people.",
+      "verify": "Check the region list and district count."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi", "time": "~10–20 min", "note": "The airport is close to the city; taxis wait outside. Agree the fare first.", "verify": "Check typical airport taxi fare." }
+      ],
+      "rideHail": [],
+      "notes": [
+        "The Addis Ababa–Djibouti railway links the two capitals.",
+        "It is extremely hot from about June to September."
+      ],
+      "verify": "Check passenger service on the Addis Ababa–Djibouti railway and whether any ride-hail apps operate."
+    },
+    "capitalModes": [
+      { "icon": "matatu", "name": "Minibus", "note": "Shared minibuses run across the city on set routes." },
+      { "icon": "taxi", "name": "Taxi", "note": "Taxis are easy to find; agree the fare before you get in." }
+    ]
+  },
+  {
+    "code": "ER",
+    "name": "Eritrea",
+    "flag": ["#12AD2B", "#EA0437", "#4189DD"],
+    "currency": "Eritrean nakfa",
+    "currencyCode": "ERN",
+    "symbol": "Nfk",
+    "languages": ["Tigrinya", "Arabic", "English", "Tigre", "other local languages"],
+    "mobileMoney": [],
+    "scale": "Mostly a cash economy; prices for visitors vary.",
+    "coffeeLocal": 0,
+    "verify": "Flag is simplified (the real flag has a red triangle over green and blue, with a gold olive wreath). Check the symbol and whether any mobile money exists.",
+    "slug": "eritrea",
+    "depth": "light",
+    "capital": "asmara",
+    "commercialCity": "",
+    "capitalNote": "Asmara, high in the highlands, is the capital and largest city.",
+    "population": "~3.5 million (est.; no recent census, estimates vary widely)",
+    "timeZone": "EAT, UTC+3",
+    "callingCode": "+291",
+    "drivingSide": "right",
+    "plugs": ["C", "L"],
+    "airports": [
+      { "iata": "ASM", "name": "Asmara International Airport", "city": "Asmara", "main": true }
+    ],
+    "intro": "Eritrea lies on the Red Sea coast, north of Ethiopia, and became independent in 1993. Asmara's modernist architecture is a UNESCO World Heritage Site. There is no single official language; Tigrinya, Arabic and English are widely used in government and business.",
+    "organisation": {
+      "summary": "Eritrea is divided into 6 regions (zobas), which are split into sub-regions (subzobas) and then local areas.",
+      "levels": [
+        { "name": "Region", "local": "zoba", "count": "6", "note": "Maekel (Central), Anseba, Gash-Barka, Debub (Southern), Northern Red Sea and Southern Red Sea." },
+        { "name": "Sub-region", "local": "subzoba", "count": "many", "note": "Districts within each region." }
+      ],
+      "addressExample": "[Building name], [street name], Asmara. Central Asmara has named streets; elsewhere landmarks are used.",
+      "kenyaCompare": "Eritrea's 6 regions are each roughly the size of a large Kenyan county or bigger; sub-regions are closer to Kenyan sub-counties.",
+      "verify": "Check the subzoba count."
+    },
+    "gettingIn": {
+      "airportToCity": [
+        { "icon": "taxi", "name": "Taxi", "time": "~15 min", "note": "The airport is close to the city centre.", "verify": "Check typical airport taxi arrangements." }
+      ],
+      "rideHail": [],
+      "notes": [
+        "Visitors usually need permits to travel outside Asmara.",
+        "Bring enough cash; cards and international ATMs are very limited."
+      ],
+      "verify": "Check the travel permit rules, entry requirements and card or ATM availability."
+    },
+    "capitalModes": [
+      { "icon": "bus", "name": "City buses", "note": "Buses run on set routes across Asmara." },
+      { "icon": "walk", "name": "Walking", "note": "The central area is compact and walkable." }
+    ],
+    "advisory": {
+      "summary": "Several governments advise against travel to parts of Eritrea, especially border areas, and note restrictions on movement for visitors. Conditions change; check official advice before planning any trip.",
+      "reviewed": "2026-10-15",
+      "verify": "Check current government travel advice."
+    }
   }
 ]

@@ -15,5 +15,18 @@
   { "name": "National Institute of Statistics of Rwanda (NISR)", "url": "https://www.statistics.gov.rw", "usage": "Population figures for Kigali (2022 census)." },
   { "name": "geoBoundaries", "url": "https://www.geoboundaries.org", "usage": "Open county boundary data for the Kenya map." },
   { "name": "Natural Earth", "url": "https://www.naturalearthdata.com", "usage": "Country outlines for the regional map." },
-  { "name": "Kenya eTA (Department of Immigration Services)", "url": "https://www.etakenya.go.ke", "usage": "Entry requirements and Electronic Travel Authorisation." }
+  { "name": "Kenya eTA (Department of Immigration Services)", "url": "https://www.etakenya.go.ke", "usage": "Entry requirements and Electronic Travel Authorisation.", "kind": "entry", "country": "KE" },
+  { "name": "Uganda Directorate of Citizenship and Immigration Control: e-Visa", "url": "https://visas.immigration.go.ug", "usage": "Official Uganda visa and East Africa Tourist Visa applications.", "kind": "entry", "country": "UG" },
+  { "name": "Tanzania Immigration Department: e-Visa", "url": "https://visa.immigration.go.tz", "usage": "Official Tanzania visa applications and entry requirements.", "kind": "entry", "country": "TZ" },
+  { "name": "Rwanda Directorate General of Immigration and Emigration", "url": "https://www.migration.gov.rw", "usage": "Rwanda visa rules, visa-on-arrival policy and East Africa Tourist Visa.", "kind": "entry", "country": "RW" },
+  { "name": "Ethiopia e-Visa (Immigration and Citizenship Service)", "url": "https://www.evisa.gov.et", "usage": "Official Ethiopian e-visa applications.", "kind": "entry", "country": "ET" },
+  { "name": "UK Foreign, Commonwealth & Development Office: travel advice", "url": "https://www.gov.uk/foreign-travel-advice", "usage": "Country safety, security and entry advice, used to flag areas with active advisories.", "kind": "advisory" },
+  { "name": "U.S. Department of State: travel advisories", "url": "https://travel.state.gov", "usage": "Country travel advisory levels and safety information.", "kind": "advisory" },
+  { "name": "Government of Canada: travel advice and advisories", "url": "https://travel.gc.ca", "usage": "Country risk levels, regional advisories and entry information.", "kind": "advisory" },
+  { "name": "Australian Government Smartraveller", "url": "https://www.smartraveller.gov.au", "usage": "Country advice levels and safety information.", "kind": "advisory" },
+  { "name": "East African Community", "url": "https://www.eac.int", "usage": "EAC partner states, free movement for citizens, the One Network Area and One Stop Border Posts." },
+  { "name": "Bank of the Republic of Burundi (BRB)", "url": "https://www.brb.bi", "usage": "Burundian franc notes, coins and exchange rates." },
+  { "name": "Bank of South Sudan", "url": "https://boss.gov.ss", "usage": "South Sudanese pound and exchange rates." },
+  { "name": "Central Bank of Somalia", "url": "https://centralbank.gov.so", "usage": "Somali shilling and the monetary situation in Somalia." },
+  { "name": "Central Bank of Djibouti", "url": "https://www.banque-centrale.dj", "usage": "Djiboutian franc notes, coins and exchange rates." }
 ]

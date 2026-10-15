@@ -1,0 +1,338 @@
+[
+  {
+    "from": "nairobi",
+    "to": "mombasa",
+    "summary": "Kenya's classic trip from the capital to the coast. The SGR train is the comfortable, good-value choice; flying is fastest; buses run day and night.",
+    "border": "",
+    "options": [
+      {
+        "mode": "sgr",
+        "label": "SGR Madaraka Express (economy)",
+        "duration": "~4.5–6 h",
+        "costMin": 1500,
+        "costMax": 1500,
+        "currency": "KES",
+        "notes": "Runs from Nairobi Terminus (Syokimau) to Mombasa Terminus (Miritini). Express trains are faster than inter-county trains that stop at every station. First class costs more. Book ahead and bring your ID or passport, as tickets are checked at the station.",
+        "verify": "TODO: verify current fares, journey times and timetable on the Kenya Railways booking site."
+      },
+      {
+        "mode": "flight",
+        "label": "Domestic flight (JKIA or Wilson to Moi International)",
+        "duration": "~1 h",
+        "costMin": 5000,
+        "costMax": 15000,
+        "currency": "KES",
+        "notes": "Several airlines fly the route every day. Fares rise near holidays and weekends. Allow time for traffic to and from the airports.",
+        "verify": "TODO: verify fare range; prices vary widely by date and airline."
+      },
+      {
+        "mode": "bus",
+        "label": "Long-distance bus",
+        "duration": "~8–10 h",
+        "costMin": 1200,
+        "costMax": 2500,
+        "currency": "KES",
+        "notes": "Many companies run day and overnight buses along the Mombasa Road. Choose an established company and keep valuables with you.",
+        "verify": "TODO: verify fare range and journey time."
+      }
+    ]
+  },
+  {
+    "from": "nairobi",
+    "to": "kisumu",
+    "summary": "West to Lake Victoria. A short flight or a long day on the road.",
+    "border": "",
+    "options": [
+      {
+        "mode": "flight",
+        "label": "Domestic flight (to Kisumu International)",
+        "duration": "~1 h",
+        "costMin": 5000,
+        "costMax": 15000,
+        "currency": "KES",
+        "notes": "Several flights a day from Nairobi.",
+        "verify": "TODO: verify fare range."
+      },
+      {
+        "mode": "bus",
+        "label": "Long-distance bus",
+        "duration": "~6–8 h",
+        "costMin": 1000,
+        "costMax": 2000,
+        "currency": "KES",
+        "notes": "Buses run via Nakuru. Shared shuttles (matatus) are a bit faster but more cramped.",
+        "verify": "TODO: verify fare range and journey time."
+      }
+    ]
+  },
+  {
+    "from": "nairobi",
+    "to": "kampala",
+    "summary": "A long but popular road trip across the Kenya–Uganda border, or a short flight from Nairobi to Entebbe.",
+    "border": "busia",
+    "options": [
+      {
+        "mode": "bus",
+        "label": "International bus (via Busia or Malaba)",
+        "duration": "~12–14 h",
+        "costMin": 2500,
+        "costMax": 4500,
+        "currency": "KES",
+        "notes": "Many buses run overnight. Some cross at Busia and others at Malaba. The bus waits while you clear immigration on both sides. Have your Uganda visa (or EATV) sorted before you travel.",
+        "verify": "TODO: verify fare range, journey time and current Uganda entry rules."
+      },
+      {
+        "mode": "flight",
+        "label": "Flight (JKIA to Entebbe)",
+        "duration": "~1 h",
+        "costMin": 150,
+        "costMax": 400,
+        "currency": "USD",
+        "notes": "Entebbe airport is ~40 km from central Kampala; allow ~1 h or more by road into the city.",
+        "verify": "TODO: verify fare range."
+      }
+    ]
+  },
+  {
+    "from": "nairobi",
+    "to": "kigali",
+    "summary": "There is no direct border: by road you go through Uganda, which makes it a very long trip. Most people fly.",
+    "border": "",
+    "options": [
+      {
+        "mode": "flight",
+        "label": "Flight (JKIA to Kigali)",
+        "duration": "~1.5 h",
+        "costMin": 200,
+        "costMax": 450,
+        "currency": "USD",
+        "notes": "Direct flights run every day.",
+        "verify": "TODO: verify fare range."
+      },
+      {
+        "mode": "bus",
+        "label": "International bus via Uganda",
+        "duration": "~20–24 h",
+        "costMin": 40,
+        "costMax": 70,
+        "currency": "USD",
+        "notes": "Crosses two borders (Kenya–Uganda at Busia or Malaba, then Uganda–Rwanda at Gatuna–Katuna). You need permission to enter both Uganda and Rwanda; the EATV covers both.",
+        "verify": "TODO: verify fare range, journey time and which companies run the through service."
+      }
+    ]
+  },
+  {
+    "from": "nairobi",
+    "to": "arusha",
+    "summary": "A short hop over the Tanzanian border at Namanga, popular with safari travellers.",
+    "border": "namanga",
+    "options": [
+      {
+        "mode": "bus",
+        "label": "Shuttle bus (via Namanga)",
+        "duration": "~5–6 h",
+        "costMin": 25,
+        "costMax": 35,
+        "currency": "USD",
+        "notes": "Shuttle minibuses leave central Nairobi in the morning and afternoon, and many go on to Moshi. They stop at Namanga for immigration. Tanzania is not part of the EATV, so you need a Tanzania visa.",
+        "verify": "TODO: verify fare range, departure times and current Tanzania entry rules."
+      },
+      {
+        "mode": "flight",
+        "label": "Flight (to Kilimanjaro International or Arusha airport)",
+        "duration": "~1 h",
+        "costMin": 150,
+        "costMax": 350,
+        "currency": "USD",
+        "notes": "Kilimanjaro International (JRO) is ~50 km from Arusha; Arusha's own small airport mostly handles light aircraft.",
+        "verify": "TODO: verify fare range and which airports are served."
+      }
+    ]
+  },
+  {
+    "from": "nairobi",
+    "to": "addis-ababa",
+    "summary": "Fly. The road route via Moyale takes several days through remote northern Kenya and southern Ethiopia.",
+    "border": "moyale",
+    "options": [
+      {
+        "mode": "flight",
+        "label": "Flight (JKIA to Bole International)",
+        "duration": "~2 h",
+        "costMin": 250,
+        "costMax": 550,
+        "currency": "USD",
+        "notes": "Several direct flights a day.",
+        "verify": "TODO: verify fare range."
+      },
+      {
+        "mode": "road",
+        "label": "Overland via Moyale",
+        "duration": "~2–3 days",
+        "costMin": 0,
+        "costMax": 0,
+        "currency": "",
+        "notes": "Usually done in stages by bus (Nairobi–Isiolo–Marsabit–Moyale, then Moyale–Addis Ababa) with overnight stops. Long and tiring. Read current government travel advisories for northern Kenya and southern Ethiopia before considering it.",
+        "verify": "TODO: verify current road conditions, bus services and travel advisories; no fare given."
+      }
+    ]
+  },
+  {
+    "from": "kampala",
+    "to": "entebbe",
+    "summary": "The airport run. The Kampala–Entebbe Expressway makes it much quicker when traffic is light.",
+    "border": "",
+    "options": [
+      {
+        "mode": "road",
+        "label": "Special hire (private taxi) or ride-hailing",
+        "duration": "~45 min–1.5 h",
+        "costMin": 80000,
+        "costMax": 150000,
+        "currency": "UGX",
+        "notes": "Expressway tolls may be added. Traffic in central Kampala can add a lot of time.",
+        "verify": "TODO: verify fare range and toll costs."
+      },
+      {
+        "mode": "shared-taxi",
+        "label": "Shared minibus taxi",
+        "duration": "~1–2 h",
+        "costMin": 3000,
+        "costMax": 7000,
+        "currency": "UGX",
+        "notes": "Cheap but slow, uses the old road, and has little room for luggage.",
+        "verify": "TODO: verify fare range."
+      }
+    ]
+  },
+  {
+    "from": "kampala",
+    "to": "jinja",
+    "summary": "East to the source of the Nile. An easy day trip or short road journey.",
+    "border": "",
+    "options": [
+      {
+        "mode": "shared-taxi",
+        "label": "Shared minibus taxi or bus",
+        "duration": "~2–3 h",
+        "costMin": 10000,
+        "costMax": 20000,
+        "currency": "UGX",
+        "notes": "Frequent departures from Kampala's taxi parks. Traffic leaving Kampala sets the journey time.",
+        "verify": "TODO: verify fare range and journey time."
+      }
+    ]
+  },
+  {
+    "from": "kampala",
+    "to": "kigali",
+    "summary": "A scenic road trip through south-west Uganda, crossing into Rwanda at Gatuna–Katuna, or a short flight.",
+    "border": "gatuna-katuna",
+    "options": [
+      {
+        "mode": "bus",
+        "label": "International bus (via Kabale and Gatuna–Katuna)",
+        "duration": "~8–10 h",
+        "costMin": 50000,
+        "costMax": 90000,
+        "currency": "UGX",
+        "notes": "Day and overnight buses. Rwanda bans single-use plastic bags, so expect bags to be checked at the border.",
+        "verify": "TODO: verify fare range, journey time, border status and current Rwanda entry rules."
+      },
+      {
+        "mode": "flight",
+        "label": "Flight (Entebbe to Kigali)",
+        "duration": "~1 h",
+        "costMin": 150,
+        "costMax": 350,
+        "currency": "USD",
+        "notes": "Remember the ~1 h or more drive from Kampala to Entebbe airport.",
+        "verify": "TODO: verify fare range."
+      }
+    ]
+  },
+  {
+    "from": "dar-es-salaam",
+    "to": "zanzibar-city",
+    "summary": "Across the channel to Stone Town by fast ferry or a very short flight.",
+    "border": "",
+    "options": [
+      {
+        "mode": "ferry",
+        "label": "Fast ferry (Dar es Salaam port to Zanzibar)",
+        "duration": "~2 h",
+        "costMin": 35,
+        "costMax": 60,
+        "currency": "USD",
+        "notes": "Several sailings a day. Buy tickets at the official ferry company offices inside the port, not from touts outside. Zanzibar is part of Tanzania but checks passports on arrival.",
+        "verify": "TODO: verify fares, timetable and Zanzibar arrival requirements (including any visitor insurance rule)."
+      },
+      {
+        "mode": "flight",
+        "label": "Short flight (Dar es Salaam to Zanzibar)",
+        "duration": "~20–30 min",
+        "costMin": 50,
+        "costMax": 120,
+        "currency": "USD",
+        "notes": "Frequent small-plane and regional-airline flights.",
+        "verify": "TODO: verify fare range."
+      }
+    ]
+  },
+  {
+    "from": "arusha",
+    "to": "dar-es-salaam",
+    "summary": "From the safari capital to the coast. A long day by bus or a short flight. Tanzania's SGR train does not serve Arusha.",
+    "border": "",
+    "options": [
+      {
+        "mode": "bus",
+        "label": "Long-distance bus",
+        "duration": "~9–11 h",
+        "costMin": 35000,
+        "costMax": 60000,
+        "currency": "TZS",
+        "notes": "Buses usually leave early in the morning, travelling via Moshi. Tanzania's SGR currently runs between Dar es Salaam, Morogoro and Dodoma, not to Arusha.",
+        "verify": "TODO: verify fare range, journey time and current SGR network."
+      },
+      {
+        "mode": "flight",
+        "label": "Domestic flight (Kilimanjaro or Arusha to Dar es Salaam)",
+        "duration": "~1–1.5 h",
+        "costMin": 100,
+        "costMax": 250,
+        "currency": "USD",
+        "notes": "Several airlines fly the route, from Kilimanjaro International (JRO) or Arusha airport.",
+        "verify": "TODO: verify fare range."
+      }
+    ]
+  },
+  {
+    "from": "dar-es-salaam",
+    "to": "dodoma",
+    "summary": "From the commercial hub to the official capital. The new SGR electric train is the quickest way by land.",
+    "border": "",
+    "options": [
+      {
+        "mode": "sgr",
+        "label": "SGR train (via Morogoro)",
+        "duration": "~3.5–4 h",
+        "costMin": 30000,
+        "costMax": 70000,
+        "currency": "TZS",
+        "notes": "Electric standard-gauge trains run by Tanzania Railways Corporation, with economy and higher classes. Book ahead, as trains can sell out.",
+        "verify": "TODO: verify fares, classes, journey time and timetable."
+      },
+      {
+        "mode": "bus",
+        "label": "Long-distance bus",
+        "duration": "~7–9 h",
+        "costMin": 20000,
+        "costMax": 40000,
+        "currency": "TZS",
+        "notes": "Frequent buses via Morogoro.",
+        "verify": "TODO: verify fare range and journey time."
+      }
+    ]
+  }
+]

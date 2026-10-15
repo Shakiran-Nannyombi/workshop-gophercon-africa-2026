@@ -717,5 +717,337 @@
     },
     "confidence": "good",
     "verify": "Scores are editorial estimates. Population is a rough estimate; confirm light rail status and ride-hailing app names."
+  },
+  {
+    "slug": "dodoma",
+    "name": "Dodoma",
+    "country": "TZ",
+    "tagline": "Tanzania's official capital in the dry heart of the country",
+    "intro": "Dodoma is Tanzania's official capital, home to Parliament and, increasingly, the government ministries. It is a planned, fairly quiet city in the centre of the country, much calmer than Dar es Salaam. The surrounding area is Tanzania's main grape and wine region.",
+    "population": "~765,000 (2022 census, Dodoma City)",
+    "elevation": "~1,120 m",
+    "climate": "Semi-arid: warm and dry most of the year, with rains roughly December–April. Nights can be cool.",
+    "airport": "Dodoma Airport (DOD), domestic flights; most international travellers arrive via Dar es Salaam",
+    "languages": ["Swahili", "English"],
+    "lat": -6.17,
+    "lon": 35.74,
+    "motif": "savannah",
+    "neighbourhoods": [
+      { "name": "City centre", "note": "Shops, markets, banks and the main bus and daladala stands." },
+      { "name": "Mtumba (Government City)", "note": "The new government district on the edge of town where many ministries have moved." },
+      { "name": "University area", "note": "Around the University of Dodoma, with student housing and small eateries." }
+    ],
+    "moneyTips": [
+      "M-Pesa and other mobile money are widely used.",
+      "Cash is still needed for daladalas, bajaj and markets.",
+      "ATMs are available in the centre; fewer card-accepting places than in Dar."
+    ],
+    "transport": [
+      "Daladalas, bajaj and boda bodas cover the city.",
+      "The electric SGR train links Dodoma with Dar es Salaam in ~4 hours.",
+      "Long-distance buses connect to most regions."
+    ],
+    "food": [
+      "Nyama choma and mishkaki (grilled meat skewers).",
+      "Chips mayai (chips omelette) at local cafés.",
+      "Locally produced Dodoma wine."
+    ],
+    "safety": [
+      "Generally calm; normal care with phones and bags in markets and bus stands."
+    ],
+    "suits": ["Government and work travel", "Visitors who prefer a quieter city"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Cheaper than Dar es Salaam for food and rooms." },
+      "transport": { "value": 2, "reason": "Daladalas and bajaj, but few app options and long distances." },
+      "climate": { "value": 3, "reason": "Dry and warm; less humid than the coast." },
+      "safety": { "value": 4, "reason": "Calm, relaxed perception; normal care needed." },
+      "nightlife": { "value": 2, "reason": "Quiet; a few bars and hotel lounges." },
+      "vibe": "Quiet, spread out and official"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population boundary, SGR journey time, status of Msalato International Airport and ride-hail availability."
+  },
+  {
+    "slug": "gitega",
+    "name": "Gitega",
+    "country": "BI",
+    "tagline": "Burundi's political capital in the central highlands",
+    "intro": "Gitega became Burundi's political capital around 2019. It is a small, green highland city and a historic royal centre, home to the National Museum. Life moves more slowly here than in Bujumbura.",
+    "population": "~135,000 (est.)",
+    "elevation": "~1,500 m",
+    "climate": "Mild highland climate, cooler than Bujumbura; rains roughly October–May with a drier spell around January.",
+    "airport": "No international airport; most travellers fly into Bujumbura (BJM) and travel ~2 hours by road",
+    "languages": ["Kirundi", "French", "Swahili"],
+    "lat": -3.43,
+    "lon": 29.92,
+    "motif": "highland",
+    "neighbourhoods": [
+      { "name": "Town centre", "note": "Market, shops, banks and the bus station." },
+      { "name": "Museum area", "note": "Around the National Museum of Gitega." }
+    ],
+    "moneyTips": [
+      "Cash in Burundian francs is used for most things.",
+      "Lumicash and EcoCash are used for mobile payments.",
+      "Bring enough cash from Bujumbura; card acceptance is very limited."
+    ],
+    "transport": [
+      "Minibuses connect Gitega with Bujumbura and other towns.",
+      "Moto taxis and bicycle taxis are used locally."
+    ],
+    "food": [
+      "Beans, plantains (matoke) and cassava are everyday staples.",
+      "Brochettes (grilled skewers).",
+      "Burundian coffee and tea grown in the highlands."
+    ],
+    "safety": [
+      "Generally calm; check current travel advice before travelling in Burundi."
+    ],
+    "suits": ["Government and work travel", "Culture and history"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Local food and transport are cheap; imported goods cost more." },
+      "transport": { "value": 2, "reason": "Small town; minibuses and motos only." },
+      "climate": { "value": 4, "reason": "Mild highland temperatures." },
+      "safety": { "value": 3, "reason": "Calm town; check current advice for the wider country." },
+      "nightlife": { "value": 1, "reason": "Very quiet in the evenings." },
+      "vibe": "Small, green and unhurried"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population, road time from Bujumbura and local transport rules."
+  },
+  {
+    "slug": "bujumbura",
+    "name": "Bujumbura",
+    "country": "BI",
+    "tagline": "Burundi's lakeside economic capital",
+    "intro": "Bujumbura is Burundi's largest city and economic capital, on the north-eastern shore of Lake Tanganyika with hills rising behind it. It was the capital until Gitega took over the political role around 2019, and it remains where most businesses, embassies and the international airport are.",
+    "population": "~1 million (est.)",
+    "elevation": "~780 m",
+    "climate": "Hot and humid by the lake, with rains roughly October–May.",
+    "airport": "Melchior Ndadaye International Airport (BJM), ~10 km from the centre",
+    "languages": ["Kirundi", "French", "Swahili", "English"],
+    "lat": -3.38,
+    "lon": 29.36,
+    "motif": "lake",
+    "neighbourhoods": [
+      { "name": "Centre-ville", "note": "Offices, banks, the central market area and government buildings." },
+      { "name": "Rohero", "note": "Central area with hotels, restaurants and offices." },
+      { "name": "Kiriri", "note": "Hillside residential area with views over the lake." },
+      { "name": "Lakeshore", "note": "Beaches and lakeside restaurants north of the centre." }
+    ],
+    "moneyTips": [
+      "Cash in Burundian francs is used for most payments; Lumicash and EcoCash are common.",
+      "Foreign currency has been in short supply, and official and street rates can differ. Use official channels.",
+      "Cards work only in some hotels; bring enough cash."
+    ],
+    "transport": [
+      "Minibuses and tuk-tuks are the main public transport.",
+      "Taxis are available; agree the fare first.",
+      "Fuel shortages have sometimes disrupted transport."
+    ],
+    "food": [
+      "Grilled fish from Lake Tanganyika, such as mukeke and ndagala.",
+      "Brochettes with plantains or chips.",
+      "Beans, cassava and rice as everyday staples."
+    ],
+    "safety": [
+      "Normal big-city care with phones and bags; check current travel advice before visiting.",
+      "Swim only at established beaches, and ask locally about conditions."
+    ],
+    "suits": ["Work and NGO travel", "Lake lovers"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Local food is cheap; imports, fuel and hotels can be pricey." },
+      "transport": { "value": 2, "reason": "Minibuses, tuk-tuks and taxis; no ride-hail apps confirmed." },
+      "climate": { "value": 3, "reason": "Hot and humid by the lake." },
+      "safety": { "value": 3, "reason": "Normal city caution; advice for the wider country varies." },
+      "nightlife": { "value": 3, "reason": "Lakeside bars and live music at weekends." },
+      "vibe": "Lakeside, warm and laid-back"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population, fish names, the current exchange-rate and fuel situation, and rules on moto and tuk-tuk taxis in the centre."
+  },
+  {
+    "slug": "juba",
+    "name": "Juba",
+    "country": "SS",
+    "tagline": "South Sudan's capital on the White Nile",
+    "intro": "Juba is the capital and largest city of South Sudan, on the banks of the White Nile. It has grown fast since independence in 2011 and is a base for government, UN agencies and aid organisations.",
+    "population": "~500,000+ (est.; estimates vary widely)",
+    "elevation": "~550 m",
+    "climate": "Hot all year, with a rainy season roughly April–October.",
+    "airport": "Juba International Airport (JUB), close to the city centre",
+    "languages": ["English", "Juba Arabic", "Bari"],
+    "lat": 4.85,
+    "lon": 31.58,
+    "motif": "river",
+    "neighbourhoods": [],
+    "moneyTips": [
+      "US dollars are widely used for hotels and larger payments; South Sudanese pounds for small purchases.",
+      "Exchange rates can change quickly; use official channels.",
+      "Cards are rarely accepted; bring enough cash."
+    ],
+    "transport": [
+      "Most visitors use vehicles arranged by their organisation or hotel.",
+      "Boda bodas and minibuses are used locally."
+    ],
+    "food": [
+      "Kisra (a thin sorghum flatbread) with stews.",
+      "Fish from the Nile.",
+      "Regional dishes from East Africa and the Middle East in restaurants."
+    ],
+    "safety": [
+      "Check official government travel advisories before planning any travel to Juba."
+    ],
+    "suits": ["Work and NGO travel"],
+    "scores": {
+      "cost": { "value": 5, "reason": "Hotels and imported goods are very expensive, often priced in US dollars." },
+      "transport": { "value": 1, "reason": "Limited public transport; most visitors use arranged vehicles." },
+      "climate": { "value": 2, "reason": "Hot all year, with a long rainy season." },
+      "safety": { "value": 0, "reason": "Not rated: check official travel advisories" },
+      "nightlife": { "value": 0, "reason": "Not rated" },
+      "vibe": "Fast-growing riverside capital"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population estimate and current advisory status."
+  },
+  {
+    "slug": "mogadishu",
+    "name": "Mogadishu",
+    "country": "SO",
+    "tagline": "Somalia's capital on the Indian Ocean",
+    "intro": "Mogadishu is Somalia's capital and largest city, a historic port on the Indian Ocean coast. It is a centre for trade, government and international organisations, and much of daily business runs on mobile money.",
+    "population": "~2.5–3 million (est.; estimates vary widely)",
+    "elevation": "~10 m (sea level)",
+    "climate": "Hot and humid all year, eased by sea breezes; main rains roughly April–June and October–November.",
+    "airport": "Aden Adde International Airport (MGQ), on the coast near the city",
+    "languages": ["Somali", "Arabic", "English"],
+    "lat": 2.05,
+    "lon": 45.32,
+    "motif": "coast",
+    "neighbourhoods": [],
+    "moneyTips": [
+      "US dollars and mobile money (EVC Plus) are used for most payments.",
+      "Somali shilling notes are mostly used for small purchases.",
+      "Cards are rarely accepted."
+    ],
+    "transport": [
+      "Visitors normally use transport arranged by their organisation or host.",
+      "Bajaj and minibuses are used locally."
+    ],
+    "food": [
+      "Bariis iskukaris (spiced rice) with goat or camel meat.",
+      "Fresh fish from the Indian Ocean.",
+      "Canjeero (a pancake-like flatbread) for breakfast.",
+      "Shaah (spiced tea)."
+    ],
+    "safety": [
+      "Check official government travel advisories before planning any travel to Mogadishu."
+    ],
+    "suits": ["Work and NGO travel"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Local food is affordable; visitors' accommodation and transport are often costly." },
+      "transport": { "value": 1, "reason": "Visitors rely on arranged transport." },
+      "climate": { "value": 2, "reason": "Hot and humid, with sea breezes." },
+      "safety": { "value": 0, "reason": "Not rated: check official travel advisories" },
+      "nightlife": { "value": 0, "reason": "Not rated" },
+      "vibe": "Historic, coastal and commercial"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population estimate, rainy seasons and current advisory status."
+  },
+  {
+    "slug": "djibouti-city",
+    "name": "Djibouti City",
+    "country": "DJ",
+    "tagline": "Port capital at the mouth of the Red Sea",
+    "intro": "Djibouti City is the capital of Djibouti and home to most of the country's people. Its busy port handles much of Ethiopia's trade, and the city hosts several foreign military bases. It mixes French, Arab, Somali and Afar influences.",
+    "population": "~600,000+ (est.)",
+    "elevation": "~15 m",
+    "climate": "Very hot and dry; extremely hot roughly June–September, milder roughly November–March.",
+    "airport": "Djibouti–Ambouli International Airport (JIB), ~5 km from the centre",
+    "languages": ["French", "Arabic", "Somali", "Afar"],
+    "lat": 11.59,
+    "lon": 43.15,
+    "motif": "coast",
+    "neighbourhoods": [
+      { "name": "European Quarter / Place Ménélik", "note": "The old centre with colonial buildings, cafés and shops." },
+      { "name": "Plateau du Serpent", "note": "Residential area with embassies and hotels near the sea." },
+      { "name": "Héron", "note": "Seaside area with hotels and restaurants." }
+    ],
+    "moneyTips": [
+      "Prices are in Djiboutian francs (Fdj); US dollars and euros are often accepted in hotels.",
+      "Cards work in larger hotels and some shops; carry cash for taxis and markets.",
+      "Prices are high, as most goods are imported."
+    ],
+    "transport": [
+      "Taxis are common; agree the fare first.",
+      "Minibuses run on set routes across the city.",
+      "The Addis Ababa–Djibouti railway connects to Ethiopia."
+    ],
+    "food": [
+      "Skoudehkaris, a spiced rice and meat dish.",
+      "Yemeni-style baked fish (poisson yéménite).",
+      "Fah-fah, a spicy meat soup.",
+      "French bakeries and cafés."
+    ],
+    "safety": [
+      "Generally calm in the city; take the heat seriously, drink plenty of water and avoid midday sun in summer.",
+      "Dress modestly; it is a mainly Muslim country."
+    ],
+    "suits": ["Work and business travel", "Divers and sea lovers"],
+    "scores": {
+      "cost": { "value": 5, "reason": "One of the region's most expensive cities; most goods are imported." },
+      "transport": { "value": 2, "reason": "Taxis and minibuses; little else." },
+      "climate": { "value": 1, "reason": "Among the hottest cities in the world, especially in summer." },
+      "safety": { "value": 4, "reason": "Generally calm perception; normal care needed." },
+      "nightlife": { "value": 2, "reason": "A few hotel bars and restaurants." },
+      "vibe": "Hot, cosmopolitan and port-driven"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population, neighbourhood names, dish names and railway passenger service."
+  },
+  {
+    "slug": "asmara",
+    "name": "Asmara",
+    "country": "ER",
+    "tagline": "Highland capital known for its modernist architecture",
+    "intro": "Asmara is Eritrea's capital, high on the edge of the highlands. Its early 20th-century modernist and Art Deco buildings were listed as a UNESCO World Heritage Site in 2017, and it has a strong café culture.",
+    "population": "~900,000 (est.; no recent census)",
+    "elevation": "~2,325 m",
+    "climate": "Mild and dry most of the year thanks to the altitude; main rains roughly July–August. Nights can be cold.",
+    "airport": "Asmara International Airport (ASM), close to the city",
+    "languages": ["Tigrinya", "Arabic", "English", "Italian (some older speakers)"],
+    "lat": 15.33,
+    "lon": 38.93,
+    "motif": "highland",
+    "neighbourhoods": [],
+    "moneyTips": [
+      "Eritrea is mostly a cash economy; cards and international ATMs are very limited.",
+      "Exchange money only through official channels.",
+      "Bring enough cash for your whole stay."
+    ],
+    "transport": [
+      "The centre is compact and walkable.",
+      "City buses and shared taxis run on set routes.",
+      "Visitors usually need permits to travel outside Asmara."
+    ],
+    "food": [
+      "Injera with tsebhi (stews), similar to Ethiopian cuisine.",
+      "Pasta and pizza, part of the Italian influence.",
+      "Macchiato and cappuccino in old-style cafés."
+    ],
+    "safety": [
+      "Check official government travel advisories before planning any travel to Asmara."
+    ],
+    "suits": [],
+    "scores": {
+      "cost": { "value": 3, "reason": "Local food is affordable; hotel prices vary." },
+      "transport": { "value": 3, "reason": "Compact, walkable centre and city buses." },
+      "climate": { "value": 5, "reason": "Mild and dry most of the year." },
+      "safety": { "value": 0, "reason": "Not rated: check official travel advisories" },
+      "nightlife": { "value": 0, "reason": "Not rated" },
+      "vibe": "Calm, elegant and café-loving"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Check population estimate, travel permit rules and the rainy season."
   }
 ]

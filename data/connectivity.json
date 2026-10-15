@@ -1,0 +1,133 @@
+{
+  "intro": "A local SIM card is usually the cheapest and most reliable way to get online in East Africa. Data is mostly prepaid in bundles, and mobile money (M-Pesa, MoMo and others) runs on the same SIM. You normally need your passport to register a SIM, and your phone must be unlocked to accept one.",
+  "roaming": [
+    "The One Network Area is an East African arrangement that cuts the cost of calls and texts between some EAC countries' networks, and lets users roam without paying for incoming calls.",
+    "It covers Kenya, Uganda, Rwanda and South Sudan, with Tanzania taking part only partly.",
+    "It only helps if your SIM is from a network in one of those countries. A SIM from outside the region still pays your home network's international roaming rates, which can be very expensive for data.",
+    "If you will spend more than a few days in one country, a local SIM or eSIM is usually much cheaper than roaming."
+  ],
+  "esim": [
+    "Some carriers in the region sell local eSIMs, usually from their official shops after the same passport registration as a physical SIM.",
+    "International eSIM apps sell data-only plans for many East African countries. They are easy to set up before you fly but usually cost more per GB than a local SIM, and do not give you a local number for mobile money.",
+    "Check that your phone supports eSIM and is unlocked (not tied to one carrier) before you travel.",
+    "Keep your home SIM in the phone, or stored safely, if you need it for bank text messages."
+  ],
+  "countries": [
+    {
+      "country": "KE",
+      "carriers": [
+        { "name": "Safaricom", "note": "The largest network, with the widest coverage, including many rural areas and national parks.", "money": "M-Pesa" },
+        { "name": "Airtel Kenya", "note": "Second-largest network; often cheaper bundles, good in towns.", "money": "Airtel Money" },
+        { "name": "Telkom Kenya", "note": "Smaller network; coverage is patchier outside cities.", "money": "T-Kash" }
+      ],
+      "sim": "Buy at the official Safaricom and Airtel shops at JKIA arrivals or in town. Bring your passport: SIMs must be registered, and staff will set it up for you. Avoid buying SIMs from street sellers.",
+      "data": "Prepaid data bundles are sold by day, week or month and bought through the carrier's USSD menu, app or M-Pesa. Data is generally cheap compared with roaming.",
+      "esim": "Safaricom and Airtel offer eSIMs at their shops for compatible phones.",
+      "verify": "TODO: verify Telkom Kenya's current status and each carrier's eSIM availability for visitors."
+    },
+    {
+      "country": "UG",
+      "carriers": [
+        { "name": "MTN Uganda", "note": "The largest network, with wide coverage.", "money": "MTN MoMo" },
+        { "name": "Airtel Uganda", "note": "The other main network, with similarly wide coverage.", "money": "Airtel Money" }
+      ],
+      "sim": "Buy at the carrier kiosks at Entebbe airport or official shops in Kampala. Registration requires your passport, and visitors may need to show their visa or entry stamp.",
+      "data": "Prepaid bundles by day, week or month, bought through USSD menus or apps. Uganda has charged a tax on some mobile-money transactions.",
+      "esim": "Ask at official MTN or Airtel shops whether eSIMs are available for visitors.",
+      "verify": "TODO: verify SIM registration documents for foreigners and eSIM availability."
+    },
+    {
+      "country": "TZ",
+      "carriers": [
+        { "name": "Vodacom Tanzania", "note": "The largest network, with good coverage in cities and on main roads.", "money": "M-Pesa" },
+        { "name": "Airtel Tanzania", "note": "Large network, widely used.", "money": "Airtel Money" },
+        { "name": "Yas", "note": "Formerly Tigo; rebranded in 2024.", "money": "Mixx by Yas" },
+        { "name": "Halotel", "note": "Strong in some rural areas.", "money": "HaloPesa" },
+        { "name": "TTCL", "note": "The state-owned operator; smaller mobile network.", "money": "T-Pesa" }
+      ],
+      "sim": "Buy at the official carrier shops at the airports or in town. Tanzania registers SIMs with fingerprints, so expect a fingerprint scan as well as your passport.",
+      "data": "Prepaid bundles through USSD menus or apps. Coverage is good in towns and Zanzibar but thins out in remote parks.",
+      "esim": "Ask at official carrier shops whether eSIMs are available for visitors.",
+      "verify": "TODO: verify biometric SIM registration rules for foreigners, Yas mobile-money branding, and eSIM availability."
+    },
+    {
+      "country": "RW",
+      "carriers": [
+        { "name": "MTN Rwanda", "note": "The largest network; coverage across most of the country.", "money": "MTN MoMo" },
+        { "name": "Airtel Rwanda", "note": "The second network.", "money": "Airtel Money" }
+      ],
+      "sim": "Buy at the carrier kiosks at Kigali International Airport or official shops in town, with your passport.",
+      "data": "Prepaid bundles through USSD menus or apps. Mobile coverage is generally good, even in rural areas.",
+      "esim": "Ask at official MTN or Airtel shops whether eSIMs are available for visitors.",
+      "verify": "TODO: verify SIM registration rules and eSIM availability."
+    },
+    {
+      "country": "ET",
+      "carriers": [
+        { "name": "Ethio Telecom", "note": "The state-owned operator and largest network.", "money": "telebirr" },
+        { "name": "Safaricom Ethiopia", "note": "Launched in 2022; growing coverage, strongest in cities.", "money": "M-Pesa" }
+      ],
+      "sim": "Buy at Ethio Telecom or Safaricom shops, including at Bole International Airport arrivals, with your passport.",
+      "data": "Prepaid bundles through USSD menus or apps. The internet is sometimes shut down regionally or nationally during unrest, and some sites may be blocked.",
+      "esim": "Ask at official shops whether eSIMs are available for visitors.",
+      "verify": "TODO: verify airport SIM availability, registration rules for foreigners, and current internet restrictions by region."
+    },
+    {
+      "country": "BI",
+      "carriers": [
+        { "name": "Lumitel", "note": "The largest mobile network.", "money": "Lumicash" },
+        { "name": "Econet Leo", "note": "The second main network.", "money": "EcoCash" },
+        { "name": "Onatel", "note": "The state-owned operator; small mobile network." }
+      ],
+      "sim": "Buy at official carrier shops in Bujumbura with your passport.",
+      "data": "Prepaid bundles; coverage is best in Bujumbura and Gitega.",
+      "esim": "eSIMs are not widely available; plan on a physical SIM.",
+      "verify": "TODO: verify current carriers (especially Econet Leo and Onatel mobile status), registration rules and eSIM availability."
+    },
+    {
+      "country": "SS",
+      "carriers": [
+        { "name": "MTN South Sudan", "note": "The largest network.", "money": "MTN MoMo" },
+        { "name": "Zain South Sudan", "note": "The other main network." }
+      ],
+      "sim": "Buy at official carrier shops in Juba with your passport.",
+      "data": "Data is relatively expensive and coverage is limited outside Juba and main towns. Expect slow speeds.",
+      "esim": "eSIMs are not widely available; plan on a physical SIM.",
+      "verify": "TODO: verify current carriers (including whether Digitel still operates), registration rules and coverage; check travel advisories first."
+    },
+    {
+      "country": "SO",
+      "carriers": [
+        { "name": "Hormuud", "note": "The largest network in south and central Somalia, including Mogadishu.", "money": "EVC Plus" },
+        { "name": "Somtel", "note": "Network in much of Somalia.", "money": "eDahab" },
+        { "name": "Telesom", "note": "The main network in Somaliland (Hargeisa).", "money": "Zaad" },
+        { "name": "Golis", "note": "The main network in Puntland.", "money": "Sahal" }
+      ],
+      "sim": "SIMs are sold by carrier shops and agents. Different networks lead in different regions, so pick the one that is strongest where you will be.",
+      "data": "Mobile data is widely used and relatively cheap in cities. Payments run almost entirely on mobile money, often in US dollars.",
+      "esim": "eSIMs are not widely available; plan on a physical SIM.",
+      "verify": "TODO: verify carriers' regional coverage, SIM registration rules and mobile-money names; check travel advisories first."
+    },
+    {
+      "country": "DJ",
+      "carriers": [
+        { "name": "Djibouti Telecom", "note": "The only mobile operator." }
+      ],
+      "sim": "Buy at Djibouti Telecom offices in Djibouti City with your passport.",
+      "data": "Prepaid bundles from the single operator; data tends to be more expensive than in neighbouring countries.",
+      "esim": "eSIMs are not widely available; plan on a physical SIM.",
+      "verify": "TODO: verify that Djibouti Telecom is still the sole operator, plus SIM rules and its mobile-money service."
+    },
+    {
+      "country": "ER",
+      "carriers": [
+        { "name": "EriTel", "note": "The only, state-owned operator." }
+      ],
+      "sim": "Visitors' access to local SIMs is restricted and may need official approval. Do not count on getting one.",
+      "data": "Mobile data is very limited or unavailable; internet access is mostly through slow hotel or café connections. Plan to be largely offline.",
+      "esim": "Not available.",
+      "verify": "TODO: verify whether foreigners can get SIMs and whether any mobile data service exists; very uncertain."
+    }
+  ],
+  "verify": "TODO: verify One Network Area membership (especially Tanzania's participation) and each country's SIM registration rules."
+}

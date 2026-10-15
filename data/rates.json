@@ -1,0 +1,21 @@
+{
+  "asOf": "2026-10-15",
+  "source": "Rough mid-market figures for illustration, based on central bank reference rates where they exist (Central Bank of Kenya, Bank of Uganda, Bank of Tanzania, National Bank of Rwanda, National Bank of Ethiopia and others). Check your bank or a live rate service before exchanging.",
+  "disclaimer": "Rates are rough, illustrative mid-market figures as of the date shown, not live. Banks, bureaus and mobile-money apps use their own rates and fees. Check before you exchange.",
+  "perUSD": {
+    "USD": 1,
+    "KES": 129,
+    "UGX": 3650,
+    "TZS": 2550,
+    "RWF": 1450,
+    "BIF": 2980,
+    "ETB": 140,
+    "SSP": 4600,
+    "SOS": 570,
+    "DJF": 177.7,
+    "ERN": 15,
+    "EUR": 0.86,
+    "GBP": 0.75
+  },
+  "verify": "All rates are approximate placeholders as of the date shown; update before publishing. Most uncertain: SSP (has fallen sharply and repeatedly since 2023; the official and parallel rates differ, so ~4,600 is only a rough official-rate guess), BIF (~2,980 is a rough official-rate guess; the parallel rate has been far weaker and the official rate may have been adjusted), ETB (floated in July 2024 and still moving; ~140 may now be low). SOS ~570 is the official reference figure, but most larger payments in Somalia are in US dollars anyway. ERN 15 is the official peg; a parallel rate exists but is illegal to use. DJF ~177.7 is a long-standing peg to the US dollar and should be stable. KES, UGX, TZS and RWF move more slowly but still need a refresh."
+}

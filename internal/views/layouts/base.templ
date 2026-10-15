@@ -30,6 +30,7 @@ templ Base(m Meta) {
 			<link rel="preload" href="/static/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin/>
 			<script src="/static/js/theme.js"></script>
 			<link rel="stylesheet" href="/static/css/app.css"/>
+			<link rel="stylesheet" href="/static/css/world.css"/>
 			<script src="/static/js/htmx.min.js" defer></script>
 			<script src="/static/js/app.js" defer></script>
 		</head>
@@ -76,7 +77,11 @@ templ siteHeader(m Meta) {
 									<a class="nav-link" href={ templ.SafeURL(n.Href) } if m.Section == n.Section { aria-current="page" }>{ n.Label }</a>
 								</li>
 							}
-							<li><a class="nav-link" href="/about">About &amp; sources</a></li>
+							for _, n := range MoreNav {
+								<li>
+									<a class="nav-link" href={ templ.SafeURL(n.Href) } if m.Section == n.Section { aria-current="page" }>{ n.Label }</a>
+								</li>
+							}
 						</ul>
 					</nav>
 				</details>
@@ -110,7 +115,9 @@ templ siteFooter(m Meta) {
 			<div>
 				<p class="eyebrow">About</p>
 				<ul>
-					<li><a href="/about">About &amp; sources</a></li>
+					for _, n := range MoreNav {
+						<li><a href={ templ.SafeURL(n.Href) }>{ n.Label }</a></li>
+					}
 					<li><a href="/glossary#phrasebook">Swahili phrasebook</a></li>
 					<li><a href="/sitemap.xml">Sitemap</a></li>
 				</ul>

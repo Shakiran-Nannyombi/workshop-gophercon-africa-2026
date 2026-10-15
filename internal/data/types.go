@@ -15,10 +15,11 @@ type Site struct {
 
 // Rates are units of each currency per 1 USD, used by the converter.
 type Rates struct {
-	AsOf   string             `json:"asOf"`
-	Source string             `json:"source"`
-	PerUSD map[string]float64 `json:"perUSD"` // "KES": 129.2
-	Verify Verify             `json:"verify,omitempty"`
+	AsOf       string             `json:"asOf"`
+	Source     string             `json:"source"`
+	Disclaimer string             `json:"disclaimer"`
+	PerUSD     map[string]float64 `json:"perUSD"` // "KES": 129.2
+	Verify     Verify             `json:"verify,omitempty"`
 }
 
 // Money is the content of the money page.
@@ -57,6 +58,7 @@ type MobileMoney struct {
 	Summary  string   `json:"summary"`
 	Verify   Verify   `json:"verify,omitempty"`
 	Tags     []string `json:"tags,omitempty"`
+	Expect   []string `json:"expect,omitempty"` // "what to expect" notes for a first-timer
 }
 
 // MpesaFlow explains one way of paying with M-Pesa.
@@ -101,6 +103,7 @@ type Country struct {
 	Scale        string   `json:"scale"` // "a coffee is ~KSh 250"
 	CoffeeLocal  int      `json:"coffeeLocal"`
 	Verify       Verify   `json:"verify,omitempty"`
+	CountryProfile
 }
 
 // Region is one of Kenya's eight former provinces, still used informally.
@@ -151,28 +154,28 @@ type Area struct {
 
 // City is a featured East African city; every city shares one page layout.
 type City struct {
-	Slug           string         `json:"slug"`
-	Name           string         `json:"name"`
-	Country        string         `json:"country"` // Country.Code
-	Tagline        string         `json:"tagline"`
-	Intro          string         `json:"intro"`
-	Population     string         `json:"population"` // "~4.4 million (2019 census)"
-	Elevation      string         `json:"elevation"`
-	Climate        string         `json:"climate"`
-	Airport        string         `json:"airport"`
-	Languages      []string       `json:"languages"`
-	Lat            float64        `json:"lat"`
-	Lon            float64        `json:"lon"`
-	Motif          string         `json:"motif"` // illustration key: skyline, coast, lake, mountain...
+	Slug           string          `json:"slug"`
+	Name           string          `json:"name"`
+	Country        string          `json:"country"` // Country.Code
+	Tagline        string          `json:"tagline"`
+	Intro          string          `json:"intro"`
+	Population     string          `json:"population"` // "~4.4 million (2019 census)"
+	Elevation      string          `json:"elevation"`
+	Climate        string          `json:"climate"`
+	Airport        string          `json:"airport"`
+	Languages      []string        `json:"languages"`
+	Lat            float64         `json:"lat"`
+	Lon            float64         `json:"lon"`
+	Motif          string          `json:"motif"` // illustration key: skyline, coast, lake, mountain...
 	Neighbourhoods []Neighbourhood `json:"neighbourhoods"`
-	MoneyTips      []string       `json:"moneyTips"`
-	Transport      []string       `json:"transport"`
-	Food           []string       `json:"food"`
-	Safety         []string       `json:"safety"`
-	Suits          []string       `json:"suits"`
-	Scores         Scores         `json:"scores"`
-	Confidence     string         `json:"confidence"`
-	Verify         Verify         `json:"verify,omitempty"`
+	MoneyTips      []string        `json:"moneyTips"`
+	Transport      []string        `json:"transport"`
+	Food           []string        `json:"food"`
+	Safety         []string        `json:"safety"`
+	Suits          []string        `json:"suits"`
+	Scores         Scores          `json:"scores"`
+	Confidence     string          `json:"confidence"`
+	Verify         Verify          `json:"verify,omitempty"`
 }
 
 type Neighbourhood struct {
@@ -182,11 +185,11 @@ type Neighbourhood struct {
 
 // Scores are rough 1-5 ratings for the compare tool, each with a reason.
 type Scores struct {
-	Cost      Score `json:"cost"`      // 5 = most expensive
-	Transport Score `json:"transport"` // 5 = easiest to get around
-	Climate   Score `json:"climate"`   // 5 = mildest
-	Safety    Score `json:"safety"`    // 5 = most relaxed perception
-	Nightlife Score `json:"nightlife"` // 5 = liveliest
+	Cost      Score  `json:"cost"`      // 5 = most expensive
+	Transport Score  `json:"transport"` // 5 = easiest to get around
+	Climate   Score  `json:"climate"`   // 5 = mildest
+	Safety    Score  `json:"safety"`    // 5 = most relaxed perception
+	Nightlife Score  `json:"nightlife"` // 5 = liveliest
 	Vibe      string `json:"vibe"`
 }
 
@@ -198,6 +201,7 @@ type Score struct {
 type Term struct {
 	Term     string `json:"term"`
 	Language string `json:"language"` // Swahili, Sheng, English (Kenya)
+	Country  string `json:"country,omitempty"`
 	Meaning  string `json:"meaning"`
 	Example  string `json:"example,omitempty"`
 }
@@ -215,7 +219,9 @@ type FAQ struct {
 }
 
 type Source struct {
-	Name  string `json:"name"`
-	URL   string `json:"url"`
-	Usage string `json:"usage"`
+	Name    string `json:"name"`
+	URL     string `json:"url"`
+	Usage   string `json:"usage"`
+	Kind    string `json:"kind,omitempty"`    // "" (content), "advisory", "entry"
+	Country string `json:"country,omitempty"` // Country.Code, for entry/visa sites
 }

@@ -27,12 +27,19 @@ type NavItem struct {
 }
 
 var Nav = []NavItem{
-	{"money", "/money", "Money", "Money"},
-	{"counties", "/counties", "Counties", "Counties"},
-	{"nairobi", "/nairobi", "Nairobi", "Nairobi"},
+	{"countries", "/countries", "Countries", "Countries"},
 	{"cities", "/cities", "Cities", "Cities"},
+	{"currencies", "/currencies", "Currencies", "Money"},
+	{"routes", "/routes", "Routes", "Routes"},
 	{"compare", "/compare", "Compare", "Compare"},
 	{"glossary", "/glossary", "Words", "Words"},
+}
+
+// MoreNav is linked from the phone menu and the footer.
+var MoreNav = []NavItem{
+	{"borders", "/borders", "Crossing borders", "Borders"},
+	{"connectivity", "/connectivity", "SIM cards & data", "SIMs"},
+	{"about", "/about", "About & sources", "About"},
 }
 
 // Proverbs are printed like the "jina" on a kanga, one per page section.

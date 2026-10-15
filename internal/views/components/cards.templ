@@ -12,10 +12,22 @@ templ Flag(c *data.Country) {
 	}
 }
 
-templ CityCard(c data.City, country *data.Country) {
+templ CityCard(c data.City, country *data.Country, role string) {
 	<article class="card card-link city-card">
 		<div class="city-card__art">
 			@Landscape(c.Motif, true)
+			switch role {
+				case "capital":
+					<span class="chip chip--gold city-card__role">
+						@Icon("star", "icon-sm")
+						Capital
+					</span>
+				case "commercial":
+					<span class="chip chip--surface city-card__role">
+						@Icon("city", "icon-sm")
+						Commercial hub
+					</span>
+			}
 			if country != nil {
 				<span class="chip chip--surface city-card__country">
 					@Flag(country)
@@ -31,6 +43,9 @@ templ CityCard(c data.City, country *data.Country) {
 					<span class="chip num">{ country.CurrencyCode }</span>
 				}
 				<span class="chip">{ c.Population }</span>
+				if c.Confidence == "limited" {
+					<span class="chip chip--surface">Less data</span>
+				}
 			</div>
 		</div>
 	</article>

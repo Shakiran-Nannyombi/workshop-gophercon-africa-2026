@@ -24,11 +24,19 @@ type Store struct {
 	Sources   []Source
 	Geo       Geo
 
-	countyBySlug  map[string]*County
-	cityBySlug    map[string]*City
-	countryByCode map[string]*Country
-	regionBySlug  map[string]*Region
-	areaBySlug    map[string]*Area
+	Currencies   []Currency
+	Routes       []Route
+	Borders      Borders
+	Connectivity Connectivity
+
+	countyBySlug   map[string]*County
+	currencyByCode map[string]*Currency
+	countryBySlug  map[string]*Country
+	borderBySlug   map[string]*BorderCrossing
+	cityBySlug     map[string]*City
+	countryByCode  map[string]*Country
+	regionBySlug   map[string]*Region
+	areaBySlug     map[string]*Area
 }
 
 // Load reads every content file from fsys and checks it hangs together.
@@ -40,6 +48,11 @@ func Load(fsys fs.FS) (*Store, error) {
 		optional bool
 	}{
 		{"site.json", &s.Site, false},
+		{"rates.json", &s.Site.Rates, true},
+		{"currencies.json", &s.Currencies, true},
+		{"routes.json", &s.Routes, true},
+		{"borders.json", &s.Borders, true},
+		{"connectivity.json", &s.Connectivity, true},
 		{"money.json", &s.Money, true},
 		{"countries.json", &s.Countries, true},
 		{"regions.json", &s.Regions, true},
@@ -119,7 +132,110 @@ func (s *Store) index() error {
 		}
 		s.areaBySlug[a.Slug] = a
 	}
+	return s.indexWorld()
+}
+
+// indexWorld indexes and cross-checks countries, currencies, routes and borders.
+func (s *Store) indexWorld() error {
+	s.currencyByCode = map[string]*Currency{}
+	s.countryBySlug = map[string]*Country{}
+	s.borderBySlug = map[string]*BorderCrossing{}
+
+	for i := range s.Countries {
+		c := &s.Countries[i]
+		if c.Slug == "" {
+			c.Slug = strings.ToLower(strings.ReplaceAll(c.Name, " ", "-"))
+		}
+		s.countryBySlug[c.Slug] = c
+		for _, city := range []string{c.Capital, c.CommercialCity} {
+			if city != "" && s.cityBySlug[city] == nil {
+				return fmt.Errorf("data: country %q names unknown city %q", c.Code, city)
+			}
+		}
+	}
+	for i := range s.Currencies {
+		c := &s.Currencies[i]
+		if s.countryByCode[c.Country] == nil {
+			return fmt.Errorf("data: currency %q has unknown country %q", c.Code, c.Country)
+		}
+		s.currencyByCode[c.Code] = c
+	}
+	for i := range s.Borders.Crossings {
+		b := &s.Borders.Crossings[i]
+		for _, code := range b.Countries {
+			if s.countryByCode[code] == nil {
+				return fmt.Errorf("data: border %q has unknown country %q", b.Slug, code)
+			}
+		}
+		s.borderBySlug[b.Slug] = b
+	}
+	for _, r := range s.Routes {
+		if s.cityBySlug[r.From] == nil || s.cityBySlug[r.To] == nil {
+			return fmt.Errorf("data: route %s-%s names an unknown city", r.From, r.To)
+		}
+		if r.Border != "" && s.borderBySlug[r.Border] == nil {
+			return fmt.Errorf("data: route %s-%s has unknown border %q", r.From, r.To, r.Border)
+		}
+	}
 	return nil
+}
+
+func (s *Store) Currency(code string) (*Currency, bool) {
+	c, ok := s.currencyByCode[code]
+	return c, ok
+}
+func (s *Store) CountryBySlug(slug string) (*Country, bool) {
+	c, ok := s.countryBySlug[slug]
+	return c, ok
+}
+func (s *Store) Border(slug string) (*BorderCrossing, bool) {
+	b, ok := s.borderBySlug[slug]
+	return b, ok
+}
+
+// RouteBetween finds the route linking two cities, in either direction.
+func (s *Store) RouteBetween(a, b string) (*Route, bool) {
+	for i := range s.Routes {
+		r := &s.Routes[i]
+		if (r.From == a && r.To == b) || (r.From == b && r.To == a) {
+			return r, true
+		}
+	}
+	return nil, false
+}
+
+// IsCapital reports whether a city is its country's official capital.
+func (s *Store) IsCapital(city string) bool {
+	for _, c := range s.Countries {
+		if c.Capital == city {
+			return true
+		}
+	}
+	return false
+}
+
+// CityRole is "capital", "commercial" or "" for a city slug.
+func (s *Store) CityRole(city string) string {
+	for _, c := range s.Countries {
+		switch city {
+		case c.Capital:
+			return "capital"
+		case c.CommercialCity:
+			return "commercial"
+		}
+	}
+	return ""
+}
+
+// SourcesOf returns the sources of one kind ("" for content sources).
+func (s *Store) SourcesOf(kind string) []Source {
+	var out []Source
+	for _, src := range s.Sources {
+		if src.Kind == kind {
+			out = append(out, src)
+		}
+	}
+	return out
 }
 
 func (s *Store) County(slug string) (*County, bool)   { c, ok := s.countyBySlug[slug]; return c, ok }

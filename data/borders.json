@@ -1,0 +1,180 @@
+{
+  "intro": "Crossing a land border in East Africa is usually straightforward if you prepare. Have your passport, visa or travel authorisation and yellow fever certificate ready, and expect it to take anywhere from ~30 minutes to a few hours, depending on queues. Long-distance bus companies stop at the border and wait while passengers go through immigration on both sides.",
+  "eac": [
+    "The East African Community (EAC) is a regional bloc of eight partner states: Burundi, the Democratic Republic of the Congo (joined 2023), Kenya, Rwanda, Somalia (joined 2024), South Sudan, Tanzania and Uganda.",
+    "Ethiopia, Djibouti and Eritrea are not EAC members, so EAC arrangements do not apply when you cross into or out of them.",
+    "For citizens of EAC partner states, the EAC makes travel easier: in many cases they can cross with a national ID or an East African passport instead of a full passport, and stay for a while without a visa.",
+    "For visitors from outside the region, EAC membership does not mean visa-free travel. Each country still sets its own visa or entry rules, and you normally need separate permission for each one.",
+    "Many busy border posts have been rebuilt as One Stop Border Posts, where both countries' officials work in the same place, so you clear exit and entry together."
+  ],
+  "eatv": [
+    "The East Africa Tourist Visa (EATV) is a single tourist visa covering Kenya, Uganda and Rwanda. It allows multiple entries between those three countries, lasts ~90 days and has cost ~US$100.",
+    "You usually apply through the immigration service of the country you will enter first, and you must enter that country first.",
+    "If you leave the three-country area (for example, into Tanzania), the EATV generally ends, and you need a new visa to come back in.",
+    "Kenya replaced most visas with an Electronic Travel Authorisation (eTA) in January 2024, and later exempted many African nationals from it. Public guidance on how the EATV fits with Kenya's eTA is unclear, so check the official Kenyan, Ugandan and Rwandan immigration sites before relying on it.",
+    "Tanzania, Burundi, South Sudan, Ethiopia and the other countries in this guide are not part of the EATV."
+  ],
+  "prepare": [
+    "Make sure your passport is valid for at least ~6 months beyond your travel dates and has a few blank pages.",
+    "Bring your yellow fever vaccination certificate. It is often checked at land borders, especially if you are arriving from a country with yellow fever risk. Carry the original.",
+    "Get your visa, e-visa or eTA online before you travel where you can. Do not count on buying one at the border.",
+    "Carry some US dollars in clean, recent notes for any fees, plus a little local currency for the other side.",
+    "If you are on a long-distance bus, the company handles the stop: get off, clear exit, walk across, clear entry and get back on your bus. Keep your ticket and remember your bus and seat number.",
+    "Keep every receipt for visa or fee payments until you have left the country.",
+    "Do not change money with touts at the border. Rates are often poor and short-changing is common. Use a bank, a licensed bureau, an ATM or mobile money on the other side.",
+    "Do not carry packages for strangers, and do not photograph border buildings or officials."
+  ],
+  "crossings": [
+    {
+      "slug": "busia",
+      "name": "Busia",
+      "countries": ["KE", "UG"],
+      "towns": "Busia (KE) / Busia (UG)",
+      "road": "Nairobi to Kampala, via Kisumu or Bungoma",
+      "oneStop": true,
+      "notes": "The busiest crossing for buses between Kenya and Uganda. Lorry queues can be long, but the crossing on foot is usually quicker.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "malaba",
+      "name": "Malaba",
+      "countries": ["KE", "UG"],
+      "towns": "Malaba (KE) / Malaba (UG)",
+      "road": "Nairobi to Kampala, via Eldoret and Tororo",
+      "oneStop": true,
+      "notes": "The other main Kenya–Uganda crossing, on the main road through Eldoret. Some bus companies use Malaba and others use Busia.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "namanga",
+      "name": "Namanga",
+      "countries": ["KE", "TZ"],
+      "towns": "Namanga (KE) / Namanga (TZ)",
+      "road": "Nairobi to Arusha and Moshi",
+      "oneStop": true,
+      "notes": "The usual crossing for Nairobi–Arusha shuttle buses and safari vehicles.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "isebania-sirari",
+      "name": "Isebania–Sirari",
+      "countries": ["KE", "TZ"],
+      "towns": "Isebania (KE) / Sirari (TZ)",
+      "road": "Kisumu or Kisii to Mwanza and western Tanzania",
+      "oneStop": true,
+      "notes": "Western Kenya–Tanzania crossing, east of Lake Victoria.",
+      "verify": "TODO: verify One Stop Border Post status, opening hours and any fees."
+    },
+    {
+      "slug": "taveta-holili",
+      "name": "Taveta–Holili",
+      "countries": ["KE", "TZ"],
+      "towns": "Taveta (KE) / Holili (TZ)",
+      "road": "Mombasa or Voi to Moshi",
+      "oneStop": true,
+      "notes": "Links the Kenyan coast with Moshi and the Kilimanjaro area.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "lunga-lunga-horohoro",
+      "name": "Lunga Lunga–Horohoro",
+      "countries": ["KE", "TZ"],
+      "towns": "Lunga Lunga (KE) / Horohoro (TZ)",
+      "road": "Mombasa to Tanga and Dar es Salaam along the coast",
+      "oneStop": true,
+      "notes": "Coastal road crossing used by Mombasa–Dar es Salaam buses.",
+      "verify": "TODO: verify One Stop Border Post status, opening hours and any fees."
+    },
+    {
+      "slug": "mutukula",
+      "name": "Mutukula",
+      "countries": ["UG", "TZ"],
+      "towns": "Mutukula (UG) / Mutukula (TZ)",
+      "road": "Kampala or Masaka to Bukoba and Mwanza",
+      "oneStop": true,
+      "notes": "The main road crossing between Uganda and Tanzania, west of Lake Victoria.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "gatuna-katuna",
+      "name": "Gatuna–Katuna",
+      "countries": ["RW", "UG"],
+      "towns": "Gatuna (RW) / Katuna (UG)",
+      "road": "Kampala to Kigali via Kabale",
+      "oneStop": true,
+      "notes": "The main crossing for Kampala–Kigali buses. It was closed from 2019 and reopened in 2022.",
+      "verify": "TODO: verify it is open, plus opening hours and any fees; the Rwanda–Uganda border has closed before."
+    },
+    {
+      "slug": "cyanika",
+      "name": "Cyanika",
+      "countries": ["RW", "UG"],
+      "towns": "Cyanika (RW) / Cyanika (UG)",
+      "road": "Musanze to Kisoro, near the gorilla parks",
+      "oneStop": false,
+      "notes": "A smaller crossing used by travellers going between Volcanoes National Park (Rwanda) and Mgahinga or Bwindi (Uganda).",
+      "verify": "TODO: verify One Stop Border Post status, opening hours and any fees."
+    },
+    {
+      "slug": "rusumo",
+      "name": "Rusumo",
+      "countries": ["RW", "TZ"],
+      "towns": "Rusumo (RW) / Rusumo (TZ)",
+      "road": "Kigali to north-west Tanzania (Ngara, then on towards Mwanza or Dar es Salaam)",
+      "oneStop": true,
+      "notes": "Crosses the Kagera River at Rusumo Falls.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "moyale",
+      "name": "Moyale",
+      "countries": ["KE", "ET"],
+      "towns": "Moyale (KE) / Moyale (ET)",
+      "road": "Nairobi to Addis Ababa by road, via Isiolo and Marsabit",
+      "oneStop": true,
+      "notes": "The main Kenya–Ethiopia crossing. The road journey takes several days and passes through remote areas.",
+      "verify": "TODO: verify opening hours, any fees, and current government travel advisories for northern Kenya and southern Ethiopia."
+    },
+    {
+      "slug": "elegu-nimule",
+      "name": "Elegu–Nimule",
+      "countries": ["UG", "SS"],
+      "towns": "Elegu (UG) / Nimule (SS)",
+      "road": "Kampala or Gulu to Juba",
+      "oneStop": true,
+      "notes": "The main road crossing between Uganda and South Sudan.",
+      "verify": "TODO: verify opening hours, any fees, and current government travel advisories for South Sudan before any travel."
+    },
+    {
+      "slug": "nadapal-nakodok",
+      "name": "Nadapal–Nakodok",
+      "countries": ["KE", "SS"],
+      "towns": "Nadapal (KE) / Nakodok (SS)",
+      "road": "Lodwar and Lokichoggio to Kapoeta and Juba",
+      "oneStop": false,
+      "notes": "A remote north-western crossing between Kenya and South Sudan, with few facilities for travellers.",
+      "verify": "TODO: verify it is open to travellers, plus opening hours, any fees and current travel advisories."
+    },
+    {
+      "slug": "kobero-kabanga",
+      "name": "Kobero–Kabanga",
+      "countries": ["BI", "TZ"],
+      "towns": "Kobero (BI) / Kabanga (TZ)",
+      "road": "Gitega or Bujumbura to north-west Tanzania",
+      "oneStop": true,
+      "notes": "The main road crossing between Burundi and Tanzania.",
+      "verify": "TODO: verify opening hours, any fees and current status before travel."
+    },
+    {
+      "slug": "nemba-gasenyi",
+      "name": "Nemba–Gasenyi",
+      "countries": ["RW", "BI"],
+      "towns": "Nemba (RW) / Gasenyi (BI)",
+      "road": "Kigali to Kirundo, then on to Bujumbura or Gitega",
+      "oneStop": true,
+      "notes": "The main Rwanda–Burundi crossing. Burundi closed its land border with Rwanda in January 2024.",
+      "verify": "TODO: verify whether the Rwanda–Burundi border has reopened, plus opening hours and any fees."
+    }
+  ],
+  "verify": "TODO: verify all visa, eTA, EATV and border rules against official immigration sites before travel; rules and fees change often. EAC membership list reviewed for 2026; verify."
+}

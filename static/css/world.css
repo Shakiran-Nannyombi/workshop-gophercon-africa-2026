@@ -1,0 +1,175 @@
+/* Karibu Guide — countries, currencies, routes, borders and connectivity.
+   Loaded after app.css and uses its tokens and components. */
+
+.section-tight { padding-block: clamp(2rem, 5vw, 3.5rem); }
+.toc ul.wrap { margin-inline: auto; }
+
+/* Less data + advisory */
+.less-data { gap: 0.3rem; }
+.advisory {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+  background: color-mix(in oklab, var(--red) 16%, var(--surface));
+  border-left-width: 10px; border-left-color: var(--red);
+}
+.advisory--rules { background: color-mix(in oklab, var(--gold) 18%, var(--surface)); border-left-color: var(--gold); margin-block: 1.5rem; }
+.advisory__icon { display: grid; place-items: center; flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 50%; border: var(--border); background: var(--red); color: var(--red-ink); }
+.advisory--rules .advisory__icon { background: var(--gold); color: var(--gold-ink); }
+.advisory__title { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; line-height: 1.2; }
+.advisory__link { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 0.9rem; border: 2px solid var(--line); border-radius: 999px; background: var(--surface); font-weight: 800; text-decoration: underline; }
+
+/* Country at a glance */
+.glance { overflow: hidden; display: grid; }
+@media (min-width: 56rem) { .glance { grid-template-columns: 18rem 1fr; } }
+.glance__art { position: relative; min-height: 10rem; border-bottom: var(--border); }
+@media (min-width: 56rem) { .glance__art { border-bottom: 0; border-right: var(--border); } }
+.glance__art .landscape { position: absolute; inset: 0; }
+.glance__flag { position: absolute; left: 1rem; bottom: 1rem; }
+.glance__body { padding: clamp(1.25rem, 3vw, 2rem); }
+.glance__grid { margin-top: 1.25rem; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); }
+.glance__item { padding: 0.75rem 0.9rem; border: 2px solid var(--hairline); border-radius: var(--radius-sm); background: var(--paper); }
+.glance__item--wide { grid-column: span 1; background: color-mix(in oklab, var(--gold) 14%, var(--paper)); border-color: var(--line); }
+.glance__item dt { display: flex; gap: 0.35rem; align-items: center; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.glance__item dd { margin-top: 0.2rem; font-weight: 700; }
+
+/* Capitals */
+.capital-pair { display: grid; gap: 1.5rem; margin-block: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.capital-card { overflow: hidden; }
+.capital-card__art { position: relative; height: 9rem; border-bottom: var(--border); }
+.capital-card__art .landscape { position: absolute; inset: 0; }
+.capital-card__body { padding: 1.25rem; }
+.capital-card__role { display: flex; gap: 0.35rem; align-items: center; }
+.city-card__role { position: absolute; right: 0.75rem; top: 0.75rem; z-index: 1; }
+.city-card__art { position: relative; }
+
+/* How the country is organised */
+.org { display: grid; gap: 2rem; margin-top: 1.5rem; }
+@media (min-width: 52rem) { .org { grid-template-columns: 1fr 1fr; } .org--single { grid-template-columns: 1fr; max-width: 40rem; } }
+.org__title { font-size: 1.2rem; }
+.org__ladder { margin-top: 1rem; display: grid; gap: 0.6rem; }
+.org__step {
+  width: var(--w, 100%); min-width: min(100%, 15rem);
+  display: grid; gap: 0.25rem 0.6rem; grid-template-columns: 1fr auto; align-items: center;
+  padding: 0.75rem 1rem; border: var(--border); border-radius: var(--radius-sm); background: var(--surface); box-shadow: 3px 3px 0 var(--line);
+}
+.org__step:first-child { background: color-mix(in oklab, var(--green) 18%, var(--surface)); }
+.org__name { font-weight: 800; }
+.org__local { font-weight: 600; color: var(--muted); }
+.org__note { grid-column: 1 / -1; font-size: 0.9rem; color: var(--ink-soft); }
+.address-card__text { margin-top: 0.5rem; font-family: var(--font-mono); white-space: pre-line; }
+
+/* Getting around */
+.mode-grid { display: grid; gap: 1.25rem; margin-top: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+.mode { display: flex; gap: 1rem; padding: 1.25rem; }
+.mode .explain__icon { flex-shrink: 0; }
+.mode__name { font-size: 1.2rem; }
+.mode__meta { margin-top: 0.4rem; --gap: 0.35rem; }
+.airport-list { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+.airport { display: flex; gap: 0.9rem; align-items: center; }
+.airport > span:nth-child(2) { display: grid; flex: 1; }
+.airport__code { display: grid; place-items: center; width: 3.6rem; height: 3.6rem; flex-shrink: 0; border: var(--border); border-radius: 0.8rem; background: var(--night); color: #e8b931; font-weight: 800; font-size: 1.1rem; }
+
+/* Countries hub */
+.country-list { display: grid; gap: 0.75rem; }
+.country-row { display: flex; gap: 1rem; align-items: center; padding: 0.9rem 1.1rem; }
+.country-row > div { flex: 1; }
+.country-row h3 { font-size: 1.2rem; }
+.country-row .icon-sm { color: var(--gold-text); vertical-align: -0.15em; }
+
+/* East Africa map */
+.ea-map { margin-top: 1.5rem; }
+.ea-map svg { width: 100%; height: auto; max-height: 80vh; border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); background: var(--surface); }
+.ea-map__sea { fill: color-mix(in oklab, var(--lake) 22%, var(--paper)); }
+.ea-map__other { fill: var(--paper-2); stroke: var(--hairline); stroke-width: 1.5; }
+.ea-map__faint { fill: var(--surface); stroke: var(--muted); stroke-width: 1.5; }
+.ea-map__lake { fill: color-mix(in oklab, var(--lake) 55%, var(--paper)); stroke: var(--lake); stroke-width: 1; pointer-events: none; }
+.ea-map__country path { fill: var(--surface); stroke: var(--line); stroke-width: 2.5; transition: fill 150ms; }
+.ea-map__country:hover path, .ea-map__country:focus-visible path { fill: color-mix(in oklab, var(--gold) 55%, var(--surface)); }
+.ea-map__country.is-current path { fill: color-mix(in oklab, var(--green) 40%, var(--surface)); }
+.ea-map__country:focus-visible { outline: none; }
+.ea-map__country:focus-visible path { stroke: var(--focus); stroke-width: 5; }
+[data-theme="dark"] .ea-map__country:focus-visible path { stroke: var(--gold); }
+.ea-map__label { font-family: var(--font-display); font-weight: 800; font-size: 20px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 5px; pointer-events: none; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; }
+.ea-map__star { fill: var(--gold); stroke: var(--line); stroke-width: 2; }
+.ea-map__dot { fill: var(--red); stroke: var(--line); stroke-width: 2; }
+.ea-map__city { font-family: var(--font-sans); font-weight: 800; font-size: 17px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
+.ea-map__marker:hover .ea-map__city, .ea-map__marker:focus-visible .ea-map__city { text-decoration: underline; }
+.ea-map__marker:focus-visible { outline: none; }
+.ea-map__marker:focus-visible .ea-map__star, .ea-map__marker:focus-visible .ea-map__dot { stroke: var(--focus); stroke-width: 4; }
+.ea-map__key { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; font-weight: 700; }
+.ea-map__key > span { display: inline-flex; gap: 0.35rem; align-items: center; }
+
+/* Routes map */
+.ea-map--routes { display: grid; gap: 1rem; }
+@media (min-width: 60rem) { .ea-map--routes { grid-template-columns: 1fr 18rem; align-items: start; } .route-detail { position: sticky; top: 5rem; } }
+.route-line__hit { fill: none; stroke: transparent; stroke-width: 22; }
+.route-line__ink { fill: none; stroke: var(--green); stroke-width: 5; stroke-linecap: round; transition: stroke 150ms, stroke-width 150ms; }
+.route-line--border .route-line__ink { stroke-dasharray: 12 8; }
+.route-line:hover .route-line__ink, .route-line:focus-visible .route-line__ink, .route-line.is-active .route-line__ink { stroke: var(--red); stroke-width: 8; }
+.route-line:focus-visible { outline: none; }
+.route-detail__title { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; margin-top: 0.3rem; }
+
+/* City page */
+.city-facts { display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); overflow: hidden; }
+.city-facts__item { padding: 1rem 1.25rem; border-right: 2px solid var(--hairline); border-bottom: 2px solid var(--hairline); }
+.city-facts__item dt { display: flex; gap: 0.35rem; align-items: center; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.city-facts__item dd { margin-top: 0.25rem; font-weight: 700; }
+
+/* Currencies */
+.currency-card__sym { font-size: 2rem; font-weight: 800; color: var(--gold-text); line-height: 1; }
+.currency-card h3 { margin-top: 0.5rem; font-size: 1.3rem; }
+.currency-card__warn { display: flex; gap: 0.35rem; align-items: center; color: var(--red); font-weight: 800; }
+.currency-id { padding: 1.25rem; display: grid; gap: 0.75rem; }
+.currency-id > div { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.6rem; border-bottom: 2px dashed var(--hairline); }
+.currency-id > div:last-child { border-bottom: 0; }
+.currency-id dt { font-weight: 800; color: var(--muted); }
+.currency-id dd { font-weight: 800; text-align: right; }
+.tip-card { height: 100%; border-top-width: 8px; border-top-color: var(--gold); }
+.tip-card__big { margin-top: 0.4rem; font-size: 1.5rem; font-weight: 800; line-height: 1.15; }
+.converter__disclaimer { display: flex; gap: 0.4rem; align-items: flex-start; margin-top: 1rem !important; padding-top: 0.75rem; border-top: 1px dashed rgba(243, 234, 215, 0.4); }
+.converter__disclaimer .icon-sm { flex-shrink: 0; margin-top: 0.2rem; }
+.mm-card h3 { font-size: 1.25rem; }
+.cash-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+.cash-item dt { display: flex; gap: 0.4rem; align-items: center; font-weight: 800; }
+.callout + .callout { margin-top: 1rem; }
+
+/* Route planner */
+.planner { padding: clamp(1.25rem, 3vw, 2rem); }
+.planner__form { display: grid; gap: 1rem; }
+@media (min-width: 44rem) { .planner__form { grid-template-columns: 1fr auto 1fr auto; align-items: end; } }
+.planner__result { margin-top: 1.5rem; }
+.option-list { display: grid; gap: 1rem; margin-top: 1rem; }
+.option { display: grid; gap: 0.75rem 1rem; grid-template-columns: auto 1fr; padding: 1.1rem 1.25rem; }
+@media (min-width: 52rem) { .option { grid-template-columns: auto 14rem 1fr; align-items: center; } }
+.option__mode { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; }
+.option__meta { display: grid; gap: 0.3rem; }
+.option__notes { grid-column: 1 / -1; color: var(--ink-soft); }
+@media (min-width: 52rem) { .option__notes { grid-column: auto; } }
+
+/* Borders + connectivity */
+.crossing-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+.crossing { padding: 1.25rem; scroll-margin-top: 8rem; }
+.crossing h3 { font-size: 1.25rem; }
+.crossing:target { outline: 4px solid var(--gold); outline-offset: 4px; }
+.net-card { padding: 1.25rem; scroll-margin-top: 8rem; }
+.net-card h3 { display: flex; gap: 0.5rem; align-items: center; font-size: 1.35rem; }
+.carriers { margin-top: 0.9rem; display: grid; gap: 0.5rem; }
+.carriers li { padding: 0.6rem 0.8rem; border: 2px solid var(--hairline); border-radius: var(--radius-sm); background: var(--paper); }
+.carriers strong { display: block; }
+
+/* Compare */
+.compare-form { display: grid; gap: 1rem; padding: clamp(1.25rem, 3vw, 2rem); }
+@media (min-width: 44rem) { .compare-form { grid-template-columns: 1fr auto 1fr auto; align-items: end; } }
+.compare-table td, .compare-table th { vertical-align: top; }
+.dots { display: inline-flex; gap: 0.2rem; }
+.dots span { width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 2px solid var(--line); }
+.dots span.on { background: var(--gold); }
+
+/* Glossary + about */
+.term-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+.term { padding: 1.1rem 1.25rem; }
+.term h3 { font-size: 1.25rem; }
+.term__lang { font-size: 0.78rem; }
+.source-list { display: grid; gap: 0.75rem; }
+.source-list li { padding: 1rem 1.25rem; }

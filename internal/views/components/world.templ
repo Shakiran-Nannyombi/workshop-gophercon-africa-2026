@@ -1,0 +1,305 @@
+package components
+
+import "workshop/internal/data"
+
+templ LessData(depth string) {
+	if depth == "light" {
+		<span class="chip chip--surface less-data" title="This page has less detail so far and is waiting to be expanded">
+			@Icon("info", "icon-sm")
+			Less data so far
+		</span>
+	}
+}
+
+templ AdvisoryBanner(name string, a *data.Advisory, sources []data.Source) {
+	if a != nil {
+		<aside class="advisory" role="note" aria-labelledby="advisory-title">
+			<div class="advisory__icon" aria-hidden="true">
+				@Icon("alert", "icon")
+			</div>
+			<div>
+				<p id="advisory-title" class="advisory__title">Check current travel advisories for { name }</p>
+				<p class="mt-2">{ a.Summary }</p>
+				if len(sources) > 0 {
+					<ul class="cluster mt-3" aria-label="Official travel advice">
+						for _, src := range sources {
+							<li><a class="advisory__link" href={ templ.URL(src.URL) } rel="noopener" target="_blank">{ src.Name }</a></li>
+						}
+					</ul>
+				}
+				<p class="small mt-3">This guide doesn’t rate safety here. Advisory status last checked <time class="num" datetime={ a.Reviewed }>{ a.Reviewed }</time>.</p>
+			</div>
+		</aside>
+	}
+}
+
+templ RulesChange() {
+	<aside class="advisory advisory--rules" role="note">
+		<div class="advisory__icon" aria-hidden="true">
+			@Icon("alert", "icon")
+		</div>
+		<div>
+			<p class="advisory__title">Rules change. Check official sources.</p>
+			<p class="mt-2">Visa, fee and entry rules here are a starting point, not advice, and every one is still marked “to verify”. Confirm with the official immigration sites listed on <a class="link" href="/about#entry">About &amp; sources</a> before you travel.</p>
+		</div>
+	</aside>
+}
+
+templ AtAGlance(c *data.Country, capital, commercial *data.City) {
+	<section class="card glance" aria-labelledby="glance-title">
+		<div class="glance__art">
+			if capital != nil {
+				@Landscape(capital.Motif, true)
+			}
+			<span class="chip chip--surface glance__flag">
+				@Flag(c)
+				{ c.Name }
+			</span>
+		</div>
+		<div class="glance__body">
+			<div class="cluster">
+				<h2 id="glance-title" class="display-md">Country at a glance</h2>
+				@LessData(c.Depth)
+			</div>
+			<dl class="glance__grid">
+				<div class="glance__item glance__item--wide">
+					<dt>@Icon("star", "icon-sm") Official capital</dt>
+					<dd>
+						if capital != nil {
+							<a class="link" href={ templ.SafeURL("/cities/" + capital.Slug) }>{ capital.Name }</a>
+						} else {
+							—
+						}
+					</dd>
+				</div>
+				if commercial != nil {
+					<div class="glance__item glance__item--wide">
+						<dt>@Icon("city", "icon-sm") Largest / commercial city</dt>
+						<dd><a class="link" href={ templ.SafeURL("/cities/" + commercial.Slug) }>{ commercial.Name }</a></dd>
+					</div>
+				}
+				<div class="glance__item">
+					<dt>@Icon("money", "icon-sm") Currency</dt>
+					<dd><a class="link" href={ templ.SafeURL("/currencies/" + c.CurrencyCode) }>{ c.Currency }</a> <span class="num">({ c.CurrencyCode })</span></dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("book", "icon-sm") Languages</dt>
+					<dd>{ joinOr(c.Languages, "—") }</dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("city", "icon-sm") Population</dt>
+					<dd>{ c.Population }</dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("clock", "icon-sm") Time zone</dt>
+					<dd>{ c.TimeZone }</dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("phone", "icon-sm") Calling code</dt>
+					<dd class="num">{ c.CallingCode }</dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("car", "icon-sm") Driving side</dt>
+					<dd>{ drivingLabel(c.DrivingSide) }</dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("info", "icon-sm") Plug type</dt>
+					<dd>{ joinOr(c.Plugs, "—") }</dd>
+				</div>
+				<div class="glance__item">
+					<dt>@Icon("plane", "icon-sm") Airport codes</dt>
+					<dd class="num">{ airportCodes(c.Airports) }</dd>
+				</div>
+			</dl>
+		</div>
+	</section>
+}
+
+templ CapitalBlock(c *data.Country, capital, commercial *data.City) {
+	<div class="capital-pair">
+		if capital != nil {
+			@capitalCard(capital, "Official capital", "star")
+		}
+		if commercial != nil {
+			@capitalCard(commercial, "Commercial hub", "city")
+		}
+	</div>
+	if c.CapitalNote != "" {
+		@Callout("info", "Capital or main city?") {
+			<p>{ c.CapitalNote }</p>
+		}
+	}
+}
+
+templ capitalCard(city *data.City, role, icon string) {
+	<article class="card card-link capital-card">
+		<div class="capital-card__art">
+			@Landscape(city.Motif, true)
+		</div>
+		<div class="capital-card__body">
+			<p class="eyebrow capital-card__role">
+				@Icon(icon, "icon-sm")
+				{ role }
+			</p>
+			<h3 class="display-md"><a class="stretched" href={ templ.SafeURL("/cities/" + city.Slug) }>{ city.Name }</a></h3>
+			<p class="soft mt-2">{ city.Tagline }</p>
+			<p class="small mt-2 num">{ city.Population }</p>
+		</div>
+	</article>
+}
+
+templ OrgLadder(name string, o data.Organisation, kenya data.Organisation, isKenya bool) {
+	<div class={ "org", templ.KV("org--single", isKenya) }>
+		@orgColumn(name, o.Levels)
+		if !isKenya {
+			@orgColumn("Kenya, for comparison", kenya.Levels)
+		}
+	</div>
+	if o.AddressExample != "" {
+		<figure class="card card--pad address-card mt-5">
+			<figcaption class="eyebrow">Reading an address</figcaption>
+			<p class="address-card__text">{ o.AddressExample }</p>
+		</figure>
+	}
+	if o.KenyaCompare != "" && !isKenya {
+		<p class="lede mt-5">{ o.KenyaCompare }</p>
+	}
+}
+
+templ orgColumn(title string, levels []data.AdminLevel) {
+	<div class="org__col">
+		<h3 class="org__title">{ title }</h3>
+		<ol class="org__ladder">
+			for i, l := range levels {
+				<li class="org__step" style={ templ.SafeCSS(ladderWidth(i, len(levels))) }>
+					<span class="org__name">
+						{ l.Name }
+						if l.Local != "" {
+							<span class="org__local" lang="und">({ l.Local })</span>
+						}
+					</span>
+					if l.Count != "" {
+						<span class="chip num">{ l.Count }</span>
+					}
+					if l.Note != "" {
+						<span class="org__note">{ l.Note }</span>
+					}
+				</li>
+			}
+		</ol>
+	</div>
+}
+
+templ ModeGrid(modes []data.Mode) {
+	<ul class="mode-grid">
+		for _, m := range modes {
+			<li class="card mode">
+				<span class="explain__icon">
+					@Icon(ModeIcon(m.Icon), "icon")
+				</span>
+				<div>
+					<h3 class="mode__name">{ m.Name }</h3>
+					if m.Cost != "" || m.Time != "" {
+						<p class="cluster mode__meta">
+							if m.Cost != "" {
+								<span class="chip num">{ m.Cost }</span>
+							}
+							if m.Time != "" {
+								<span class="chip num">
+									@Icon("clock", "icon-sm")
+									{ m.Time }
+								</span>
+							}
+						</p>
+					}
+					<p class="soft mt-2">{ m.Note }</p>
+				</div>
+			</li>
+		}
+	</ul>
+}
+
+templ EastAfricaMap(s *data.Store, current string, label string) {
+	{{ g := s.Geo.EastAfrica }}
+	<figure class="ea-map">
+		<svg viewBox={ g.ViewBox } role="group" aria-label={ label }>
+			<rect class="ea-map__sea" x="0" y="0" width="100%" height="100%"></rect>
+			for _, sh := range g.Countries {
+				if href := countryHref(s, sh.Code); href != "" {
+					<a href={ templ.SafeURL(href) } class={ "ea-map__country", templ.KV("is-current", sh.Code == current) } aria-label={ sh.Name }>
+						<path d={ sh.D }></path>
+						<title>{ sh.Name }</title>
+					</a>
+				} else {
+					<path class="ea-map__other" d={ sh.D }></path>
+				}
+			}
+			for _, lk := range g.Lakes {
+				<path class="ea-map__lake" d={ lk.D }></path>
+			}
+			for _, sh := range g.Countries {
+				if countryHref(s, sh.Code) != "" {
+					<text class="ea-map__label" x={ f1(sh.CX) } y={ f1(sh.CY) } text-anchor="middle" aria-hidden="true">{ sh.Name }</text>
+				}
+			}
+			@mapMarkers(Markers(s))
+		</svg>
+		<figcaption class="ea-map__key">
+			<span><svg viewBox="0 0 20 20" class="icon-sm" aria-hidden="true"><path class="ea-map__star" d={ starPath(10, 10, 9) }></path></svg> Capital</span>
+			<span><svg viewBox="0 0 20 20" class="icon-sm" aria-hidden="true"><circle class="ea-map__dot" cx="10" cy="10" r="6"></circle></svg> Commercial city</span>
+			<span class="muted small">Map: { g.Source }. Simplified, not to survey accuracy.</span>
+		</figcaption>
+	</figure>
+}
+
+templ mapMarkers(ms []MapMarker) {
+	for _, m := range ms {
+		<a href={ templ.SafeURL(m.Href) } class="ea-map__marker" aria-label={ markerLabel(m) }>
+			if m.Role == "capital" {
+				<path class="ea-map__star" d={ starPath(m.X, m.Y, 13) }></path>
+			} else {
+				<circle class="ea-map__dot" cx={ f1(m.X) } cy={ f1(m.Y) } r="8"></circle>
+			}
+			<text class="ea-map__city" x={ f1(m.X + 15) } y={ f1(m.Y + 6) }>{ m.Name }</text>
+		</a>
+	}
+}
+
+templ RoutesMap(s *data.Store, lines []MapLine) {
+	{{ g := s.Geo.EastAfrica }}
+	<figure class="ea-map ea-map--routes" data-routes-map>
+		<svg viewBox={ g.ViewBox } role="group" aria-label="Map of routes between East African cities">
+			<rect class="ea-map__sea" x="0" y="0" width="100%" height="100%"></rect>
+			for _, sh := range g.Countries {
+				<path class={ templ.KV("ea-map__faint", countryHref(s, sh.Code) != ""), templ.KV("ea-map__other", countryHref(s, sh.Code) == "") } d={ sh.D }></path>
+			}
+			for _, lk := range g.Lakes {
+				<path class="ea-map__lake" d={ lk.D }></path>
+			}
+			for _, l := range lines {
+				<a href={ templ.SafeURL(l.Href) } class={ "route-line", templ.KV("route-line--border", l.CrossesBorder) } data-route-title={ l.Title } data-route-detail={ l.Detail } aria-label={ l.Title + ". " + l.Detail }>
+					<path class="route-line__hit" d={ curve(l.From, l.To) }></path>
+					<path class="route-line__ink" d={ curve(l.From, l.To) }></path>
+					<title>{ l.Title }: { l.Detail }</title>
+				</a>
+			}
+			for _, m := range routeEnds(lines) {
+				@routeEnd(m)
+			}
+		</svg>
+		<figcaption class="route-detail card card--pad" aria-live="polite">
+			<p class="eyebrow">Route</p>
+			<p class="route-detail__title" data-route-out-title>Hover or tab to a line</p>
+			<p class="soft small" data-route-out-detail>Each line is a route in the planner. Dashed lines cross a border.</p>
+		</figcaption>
+	</figure>
+}
+
+templ routeEnd(m MapMarker) {
+	if m.Role == "capital" {
+		<path class="ea-map__star" d={ starPath(m.X, m.Y, 11) }></path>
+	} else {
+		<circle class="ea-map__dot" cx={ f1(m.X) } cy={ f1(m.Y) } r="7"></circle>
+	}
+	<text class="ea-map__city" x={ f1(m.X + 13) } y={ f1(m.Y + 5) } aria-hidden="true">{ m.Name }</text>
+}

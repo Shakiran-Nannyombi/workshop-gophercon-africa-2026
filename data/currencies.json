@@ -1,0 +1,414 @@
+[
+  {
+    "code": "KES",
+    "name": "Kenyan shilling",
+    "symbol": "KSh",
+    "country": "KE",
+    "subunit": "100 cents (rarely seen)",
+    "issuer": "Central Bank of Kenya",
+    "inPractice": "Shillings for almost everything, often paid by M-Pesa rather than cash. Safari operators and some larger hotels quote in US dollars.",
+    "notes": [
+      {
+        "value": 50,
+        "colour": "#A0522D",
+        "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: green energy (wind and geothermal power).",
+        "verify": "Colour: the 2019 KSh 50 is often described as red-brown rather than green; check against a CBK image. Confirm the exact back imagery."
+      },
+      {
+        "value": 100,
+        "colour": "#7B3F8C",
+        "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: agriculture.",
+        "verify": "Colour is an approximation (purple with orange tones); confirm against a CBK image."
+      },
+      {
+        "value": 200,
+        "colour": "#2F7FB5",
+        "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: social services (health, education, sport).",
+        "verify": "Colour is an approximation (blue); confirm the exact back scenes."
+      },
+      {
+        "value": 500,
+        "colour": "#2E8B6E",
+        "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: tourism and wildlife.",
+        "verify": "Colour is an approximation (green/teal); confirm which animal(s) appear on the back."
+      },
+      {
+        "value": 1000,
+        "colour": "#B5651D",
+        "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: governance (Parliament Buildings).",
+        "verify": "Colour is an approximation (brown/orange); confirm the back shows Parliament Buildings."
+      }
+    ],
+    "coins": [
+      {
+        "value": 1,
+        "colour": "#C0C0C0",
+        "feature": "Silver-coloured. The 2018 series shows a giraffe.",
+        "verify": "Confirm the giraffe is on the KSh 1 (and not only the 50 cents) and the coin's colour."
+      },
+      {
+        "value": 5,
+        "colour": "#D4AF37",
+        "feature": "Gold-coloured. The 2018 series shows a rhino.",
+        "verify": "Confirm animal mapping (rhino) and colour."
+      },
+      {
+        "value": 10,
+        "colour": "#D4AF37",
+        "feature": "Two-tone (bi-metallic). The 2018 series shows a lion.",
+        "verify": "Confirm animal mapping (lion) and which metal is the centre versus the ring."
+      },
+      {
+        "value": 20,
+        "colour": "#C0C0C0",
+        "feature": "Two-tone (bi-metallic), the largest everyday coin. The 2018 series shows an elephant.",
+        "verify": "Confirm animal mapping (elephant) and which metal is the centre versus the ring."
+      }
+    ],
+    "priceFormats": [
+      { "example": "KSh 500", "meaning": "500 Kenyan shillings. The most common written form." },
+      { "example": "Kshs. 500", "meaning": "Same thing. The 's' is plural; you will see it on receipts and older signs." },
+      { "example": "500/=", "meaning": "500 shillings, no cents. The '/=' means 'and nothing after it'. Common on handwritten signs and receipts." },
+      { "example": "500/-", "meaning": "Same as 500/=: 500 shillings exactly." },
+      { "example": "KES 500", "meaning": "The international currency code. Used by banks, apps and card machines." },
+      { "example": "500 bob", "meaning": "Slang for 500 shillings. 'Bob' means shilling, from old British slang." },
+      { "example": "1k", "meaning": "1,000 shillings. Also heard as 'thao' in Sheng." }
+    ],
+    "cash": {
+      "usd": "Accepted by many safari operators, tour companies and larger hotels, which often quote in dollars. Day to day (shops, matatus, markets) you need shillings or M-Pesa.",
+      "atms": "Common in towns and cities, inside banks, malls and supermarkets. Most accept foreign Visa and Mastercard cards; your own bank may charge a fee on top.",
+      "cards": "Accepted in malls, supermarkets, chain restaurants and mid-range or better hotels. Small shops, kiosks and matatus are cash or M-Pesa only.",
+      "exchange": "Banks and licensed forex bureaus in city centres, malls and at the airport. Bureaus usually beat airport rates; bring your passport.",
+      "refusedUSD": "It is commonly reported that US dollar notes printed before ~2006 (some places say ~2009), small notes, and torn, marked or written-on notes are refused or get a worse rate. Bring clean, recent $50 and $100 notes for the best rate.",
+      "verify": "Confirm the cut-off year bureaus currently apply to older US dollar notes."
+    }
+  },
+  {
+    "code": "UGX",
+    "name": "Ugandan shilling",
+    "symbol": "USh",
+    "country": "UG",
+    "subunit": "None in practice",
+    "issuer": "Bank of Uganda",
+    "inPractice": "Shillings for daily life, often by MTN MoMo or Airtel Money. Prices look big: ~USh 3,650 is one US dollar. Gorilla permits, safaris and some hotels are priced in dollars.",
+    "notes": [
+      { "value": 1000, "colour": "#8B6B3E", "feature": "Smallest note; brownish.", "verify": "Colour is an approximation; confirm against a Bank of Uganda image." },
+      { "value": 2000, "colour": "#C26A2E", "feature": "Orange-brown.", "verify": "Colour is an approximation; confirm against a Bank of Uganda image." },
+      { "value": 5000, "colour": "#8A3D7A", "feature": "Purple-red.", "verify": "Colour is an approximation; confirm against a Bank of Uganda image." },
+      { "value": 10000, "colour": "#3E8E5A", "feature": "Greenish.", "verify": "Colour is an approximation; confirm against a Bank of Uganda image." },
+      { "value": 20000, "colour": "#A33A3A", "feature": "Reddish.", "verify": "Colour is an approximation; confirm against a Bank of Uganda image." },
+      { "value": 50000, "colour": "#B5651D", "feature": "Highest note; orange-brown. Check this one carefully for fakes.", "verify": "Colour is an approximation; confirm against a Bank of Uganda image." }
+    ],
+    "coins": [
+      { "value": 100, "colour": "#C0C0C0", "feature": "Silver-coloured; used for small change.", "verify": "Confirm current coin colours." },
+      { "value": 200, "colour": "#C0C0C0", "feature": "Silver-coloured.", "verify": "Confirm current coin colours." },
+      { "value": 500, "colour": "#C0C0C0", "feature": "Silver-coloured; the coin you will see most.", "verify": "Confirm current coin colours." },
+      { "value": 1000, "colour": "#D4AF37", "feature": "Highest coin; also exists as a note.", "verify": "Confirm the USh 1,000 coin is still in everyday circulation and its colour. A USh 50 coin also exists but is rarely used." }
+    ],
+    "priceFormats": [
+      { "example": "USh 50,000", "meaning": "50,000 Ugandan shillings. The usual written form." },
+      { "example": "UGX 50,000", "meaning": "The international code; used by banks, apps and card machines." },
+      { "example": "50,000/=", "meaning": "50,000 shillings exactly. The '/=' means 'no cents', as in Kenya and Tanzania." },
+      { "example": "50k", "meaning": "50,000 shillings. Very common on signs, menus and in speech." },
+      { "example": "Shs 50,000", "meaning": "Same thing; an older or shorter style seen on receipts." }
+    ],
+    "cash": {
+      "usd": "Accepted for gorilla permits, safaris, tour companies and some hotels. Shops, bodas and markets want shillings or mobile money.",
+      "atms": "Easy to find in Kampala, Entebbe and larger towns; scarcer in rural areas and near national parks, so carry cash when you head out.",
+      "cards": "Accepted at larger hotels, supermarkets and some restaurants in Kampala; often with a surcharge. Cash or mobile money elsewhere.",
+      "exchange": "Forex bureaus in Kampala usually give better rates than banks or the airport. Large US dollar notes ($50, $100) get the best rate.",
+      "refusedUSD": "It is commonly reported that US dollar notes printed before ~2006 (some say ~2009) are refused or get a worse rate, and small notes ($1-$20) get a lower rate than $50 and $100 notes. Torn or written-on notes may be refused.",
+      "verify": "Confirm current bureau practice on note years and small-note rates."
+    }
+  },
+  {
+    "code": "TZS",
+    "name": "Tanzanian shilling",
+    "symbol": "TSh",
+    "country": "TZ",
+    "subunit": "None in practice",
+    "issuer": "Bank of Tanzania",
+    "inPractice": "Shillings for daily life, often by M-Pesa, Mixx by Yas or Airtel Money. Safaris, park fees and many Zanzibar hotels are priced in US dollars.",
+    "notes": [
+      { "value": 1000, "colour": "#3A7CA5", "feature": "Smallest common note; bluish-green.", "verify": "Colour is an approximation; confirm against a Bank of Tanzania image. An older TSh 500 note may still turn up." },
+      { "value": 2000, "colour": "#A0622D", "feature": "Brown-orange.", "verify": "Colour is an approximation; confirm against a Bank of Tanzania image." },
+      { "value": 5000, "colour": "#7B4A8C", "feature": "Purple-brown.", "verify": "Colour is an approximation; confirm against a Bank of Tanzania image." },
+      { "value": 10000, "colour": "#B03A48", "feature": "Highest note; reddish.", "verify": "Colour is an approximation; confirm against a Bank of Tanzania image." }
+    ],
+    "coins": [
+      { "value": 50, "colour": "#C0C0C0", "feature": "Small change; rarely needed.", "verify": "Confirm colour and that it is still in use." },
+      { "value": 100, "colour": "#C0C0C0", "feature": "Silver-coloured.", "verify": "Confirm colour." },
+      { "value": 200, "colour": "#C0C0C0", "feature": "Silver-coloured.", "verify": "Confirm colour." },
+      { "value": 500, "colour": "#C0C0C0", "feature": "Highest coin; largely replaced the TSh 500 note.", "verify": "Confirm colour." }
+    ],
+    "priceFormats": [
+      { "example": "TSh 5,000", "meaning": "5,000 Tanzanian shillings. The usual written form." },
+      { "example": "Tsh 5,000/=", "meaning": "Same thing, with the '/=' meaning 'no cents'. Common on receipts and handwritten signs." },
+      { "example": "TZS 5,000", "meaning": "The international code; used by banks, apps and card machines." },
+      { "example": "5,000/-", "meaning": "Same as 5,000/=: 5,000 shillings exactly." },
+      { "example": "elfu tano", "meaning": "Swahili for 'five thousand'. 'Elfu' means thousand, so you will hear prices in thousands." },
+      { "example": "$50", "meaning": "Dollar prices are normal for safaris, park fees and tourist hotels, especially in Zanzibar." }
+    ],
+    "cash": {
+      "usd": "Widely used for safaris, park fees, flights and many tourist hotels, especially in Zanzibar and Arusha. Day to day you need shillings.",
+      "atms": "Common in Dar es Salaam, Arusha, Stone Town and larger towns; limited or absent in rural areas and on safari. Withdrawal limits per transaction can be low.",
+      "cards": "Accepted at larger hotels, lodges and tour operators, often with a surcharge of a few per cent. Cash elsewhere.",
+      "exchange": "Banks and licensed bureaus in cities and at airports. Bring your passport.",
+      "refusedUSD": "It is commonly reported that US dollar notes printed before ~2006 (some say ~2009) are refused, including by some hotels and park gates, and that torn or written-on notes are rejected. Small notes may get a worse rate.",
+      "verify": "Confirm the cut-off year and whether park fees are now card-only."
+    }
+  },
+  {
+    "code": "RWF",
+    "name": "Rwandan franc",
+    "symbol": "FRw",
+    "country": "RW",
+    "subunit": "100 centimes (not used)",
+    "issuer": "National Bank of Rwanda",
+    "inPractice": "Francs for daily life, very often by MTN MoMo. Gorilla permits, tours and higher-end hotels are priced in US dollars. Cards work more widely than in neighbouring countries, especially in Kigali.",
+    "notes": [
+      { "value": 500, "colour": "#3A6EA5", "feature": "Smallest note; bluish.", "verify": "Colour is an approximation; confirm against a National Bank of Rwanda image." },
+      { "value": 1000, "colour": "#3E8E5A", "feature": "Greenish.", "verify": "Colour is an approximation; confirm against a National Bank of Rwanda image." },
+      { "value": 2000, "colour": "#2F7FB5", "feature": "Blue.", "verify": "Colour is an approximation; confirm against a National Bank of Rwanda image." },
+      { "value": 5000, "colour": "#7B4A8C", "feature": "Highest note; purple-brown.", "verify": "Colour is an approximation; confirm against a National Bank of Rwanda image." }
+    ],
+    "coins": [
+      { "value": 10, "colour": "#C0C0C0", "feature": "Small change.", "verify": "Confirm colour. Smaller coins (1, 5, 20 francs) exist but are rarely used." },
+      { "value": 50, "colour": "#C0C0C0", "feature": "Silver-coloured.", "verify": "Confirm colour." },
+      { "value": 100, "colour": "#D4AF37", "feature": "Highest coin; replaced the old FRw 100 note.", "verify": "Confirm colour." }
+    ],
+    "priceFormats": [
+      { "example": "5,000 RWF", "meaning": "5,000 Rwandan francs. The code is often written after the number." },
+      { "example": "FRw 5,000", "meaning": "Same thing, using the local symbol." },
+      { "example": "5,000 Frw", "meaning": "Same thing; the symbol after the number is also common." },
+      { "example": "5k", "meaning": "5,000 francs, in speech and on informal signs." },
+      { "example": "$1,500", "meaning": "Gorilla permits and many tours are quoted in US dollars." }
+    ],
+    "cash": {
+      "usd": "Used for gorilla permits, tours and higher-end hotels. Shops, motos and markets want francs or MTN MoMo.",
+      "atms": "Common in Kigali and larger towns; fewer near national parks. Most accept foreign Visa cards; Mastercard acceptance can be patchier.",
+      "cards": "Accepted fairly widely in Kigali hotels, supermarkets and restaurants, and contactless is growing. Cash or MoMo outside the city.",
+      "exchange": "Banks and licensed forex bureaus in Kigali; bureaus are usually better than the airport.",
+      "refusedUSD": "It is commonly reported that US dollar notes printed before ~2006 (some say ~2009) are refused or get a worse rate, and that damaged or written-on notes are rejected.",
+      "verify": "Confirm current Mastercard ATM acceptance and the cut-off year for older dollar notes."
+    }
+  },
+  {
+    "code": "BIF",
+    "name": "Burundian franc",
+    "symbol": "FBu",
+    "country": "BI",
+    "subunit": "100 centimes (not used)",
+    "issuer": "Bank of the Republic of Burundi (Banque de la République du Burundi)",
+    "inPractice": "Francs for daily life, in cash. Some hotels and organisations price in US dollars or euros. Large purchases can mean thick bundles of notes.",
+    "notes": [
+      { "value": 500, "colour": "#8B6B3E", "feature": "Small everyday note.", "verify": "Colour is a placeholder; confirm against a BRB image." },
+      { "value": 1000, "colour": "#3E8E5A", "feature": "Common everyday note.", "verify": "Colour is a placeholder; confirm against a BRB image." },
+      { "value": 2000, "colour": "#B5651D", "feature": "Common everyday note.", "verify": "Colour is a placeholder; confirm against a BRB image." },
+      { "value": 5000, "colour": "#3A6EA5", "feature": "Larger note.", "verify": "Colour is a placeholder; confirm against a BRB image." },
+      { "value": 10000, "colour": "#7B4A8C", "feature": "Large note.", "verify": "Colour is a placeholder; confirm against a BRB image, and whether a higher note (e.g. 20,000) has been issued." }
+    ],
+    "coins": [],
+    "priceFormats": [
+      { "example": "5,000 FBu", "meaning": "5,000 Burundian francs, with the local symbol after the number." },
+      { "example": "BIF 5,000", "meaning": "The international code; used by banks and apps." },
+      { "example": "5.000 FBu", "meaning": "Same amount; French-style dots or spaces as thousands separators are also seen." }
+    ],
+    "cash": {
+      "usd": "Clean US dollars or euros are useful to exchange and accepted by some hotels; daily purchases are in francs.",
+      "atms": "Limited, mainly in Bujumbura and Gitega, and foreign cards often do not work. Do not rely on them.",
+      "cards": "Rarely accepted outside a few hotels in Bujumbura.",
+      "exchange": "Banks and licensed bureaus in Bujumbura. The official and street rates have differed widely; see the note below.",
+      "refusedUSD": "It is commonly reported that older US dollar notes (before ~2006/2009) and damaged or marked notes are refused or get a worse rate.",
+      "verify": "Coins: they exist but are rarely used; list left empty until confirmed. Confirm whether any ATMs reliably accept foreign Visa/Mastercard."
+    },
+    "fxNotes": [
+      {
+        "date": "2026-10-15",
+        "title": "Official and parallel rates differ",
+        "body": "Burundi has had a large gap between the official exchange rate and the parallel (street) rate, at times the street rate offering roughly twice as many francs per dollar. Changing money outside licensed banks and bureaus is illegal and risky. The central bank has taken steps to narrow the gap, so check the current situation before you travel.",
+        "verify": "Check the current official rate, the size of the parallel gap and any recent changes by the BRB."
+      }
+    ]
+  },
+  {
+    "code": "ETB",
+    "name": "Ethiopian birr",
+    "symbol": "Br",
+    "country": "ET",
+    "subunit": "100 santim",
+    "issuer": "National Bank of Ethiopia",
+    "inPractice": "Birr for daily life, increasingly paid by telebirr or CBE Birr. Visitors usually pay hotels, flights and tours in birr by card or in foreign currency, depending on the business.",
+    "notes": [
+      { "value": 10, "colour": "#A33A3A", "feature": "Smallest note in the 2020 series.", "verify": "Colour is an approximation; confirm against a National Bank of Ethiopia image of the 2020 series." },
+      { "value": 50, "colour": "#C26A2E", "feature": "Everyday note.", "verify": "Colour is an approximation; confirm against a National Bank of Ethiopia image." },
+      { "value": 100, "colour": "#3E8E5A", "feature": "Common note for larger purchases.", "verify": "Colour is an approximation; confirm against a National Bank of Ethiopia image." },
+      { "value": 200, "colour": "#7B4A8C", "feature": "Highest note; introduced in 2020.", "verify": "Colour is an approximation; confirm against a National Bank of Ethiopia image." }
+    ],
+    "coins": [
+      { "value": 1, "colour": "#C0C0C0", "feature": "1 birr coin. Santim coins exist but rarely matter for visitors.", "verify": "Confirm colour, and whether a 5 birr coin has replaced the old 5 birr note." }
+    ],
+    "priceFormats": [
+      { "example": "Br 150", "meaning": "150 birr, with the symbol in front." },
+      { "example": "150 birr", "meaning": "Same thing, written out." },
+      { "example": "ETB 150.00", "meaning": "The international code, often with two decimals on printed receipts." },
+      { "example": "150 ብር", "meaning": "'Birr' written in the Amharic (Ge'ez) script, seen on local signs and menus." },
+      { "example": "150 + VAT", "meaning": "Some restaurant and hotel prices exclude VAT (~15%) and a service charge, which are added to the bill." }
+    ],
+    "cash": {
+      "usd": "Most daily purchases are in birr. Some hotels, tour operators and Ethiopian Airlines may ask foreigners to pay in foreign currency or by international card; rules have changed since 2024.",
+      "atms": "Common in Addis Ababa and larger towns; many accept foreign Visa cards, Mastercard less reliably. Daily limits can be low.",
+      "cards": "Accepted at larger hotels, some restaurants and the airline in Addis Ababa. Cash or mobile money elsewhere.",
+      "exchange": "Banks and licensed bureaus, including at Bole airport. Keep exchange receipts: you may need them to change birr back when leaving.",
+      "refusedUSD": "It is commonly reported that older US dollar notes (before ~2006/2009) and damaged or marked notes are refused or get a worse rate.",
+      "verify": "Confirm current rules on which payments foreigners must make in foreign currency, and on changing birr back at departure."
+    },
+    "fxNotes": [
+      {
+        "date": "2026-10-15",
+        "title": "The birr was floated in 2024",
+        "body": "In July 2024 Ethiopia let the birr move to a market-based rate, and it lost more than half its value against the US dollar within months. Before that, the street rate was roughly double the official one; since the float the gap has narrowed a lot. Prices in birr have risen with it, so older guidebook prices are out of date. Use banks or licensed bureaus.",
+        "verify": "Check the current official rate and whether any meaningful parallel-market gap remains."
+      }
+    ]
+  },
+  {
+    "code": "SSP",
+    "name": "South Sudanese pound",
+    "symbol": "SSP",
+    "country": "SS",
+    "subunit": "100 piasters (not used)",
+    "issuer": "Bank of South Sudan",
+    "inPractice": "US dollars are widely used for hotels, flights, visas and larger payments in Juba; pounds for small daily purchases. Bring all the cash you need in clean US dollars.",
+    "notes": [
+      { "value": 100, "colour": "#3E8E5A", "feature": "Everyday note.", "verify": "Colour is a placeholder; confirm against a Bank of South Sudan image." },
+      { "value": 500, "colour": "#B5651D", "feature": "Larger note.", "verify": "Colour is a placeholder; confirm against a Bank of South Sudan image." },
+      { "value": 1000, "colour": "#7B4A8C", "feature": "Highest note, introduced as prices rose.", "verify": "Confirm the SSP 1,000 note is in circulation, and whether any higher note has been issued. Smaller notes (1-50) exist but buy very little." }
+    ],
+    "coins": [],
+    "priceFormats": [
+      { "example": "SSP 5,000", "meaning": "5,000 South Sudanese pounds." },
+      { "example": "5,000 SSP", "meaning": "Same thing, with the code after the number." },
+      { "example": "$50", "meaning": "Hotels, flights and many services in Juba quote in US dollars." }
+    ],
+    "cash": {
+      "usd": "Widely used and often expected for hotels, flights and larger payments in Juba.",
+      "atms": "Very few, and foreign cards generally do not work. Do not plan on withdrawing cash.",
+      "cards": "Rarely accepted, mainly at a few international hotels and offices.",
+      "exchange": "Banks and licensed bureaus in Juba. See the note on official versus parallel rates.",
+      "refusedUSD": "It is commonly reported that older US dollar notes (before ~2006/2009), small notes, and torn or marked notes are refused or get a worse rate.",
+      "verify": "Coins: rarely or never used; list left empty until confirmed. Confirm whether any ATMs in Juba accept foreign cards."
+    },
+    "fxNotes": [
+      {
+        "date": "2026-10-15",
+        "title": "Fast-moving rate with an official/parallel gap",
+        "body": "The pound has lost value sharply and repeatedly in recent years, and the official rate and the parallel (street) rate have often differed noticeably. Any figure in this guide will be out of date quickly. Changing money outside licensed channels carries legal and personal risk.",
+        "verify": "Check the current official rate and the size of the parallel gap before travel; the converter figure is a rough guess."
+      }
+    ]
+  },
+  {
+    "code": "SOS",
+    "name": "Somali shilling",
+    "symbol": "Sh.So.",
+    "country": "SO",
+    "subunit": "100 senti (not used)",
+    "issuer": "Central Bank of Somalia",
+    "inPractice": "Most larger payments are in US dollars, often by EVC Plus mobile money; small shilling notes for petty purchases. Somaliland uses its own Somaliland shilling, which is not the same currency.",
+    "verify": "Confirm the balance between dollars, mobile money and shilling notes in Mogadishu today, and the status of any new banknote series.",
+    "notes": [
+      { "value": 1000, "colour": "#3E7A8C", "feature": "The note you will mostly see; worth very little.", "verify": "Colour is a placeholder. Many notes in circulation are old or counterfeit; confirm whether new Central Bank of Somalia notes have been issued." }
+    ],
+    "coins": [],
+    "priceFormats": [
+      { "example": "$5", "meaning": "US dollar prices are normal for most purchases above petty amounts." },
+      { "example": "5,000 shillings", "meaning": "Small amounts in Somali shillings, for things like tea or a short ride." },
+      { "example": "SOS 5,000", "meaning": "The international code; used mainly by banks and official sources." }
+    ],
+    "cash": {
+      "usd": "The main currency for anything but small purchases; mobile money (EVC Plus and others) is usually in dollars.",
+      "atms": "A few in Mogadishu and Hargeisa (Somaliland) dispense US dollars, but foreign cards are unreliable. Bring cash.",
+      "cards": "Rarely accepted.",
+      "exchange": "Money changers and money-transfer (hawala) offices are common. Rates for shilling notes vary.",
+      "refusedUSD": "It is commonly reported that older US dollar notes (before ~2006/2009) and torn or marked notes are refused.",
+      "verify": "Coins: not used; list left empty. Confirm current ATM access for foreign cards."
+    },
+    "fxNotes": [
+      {
+        "date": "2026-10-15",
+        "title": "A dollarised economy with unreliable shilling notes",
+        "body": "Somalia runs largely on US dollars and mobile money. Shilling notes are mostly old, worn and many are counterfeit, so they trade at street rates and are only used for small purchases. The Central Bank of Somalia has announced plans for new notes; check whether they have arrived.",
+        "verify": "Check the status of the Central Bank of Somalia's currency reform and new notes."
+      }
+    ]
+  },
+  {
+    "code": "DJF",
+    "name": "Djiboutian franc",
+    "symbol": "Fdj",
+    "country": "DJ",
+    "subunit": "100 centimes (not used)",
+    "issuer": "Central Bank of Djibouti (Banque Centrale de Djibouti)",
+    "inPractice": "Francs for daily life. The franc has long been pegged to the US dollar at ~177.7, and dollars and euros are accepted by many hotels and larger businesses.",
+    "notes": [
+      { "value": 1000, "colour": "#3A6EA5", "feature": "Smallest note.", "verify": "Colour is a placeholder; confirm against a Banque Centrale de Djibouti image." },
+      { "value": 2000, "colour": "#3E8E5A", "feature": "Everyday note.", "verify": "Colour is a placeholder; confirm against a Banque Centrale de Djibouti image." },
+      { "value": 5000, "colour": "#B5651D", "feature": "Larger note.", "verify": "Colour is a placeholder; confirm against a Banque Centrale de Djibouti image." },
+      { "value": 10000, "colour": "#7B4A8C", "feature": "Highest note.", "verify": "Colour is a placeholder; confirm against a Banque Centrale de Djibouti image." }
+    ],
+    "coins": [],
+    "priceFormats": [
+      { "example": "1 000 Fdj", "meaning": "1,000 Djiboutian francs. French style: a space between thousands and the symbol after the number." },
+      { "example": "DJF 1,000", "meaning": "The international code; used by banks and card machines." },
+      { "example": "1 000 FD", "meaning": "Same thing; 'FD' is another common short form." }
+    ],
+    "cash": {
+      "usd": "Accepted by many hotels and larger businesses; euros too. Small shops prefer francs.",
+      "atms": "Available in Djibouti City; foreign card acceptance varies.",
+      "cards": "Accepted at larger hotels and some restaurants in Djibouti City.",
+      "exchange": "Banks and bureaus in Djibouti City. The peg keeps rates steady.",
+      "refusedUSD": "It is commonly reported that older US dollar notes (before ~2006/2009) and damaged notes are refused or get a worse rate.",
+      "verify": "Coins exist (several franc values) but the list is left empty until confirmed. Confirm ATM acceptance of foreign cards."
+    }
+  },
+  {
+    "code": "ERN",
+    "name": "Eritrean nakfa",
+    "symbol": "Nfk",
+    "country": "ER",
+    "subunit": "100 cents",
+    "issuer": "Bank of Eritrea",
+    "inPractice": "Nakfa for daily life, in cash. Visitors may be asked to pay hotels and some services in foreign currency. Bring all the cash you need: foreign cards generally do not work.",
+    "notes": [
+      { "value": 1, "colour": "#8B6B3E", "feature": "Smallest note.", "verify": "Colour is a placeholder; confirm against a Bank of Eritrea image of the 2015 series." },
+      { "value": 5, "colour": "#3E8E5A", "feature": "Small note.", "verify": "Colour is a placeholder." },
+      { "value": 10, "colour": "#3A6EA5", "feature": "Everyday note.", "verify": "Colour is a placeholder." },
+      { "value": 20, "colour": "#B5651D", "feature": "Everyday note.", "verify": "Colour is a placeholder." },
+      { "value": 50, "colour": "#A33A3A", "feature": "Larger note.", "verify": "Colour is a placeholder." },
+      { "value": 100, "colour": "#7B4A8C", "feature": "Highest note.", "verify": "Colour is a placeholder." }
+    ],
+    "coins": [],
+    "priceFormats": [
+      { "example": "Nfk 100", "meaning": "100 nakfa, with the symbol in front." },
+      { "example": "100 Nakfa", "meaning": "Same thing, written out." },
+      { "example": "ERN 100", "meaning": "The international code; used by banks and official sources." }
+    ],
+    "cash": {
+      "usd": "Foreign currency must be changed through official channels; some hotels and services require visitors to pay in foreign currency.",
+      "atms": "Foreign cards generally do not work. Bring cash.",
+      "cards": "Generally not accepted for foreign cards.",
+      "exchange": "Only at the state exchange (Himbol) and banks. Changing money elsewhere is illegal. Keep your receipts.",
+      "refusedUSD": "It is commonly reported that older US dollar notes (before ~2006/2009) and damaged notes are refused.",
+      "verify": "Coins (cents and 1 nakfa) exist; list left empty until confirmed. Confirm current rules on foreign-currency payments by visitors."
+    },
+    "fxNotes": [
+      {
+        "date": "2026-10-15",
+        "title": "Fixed official rate, strict currency rules",
+        "body": "The nakfa is officially fixed at 15 to the US dollar, while the street rate is widely reported to be much weaker. Changing money outside official channels is illegal and penalties can be serious. Visitors are generally required to declare foreign currency on arrival and to keep exchange receipts, and holding foreign currency inside the country is tightly controlled.",
+        "verify": "Check current declaration rules, limits on foreign currency and how visitors are expected to pay."
+      }
+    ]
+  }
+]

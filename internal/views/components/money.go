@@ -49,6 +49,7 @@ func FormatMoney(v float64, code string) string {
 // Symbols are how each currency is usually written on a price tag.
 var Symbols = map[string]string{
 	"KES": "KSh", "UGX": "USh", "TZS": "TSh", "RWF": "FRw", "ETB": "Br",
+	"BIF": "FBu", "SSP": "SSP", "SOS": "Sh.So.", "DJF": "Fdj", "ERN": "Nfk",
 	"USD": "US$", "EUR": "€", "GBP": "£",
 }
 
@@ -106,3 +107,13 @@ func noteTilt(i int) string {
 }
 
 func itoa(n int) string { return strconv.Itoa(n) }
+
+func upper(s string) string { return strings.ToUpper(s) }
+
+// noteFont shrinks the printed value on notes with long numbers.
+func noteFont(v, size int) string {
+	if n := len(Commas(v)); n > 5 {
+		return strconv.Itoa(size * 5 / n)
+	}
+	return strconv.Itoa(size)
+}

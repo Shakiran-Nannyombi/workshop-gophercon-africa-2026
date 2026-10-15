@@ -55,6 +55,14 @@ func New(logger *slog.Logger, opts Options) (http.Handler, error) {
 	mux := http.NewServeMux()
 	mux.Handle("GET /static/", s.static(staticFS))
 	mux.HandleFunc("GET /{$}", s.home)
+	mux.HandleFunc("GET /countries", s.countries)
+	mux.HandleFunc("GET /countries/{slug}", s.country)
+	mux.HandleFunc("GET /cities", s.cities)
+	mux.HandleFunc("GET /cities/{slug}", s.city)
+	mux.HandleFunc("GET /currencies", s.currencies)
+	mux.HandleFunc("GET /currencies/convert", s.convert)
+	mux.HandleFunc("GET /currencies/{code}", s.currency)
+	mux.Handle("GET /money", http.RedirectHandler("/currencies", http.StatusMovedPermanently))
 	mux.HandleFunc("GET /design-system", s.designSystem)
 	mux.HandleFunc("GET /sitemap.xml", s.sitemap)
 	mux.HandleFunc("GET /robots.txt", s.robots)
@@ -107,11 +115,8 @@ func (s *site) render(w http.ResponseWriter, r *http.Request, status int, full, 
 
 func (s *site) home(w http.ResponseWriter, r *http.Request) {
 	m := s.meta(r, "home", "", "A visual, beginner-friendly guide to Kenyan money, the 47 counties, Nairobi's neighbourhoods and East Africa's main cities.")
-	country := r.URL.Query().Get("country")
-	if _, ok := s.store.Country(country); !ok {
-		country = "KE"
-	}
-	s.render(w, r, http.StatusOK, pages.Home(m, s.store, country), pages.CityPicker(s.store, country))
+	country := s.pickerCountry(r, "")
+	s.render(w, r, http.StatusOK, pages.Home(m, s.store, country), pages.CityPicker(s.store, country, "/"))
 }
 
 func (s *site) designSystem(w http.ResponseWriter, r *http.Request) {

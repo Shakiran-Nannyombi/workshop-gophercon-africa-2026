@@ -74,82 +74,288 @@
       "provider": "Safaricom",
       "country": "KE",
       "summary": "Kenya's dominant mobile money service: almost every shop, taxi and market stall can take it.",
-      "tags": ["most widely accepted", "paybill", "till"]
+      "tags": [
+        "most widely accepted",
+        "paybill",
+        "till"
+      ],
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Paying a shop's till (Buy Goods) is free for you; sending to a person and withdrawing cash have small fees.",
+        "You can pay most shops, taxis and market stalls, and send to Airtel Money numbers too.",
+        "Foreign cards cannot be linked directly; you load it with cash at an agent."
+      ]
     },
     {
       "name": "Airtel Money",
       "provider": "Airtel Kenya",
       "country": "KE",
       "summary": "A smaller alternative to M-Pesa; you can send to M-Pesa numbers, but fewer shops display Airtel tills.",
-      "tags": ["alternative"]
+      "tags": [
+        "alternative"
+      ],
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Fewer shops show Airtel tills, so you may end up sending to a phone number instead.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
     },
     {
       "name": "MTN MoMo",
       "provider": "MTN Uganda",
       "country": "UG",
       "summary": "Uganda's largest mobile money network, used for everything from boda rides to utility bills.",
-      "tags": ["most widely accepted"]
+      "tags": [
+        "most widely accepted"
+      ],
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Each send and withdrawal has a fee; check it on screen before you confirm.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee.",
+        "Bodas, small shops and markets will often give you a number to pay."
+      ]
     },
     {
       "name": "Airtel Money",
       "provider": "Airtel Uganda",
       "country": "UG",
-      "summary": "Uganda's second big mobile money network, widely accepted alongside MTN MoMo."
+      "summary": "Uganda's second big mobile money network, widely accepted alongside MTN MoMo.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Sending between Airtel and MTN works, but costs more than sending within the same network.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
     },
     {
       "name": "M-Pesa",
       "provider": "Vodacom Tanzania",
       "country": "TZ",
       "summary": "Tanzania's largest mobile money service; it is a separate system from Kenya's M-Pesa.",
-      "tags": ["most widely accepted"]
+      "tags": [
+        "most widely accepted"
+      ],
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "It is a separate system from Kenya's M-Pesa: a Kenyan M-Pesa account does not work here, though cross-border transfers between the two exist.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee.",
+        "Fees apply to sending and withdrawing; shops often give a 'Lipa' (pay) number."
+      ]
     },
     {
       "name": "Mixx by Yas",
       "provider": "Yas (formerly Tigo)",
       "country": "TZ",
       "summary": "The service formerly known as Tigo Pesa, still a major option in Tanzania.",
-      "verify": "Confirm the rebrand from Tigo Pesa to Mixx by Yas and the current provider name."
+      "verify": "Confirm the rebrand from Tigo Pesa to Mixx by Yas and the current provider name.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Older signs and people may still call it Tigo Pesa.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
     },
     {
       "name": "Airtel Money",
       "provider": "Airtel Tanzania",
       "country": "TZ",
-      "summary": "A widely used alternative in Tanzania, especially outside the big cities."
+      "summary": "A widely used alternative in Tanzania, especially outside the big cities.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee.",
+        "Useful as a backup outside the big cities."
+      ]
     },
     {
       "name": "HaloPesa",
       "provider": "Halotel",
       "country": "TZ",
       "summary": "A smaller Tanzanian mobile money service run by Halotel.",
-      "verify": "Confirm HaloPesa is still operating under this name."
+      "verify": "Confirm HaloPesa is still operating under this name.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Fewer shops and agents than the bigger networks.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
     },
     {
       "name": "MTN MoMo",
       "provider": "MTN Rwanda",
       "country": "RW",
       "summary": "Rwanda's main mobile money network; most shops and motos accept it.",
-      "tags": ["most widely accepted"]
+      "tags": [
+        "most widely accepted"
+      ],
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Shops and motos often show a MoMo Pay code; you dial or scan to pay.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee.",
+        "Fees apply to sending and withdrawing; check on screen."
+      ]
     },
     {
       "name": "Airtel Money",
       "provider": "Airtel Rwanda",
       "country": "RW",
       "summary": "The second mobile money option in Rwanda.",
-      "verify": "Confirm current branding and reach in Rwanda."
+      "verify": "Confirm current branding and reach in Rwanda.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Fewer merchants than MTN MoMo, so it works best as a backup.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
     },
     {
       "name": "telebirr",
       "provider": "Ethio Telecom",
       "country": "ET",
       "summary": "Ethiopia's largest mobile money service, run by the state telecoms company.",
-      "tags": ["most widely accepted"]
+      "tags": [
+        "most widely accepted"
+      ],
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Widely used for payments, bills and transfers; many shops show a telebirr QR code.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
     },
     {
       "name": "M-Pesa Ethiopia",
       "provider": "Safaricom Ethiopia",
       "country": "ET",
       "summary": "Safaricom's newer Ethiopian service, launched in 2023 and still growing.",
-      "verify": "Confirm launch year and current acceptance in Addis Ababa."
+      "verify": "Confirm launch year and current acceptance in Addis Ababa.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Accepted in fewer places than telebirr for now, mainly in Addis Ababa.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ]
+    },
+    {
+      "name": "CBE Birr",
+      "provider": "Commercial Bank of Ethiopia",
+      "country": "ET",
+      "summary": "Mobile money and wallet service from Ethiopia's largest state bank, widely used alongside telebirr.",
+      "tags": [
+        "bank wallet"
+      ],
+      "expect": [
+        "Registering needs ID and a local phone number, often at a CBE branch or agent.",
+        "Works on basic phones by USSD menu as well as through an app.",
+        "Useful for paying shops and sending money to people who bank with CBE."
+      ],
+      "verify": "Confirm whether foreign visitors can register, and current acceptance."
+    },
+    {
+      "name": "Lumicash",
+      "provider": "Lumitel",
+      "country": "BI",
+      "summary": "A mobile money service in Burundi run by the telecoms company Lumitel.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee.",
+        "Fees apply to sending and withdrawing; check before you confirm."
+      ],
+      "verify": "Confirm Lumicash is run by Lumitel, still operating under this name, and whether visitors can register."
+    },
+    {
+      "name": "EcoCash",
+      "provider": "Econet Leo",
+      "country": "BI",
+      "summary": "Mobile money from Econet Leo, the other main mobile network in Burundi.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ],
+      "verify": "Confirm EcoCash is still operating in Burundi and the provider name (Econet Leo)."
+    },
+    {
+      "name": "EVC Plus",
+      "provider": "Hormuud Telecom",
+      "country": "SO",
+      "summary": "Somalia's dominant mobile money service, used for most payments in Mogadishu and much of southern and central Somalia.",
+      "tags": [
+        "most widely accepted"
+      ],
+      "expect": [
+        "Registering needs a Hormuud SIM and usually ID.",
+        "Accounts are often in US dollars rather than shillings.",
+        "Payments are made through a short-code phone menu; many shops, drivers and markets accept it.",
+        "Shops often prefer mobile money to cash for anything above small amounts."
+      ]
+    },
+    {
+      "name": "Zaad",
+      "provider": "Telesom",
+      "country": "SO",
+      "summary": "The main mobile money service in Somaliland, run by Telesom.",
+      "tags": [
+        "Somaliland"
+      ],
+      "expect": [
+        "Registering needs a Telesom SIM and usually ID.",
+        "Mainly works in Somaliland; it is separate from EVC Plus.",
+        "Accounts are often in US dollars rather than shillings."
+      ]
+    },
+    {
+      "name": "Sahal",
+      "provider": "Golis Telecom",
+      "country": "SO",
+      "summary": "A mobile money service used mainly in Puntland, run by Golis Telecom.",
+      "tags": [
+        "Puntland"
+      ],
+      "expect": [
+        "Registering needs a Golis SIM and usually ID.",
+        "Mainly works in Puntland.",
+        "Accounts are often in US dollars rather than shillings."
+      ],
+      "verify": "Confirm Sahal is still the Golis mobile money brand and its reach."
+    },
+    {
+      "name": "eDahab",
+      "provider": "Somtel",
+      "country": "SO",
+      "summary": "A mobile money service from Somtel, used in Somaliland and other parts of Somalia.",
+      "expect": [
+        "Registering needs a Somtel SIM and usually ID.",
+        "Accounts are often in US dollars rather than shillings."
+      ],
+      "verify": "Confirm eDahab's current reach and that it is still run by Somtel."
+    },
+    {
+      "name": "m-Gurush",
+      "provider": "m-Gurush",
+      "country": "SS",
+      "summary": "A mobile money service in South Sudan, mainly used in Juba.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Acceptance is limited; carry cash as well.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ],
+      "verify": "Confirm m-Gurush is still operating, who runs it and how widely it is accepted."
+    },
+    {
+      "name": "MTN MoMo",
+      "provider": "MTN South Sudan",
+      "country": "SS",
+      "summary": "MTN's mobile money service in South Sudan.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Acceptance is limited outside Juba; carry cash as well.",
+        "Agents (small shops with the brand's sign) turn cash into mobile money and back; withdrawing has a fee."
+      ],
+      "verify": "Confirm MTN MoMo is live in South Sudan and its current reach."
+    },
+    {
+      "name": "D-Money",
+      "provider": "Djibouti Telecom",
+      "country": "DJ",
+      "summary": "A mobile money service from the national telecoms operator in Djibouti.",
+      "expect": [
+        "Registering needs a local SIM and usually your passport, done at an official shop or agent.",
+        "Cash and cards are still more common for visitors in Djibouti City."
+      ],
+      "verify": "Confirm D-Money's name, provider and whether visitors can register."
     }
   ],
   "mpesaSteps": [

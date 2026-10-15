@@ -1,0 +1,396 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+templ CurrenciesHub(m layouts.Meta, s *data.Store, conv Conversion) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Currencies",
+			Title:   "Ten currencies, explained from zero.",
+			Lede:    "Shillings, francs, birr, pounds and nakfa: what they look like, how prices are written, how mobile money works, and how to do the maths in your head.",
+			Motif:   "savannah",
+		})
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				<li><a href="#converter">Converter</a></li>
+				<li><a href="#why">Why the big numbers?</a></li>
+				<li><a href="#tips">Mental maths</a></li>
+				<li><a href="#all">Every currency</a></li>
+			</ul>
+		</nav>
+		<section id="converter" class="section" aria-labelledby="conv-title">
+			<div class="wrap">
+				<div class="section-head">
+					<p class="eyebrow">Converter</p>
+					<h2 id="conv-title" class="display-lg">How much is that?</h2>
+				</div>
+				@Converter(s, conv)
+			</div>
+		</section>
+		<section id="why" class="section section--alt" aria-labelledby="why-title">
+			<div class="wrap split">
+				<div>
+					<p class="eyebrow">Scale</p>
+					<h2 id="why-title" class="display-lg">Why are the numbers so different?</h2>
+					<p class="lede mt-3">The same ~US$5 lunch costs a few hundred Kenyan shillings but well over ten thousand Ugandan shillings. Neither is “cheap” or “expensive”: each currency just counts in different-sized units, the way a metre is a hundred centimetres.</p>
+					<p class="soft mt-3">Bars use a log scale, so each step to the right is roughly ten times more units for the same thing.</p>
+				</div>
+				@ScaleChart(s, 5)
+			</div>
+		</section>
+		<section id="tips" class="section" aria-labelledby="tips-title">
+			<div class="wrap">
+				<div class="section-head">
+					<p class="eyebrow">Quick mental maths</p>
+					<h2 id="tips-title" class="display-lg">Rules of thumb, from Kenyan shillings</h2>
+				</div>
+				<ul class="grid-auto">
+					for _, c := range s.Currencies {
+						<li>@MentalMaths(s, c.Code)</li>
+					}
+				</ul>
+			</div>
+		</section>
+		<section id="all" class="section section--alt" aria-labelledby="all-title">
+			<div class="wrap">
+				<h2 id="all-title" class="display-lg">Every currency</h2>
+				<ul class="grid-auto mt-5">
+					for _, c := range s.Currencies {
+						{{ co := countryOf(s, c.Country) }}
+						<li class="card card-link card--pad currency-card">
+							<p class="currency-card__sym num">{ c.Symbol }</p>
+							<h3><a class="stretched" href={ templ.SafeURL("/currencies/" + c.Code) }>{ c.Name }</a></h3>
+							<p class="cluster mt-2">
+								<span class="chip num">{ c.Code }</span>
+								if co != nil {
+									<span class="chip chip--surface">
+										@components.Flag(co)
+										{ co.Name }
+									</span>
+									@components.LessData(co.Depth)
+								}
+							</p>
+							if len(c.FXNotes) > 0 {
+								<p class="small mt-2 currency-card__warn">
+									@components.Icon("alert", "icon-sm")
+									Exchange-rate notes
+								</p>
+							}
+						</li>
+					}
+				</ul>
+			</div>
+		</section>
+		<div class="wrap mt-6">
+			@components.LastReviewed(m.Site.LastReviewed)
+		</div>
+	}
+}
+
+templ Converter(s *data.Store, c Conversion) {
+	<div class="card converter" id="converter-box">
+		<form class="converter__form" action="/currencies" method="get" hx-get="/currencies/convert" hx-target="#converter-result" hx-swap="outerHTML" hx-trigger="input changed delay:300ms from:input, change from:select, submit" hx-push-url="false">
+			<div>
+				<label class="label" for="cv-amount">Amount</label>
+				<input class="field num" id="cv-amount" name="amount" type="number" inputmode="decimal" min="0" step="any" value={ amountValue(c.Amount) }/>
+			</div>
+			<div>
+				<label class="label" for="cv-from">From</label>
+				@currencySelect(s, "cv-from", "from", c.From)
+			</div>
+			<span class="converter__swap muted" aria-hidden="true">
+				@components.Icon("swap", "icon")
+			</span>
+			<div>
+				<label class="label" for="cv-to">To</label>
+				@currencySelect(s, "cv-to", "to", c.To)
+			</div>
+			<noscript><button class="btn btn--gold converter__submit" type="submit">Convert</button></noscript>
+		</form>
+		@ConverterResult(s, c)
+	</div>
+}
+
+templ currencySelect(s *data.Store, id, name, selected string) {
+	<select class="select" id={ id } name={ name }>
+		for _, o := range converterCurrencies(s) {
+			<option value={ o.Code } selected?={ o.Code == selected }>{ o.Code } · { o.Name }</option>
+		}
+	</select>
+}
+
+templ ConverterResult(s *data.Store, c Conversion) {
+	<div class="converter__result" id="converter-result" aria-live="polite">
+		if c.Valid {
+			<p class="num">{ components.Sym(c.From) } { fmtAmount(c.Amount, c.From) } is about</p>
+			<p class="converter__big num">{ components.Sym(c.To) } { fmtAmount(c.Result, c.To) }</p>
+			<p class="num small">1 { c.From } ≈ { fmtAmount(c.Unit, c.To) } { c.To } · rates as of <time datetime={ c.AsOf }>{ c.AsOf }</time></p>
+		} else {
+			<p>Enter an amount and pick two currencies.</p>
+		}
+		<p class="converter__disclaimer small">
+			@components.Icon("info", "icon-sm")
+			{ s.Site.Rates.Disclaimer }
+		</p>
+	</div>
+}
+
+templ MentalMaths(s *data.Store, code string) {
+	{{ t := mentalTip(s, code) }}
+	if t.Valid {
+		<article class="card card--pad tip-card">
+			<p class="eyebrow">Mental maths · <span class="num">{ code }</span></p>
+			<p class="tip-card__big num">{ t.VsKES }</p>
+			<p class="small num muted">{ t.VsUSD }</p>
+			<p class="mt-2">{ t.Rule }</p>
+			if t.Example != "" {
+				<p class="small num mt-2 soft">e.g. { t.Example }</p>
+			}
+			<p class="small muted mt-2">From rates as of { s.Site.Rates.AsOf }. Rough only.</p>
+		</article>
+	}
+}
+
+templ ScaleChart(s *data.Store, usd float64) {
+	<figure class="card card--pad reveal">
+		<figcaption class="eyebrow">The same ~US${ amountValue(usd) } item, priced in each currency</figcaption>
+		<ul class="scale-bars mt-4">
+			for _, r := range scaleRows(s, usd) {
+				<li class="scale-bar">
+					<span class="scale-bar__name num">{ r.Code }</span>
+					<span class="scale-bar__track" title={ r.Name }>
+						<span class="scale-bar__fill" style={ templ.SafeCSS(r.Width) }></span>
+						<span class="scale-bar__label">~{ r.Label }</span>
+					</span>
+				</li>
+			}
+		</ul>
+		<p class="small muted mt-3">Converted with the rates as of { s.Site.Rates.AsOf }. Not real local prices.</p>
+	</figure>
+}
+
+templ CurrencyPage(m layouts.Meta, s *data.Store, c *data.Currency, conv Conversion) {
+	{{ co := countryOf(s, c.Country) }}
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Currency · " + c.Code,
+			Title:   c.Name,
+			Lede:    "Written " + c.Symbol + ". Issued by " + c.Issuer + ".",
+			Motif:   "savannah",
+		}) {
+			<div class="cluster hero__actions">
+				if co != nil {
+					<a class="chip chip--surface" href={ templ.SafeURL("/countries/" + co.Slug) }>
+						@components.Flag(co)
+						{ co.Name }
+					</a>
+					@components.LessData(co.Depth)
+				}
+			</div>
+		}
+		<nav class="toc" aria-label="On this page">
+			<ul class="wrap">
+				<li><a href="#basics">Basics</a></li>
+				<li><a href="#notes">Notes &amp; coins</a></li>
+				<li><a href="#prices">Prices</a></li>
+				<li><a href="#mobile">Mobile money</a></li>
+				<li><a href="#cash">Cash</a></li>
+				<li><a href="#convert">Convert</a></li>
+			</ul>
+		</nav>
+		if co != nil && co.Advisory != nil {
+			<div class="wrap mt-6">
+				@components.AdvisoryBanner(co.Name, co.Advisory, s.SourcesOf("advisory"))
+			</div>
+		}
+		<section id="basics" class="section-tight wrap split split--even">
+			<dl class="card currency-id">
+				<div><dt>Name</dt><dd>{ c.Name }</dd></div>
+				<div><dt>Code</dt><dd class="num">{ c.Code }</dd></div>
+				<div><dt>Symbol</dt><dd class="num">{ c.Symbol }</dd></div>
+				if c.Subunit != "" {
+					<div><dt>Smaller unit</dt><dd>{ c.Subunit }</dd></div>
+				}
+				<div><dt>Issued by</dt><dd>{ c.Issuer }</dd></div>
+			</dl>
+			<div class="stack">
+				@MentalMaths(s, c.Code)
+				if c.InPractice != "" {
+					@components.Callout("info", "In practice") {
+						<p>{ c.InPractice }</p>
+					}
+				}
+			</div>
+		</section>
+		if len(c.FXNotes) > 0 {
+			<section class="wrap" aria-label="Exchange-rate notes">
+				for _, n := range c.FXNotes {
+					@components.Callout("warn", n.Title) {
+						<p>{ n.Body }</p>
+						<p class="small">Checked <time class="num" datetime={ n.Date }>{ n.Date }</time>. Still to verify; this changes fast.</p>
+					}
+				}
+			</section>
+		}
+		<section id="notes" class="section" aria-labelledby="notes-title">
+			<div class="wrap">
+				<div class="section-head">
+					<p class="eyebrow">Notes &amp; coins</p>
+					<h2 id="notes-title" class="display-lg">What the money looks like</h2>
+					<p class="soft">Simple illustrations to help you tell values apart. Not reproductions, and colours are approximate.</p>
+				</div>
+				if len(c.Notes) > 0 {
+					<div class="note-grid reveal-stagger">
+						for i, n := range c.Notes {
+							@components.Banknote(n, i, c)
+						}
+					</div>
+				}
+				if len(c.Coins) > 0 {
+					<h3 class="display-md mt-7">Coins</h3>
+					<div class="coin-row mt-5">
+						for _, n := range c.Coins {
+							@components.Coin(n, c)
+						}
+					</div>
+				} else {
+					<p class="soft mt-5">We don’t have coin details for this currency yet.</p>
+				}
+			</div>
+		</section>
+		if len(c.PriceFormats) > 0 {
+			<section id="prices" class="section section--alt" aria-labelledby="pf-title">
+				<div class="wrap">
+					<h2 id="pf-title" class="display-lg">How prices are written</h2>
+					<ul class="tag-grid mt-5">
+						for _, p := range c.PriceFormats {
+							<li class="card price-tag">
+								<p class="price-tag__example num">{ p.Example }</p>
+								<p>{ p.Meaning }</p>
+							</li>
+						}
+					</ul>
+				</div>
+			</section>
+		}
+		<section id="mobile" class="section" aria-labelledby="mm-title">
+			<div class="wrap">
+				<div class="section-head">
+					<p class="eyebrow">Mobile money</p>
+					<h2 id="mm-title" class="display-lg">Paying by phone</h2>
+					<p class="lede">Across most of the region, people pay each other from a phone wallet tied to their SIM card. You top it up with cash at an agent (a small shop with the provider’s sign), then send money to a number or a business code. Fees are charged per transaction.</p>
+				</div>
+				if mms := countryMoney(s, c.Country); len(mms) > 0 {
+					<ul class="grid-auto" style="--min:19rem">
+						for _, mm := range mms {
+							@mobileMoneyCard(mm)
+						}
+					</ul>
+				} else {
+					<p class="card card--pad">We can’t confirm a widely used mobile-money service here yet.</p>
+				}
+				if c.Code == "KES" && len(s.Money.MpesaSteps) > 0 {
+					@mpesaFlows(s.Money)
+				}
+			</div>
+		</section>
+		<section id="cash" class="section section--alt" aria-labelledby="cash-title">
+			<div class="wrap">
+				<h2 id="cash-title" class="display-lg">Cash practicalities</h2>
+				<dl class="cash-grid mt-5">
+					@cashItem("money", "US dollars", c.Cash.USD)
+					@cashItem("city", "ATMs", c.Cash.ATMs)
+					@cashItem("phone", "Cards", c.Cash.Cards)
+					@cashItem("swap", "Where to exchange", c.Cash.Exchange)
+					@cashItem("alert", "Old US$ notes", c.Cash.RefusedUSD)
+				</dl>
+				if c.Cash.RefusedUSD != "" {
+					<p class="small muted mt-3">The note-year rule is commonly reported by travellers and still to verify. Bring clean, recent notes to be safe.</p>
+				}
+				if c.Code == "KES" && len(s.Money.Prices) > 0 {
+					<h3 class="display-md mt-7">What things cost in Kenya</h3>
+					<div class="mt-4">
+						@components.PriceTable(s.Money.Prices, s.Site.Rates.PerUSD["KES"])
+					</div>
+				}
+			</div>
+		</section>
+		<section id="convert" class="section" aria-labelledby="cc-title">
+			<div class="wrap">
+				<h2 id="cc-title" class="display-lg">Convert { c.Code }</h2>
+				<div class="mt-5">
+					@Converter(s, conv)
+				</div>
+				<p class="mt-5"><a class="link-arrow" href="/currencies">All currencies @components.Icon("arrow", "icon-sm")</a></p>
+			</div>
+		</section>
+		<div class="wrap mt-6">
+			@components.LastReviewed(m.Site.LastReviewed)
+		</div>
+	}
+}
+
+templ mobileMoneyCard(mm data.MobileMoney) {
+	<li class="card card--pad mm-card">
+		<div class="cluster">
+			<span class="explain__icon">
+				@components.Icon("phone", "icon")
+			</span>
+			<div>
+				<h3>{ mm.Name }</h3>
+				<p class="small muted">{ mm.Provider }</p>
+			</div>
+		</div>
+		<p class="mt-3 soft">{ mm.Summary }</p>
+		if len(mm.Expect) > 0 {
+			<p class="mt-3"><strong>What to expect</strong></p>
+			<ul class="checklist mt-2">
+				for _, e := range mm.Expect {
+					<li>
+						@components.Icon("check", "icon-sm")
+						<span>{ e }</span>
+					</li>
+				}
+			</ul>
+		}
+		if mm.Verify != "" {
+			<p class="small muted mt-3">Some details here are still being checked.</p>
+		}
+	</li>
+}
+
+templ mpesaFlows(mo data.Money) {
+	<h3 class="display-md mt-7">M-Pesa, step by step</h3>
+	<div class="grid-auto mt-5" style="--min:20rem">
+		for _, f := range mo.MpesaSteps {
+			<article class="card card--pad">
+				<h4 class="display-md">{ f.Title }</h4>
+				<p class="flow__when mt-2">{ f.When }</p>
+				<ol class="phone__steps mt-3">
+					for _, st := range f.Steps {
+						<li>{ st }</li>
+					}
+				</ol>
+				if f.Example != "" {
+					<p class="small soft mt-3">{ f.Example }</p>
+				}
+			</article>
+		}
+	</div>
+}
+
+templ cashItem(icon, label, value string) {
+	if value != "" {
+		<div class="card card--pad cash-item">
+			<dt>
+				@components.Icon(icon, "icon-sm")
+				{ label }
+			</dt>
+			<dd class="mt-2 soft">{ value }</dd>
+		</div>
+	}
+}

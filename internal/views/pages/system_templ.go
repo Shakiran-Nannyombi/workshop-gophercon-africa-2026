@@ -346,7 +346,7 @@ func NotFound(m layouts.Meta) templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"cluster hero__actions\"><a class=\"btn btn--gold\" href=\"/\">Back to the start</a> <a class=\"btn\" href=\"/money\">Money</a> <a class=\"btn\" href=\"/nairobi\">Nairobi guide</a></div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<div class=\"cluster hero__actions\"><a class=\"btn btn--gold\" href=\"/\">Back to the start</a> <a class=\"btn\" href=\"/countries\">Countries</a> <a class=\"btn\" href=\"/currencies\">Money</a></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

@@ -32,7 +32,7 @@
   {
     "term": "boda boda",
     "language": "Swahili",
-    "meaning": "A motorbike taxi (sometimes a bicycle taxi). Often just 'boda'; in Sheng a motorbike is also a 'nduthi'.",
+    "meaning": "A motorbike taxi (sometimes a bicycle taxi), common in Kenya and Uganda. The name is said to come from 'border-border', after bicycle taxis that carried people across the Kenya–Uganda border at Busia. Often just 'boda'; in Sheng a motorbike is also a 'nduthi'.",
     "example": "A boda is faster in traffic."
   },
   {
@@ -64,7 +64,8 @@
   {
     "term": "Paybill",
     "language": "English (Kenya)",
-    "meaning": "A business number used with an account number to pay bills by M-Pesa."
+    "meaning": "A business number used with an account number to pay bills by M-Pesa, for example electricity, rent or school fees.",
+    "example": "What's the paybill and account number for the hotel?"
   },
   {
     "term": "till number",
@@ -266,5 +267,82 @@
     "term": "harambee",
     "language": "Swahili",
     "meaning": "'Let's all pull together': community fundraising, and Kenya's national motto."
+  },
+  {
+    "term": "daladala",
+    "language": "Swahili",
+    "country": "TZ",
+    "meaning": "A shared minibus on fixed routes in Tanzania, the local equivalent of Kenya's matatu.",
+    "example": "Take a daladala from Posta to Mwenge."
+  },
+  {
+    "term": "bajaj / bajaji",
+    "language": "Swahili",
+    "country": "TZ",
+    "meaning": "A three-wheeled tuk-tuk taxi, named after the Indian manufacturer. Called 'bajaji' in Tanzania and 'bajaj' in Ethiopia.",
+    "example": "A bajaji is cheaper than a taxi for short trips."
+  },
+  {
+    "term": "mwendokasi",
+    "language": "Swahili",
+    "country": "TZ",
+    "meaning": "'Fast pace': the everyday name for Dar es Salaam's bus rapid transit (DART), whose buses run in their own lanes.",
+    "example": "Mwendokasi is quicker than a daladala at rush hour."
+  },
+  {
+    "term": "taxi (Kampala)",
+    "language": "English (Uganda)",
+    "country": "UG",
+    "meaning": "In Uganda a 'taxi' usually means a shared minibus on a fixed route, like a matatu. A private car taxi is called a 'special hire'.",
+    "example": "Get a taxi from the Old Taxi Park."
+  },
+  {
+    "term": "MoMo",
+    "language": "English (Uganda)",
+    "country": "UG",
+    "meaning": "Short for MTN Mobile Money, used in Uganda, Rwanda, South Sudan and other MTN countries. Works like M-Pesa: send, receive and pay by phone.",
+    "example": "Can I pay by MoMo?"
+  },
+  {
+    "term": "moto",
+    "language": "Kinyarwanda",
+    "country": "RW",
+    "meaning": "A motorbike taxi in Rwanda. Riders are licensed, wear numbered vests, and must give passengers a helmet.",
+    "example": "Take a moto to Kimihurura."
+  },
+  {
+    "term": "telebirr",
+    "language": "English (Ethiopia)",
+    "country": "ET",
+    "meaning": "Ethio Telecom's mobile money service, widely used for payments and transfers in Ethiopia."
+  },
+  {
+    "term": "EVC Plus",
+    "language": "English (Somalia)",
+    "country": "SO",
+    "meaning": "Hormuud's mobile money service. In Mogadishu and much of southern Somalia, most everyday payments are made with it, often in US dollars."
+  },
+  {
+    "term": "capital vs commercial hub",
+    "language": "English (East Africa)",
+    "meaning": "Some countries' official capital is not their biggest city. Tanzania's capital is Dodoma, but Dar es Salaam is the main city and port. Burundi's capital moved to Gitega, while Bujumbura remains the economic centre. Embassies, airports and businesses are often in the commercial hub.",
+    "example": "Parliament sits in Dodoma, but you will probably fly into Dar."
+  },
+  {
+    "term": "EATV",
+    "language": "English (East Africa)",
+    "meaning": "East Africa Tourist Visa: a single multiple-entry tourist visa covering Kenya, Uganda and Rwanda. Check the official immigration sites for how it currently works with Kenya's eTA."
+  },
+  {
+    "term": "One Stop Border Post (OSBP)",
+    "language": "English (East Africa)",
+    "meaning": "A border post where both countries' immigration and customs officials work in one place, so you clear exit and entry together instead of twice.",
+    "example": "Busia is a One Stop Border Post."
+  },
+  {
+    "term": "eTA",
+    "language": "English (Kenya)",
+    "country": "KE",
+    "meaning": "Electronic Travel Authorisation: the online permission most visitors need before travelling to Kenya, which replaced most visas in 2024. Apply on the official government site only."
   }
 ]

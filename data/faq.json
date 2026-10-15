@@ -1,0 +1,66 @@
+[
+  {
+    "q": "Do I need cash in Kenya?",
+    "a": "A little. Most places take M-Pesa, and malls, hotels and bigger restaurants take cards, but some small stalls, matatus and rural areas still prefer cash. Carry a few hundred shillings in small notes, and get the rest from ATMs or M-Pesa as you need it."
+  },
+  {
+    "q": "Can I use M-Pesa as a visitor?",
+    "a": "Usually, yes. Buy a Safaricom SIM at an official Safaricom shop (there is one at JKIA), register it with your passport, and ask staff to activate M-Pesa. You then top up with cash at any M-Pesa agent. Safaricom has also offered visitor and international options; ask at the shop for what is currently available."
+  },
+  {
+    "q": "What is the difference between Nairobi and Nairobi County?",
+    "a": "Nairobi City and Nairobi County cover the same area: since 2013 the city has been run as one of Kenya's 47 counties, with its own governor. But many places people call 'Nairobi', such as Ruiru, Kitengela, Ngong or Syokimau, are actually in neighbouring counties (Kiambu, Kajiado, Machakos)."
+  },
+  {
+    "q": "Is Nairobi one county or many?",
+    "a": "Nairobi itself is one county. The wider metro area people commute from spreads into Kiambu, Machakos, Kajiado and Murang'a counties, so 'Greater Nairobi' crosses several counties."
+  },
+  {
+    "q": "How many counties does Kenya have?",
+    "a": "47. Each has an elected governor and county assembly. Many people also still use the names of the eight old provinces, such as 'Coast', 'Rift Valley' or 'Western', to describe regions."
+  },
+  {
+    "q": "Is tap water safe to drink?",
+    "a": "Most visitors stick to bottled, boiled or filtered water. Many hotels provide filtered water. Brushing your teeth with tap water is usually fine for most people, but if you have a sensitive stomach, use bottled."
+  },
+  {
+    "q": "What plug sockets does Kenya use?",
+    "a": "Type G, the three square-pin plugs used in the UK, at 240V. Bring an adapter if your devices use a different plug."
+  },
+  {
+    "q": "Which side of the road do people drive on?",
+    "a": "The left, as in the UK. Look right first when crossing, and take extra care: matatus and boda bodas can appear from anywhere."
+  },
+  {
+    "q": "Do I need a visa for Kenya?",
+    "a": "Kenya replaced most visas with an Electronic Travel Authorisation (eTA) in January 2024. Many visitors apply online at etakenya.go.ke before travelling, while citizens of some countries, including East African Community members, are exempt. Rules have changed several times, so check the official site for your passport before you book."
+  },
+  {
+    "q": "Should I tip?",
+    "a": "Tipping is appreciated but not required. About 10% in restaurants is common if no service charge is added; KSh 100–200 for porters or hotel staff; rounding up for drivers. Safari guides and drivers usually get a daily tip."
+  },
+  {
+    "q": "What time zone is Kenya in?",
+    "a": "East Africa Time (EAT), UTC+3, all year round; there is no daylight saving. Uganda, Tanzania and Ethiopia use the same time zone, but Rwanda is an hour behind (UTC+2)."
+  },
+  {
+    "q": "Why do prices in Uganda look so big?",
+    "a": "Because the Ugandan shilling is worth much less per unit than the Kenyan shilling. A USh 10,000 note is only a few dollars. Divide Ugandan prices by about 28–29 to get rough Kenyan shillings."
+  },
+  {
+    "q": "What does 500/= mean on a price sign?",
+    "a": "It means 500 shillings exactly, with no cents. You will also see 500/-, KSh 500, Kshs. 500 and KES 500; they all mean the same thing."
+  },
+  {
+    "q": "Is it safe to take a matatu?",
+    "a": "Millions of people use them every day. Keep your phone and bag on your lap, sit away from the door if you can, and ask the conductor or a fellow passenger to tell you when you reach your stop. For late nights, an app ride is easier."
+  },
+  {
+    "q": "What are the emergency numbers in Kenya?",
+    "a": "Dial 999 or 112 for police, ambulance and fire. Save your hotel's number and your embassy's contact details on your phone too."
+  },
+  {
+    "q": "Why does someone in Addis Ababa say to meet at 'two o'clock' in the morning?",
+    "a": "Ethiopia often uses a 12-hour clock that starts at sunrise (about 6am), so 'two o'clock' in Ethiopian time is about 8am. Ask 'Ethiopian time or international time?' to be sure."
+  }
+]

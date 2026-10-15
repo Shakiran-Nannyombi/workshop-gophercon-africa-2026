@@ -1,0 +1,721 @@
+[
+  {
+    "slug": "nairobi",
+    "name": "Nairobi",
+    "country": "KE",
+    "tagline": "The capital with lions on its doorstep",
+    "intro": "Kenya's capital and biggest city, a busy business hub for East Africa. It is the only capital city in the world with a national park inside its city limits, so you can see giraffes and rhinos with skyscrapers behind them.",
+    "population": "~4.4 million (2019 census)",
+    "elevation": "~1,795 m",
+    "climate": "Mild all year thanks to the altitude: warm days, cool evenings. Long rains roughly March–May, short rains roughly October–December. June–August can feel chilly.",
+    "airport": "Jomo Kenyatta International Airport (NBO), ~15–20 km from the CBD; Wilson Airport for domestic and safari flights",
+    "languages": ["English", "Swahili", "Sheng"],
+    "lat": -1.2864,
+    "lon": 36.8172,
+    "motif": "skyline",
+    "neighbourhoods": [
+      { "name": "CBD", "note": "The city centre: offices, government buildings, matatu stages and markets. Busy by day, quieter at night." },
+      { "name": "Westlands", "note": "Offices, malls, restaurants and the city's best-known nightlife strip." },
+      { "name": "Kilimani", "note": "Leafy, central and popular with young professionals; lots of apartments and cafés." },
+      { "name": "Karen", "note": "Spacious, green suburb near the Giraffe Centre and Karen Blixen Museum." },
+      { "name": "Lavington", "note": "Quiet, residential and upmarket, with good restaurants." },
+      { "name": "Gigiri", "note": "Home of the UN offices and many embassies; calm and secure-feeling." },
+      { "name": "Eastleigh", "note": "A bustling trading district known for wholesale shopping and Somali food." }
+    ],
+    "moneyTips": [
+      "M-Pesa is accepted almost everywhere, even at small kiosks.",
+      "Cards work in malls, hotels and bigger restaurants; carry some cash for matatus and markets.",
+      "ATMs are easy to find; use ones inside banks or malls.",
+      "Keep some KSh 50 and 100 notes for small purchases; KSh 1,000 notes can be hard to break."
+    ],
+    "transport": [
+      "Matatus (shared minibuses) go everywhere and are cheap but can be confusing at first.",
+      "Uber, Bolt and other apps are widely used and easy for visitors.",
+      "Boda bodas are fast in traffic; ask for a helmet.",
+      "Traffic is heavy at rush hour, so allow extra time.",
+      "The SGR train to Mombasa leaves from the Nairobi Terminus near Syokimau."
+    ],
+    "food": [
+      "Nyama choma (grilled meat) with kachumbari and ugali.",
+      "Chapati and beans or stew at local cafés.",
+      "Mandazi and chai for breakfast.",
+      "A wide international restaurant scene in Westlands and Kilimani."
+    ],
+    "safety": [
+      "Like many big cities, petty theft happens: keep phones out of sight on busy streets.",
+      "Use an app or a known taxi at night rather than walking long distances.",
+      "Ask your hosts which areas they recommend; most visitors feel comfortable in the main suburbs."
+    ],
+    "suits": ["Business travellers", "First-time visitors to Kenya", "Safari starters", "Food lovers", "Nightlife fans"],
+    "scores": {
+      "cost": { "value": 4, "reason": "Kenya's priciest city for rent, dining out and hotels." },
+      "transport": { "value": 3, "reason": "Apps make it easy, but traffic jams are serious." },
+      "climate": { "value": 5, "reason": "Mild all year thanks to the altitude." },
+      "safety": { "value": 3, "reason": "Normal big-city caution needed, especially at night." },
+      "nightlife": { "value": 5, "reason": "Lively bars, clubs and live music, especially in Westlands." },
+      "vibe": "Fast, ambitious and green"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Confirm JKIA distance and SGR terminus location."
+  },
+  {
+    "slug": "mombasa",
+    "name": "Mombasa",
+    "country": "KE",
+    "tagline": "Kenya's historic Indian Ocean port",
+    "intro": "Kenya's second city and main port, on an island linked to the mainland by bridges and the Likoni ferry. Swahili culture, an old town of narrow streets, Fort Jesus and beaches north and south of the city.",
+    "population": "~1.2 million (2019 census, Mombasa County)",
+    "elevation": "~0–50 m",
+    "climate": "Hot and humid all year. Main rains roughly April–June. Cooler, breezier months are around July–September.",
+    "airport": "Moi International Airport (MBA)",
+    "languages": ["Swahili", "English"],
+    "lat": -4.0435,
+    "lon": 39.6682,
+    "motif": "coast",
+    "neighbourhoods": [
+      { "name": "Old Town", "note": "Narrow lanes, carved doors and Swahili architecture next to Fort Jesus." },
+      { "name": "Nyali", "note": "Upmarket mainland suburb north of the island, with beaches, malls and hotels." },
+      { "name": "Bamburi", "note": "Beach hotels and a relaxed holiday feel, further north." },
+      { "name": "Shanzu", "note": "Quiet beach resorts north of Bamburi." },
+      { "name": "Mombasa Island (town centre)", "note": "Markets, offices and the famous Tusks on Moi Avenue." },
+      { "name": "Diani (south coast)", "note": "Well-known beach resort south of the city, across the Likoni ferry, in Kwale County." }
+    ],
+    "moneyTips": [
+      "M-Pesa works everywhere, just as in Nairobi.",
+      "Beach hotels often quote in US dollars; local places use shillings.",
+      "Agree tuk-tuk fares before you set off.",
+      "Bargain politely at curio stalls near Fort Jesus and the beaches."
+    ],
+    "transport": [
+      "Tuk-tuks are everywhere and cheap for short trips.",
+      "Matatus connect the island with the north and south coast.",
+      "The Likoni ferry links the island to the south coast; expect queues.",
+      "The SGR train to Nairobi leaves from Mombasa Terminus at Miritini.",
+      "Uber and Bolt operate in the city."
+    ],
+    "food": [
+      "Swahili dishes: biryani, pilau and coconut fish curry.",
+      "Street snacks like viazi karai (spiced fried potatoes) and mahamri.",
+      "Fresh seafood along the coast.",
+      "Madafu (fresh coconut water) from street sellers."
+    ],
+    "safety": [
+      "Keep valuables out of sight on beaches and in crowded markets.",
+      "Use registered beach operators rather than unofficial 'beach boys' offering tours.",
+      "Dress modestly in the Old Town out of respect for local customs."
+    ],
+    "suits": ["Beach lovers", "History fans", "Food lovers", "Relaxed holidays"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Cheaper than Nairobi locally; beach resorts can be pricey." },
+      "transport": { "value": 3, "reason": "Tuk-tuks are easy, but ferries and traffic slow things down." },
+      "climate": { "value": 2, "reason": "Hot and humid most of the year." },
+      "safety": { "value": 3, "reason": "Generally relaxed; normal caution in busy areas and at night." },
+      "nightlife": { "value": 4, "reason": "Beach bars and clubs, especially along the north coast." },
+      "vibe": "Laid-back Swahili coast"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Population figure is for Mombasa County."
+  },
+  {
+    "slug": "kisumu",
+    "name": "Kisumu",
+    "country": "KE",
+    "tagline": "Sunsets over Lake Victoria",
+    "intro": "Kenya's third city sits on the shores of Lake Victoria, Africa's largest lake. It is relaxed, warm and known for fresh fish, lakeside restaurants and a growing waterfront.",
+    "population": "~0.6 million urban; ~1.2 million in Kisumu County (2019 census)",
+    "elevation": "~1,130 m",
+    "climate": "Warm to hot all year, with rain possible in most months and heavier rains around March–May.",
+    "airport": "Kisumu International Airport (KIS)",
+    "languages": ["Dholuo", "Swahili", "English"],
+    "lat": -0.0917,
+    "lon": 34.768,
+    "motif": "lake",
+    "neighbourhoods": [
+      { "name": "CBD", "note": "Compact, walkable centre around Oginga Odinga Street." },
+      { "name": "Milimani", "note": "Leafy, quiet residential area with guesthouses and hotels." },
+      { "name": "Dunga Beach", "note": "Fishing village on the lake, good for boat trips and fresh tilapia." },
+      { "name": "Hippo Point", "note": "Lakeside viewpoint popular for sunsets." }
+    ],
+    "moneyTips": [
+      "M-Pesa is used everywhere.",
+      "Prices are generally lower than in Nairobi.",
+      "Agree boat trip prices before setting out."
+    ],
+    "transport": [
+      "Tuk-tuks and boda bodas are the main way to get around.",
+      "Matatus link Kisumu with other western Kenyan towns.",
+      "Uber and Bolt operate but with fewer cars than Nairobi.",
+      "Daily flights to Nairobi take about an hour."
+    ],
+    "food": [
+      "Fried or stewed tilapia (fish) with ugali.",
+      "Omena (small dried fish), a local favourite.",
+      "Lakeside restaurants at Dunga and along the waterfront."
+    ],
+    "safety": [
+      "Generally relaxed for visitors.",
+      "Only take lake trips with operators who provide life jackets.",
+      "Use mosquito repellent; it is a lowland lakeside area."
+    ],
+    "suits": ["Relaxed weekends", "Lake and nature lovers", "Visitors exploring western Kenya"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Noticeably cheaper than Nairobi." },
+      "transport": { "value": 3, "reason": "Small and easy with tuk-tuks, but limited public transport." },
+      "climate": { "value": 3, "reason": "Warm to hot, more humid than the highlands." },
+      "safety": { "value": 4, "reason": "Generally relaxed perception among visitors." },
+      "nightlife": { "value": 3, "reason": "A few lively spots and lakeside bars." },
+      "vibe": "Warm, unhurried lakeside city"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Check urban population figure."
+  },
+  {
+    "slug": "nakuru",
+    "name": "Nakuru",
+    "country": "KE",
+    "tagline": "Rift Valley city next to a national park",
+    "intro": "A fast-growing Rift Valley town that became Kenya's fourth city in 2021. Lake Nakuru National Park, known for rhinos and flamingos, sits right on its edge.",
+    "population": "~0.57 million urban (2019 census)",
+    "elevation": "~1,850 m",
+    "climate": "Mild and fairly dry, warm days and cool nights; rains roughly March–May and October–November.",
+    "airport": "No major airport; nearest is Jomo Kenyatta International (NBO), ~160 km away",
+    "languages": ["Swahili", "English", "Kikuyu", "Kalenjin"],
+    "lat": -0.3031,
+    "lon": 36.08,
+    "motif": "rift",
+    "neighbourhoods": [
+      { "name": "CBD", "note": "Busy town centre with markets, banks and bus stages." },
+      { "name": "Milimani", "note": "Quiet, leafy area with hotels and guesthouses." },
+      { "name": "Section 58", "note": "Residential area with a mix of hotels and restaurants." },
+      { "name": "Lanet", "note": "Growing area on the Nairobi side of town." }
+    ],
+    "moneyTips": [
+      "M-Pesa is used everywhere.",
+      "National park fees are set by Kenya Wildlife Service and paid electronically.",
+      "Local prices are lower than in Nairobi."
+    ],
+    "transport": [
+      "Shuttles and matatus to Nairobi take about 2.5–3 hours.",
+      "Tuk-tuks and boda bodas for short trips around town.",
+      "You need a vehicle (yours or a tour's) to drive through Lake Nakuru National Park."
+    ],
+    "food": [
+      "Nyama choma, a Rift Valley favourite.",
+      "Ugali, sukuma wiki and fresh milk.",
+      "Roadside roasted maize."
+    ],
+    "safety": [
+      "Generally relaxed for visitors.",
+      "The highway to Nairobi is busy; travel by day where possible.",
+      "Normal caution in the busy town centre."
+    ],
+    "suits": ["Wildlife lovers", "Road-trippers", "Weekend escapes from Nairobi"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Cheaper than Nairobi for food and stays." },
+      "transport": { "value": 3, "reason": "Easy within town; you need a car for the park." },
+      "climate": { "value": 4, "reason": "Mild, fairly dry highland climate." },
+      "safety": { "value": 4, "reason": "Generally relaxed perception." },
+      "nightlife": { "value": 3, "reason": "A modest club and bar scene." },
+      "vibe": "Rift Valley town with big ambitions"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Confirm city status date (2021) and travel time to Nairobi."
+  },
+  {
+    "slug": "eldoret",
+    "name": "Eldoret",
+    "country": "KE",
+    "tagline": "Home of champions",
+    "intro": "A highland city in the North Rift, famous for producing world-class distance runners; nearby Iten is a training base for athletes from around the world. Eldoret was granted city status in 2024.",
+    "population": "~0.48 million urban (2019 census)",
+    "elevation": "~2,100 m",
+    "climate": "Cool highland climate with chilly mornings; rain is common from about April to October.",
+    "airport": "Eldoret International Airport (EDL)",
+    "languages": ["Kalenjin", "Swahili", "English"],
+    "lat": 0.5143,
+    "lon": 35.2698,
+    "motif": "highland",
+    "neighbourhoods": [
+      { "name": "CBD", "note": "Compact town centre with shops, banks and stages." },
+      { "name": "Elgon View", "note": "Leafy, upmarket residential area." },
+      { "name": "Kapsoya", "note": "Residential estate with local shops." },
+      { "name": "Iten (nearby)", "note": "Small town about 35 km away, the famous high-altitude running base in Elgeyo-Marakwet County." }
+    ],
+    "moneyTips": [
+      "M-Pesa is the normal way to pay.",
+      "Prices are lower than in Nairobi.",
+      "Carry some cash for trips to rural areas."
+    ],
+    "transport": [
+      "Matatus and shuttles connect to Nairobi, Nakuru and Kisumu.",
+      "Boda bodas and tuk-tuks for local trips.",
+      "Domestic flights to Nairobi take under an hour."
+    ],
+    "food": [
+      "Mursik (fermented milk), a Kalenjin speciality.",
+      "Ugali with meat or greens.",
+      "Fresh dairy from the surrounding farms."
+    ],
+    "safety": [
+      "Generally relaxed for visitors.",
+      "Dress warmly in the evenings; it gets cold.",
+      "Normal caution in the busy centre."
+    ],
+    "suits": ["Runners and sports fans", "Business travellers", "Visitors exploring the North Rift"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Cheaper than Nairobi." },
+      "transport": { "value": 3, "reason": "Small and manageable with bodas and tuk-tuks." },
+      "climate": { "value": 4, "reason": "Cool and fresh, sometimes cold." },
+      "safety": { "value": 4, "reason": "Generally relaxed perception." },
+      "nightlife": { "value": 2, "reason": "A few local spots; quieter than bigger cities." },
+      "vibe": "Cool, sporty highland city"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Confirm city status was granted in 2024, the Iten distance and the rainy season."
+  },
+  {
+    "slug": "kampala",
+    "name": "Kampala",
+    "country": "UG",
+    "tagline": "Uganda's capital of hills and boda bodas",
+    "intro": "Uganda's busy, friendly capital, originally built on seven hills near the shores of Lake Victoria. Known for its energy, live music and very large numbers of boda bodas.",
+    "population": "~1.8 million in the city; much more in Greater Kampala (2024 census)",
+    "elevation": "~1,190 m",
+    "climate": "Warm all year, with two rainy seasons roughly March–May and September–November.",
+    "airport": "Entebbe International Airport (EBB), ~40 km away",
+    "languages": ["English", "Luganda", "Swahili"],
+    "lat": 0.3476,
+    "lon": 32.5825,
+    "motif": "hills",
+    "neighbourhoods": [
+      { "name": "Kololo", "note": "Upmarket hill with embassies, restaurants and hotels." },
+      { "name": "Nakasero", "note": "Central hill with offices, hotels and the famous market below." },
+      { "name": "Kabalagala", "note": "Lively area known for bars and nightlife." },
+      { "name": "Muyenga", "note": "Hilly residential area with views over the lake." },
+      { "name": "Ntinda", "note": "Busy, popular residential and shopping area." },
+      { "name": "Bugolobi", "note": "Quiet residential area with cafés." },
+      { "name": "Old Kampala", "note": "Historic area with the Gaddafi National Mosque, offering city views." }
+    ],
+    "moneyTips": [
+      "Prices are in Ugandan shillings and the numbers look big: USh 10,000 is only a few dollars.",
+      "MTN MoMo and Airtel Money are widely used.",
+      "Check notes carefully; denominations look similar at first.",
+      "Older or damaged US dollar notes are often refused at forex bureaus."
+    ],
+    "transport": [
+      "Boda bodas are everywhere; app-based ones (SafeBoda, Uber, Bolt) let you agree prices and get a helmet.",
+      "Shared minibuses are called 'taxis' in Uganda; private cars are 'special hire'.",
+      "Traffic jams are heavy at peak times.",
+      "Allow at least an hour to reach Entebbe airport, more at rush hour."
+    ],
+    "food": [
+      "Rolex: an omelette rolled in a chapati, the city's favourite snack.",
+      "Matoke (steamed green bananas) with groundnut sauce.",
+      "Luwombo, a stew steamed in banana leaves.",
+      "Fresh tilapia from Lake Victoria."
+    ],
+    "safety": [
+      "Normal big-city caution with phones and bags in crowds.",
+      "Ask boda drivers for a helmet, or choose app-based riders.",
+      "Use registered taxis or apps at night."
+    ],
+    "suits": ["Nightlife fans", "Music lovers", "Budget travellers", "Gateway to gorilla trips"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Generally cheaper than Nairobi for food and transport." },
+      "transport": { "value": 2, "reason": "Plenty of bodas, but heavy traffic and few formal options." },
+      "climate": { "value": 4, "reason": "Warm and pleasant, with frequent rain showers." },
+      "safety": { "value": 3, "reason": "Normal big-city caution; traffic is the bigger day-to-day risk." },
+      "nightlife": { "value": 5, "reason": "Known across the region for its late, lively nightlife." },
+      "vibe": "Friendly, loud and full of life"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Confirm 2024 census population for Kampala city."
+  },
+  {
+    "slug": "entebbe",
+    "name": "Entebbe",
+    "country": "UG",
+    "tagline": "Uganda's airport town on Lake Victoria",
+    "intro": "A calm, green town on a peninsula in Lake Victoria, home to Uganda's main international airport and State House. Many visitors spend their first or last night here.",
+    "population": "~0.1 million+ (estimate)",
+    "elevation": "~1,150 m",
+    "climate": "Warm and humid, cooled by the lake; two rainy seasons roughly March–May and September–November.",
+    "airport": "Entebbe International Airport (EBB)",
+    "languages": ["English", "Luganda", "Swahili"],
+    "lat": 0.0562,
+    "lon": 32.4795,
+    "motif": "lake",
+    "neighbourhoods": [
+      { "name": "Town centre", "note": "Small centre with shops, banks and restaurants." },
+      { "name": "Botanical Gardens area", "note": "Leafy lakeside area with old trees, birds and monkeys." },
+      { "name": "Kitooro", "note": "Local market and shopping area." },
+      { "name": "Lido / lakeside beaches", "note": "Lake beaches popular at weekends." }
+    ],
+    "moneyTips": [
+      "Change only what you need at the airport; rates in town are often better.",
+      "MTN MoMo and Airtel Money are widely used.",
+      "Keep some small notes for boda rides."
+    ],
+    "transport": [
+      "Boda bodas and special hire taxis for short trips.",
+      "The Kampala–Entebbe Expressway makes the trip to the capital quicker.",
+      "Boats run to Ngamba Island chimpanzee sanctuary."
+    ],
+    "food": [
+      "Fresh tilapia and Nile perch by the lake.",
+      "Rolex from street stalls.",
+      "Lakeside restaurants and hotel terraces."
+    ],
+    "safety": [
+      "Generally calm and relaxed.",
+      "Swimming in the lake is not recommended because of bilharzia risk.",
+      "Ask for a helmet on boda bodas."
+    ],
+    "suits": ["Arrivals and departures", "Birdwatchers", "Quiet lake stays", "Families"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Moderate; lakeside hotels cost more." },
+      "transport": { "value": 3, "reason": "Small town, easy by boda or taxi." },
+      "climate": { "value": 4, "reason": "Warm, with lake breezes." },
+      "safety": { "value": 4, "reason": "Calm, relaxed town feel." },
+      "nightlife": { "value": 2, "reason": "Quiet; a few lakeside bars." },
+      "vibe": "Green, quiet and lakeside"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Population figure is a rough estimate; confirm with UBOS 2024 census."
+  },
+  {
+    "slug": "jinja",
+    "name": "Jinja",
+    "country": "UG",
+    "tagline": "Where the Nile begins its journey",
+    "intro": "A riverside city near the point where the Nile leaves Lake Victoria. Known for adventure activities on the river and a relaxed, old-fashioned town centre. Jinja was given city status in 2020.",
+    "population": "~0.3 million (estimate, city area)",
+    "elevation": "~1,140 m",
+    "climate": "Warm all year with two rainy seasons, similar to Kampala.",
+    "airport": "No major airport; nearest is Entebbe International (EBB), ~120 km by road",
+    "languages": ["English", "Lusoga", "Luganda", "Swahili"],
+    "lat": 0.4244,
+    "lon": 33.2042,
+    "motif": "river",
+    "neighbourhoods": [
+      { "name": "Town centre", "note": "Old colonial and Indian-style shopfronts along Main Street." },
+      { "name": "Source of the Nile", "note": "Riverside area with boat trips to the source." },
+      { "name": "Bujagali", "note": "Riverside area with lodges and adventure operators." },
+      { "name": "Nalufenya", "note": "Residential area close to the river." }
+    ],
+    "moneyTips": [
+      "Adventure activities are usually priced in US dollars.",
+      "MTN MoMo and Airtel Money work for most local spending.",
+      "Local food and transport are cheap."
+    ],
+    "transport": [
+      "Boda bodas for short trips.",
+      "Shared taxis and buses to Kampala take about 2–3 hours, depending on traffic.",
+      "Many lodges arrange transfers."
+    ],
+    "food": [
+      "Rolex, said to have become popular in the Jinja area.",
+      "Fresh fish from the lake and river.",
+      "Backpacker cafés and riverside restaurants."
+    ],
+    "safety": [
+      "Generally relaxed.",
+      "Use reputable adventure operators with good safety records.",
+      "The Kampala–Jinja road is busy; travel by day if you can."
+    ],
+    "suits": ["Adventure seekers", "Backpackers", "Nature lovers"],
+    "scores": {
+      "cost": { "value": 2, "reason": "Cheap locally; adventure activities cost more." },
+      "transport": { "value": 2, "reason": "Small town, but mostly bodas and lodge transfers." },
+      "climate": { "value": 4, "reason": "Warm and pleasant." },
+      "safety": { "value": 4, "reason": "Relaxed small-city feel." },
+      "nightlife": { "value": 2, "reason": "A few backpacker bars." },
+      "vibe": "Adventurous riverside town"
+    },
+    "confidence": "limited",
+    "verify": "Scores are editorial estimates. Confirm population, city status year (2020), current Nile rafting availability, and road distance to Entebbe."
+  },
+  {
+    "slug": "dar-es-salaam",
+    "name": "Dar es Salaam",
+    "country": "TZ",
+    "tagline": "Tanzania's busy harbour city",
+    "intro": "Tanzania's largest city and commercial capital, on the Indian Ocean. (The official capital is Dodoma.) It is hot, busy and the main gateway to Zanzibar by ferry.",
+    "population": "~5.4 million (2022 census, Dar es Salaam Region)",
+    "elevation": "~0–50 m",
+    "climate": "Hot and humid all year. Long rains roughly March–May, short rains roughly November–December. Coolest around June–August.",
+    "airport": "Julius Nyerere International Airport (DAR)",
+    "languages": ["Swahili", "English"],
+    "lat": -6.7924,
+    "lon": 39.2083,
+    "motif": "coast",
+    "neighbourhoods": [
+      { "name": "City Centre (Posta)", "note": "Offices, ferry terminal and the old waterfront." },
+      { "name": "Kariakoo", "note": "Huge, busy market district; great for shopping, very crowded." },
+      { "name": "Masaki", "note": "Upmarket peninsula with restaurants, hotels and embassies." },
+      { "name": "Oyster Bay", "note": "Leafy, upmarket area with a beach promenade (Coco Beach)." },
+      { "name": "Mikocheni", "note": "Residential area with shops and offices." },
+      { "name": "Mbezi Beach", "note": "Northern beach suburb with hotels." },
+      { "name": "Kigamboni", "note": "Across the harbour, with quieter beaches; reached by ferry or bridge." }
+    ],
+    "moneyTips": [
+      "Hotels, safaris and ferries to Zanzibar often quote US dollars; local shops use shillings.",
+      "M-Pesa (Vodacom), Airtel Money and others are widely used, but these are Tanzanian services, not Kenyan M-Pesa.",
+      "Older or damaged US dollar notes are often refused.",
+      "Carry small notes for bajajis and street food."
+    ],
+    "transport": [
+      "Daladalas (shared minibuses) cover the whole city.",
+      "Bajajis (three-wheelers) and bodaboda for short trips.",
+      "The BRT bus system (DART, also called 'mwendokasi') runs on dedicated lanes.",
+      "Uber and Bolt operate.",
+      "Fast ferries to Zanzibar leave from the city-centre ferry terminal."
+    ],
+    "food": [
+      "Chipsi mayai (chips cooked in an omelette).",
+      "Mishkaki (grilled meat skewers) at night.",
+      "Fresh seafood at the Kivukoni fish market area.",
+      "Coconut-based Swahili curries."
+    ],
+    "safety": [
+      "Keep phones and bags secure, especially in crowded areas like Kariakoo.",
+      "Use apps or arranged taxis at night.",
+      "Buy ferry tickets only at the official ticket offices, not from touts."
+    ],
+    "suits": ["Business travellers", "Zanzibar-bound visitors", "Food lovers", "Beach day-trippers"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Moderate locally; upmarket areas are pricey." },
+      "transport": { "value": 3, "reason": "BRT and apps help, but traffic is heavy." },
+      "climate": { "value": 2, "reason": "Hot and humid most of the year." },
+      "safety": { "value": 3, "reason": "Normal big-city caution needed." },
+      "nightlife": { "value": 4, "reason": "Plenty of bars and live music, especially at weekends." },
+      "vibe": "Hot, bustling harbour city"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Population is for Dar es Salaam Region (2022 census); confirm."
+  },
+  {
+    "slug": "arusha",
+    "name": "Arusha",
+    "country": "TZ",
+    "tagline": "Safari capital at the foot of Mount Meru",
+    "intro": "A highland city in northern Tanzania and the starting point for safaris to the Serengeti, Ngorongoro and Tarangire. Mount Meru rises behind it, and Kilimanjaro is not far away.",
+    "population": "~0.6 million (2022 census, Arusha City)",
+    "elevation": "~1,400 m",
+    "climate": "Mild, with warm days and cool nights; long rains roughly March–May and short rains around November.",
+    "airport": "Kilimanjaro International Airport (JRO), ~50 km away; Arusha Airport (ARK) for domestic and safari flights",
+    "languages": ["Swahili", "English", "Maa"],
+    "lat": -3.3869,
+    "lon": 36.683,
+    "motif": "mountain",
+    "neighbourhoods": [
+      { "name": "Central Arusha (Clock Tower)", "note": "The town centre, with shops, banks and safari offices." },
+      { "name": "Njiro", "note": "Quiet residential area with guesthouses." },
+      { "name": "Kijenge", "note": "Residential area close to the centre." },
+      { "name": "Themi", "note": "Leafy area with lodges and restaurants." },
+      { "name": "Usa River", "note": "Village east of town with lodges, on the way to Kilimanjaro airport." }
+    ],
+    "moneyTips": [
+      "Safaris, park fees and many lodges are priced in US dollars.",
+      "Park fees are usually paid by card or through your tour operator, not in cash.",
+      "Use shillings and mobile money for local spending.",
+      "Compare several safari operators before you pay a deposit."
+    ],
+    "transport": [
+      "Daladalas and bodabodas for getting around town.",
+      "Shuttle buses connect Arusha with Moshi and Nairobi.",
+      "Most safaris include transport in 4x4 vehicles."
+    ],
+    "food": [
+      "Nyama choma and mishkaki.",
+      "Ndizi (plantain) dishes and local stews.",
+      "Coffee from nearby farms on the slopes of Meru and Kilimanjaro."
+    ],
+    "safety": [
+      "Generally relaxed for visitors.",
+      "Be wary of street touts selling safaris; book with registered operators.",
+      "Use taxis at night rather than walking long distances."
+    ],
+    "suits": ["Safari-goers", "Hikers and climbers", "Coffee lovers"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Local life is cheap, but safari-related prices are high." },
+      "transport": { "value": 3, "reason": "Manageable town; tours handle longer trips." },
+      "climate": { "value": 5, "reason": "Mild, pleasant highland climate." },
+      "safety": { "value": 4, "reason": "Generally relaxed perception; watch for touts." },
+      "nightlife": { "value": 3, "reason": "A modest bar scene." },
+      "vibe": "Green, busy safari hub"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Confirm the 2022 census figure for Arusha City and distance to JRO."
+  },
+  {
+    "slug": "zanzibar-city",
+    "name": "Zanzibar City",
+    "country": "TZ",
+    "tagline": "Stone Town's winding lanes and spice-scented air",
+    "intro": "The main city of the Zanzibar archipelago, on Unguja island. Its historic heart, Stone Town, is a UNESCO World Heritage Site full of carved doors, old merchants' houses and busy alleys. Zanzibar is semi-autonomous within Tanzania.",
+    "population": "~0.6–0.9 million depending on boundary (2022 census)",
+    "elevation": "~0–20 m",
+    "climate": "Hot and humid; long rains roughly March–May, short rains around November. Cooler and breezier around June–October.",
+    "airport": "Abeid Amani Karume International Airport (ZNZ)",
+    "languages": ["Swahili", "English"],
+    "lat": -6.1659,
+    "lon": 39.2026,
+    "motif": "island",
+    "neighbourhoods": [
+      { "name": "Stone Town", "note": "The UNESCO-listed old town: narrow lanes, history and boutique hotels." },
+      { "name": "Forodhani", "note": "Seafront gardens with a famous evening food market." },
+      { "name": "Darajani", "note": "The main market, busy with spices, fruit and fish." },
+      { "name": "Michenzani / Ng'ambo", "note": "The 'other side' of town, where most residents live." },
+      { "name": "Mbweni", "note": "Quieter coastal area south of town with hotels." }
+    ],
+    "moneyTips": [
+      "Hotels, tours and ferries often quote US dollars; markets use shillings.",
+      "ATMs exist in Stone Town but can run out of cash; keep a backup.",
+      "Agree taxi and tour prices before you start.",
+      "Bargain politely in souvenir shops."
+    ],
+    "transport": [
+      "Fast ferries from Dar es Salaam take about 2 hours.",
+      "Stone Town is best explored on foot; lanes are too narrow for cars.",
+      "Dala-dalas and taxis run to beaches elsewhere on the island.",
+      "Short flights connect to Dar, Arusha and Nairobi."
+    ],
+    "food": [
+      "Forodhani night market: seafood skewers and 'Zanzibar pizza'.",
+      "Urojo (Zanzibar mix), a tangy soup with fritters.",
+      "Spiced coffee and spice-farm tours.",
+      "Swahili biryani and pilau."
+    ],
+    "safety": [
+      "Generally relaxed, but watch bags in crowded lanes and markets.",
+      "Dress modestly in Stone Town (cover shoulders and knees); it is a mainly Muslim community.",
+      "During Ramadan, avoid eating or drinking in public during the day."
+    ],
+    "suits": ["History lovers", "Couples", "Food lovers", "Beach holidays"],
+    "scores": {
+      "cost": { "value": 4, "reason": "Tourist prices, often in US dollars." },
+      "transport": { "value": 3, "reason": "Walkable old town; island trips need taxis or tours." },
+      "climate": { "value": 2, "reason": "Hot and humid, eased by sea breezes." },
+      "safety": { "value": 4, "reason": "Generally relaxed perception; normal care in crowds." },
+      "nightlife": { "value": 3, "reason": "Rooftop bars and the night market; quieter than Dar." },
+      "vibe": "Historic, slow and atmospheric"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Population depends on which boundary is used (Zanzibar City vs Mjini district vs Urban West Region); confirm."
+  },
+  {
+    "slug": "kigali",
+    "name": "Kigali",
+    "country": "RW",
+    "tagline": "Clean, orderly and green on the hills",
+    "intro": "Rwanda's capital spreads across green hills and is known for being clean, orderly and safe-feeling. Plastic bags are banned, and on the last Saturday morning of each month many people take part in Umuganda, a national community work day.",
+    "population": "~1.7 million (2022 census)",
+    "elevation": "~1,560 m",
+    "climate": "Mild and pleasant all year; main rains roughly March–May and September–December.",
+    "airport": "Kigali International Airport (KGL)",
+    "languages": ["Kinyarwanda", "English", "French", "Swahili"],
+    "lat": -1.9441,
+    "lon": 30.0619,
+    "motif": "hills",
+    "neighbourhoods": [
+      { "name": "Kiyovu", "note": "Central, leafy and close to the city centre." },
+      { "name": "Kimihurura", "note": "Upmarket area with restaurants, bars and offices." },
+      { "name": "Nyarutarama", "note": "Upmarket residential area with a golf course." },
+      { "name": "Nyamirambo", "note": "Lively, colourful area with local food and a strong community feel." },
+      { "name": "Kacyiru", "note": "Government offices, embassies and hotels." },
+      { "name": "Remera", "note": "Busy area near the stadium and the airport road." },
+      { "name": "Kimironko", "note": "Home of a big, popular local market." }
+    ],
+    "moneyTips": [
+      "MTN MoMo is widely used; cards work in hotels and bigger restaurants.",
+      "Prices are in Rwandan francs (FRw).",
+      "Carry small notes for motos and markets."
+    ],
+    "transport": [
+      "Motorbike taxis ('motos') are everywhere, and riders give passengers a helmet.",
+      "City buses run on set routes and are paid with a tap card.",
+      "Ride-hailing apps operate, though choice is more limited than in Nairobi.",
+      "On Umuganda mornings, traffic and shops slow down until about midday."
+    ],
+    "food": [
+      "Brochettes (grilled meat skewers), often with chips.",
+      "Isombe (cassava leaves) and beans.",
+      "Rwandan coffee and tea, sold in many cafés.",
+      "Buffet lunches at local restaurants."
+    ],
+    "safety": [
+      "Widely seen by visitors as one of the most relaxed capitals in the region.",
+      "Plastic bags are banned and may be taken at the airport.",
+      "Visit the Kigali Genocide Memorial with respect; it is a place of remembrance."
+    ],
+    "suits": ["First-time visitors to Africa", "Solo travellers", "Conference-goers", "Gorilla trekkers"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Moderate; imported goods and upmarket places are pricey." },
+      "transport": { "value": 4, "reason": "Motos with helmets and buses make it easy." },
+      "climate": { "value": 5, "reason": "Mild all year." },
+      "safety": { "value": 5, "reason": "Widely perceived as orderly and relaxed." },
+      "nightlife": { "value": 3, "reason": "Growing scene, but calmer than Kampala or Nairobi." },
+      "vibe": "Calm, tidy and hopeful"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Confirm Umuganda timing and bus card system."
+  },
+  {
+    "slug": "addis-ababa",
+    "name": "Addis Ababa",
+    "country": "ET",
+    "tagline": "High-altitude capital with its own calendar and clock",
+    "intro": "Ethiopia's capital and the seat of the African Union, high in the highlands. Ethiopia uses its own calendar (several years behind the Gregorian one) and a 12-hour clock that starts at sunrise, so check whether times are in 'Ethiopian' or 'international' time.",
+    "population": "~5 million+ (estimate; the last full census was in 2007)",
+    "elevation": "~2,350 m",
+    "climate": "Cool and mild thanks to the altitude; the main rainy season is roughly June–September.",
+    "airport": "Addis Ababa Bole International Airport (ADD)",
+    "languages": ["Amharic", "Afaan Oromo", "English"],
+    "lat": 9.03,
+    "lon": 38.74,
+    "motif": "highland",
+    "neighbourhoods": [
+      { "name": "Bole", "note": "Near the airport: hotels, cafés, restaurants and nightlife." },
+      { "name": "Piassa", "note": "Old commercial centre with historic buildings and cafés." },
+      { "name": "Kazanchis", "note": "Business area with hotels and offices." },
+      { "name": "Merkato", "note": "One of Africa's biggest open-air markets; very busy." },
+      { "name": "Arat Kilo", "note": "University and museum area." },
+      { "name": "Sarbet", "note": "Residential area with embassies and cafés." }
+    ],
+    "moneyTips": [
+      "Prices are in birr (Br). The birr was floated in 2024, so prices have been changing quickly.",
+      "telebirr and M-Pesa Ethiopia are growing; cash is still common.",
+      "Use banks or official channels to exchange money.",
+      "Keep receipts when changing money in case you need them later."
+    ],
+    "transport": [
+      "Blue-and-white minibuses and shared taxis run on set routes.",
+      "The light rail has two lines through the city.",
+      "Ride-hailing apps such as Ride operate.",
+      "Remember that times may be given in Ethiopian time: 1 o'clock in the morning Ethiopian time is about 7am."
+    ],
+    "food": [
+      "Injera (spongy sourdough flatbread) with wat (stews).",
+      "Beyaynetu: a colourful vegetarian platter, especially on fasting days.",
+      "Ethiopian coffee and the traditional coffee ceremony.",
+      "Tibs (sautéed meat)."
+    ],
+    "safety": [
+      "Normal big-city caution with phones and bags, especially in Merkato.",
+      "The altitude can tire you at first; take it easy for a day or two.",
+      "Check current travel advice before visiting other regions of the country."
+    ],
+    "suits": ["Food lovers", "Coffee lovers", "History and culture fans", "Conference-goers"],
+    "scores": {
+      "cost": { "value": 3, "reason": "Local food is cheap; hotels and imported goods cost more, and prices are changing." },
+      "transport": { "value": 3, "reason": "Minibuses, light rail and apps, but busy roads." },
+      "climate": { "value": 4, "reason": "Cool and mild, with a long rainy season." },
+      "safety": { "value": 3, "reason": "Normal big-city caution needed." },
+      "nightlife": { "value": 4, "reason": "Lively music bars and azmari houses, especially around Bole." },
+      "vibe": "Proud, historic and caffeinated"
+    },
+    "confidence": "good",
+    "verify": "Scores are editorial estimates. Population is a rough estimate; confirm light rail status and ride-hailing app names."
+  }
+]

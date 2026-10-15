@@ -1,0 +1,66 @@
+[
+  {
+    "code": "KE",
+    "name": "Kenya",
+    "flag": ["#000000", "#FFFFFF", "#BB0000", "#FFFFFF", "#006600"],
+    "currency": "Kenyan shilling",
+    "currencyCode": "KES",
+    "symbol": "KSh",
+    "languages": ["Swahili", "English"],
+    "mobileMoney": ["M-Pesa", "Airtel Money"],
+    "scale": "A coffee is roughly KSh 250–350 in a Nairobi café.",
+    "coffeeLocal": 300
+  },
+  {
+    "code": "UG",
+    "name": "Uganda",
+    "flag": ["#000000", "#FCDC04", "#D90000"],
+    "currency": "Ugandan shilling",
+    "currencyCode": "UGX",
+    "symbol": "USh",
+    "languages": ["English", "Swahili", "Luganda (widely spoken)"],
+    "mobileMoney": ["MTN MoMo", "Airtel Money"],
+    "scale": "A coffee is roughly USh 6,000–10,000 in a Kampala café.",
+    "coffeeLocal": 8000,
+    "verify": "Flag is simplified to three stripes (the real flag repeats black, yellow, red twice). Café coffee price is a rough estimate."
+  },
+  {
+    "code": "TZ",
+    "name": "Tanzania",
+    "flag": ["#1EB53A", "#FCD116", "#000000", "#FCD116", "#00A3DD"],
+    "currency": "Tanzanian shilling",
+    "currencyCode": "TZS",
+    "symbol": "TSh",
+    "languages": ["Swahili", "English"],
+    "mobileMoney": ["M-Pesa (Vodacom)", "Mixx by Yas (formerly Tigo Pesa)", "Airtel Money", "HaloPesa"],
+    "scale": "A coffee is roughly TSh 4,000–7,000 in a Dar es Salaam café.",
+    "coffeeLocal": 5000,
+    "verify": "Confirm the Tigo Pesa to 'Mixx by Yas' rebrand name and that HaloPesa is still operating. Flag is diagonal in reality; stripes here are an approximation. Coffee price is a rough estimate."
+  },
+  {
+    "code": "RW",
+    "name": "Rwanda",
+    "flag": ["#00A1DE", "#00A1DE", "#FAD201", "#20603D"],
+    "currency": "Rwandan franc",
+    "currencyCode": "RWF",
+    "symbol": "FRw",
+    "languages": ["Kinyarwanda", "English", "French", "Swahili"],
+    "mobileMoney": ["MTN MoMo", "Airtel Money"],
+    "scale": "A coffee is roughly FRw 2,000–3,000 in a Kigali café.",
+    "coffeeLocal": 2500,
+    "verify": "Airtel Money Rwanda's current status/brand should be confirmed. Coffee price is a rough estimate."
+  },
+  {
+    "code": "ET",
+    "name": "Ethiopia",
+    "flag": ["#078930", "#FCDD09", "#DA121A"],
+    "currency": "Ethiopian birr",
+    "currencyCode": "ETB",
+    "symbol": "Br",
+    "languages": ["Amharic", "Afaan Oromo", "Tigrinya", "Somali", "English (business and tourism)"],
+    "mobileMoney": ["telebirr", "M-Pesa Ethiopia"],
+    "scale": "A macchiato is roughly Br 50–150, depending on whether it is a local café or a smart chain.",
+    "coffeeLocal": 80,
+    "verify": "Birr prices have risen quickly since the 2024 currency float; the coffee price and range are very rough. Mini flag omits the central emblem."
+  }
+]

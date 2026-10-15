@@ -1,0 +1,124 @@
+package pages
+
+import (
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+type swatch struct{ Name, Var, Light, Dark, Use string }
+
+var swatches = []swatch{
+	{"Sand paper", "--paper", "#f6eedc", "#12142e", "Page background"},
+	{"Bone", "--surface", "#fff9ec", "#1b1f4b", "Cards"},
+	{"Ink", "--ink", "#1e1a16", "#f3ead7", "Text, outlines"},
+	{"Rift Valley green", "--green", "#1f5c3f", "#5fb98a", "Links, primary"},
+	{"Laterite red", "--red", "#b4432a", "#e07a5f", "Eyebrows, warnings"},
+	{"Savannah gold", "--gold", "#d9a21b", "#e8b931", "Buttons, highlights (ink text)"},
+	{"Night indigo", "--indigo", "#1b1f4b", "#f3ead7", "Footer, dark mode"},
+	{"Lake blue", "--lake", "#2c7a9b", "#6fb3d2", "Water on maps"},
+	{"Dry grass", "--muted", "#6b5b45", "#b9ac94", "Secondary text"},
+}
+
+var iconNames = []string{"money", "map", "bus", "city", "phone", "shield", "pin", "search", "food", "cloud", "compare", "book", "swap", "info", "alert", "check"}
+
+templ DesignSystem(m layouts.Meta) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{Eyebrow: "For editors", Title: "Design system", Lede: "The colours, lettering and building blocks every page uses.", Motif: "highland"})
+		<div class="wrap section grid gap-16">
+			<section aria-labelledby="ds-colours">
+				<h2 id="ds-colours" class="display-md">Colours</h2>
+				<ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					for _, sw := range swatches {
+						<li class="card flex items-center gap-4 p-4">
+							<span class="h-14 w-14 shrink-0 rounded-xl border-[2.5px] border-line" style={ templ.SafeCSS("background:var(" + sw.Var + ")") }></span>
+							<div>
+								<p class="font-bold">{ sw.Name }</p>
+								<p class="num text-sm text-muted">{ sw.Light } / { sw.Dark }</p>
+								<p class="text-sm text-ink-soft">{ sw.Use }</p>
+							</div>
+						</li>
+					}
+				</ul>
+			</section>
+			<section aria-labelledby="ds-type">
+				<h2 id="ds-type" class="display-md">Lettering</h2>
+				<div class="mt-6 grid gap-4">
+					<p class="display-xl">Karibu sana</p>
+					<p class="display-lg">Bricolage Grotesque, headings</p>
+					<p class="lede">Figtree for reading: friendly, open, very legible at small sizes on a phone in the sun.</p>
+					<p class="num text-xl">KSh 1,250 · USh 45,000 · 07:30 EAT</p>
+					<p class="jina text-3xl text-red" lang="sw">“Haba na haba hujaza kibaba”</p>
+				</div>
+			</section>
+			<section aria-labelledby="ds-ui" class="grid gap-6">
+				<h2 id="ds-ui" class="display-md">Buttons, chips &amp; markers</h2>
+				<div class="flex flex-wrap gap-3">
+					<a class="btn btn-gold" href="#ds-ui">Gold button</a>
+					<a class="btn btn-green" href="#ds-ui">Green button</a>
+					<a class="btn btn-red" href="#ds-ui">Red button</a>
+					<a class="btn btn-ghost" href="#ds-ui">Ghost button</a>
+				</div>
+				<div class="flex flex-wrap items-center gap-2">
+					<span class="chip">Chip</span>
+					<span class="chip chip-gold">Upmarket</span>
+					<span class="chip chip-green">Good for families</span>
+					<span class="chip chip-red">Kiambu County</span>
+					@components.Approx("")
+					@components.Approx("as of 2026")
+					@components.LastReviewed(m.Site.LastReviewed)
+				</div>
+				<div class="flex flex-wrap gap-2">
+					<button type="button" class="pill" aria-pressed="true">All regions</button>
+					<button type="button" class="pill" aria-pressed="false">Coast</button>
+					<button type="button" class="pill" aria-pressed="false">Rift Valley</button>
+				</div>
+				<ul class="flex flex-wrap gap-4 text-green">
+					for _, n := range iconNames {
+						<li class="card grid h-16 w-16 place-items-center !shadow-none" title={ n }>
+							@components.Icon(n, "h-7 w-7")
+							<span class="sr-only">{ n }</span>
+						</li>
+					}
+				</ul>
+			</section>
+			<section aria-labelledby="ds-blocks" class="grid gap-6">
+				<h2 id="ds-blocks" class="display-md">Blocks</h2>
+				<div class="grid gap-6 md:grid-cols-3">
+					@components.Callout("tip", "A tip") {
+						<p>Gold callouts are for friendly hints.</p>
+					}
+					@components.Callout("info", "Good to know") {
+						<p>Green callouts explain things.</p>
+					}
+					@components.Callout("warn", "Watch out") {
+						<p>Red callouts are for scams and safety.</p>
+					}
+				</div>
+				@components.KangaBand()
+				<div class="kanga-thin"></div>
+				<div class="grid gap-6 md:grid-cols-3">
+					<div class="card kitenge-dots h-40"></div>
+					<div class="card kitenge-waves h-40"></div>
+					@components.PhotoSlot("", "", "Nairobi skyline at dusk, 4:3")
+				</div>
+			</section>
+		</div>
+	}
+}
+
+templ NotFound(m layouts.Meta) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "404 · Umepotea?",
+			Title:   "Looks like you took the wrong matatu.",
+			Lede:    "“Umepotea?” means “Are you lost?” No shame: even locals get lost. This page doesn’t exist, but these do:",
+			Motif:   "savannah",
+		}) {
+			<div class="mt-8 flex flex-wrap gap-3">
+				<a class="btn btn-gold" href="/">Back to the start</a>
+				<a class="btn btn-ghost" href="/nairobi">Nairobi guide</a>
+				<a class="btn btn-ghost" href="/counties">Counties</a>
+			</div>
+		}
+	}
+}

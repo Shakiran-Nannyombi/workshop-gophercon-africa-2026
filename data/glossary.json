@@ -1,0 +1,270 @@
+[
+  {
+    "term": "matatu",
+    "language": "Swahili",
+    "meaning": "A shared minibus or van that runs on fixed routes. The main way most Kenyans get around.",
+    "example": "Take a matatu from the CBD to Westlands."
+  },
+  {
+    "term": "ma3",
+    "language": "Sheng",
+    "meaning": "Short written form of 'matatu' (ma + tatu, 'three').",
+    "example": "Nimeshika ma3. (I've caught a matatu.)"
+  },
+  {
+    "term": "nganya",
+    "language": "Sheng",
+    "meaning": "A loud, brightly decorated matatu with music, screens and graffiti-style art.",
+    "example": "That nganya has the best sound system on the route."
+  },
+  {
+    "term": "makanga / manamba",
+    "language": "Sheng",
+    "meaning": "The matatu conductor (makanga) who collects fares and calls out destinations; 'manamba' is another word for a conductor or tout at the stage.",
+    "example": "Pay the makanga when he comes round."
+  },
+  {
+    "term": "stage",
+    "language": "English (Kenya)",
+    "meaning": "A bus or matatu stop, or the place where matatus gather to load passengers.",
+    "example": "Meet me at the Kencom stage."
+  },
+  {
+    "term": "boda boda",
+    "language": "Swahili",
+    "meaning": "A motorbike taxi (sometimes a bicycle taxi). Often just 'boda'; in Sheng a motorbike is also a 'nduthi'.",
+    "example": "A boda is faster in traffic."
+  },
+  {
+    "term": "tuk-tuk",
+    "language": "English (Kenya)",
+    "meaning": "A three-wheeled motorised taxi, common in Mombasa and Kisumu. Called 'bajaji' in Tanzania."
+  },
+  {
+    "term": "SGR",
+    "language": "English (Kenya)",
+    "meaning": "Standard Gauge Railway: the modern train line from Mombasa to Nairobi and on to Naivasha."
+  },
+  {
+    "term": "JKIA",
+    "language": "English (Kenya)",
+    "meaning": "Jomo Kenyatta International Airport, Nairobi's main airport."
+  },
+  {
+    "term": "CBD",
+    "language": "English (Kenya)",
+    "meaning": "Central Business District: the city centre.",
+    "example": "Town is busy; let's avoid the CBD at rush hour."
+  },
+  {
+    "term": "M-Pesa agent",
+    "language": "English (Kenya)",
+    "meaning": "A small shop with a green M-PESA sign where you can deposit or withdraw cash from your M-Pesa."
+  },
+  {
+    "term": "Paybill",
+    "language": "English (Kenya)",
+    "meaning": "A business number used with an account number to pay bills by M-Pesa."
+  },
+  {
+    "term": "till number",
+    "language": "English (Kenya)",
+    "meaning": "A shop's M-Pesa number for Buy Goods payments; no account number needed.",
+    "example": "What's your till number?"
+  },
+  {
+    "term": "Buy Goods",
+    "language": "English (Kenya)",
+    "meaning": "The M-Pesa option for paying a shop by till number. Free for the customer."
+  },
+  {
+    "term": "Fuliza",
+    "language": "Swahili",
+    "meaning": "M-Pesa's overdraft service: it lets you complete a payment when your balance is short, for a fee.",
+    "example": "My balance was low, so it went through on Fuliza."
+  },
+  {
+    "term": "Cash or M-Pesa?",
+    "language": "English (Kenya)",
+    "meaning": "The question you will hear at checkouts, taxis and stalls: how do you want to pay?"
+  },
+  {
+    "term": "bundles",
+    "language": "English (Kenya)",
+    "meaning": "Prepaid mobile data (or call/SMS) packages.",
+    "example": "I've run out of bundles."
+  },
+  {
+    "term": "flashing",
+    "language": "English (Kenya)",
+    "meaning": "Calling someone and hanging up before they answer, so they call you back.",
+    "example": "Flash me when you arrive."
+  },
+  {
+    "term": "bob",
+    "language": "Sheng",
+    "meaning": "Slang for a shilling.",
+    "example": "It's fifty bob."
+  },
+  {
+    "term": "Sheng",
+    "language": "Sheng",
+    "meaning": "Urban slang mixing Swahili, English and other Kenyan languages, born in Nairobi."
+  },
+  {
+    "term": "Sasa?",
+    "language": "Sheng",
+    "meaning": "'Hi, how's it going?' Reply with 'Poa' or 'Fiti'."
+  },
+  {
+    "term": "Niaje",
+    "language": "Sheng",
+    "meaning": "A casual 'What's up?' between friends. Reply 'Poa'."
+  },
+  {
+    "term": "poa",
+    "language": "Sheng",
+    "meaning": "Cool, fine, good.",
+    "example": "Sasa? Poa!"
+  },
+  {
+    "term": "sawa",
+    "language": "Swahili",
+    "meaning": "OK, fine, agreed.",
+    "example": "Tukutane saa nane? Sawa. (Meet at 2pm? OK.)"
+  },
+  {
+    "term": "jambo",
+    "language": "Swahili",
+    "meaning": "Hello. Mostly used with tourists; locals usually say 'Habari' or 'Hujambo'."
+  },
+  {
+    "term": "karibu",
+    "language": "Swahili",
+    "meaning": "Welcome; also 'you're welcome' after thanks, and 'come in'."
+  },
+  {
+    "term": "asante",
+    "language": "Swahili",
+    "meaning": "Thank you. 'Asante sana' means thank you very much."
+  },
+  {
+    "term": "hakuna matata",
+    "language": "Swahili",
+    "meaning": "No worries. Real Swahili, though Kenyans more often say 'hakuna shida' or 'hakuna noma'."
+  },
+  {
+    "term": "pole pole",
+    "language": "Swahili",
+    "meaning": "Slowly, gently. Also a gentle 'take it easy'."
+  },
+  {
+    "term": "mzungu",
+    "language": "Swahili",
+    "meaning": "A white person or foreigner. Usually descriptive rather than rude, often shouted cheerfully by children."
+  },
+  {
+    "term": "askari",
+    "language": "Swahili",
+    "meaning": "A security guard (or police officer or soldier).",
+    "example": "Ask the askari at the gate."
+  },
+  {
+    "term": "estate",
+    "language": "English (Kenya)",
+    "meaning": "A residential neighbourhood or housing area.",
+    "example": "She lives in an estate off Ngong Road."
+  },
+  {
+    "term": "county",
+    "language": "English (Kenya)",
+    "meaning": "One of Kenya's 47 devolved regions, each with its own governor and assembly."
+  },
+  {
+    "term": "sub-county",
+    "language": "English (Kenya)",
+    "meaning": "An administrative division of a county."
+  },
+  {
+    "term": "constituency",
+    "language": "English (Kenya)",
+    "meaning": "An electoral area that elects a Member of Parliament. Kenya has 290."
+  },
+  {
+    "term": "ward",
+    "language": "English (Kenya)",
+    "meaning": "The smallest electoral unit, electing a member of the county assembly (MCA)."
+  },
+  {
+    "term": "location",
+    "language": "English (Kenya)",
+    "meaning": "An administrative area run by a chief, part of the national government's local administration."
+  },
+  {
+    "term": "shags / ushago",
+    "language": "Sheng",
+    "meaning": "The rural home area, 'upcountry', where your family comes from.",
+    "example": "I'm going shags for Christmas."
+  },
+  {
+    "term": "nyama choma",
+    "language": "Swahili",
+    "meaning": "Grilled meat, usually goat or beef, ordered by weight and shared."
+  },
+  {
+    "term": "ugali",
+    "language": "Swahili",
+    "meaning": "A firm maize-flour staple, eaten with your hand alongside stew or greens."
+  },
+  {
+    "term": "sukuma wiki",
+    "language": "Swahili",
+    "meaning": "Sautéed collard greens. The name means 'push the week', because they are cheap."
+  },
+  {
+    "term": "chapati",
+    "language": "Swahili",
+    "meaning": "A soft, layered flatbread, eaten with stew, beans or tea."
+  },
+  {
+    "term": "mandazi",
+    "language": "Swahili",
+    "meaning": "A lightly sweet fried dough, like a doughnut without a hole. A classic breakfast with chai."
+  },
+  {
+    "term": "chai",
+    "language": "Swahili",
+    "meaning": "Tea, usually boiled with milk and sugar."
+  },
+  {
+    "term": "duka",
+    "language": "Swahili",
+    "meaning": "A shop, usually a small one.",
+    "example": "Buy credit at the duka."
+  },
+  {
+    "term": "kibanda",
+    "language": "Swahili",
+    "meaning": "A small kiosk or roadside food stall."
+  },
+  {
+    "term": "mitumba",
+    "language": "Swahili",
+    "meaning": "Second-hand clothes, sold in big markets such as Gikomba in Nairobi."
+  },
+  {
+    "term": "jua kali",
+    "language": "Swahili",
+    "meaning": "'Hot sun': the informal sector of artisans and makers who often work outdoors."
+  },
+  {
+    "term": "mabati",
+    "language": "Swahili",
+    "meaning": "Corrugated iron sheets, used for roofs and fences."
+  },
+  {
+    "term": "harambee",
+    "language": "Swahili",
+    "meaning": "'Let's all pull together': community fundraising, and Kenya's national motto."
+  }
+]

@@ -1,0 +1,19 @@
+[
+  { "name": "Kenya National Bureau of Statistics: 2019 Kenya Population and Housing Census", "url": "https://www.knbs.or.ke", "usage": "County and urban population figures for Kenya." },
+  { "name": "Central Bank of Kenya", "url": "https://www.centralbank.go.ke", "usage": "Banknote and coin designs, security features and indicative exchange rates." },
+  { "name": "Safaricom: M-PESA tariffs and services", "url": "https://www.safaricom.co.ke", "usage": "M-Pesa fees, payment flows (Send Money, Paybill, Buy Goods, Pochi la Biashara) and SIM registration." },
+  { "name": "Council of Governors", "url": "https://cog.go.ke", "usage": "Kenya's 47 counties and how devolved government works." },
+  { "name": "Independent Electoral and Boundaries Commission (IEBC)", "url": "https://www.iebc.or.ke", "usage": "Constituencies and county assembly wards." },
+  { "name": "Kenya Railways", "url": "https://krc.co.ke", "usage": "SGR routes, stations and fares." },
+  { "name": "Metro Trains Kenya (SGR booking)", "url": "https://metickets.krc.co.ke", "usage": "SGR Madaraka Express timetables and ticket booking." },
+  { "name": "Bank of Uganda", "url": "https://www.bou.or.ug", "usage": "Ugandan shilling notes, coins and exchange rates." },
+  { "name": "Bank of Tanzania", "url": "https://www.bot.go.tz", "usage": "Tanzanian shilling notes, coins and exchange rates." },
+  { "name": "National Bank of Rwanda", "url": "https://www.bnr.rw", "usage": "Rwandan franc notes, coins and exchange rates." },
+  { "name": "National Bank of Ethiopia", "url": "https://nbe.gov.et", "usage": "Ethiopian birr and exchange rates." },
+  { "name": "Uganda Bureau of Statistics", "url": "https://www.ubos.org", "usage": "Population figures for Kampala, Entebbe and Jinja (2024 census)." },
+  { "name": "National Bureau of Statistics, Tanzania", "url": "https://www.nbs.go.tz", "usage": "Population figures for Dar es Salaam, Arusha and Zanzibar (2022 census)." },
+  { "name": "National Institute of Statistics of Rwanda (NISR)", "url": "https://www.statistics.gov.rw", "usage": "Population figures for Kigali (2022 census)." },
+  { "name": "geoBoundaries", "url": "https://www.geoboundaries.org", "usage": "Open county boundary data for the Kenya map." },
+  { "name": "Natural Earth", "url": "https://www.naturalearthdata.com", "usage": "Country outlines for the regional map." },
+  { "name": "Kenya eTA (Department of Immigration Services)", "url": "https://www.etakenya.go.ke", "usage": "Entry requirements and Electronic Travel Authorisation." }
+]

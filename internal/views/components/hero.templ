@@ -1,0 +1,144 @@
+package components
+
+type HeroProps struct {
+	Eyebrow string
+	Title   string
+	Lede    string
+	Motif   string // savannah, skyline, coast, lake, highland, island, hills, mountain, river, rift
+	Tall    bool
+}
+
+templ SectionHero(p HeroProps) {
+	<section class={ "hero", templ.KV("hero--tall", p.Tall) } data-parallax>
+		@Landscape(p.Motif, false)
+		<div class="wrap hero__inner">
+			if p.Eyebrow != "" {
+				<p class="eyebrow">{ p.Eyebrow }</p>
+			}
+			<h1 class={ "hero__title", templ.KV("display-xl", p.Tall), templ.KV("display-lg", !p.Tall) }>{ p.Title }</h1>
+			if p.Lede != "" {
+				<p class="lede">{ p.Lede }</p>
+			}
+			{ children... }
+		</div>
+	</section>
+}
+
+// Landscape is the layered parallax scene behind a hero; data-depth sets scroll speed.
+templ Landscape(motif string, card bool) {
+	<div class={ "landscape", templ.KV("landscape--card", card) } aria-hidden="true">
+		<div class="landscape__sky"></div>
+		<div class="landscape__stars"></div>
+		<div class="landscape__sun" data-depth="0.5"></div>
+		<svg class="layer layer--far" data-depth="0.35" viewBox="0 0 1200 300" preserveAspectRatio="none">
+			if motif == "mountain" {
+				<path d="M0 300 V210 L180 170 L330 190 L520 60 L560 52 L600 64 L760 170 L900 150 L1200 200 V300Z" fill="var(--ridge-far)"></path>
+				<path d="M505 74 L520 60 L560 52 L600 64 L585 78 L560 70 L540 82Z" fill="var(--sun)" opacity=".9"></path>
+			} else {
+				<path d="M0 300 V170 L120 140 L210 155 L330 95 L420 120 L520 80 L640 130 L760 100 L900 140 L1010 90 L1200 130 V300Z" fill="var(--ridge-far)"></path>
+			}
+		</svg>
+		<svg class="layer layer--mid" data-depth="0.2" viewBox="0 0 1200 300" preserveAspectRatio="none">
+			<path d="M0 300 V190 C150 150 260 210 400 170 S650 120 800 175 S1050 150 1200 160 V300Z" fill="var(--ridge-mid)"></path>
+		</svg>
+		switch motif {
+			case "skyline":
+				<svg class="layer layer--city" data-depth="0.1" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice">
+					@skyline()
+				</svg>
+			case "coast", "island":
+				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
+					@coast(motif == "island")
+				</svg>
+			case "lake", "river":
+				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
+					@lake()
+				</svg>
+			default:
+				<svg class="layer layer--near" data-depth="0.08" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice">
+					@savannah(motif == "highland" || motif == "hills")
+				</svg>
+		}
+	</div>
+}
+
+templ acacia(x, y, s string) {
+	<g transform={ "translate(" + x + " " + y + ") scale(" + s + ")" } fill="var(--ground)">
+		<path d="M-62 -58 C-40 -78 40 -82 66 -62 C78 -54 70 -46 52 -46 C20 -42 -24 -42 -56 -46 C-72 -48 -72 -52 -62 -58Z"></path>
+		<path d="M-3 0 L-2 -30 L-26 -48 L-22 -50 L0 -36 L4 -50 L8 -50 L5 -34 L30 -50 L33 -47 L6 -28 L5 0Z"></path>
+	</g>
+}
+
+templ savannah(green bool) {
+	<path d="M0 240 V150 C200 120 380 170 600 140 S980 120 1200 150 V240Z" fill="var(--ridge-near)"></path>
+	if green {
+		<g fill="var(--ground)" opacity=".85">
+			for i := 0; i < 9; i++ {
+				<path d={ teaRow(i) }></path>
+			}
+		</g>
+	}
+	@acacia("180", "160", "1")
+	@acacia("860", "150", "1.35")
+	@acacia("1010", "166", ".7")
+	<path d="M0 240 V200 C300 186 600 210 900 196 S1150 200 1200 200 V240Z" fill="var(--ground)"></path>
+	<g fill="var(--ground)">
+		<path d="M420 200 l6-16 3 16 4-12 2 12z"></path>
+		<path d="M640 204 l5-14 3 14 4-10 2 10z"></path>
+	</g>
+}
+
+templ skyline() {
+	<path d="M0 260 V190 C200 170 400 200 600 180 S1000 170 1200 190 V260Z" fill="var(--ridge-near)"></path>
+	<g fill="var(--ground)">
+		<rect x="300" y="150" width="34" height="110"></rect>
+		<rect x="340" y="120" width="44" height="140"></rect>
+		<rect x="392" y="160" width="30" height="100"></rect>
+		<path d="M440 260 V110 h28 v-10 h-14 a18 10 0 0 1 36 0 h-14 v10 h28 V260z"></path>
+		<rect x="512" y="70" width="40" height="190"></rect>
+		<rect x="520" y="56" width="24" height="14"></rect>
+		<rect x="560" y="132" width="36" height="128"></rect>
+		<rect x="604" y="96" width="30" height="164"></rect>
+		<path d="M644 260 V140 l24-18 24 18 V260z"></path>
+		<rect x="700" y="160" width="40" height="100"></rect>
+		<rect x="748" y="126" width="28" height="134"></rect>
+		<rect x="784" y="170" width="46" height="90"></rect>
+	</g>
+	<g fill="var(--gold)" opacity=".75">
+		for i := 0; i < 14; i++ {
+			<rect x={ windowX(i) } y={ windowY(i) } width="4" height="6"></rect>
+		}
+	</g>
+	@acacia("150", "200", ".9")
+	@acacia("1000", "196", "1.1")
+	<path d="M0 260 V226 C300 214 600 236 900 222 S1150 226 1200 226 V260Z" fill="var(--ground)"></path>
+}
+
+templ coast(island bool) {
+	<path d="M0 240 V170 C300 150 700 180 1200 160 V240Z" fill="var(--lake)" opacity=".85"></path>
+	<path d="M0 190 C120 184 240 196 360 190 S600 184 720 192 S960 186 1200 190" stroke="var(--sun)" stroke-width="2" fill="none" opacity=".5"></path>
+	<g fill="var(--ground)">
+		<path d="M720 168 h70 l-10 12 h-50z"></path>
+		<path d="M752 168 V112 L790 160z"></path>
+	</g>
+	if island {
+		<path d="M0 240 V200 C120 190 240 196 380 214 L420 240Z" fill="var(--ridge-near)"></path>
+	} else {
+		<path d="M0 240 V196 C160 184 320 192 460 210 L520 240Z" fill="var(--ridge-near)"></path>
+	}
+	<g fill="var(--ground)">
+		<path d="M140 200 C150 160 160 130 170 118 M170 118 c-24 -6 -40 4 -48 14 M170 118 c20 -10 40 -6 50 6 M170 118 c-8 -18 -22 -22 -36 -20 M170 118 c14 -16 30 -16 42 -10" stroke="var(--ground)" stroke-width="7" fill="none" stroke-linecap="round"></path>
+		<path d="M250 206 C256 176 262 154 270 146 M270 146 c-18 -4 -30 4 -36 10 M270 146 c16 -8 30 -4 38 4 M270 146 c-6 -14 -16 -16 -28 -14" stroke="var(--ground)" stroke-width="6" fill="none" stroke-linecap="round"></path>
+	</g>
+}
+
+templ lake() {
+	<path d="M0 240 V176 C300 168 800 186 1200 172 V240Z" fill="var(--lake)" opacity=".8"></path>
+	<g fill="var(--ground)">
+		<path d="M480 180 c20 6 50 6 70 0 l-8 8 h-54z"></path>
+		<path d="M514 180 v-30 l18 26z"></path>
+	</g>
+	<path d="M0 240 V206 C200 196 380 214 560 222 S900 210 1200 214 V240Z" fill="var(--ridge-near)"></path>
+	@acacia("1040", "214", ".8")
+	<path d="M140 222 v-26 M150 222 v-34 M160 222 v-22 M170 222 v-30" stroke="var(--ground)" stroke-width="3"></path>
+}

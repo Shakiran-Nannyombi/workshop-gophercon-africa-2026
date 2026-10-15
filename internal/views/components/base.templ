@@ -1,0 +1,152 @@
+package components
+
+// Logo: a sun rising over three Rift Valley ridges, on a night-sky tile.
+templ Logo(class string) {
+	<svg class={ class } viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+		<rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#1b1f4b" stroke="#1e1a16" stroke-width="3"></rect>
+		<circle cx="24" cy="25" r="10" fill="#d9a21b"></circle>
+		<path d="M3 31 L13 24 L20 29 L30 21 L45 31 V44 a2 2 0 0 1 -2 2 H5 a2 2 0 0 1 -2 -2 Z" fill="#b4432a"></path>
+		<path d="M3 37 L16 31 L27 35 L36 30 L45 35 V44 a2 2 0 0 1 -2 2 H5 a2 2 0 0 1 -2 -2 Z" fill="#1f5c3f"></path>
+		<path d="M8 41 h32" stroke="#d9a21b" stroke-width="2" stroke-dasharray="3 3"></path>
+	</svg>
+}
+
+templ ThemeToggle() {
+	<button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Dark mode" title="Toggle dark mode">
+		@Icon("moon", "icon-sm theme-moon")
+		@Icon("sun", "icon-sm theme-sun")
+	</button>
+}
+
+// Icon draws a 24px line icon in currentColor.
+templ Icon(name string, class string) {
+	<svg class={ class } viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+		switch name {
+			case "menu":
+				<path d="M4 7h16M4 12h16M4 17h10"></path>
+			case "close":
+				<path d="M6 6l12 12M18 6L6 18"></path>
+			case "sun":
+				<circle cx="12" cy="12" r="4.2"></circle>
+				<path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path>
+			case "moon":
+				<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"></path>
+			case "search":
+				<circle cx="11" cy="11" r="6.5"></circle>
+				<path d="M20 20l-4.2-4.2"></path>
+			case "arrow":
+				<path d="M5 12h14M13 6l6 6-6 6"></path>
+			case "back":
+				<path d="M19 12H5M11 6l-6 6 6 6"></path>
+			case "pin":
+				<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path>
+				<circle cx="12" cy="9.5" r="2.5"></circle>
+			case "money":
+				<rect x="2.5" y="6" width="19" height="12" rx="2"></rect>
+				<circle cx="12" cy="12" r="2.8"></circle>
+				<path d="M6 9.5v5M18 9.5v5"></path>
+			case "map":
+				<path d="M9 4L3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5z"></path>
+				<path d="M9 4v13.5M15 6.5V20"></path>
+			case "bus":
+				<rect x="3.5" y="4" width="17" height="13" rx="3"></rect>
+				<path d="M3.5 11h17M7 17v2.5M17 17v2.5"></path>
+				<circle cx="7.5" cy="14" r="0.6" fill="currentColor"></circle>
+				<circle cx="16.5" cy="14" r="0.6" fill="currentColor"></circle>
+			case "city":
+				<path d="M3 21V10l5-3v14M8 21V4l7 3v14M15 21v-9l6 2v7M2 21h20"></path>
+			case "phone":
+				<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"></rect>
+				<path d="M10.5 18.5h3"></path>
+			case "shield":
+				<path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6z"></path>
+				<path d="M9 12l2.2 2.2L15.5 10"></path>
+			case "info":
+				<circle cx="12" cy="12" r="9"></circle>
+				<path d="M12 11v5.5M12 7.6v.1"></path>
+			case "alert":
+				<path d="M12 3.5L2.5 20h19z"></path>
+				<path d="M12 10v4.5M12 17.2v.1"></path>
+			case "check":
+				<path d="M5 12.5l4.5 4.5L19 7.5"></path>
+			case "compare":
+				<path d="M7 4v16M17 4v16M3 8h8M13 16h8"></path>
+			case "book":
+				<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"></path>
+				<path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"></path>
+			case "swap":
+				<path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path>
+			case "plus":
+				<path d="M12 5v14M5 12h14"></path>
+			case "minus":
+				<path d="M5 12h14"></path>
+			case "reset":
+				<path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.6M4 4v4.6h4.6"></path>
+			case "food":
+				<path d="M3 12h18a9 9 0 0 1-18 0zM7 8c0-2 2-2 2-4M12 8c0-2 2-2 2-4M17 8c0-2 2-2 2-4"></path>
+			case "cloud":
+				<path d="M7 18a4.5 4.5 0 1 1 .9-8.9A6 6 0 0 1 19.5 11 3.5 3.5 0 0 1 18 18z"></path>
+			default:
+				<circle cx="12" cy="12" r="8"></circle>
+		}
+	</svg>
+}
+
+// Approx is the visible "this is a rough figure" marker.
+templ Approx(label string) {
+	<span class="approx" title="Approximate figure: check before relying on it">
+		<span aria-hidden="true">~</span>
+		if label == "" {
+			approx
+		} else {
+			{ label }
+		}
+	</span>
+}
+
+templ LastReviewed(date string) {
+	<p class="reviewed">
+		@Icon("check", "icon-sm")
+		Last reviewed <time class="num" datetime={ date }>{ date }</time>
+	</p>
+}
+
+templ KangaBand() {
+	<div class="kanga" aria-hidden="true"></div>
+}
+
+// PhotoSlot is a placeholder you can later fill with a real photo at src.
+templ PhotoSlot(src, alt, hint string) {
+	<figure class="photo-slot">
+		if src != "" {
+			<img src={ src } alt={ alt } loading="lazy" decoding="async"/>
+		} else {
+			<figcaption>
+				Photo slot: { hint }
+			</figcaption>
+		}
+	</figure>
+}
+
+templ Callout(tone, title string) {
+	<aside class={ "card callout", "callout--" + tone }>
+		<span class="callout__icon" aria-hidden="true">
+			switch tone {
+				case "warn":
+					@Icon("alert", "icon-sm")
+				case "info":
+					@Icon("info", "icon-sm")
+				default:
+					@Icon("sun", "icon-sm")
+			}
+		</span>
+		<div>
+			if title != "" {
+				<p class="callout__title">{ title }</p>
+			}
+			<div class="callout__body prose">
+				{ children... }
+			</div>
+		</div>
+	</aside>
+}

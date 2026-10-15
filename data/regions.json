@@ -1,0 +1,10 @@
+[
+  {"slug": "nairobi", "name": "Nairobi", "blurb": "Kenya's capital and busiest city, where most international visitors first land. Like the other seven regions here, it was one of the former provinces, which stopped being administrative units in 2013 but which people still use informally."},
+  {"slug": "central", "name": "Central", "blurb": "Green, hilly farmland north of Nairobi, rising towards Mount Kenya and the Aberdares. It is known for tea, coffee and cool, fresh mornings."},
+  {"slug": "coast", "name": "Coast", "blurb": "Warm Indian Ocean beaches, Swahili towns and a long history of trade. Mombasa is the main city, with quieter spots such as Diani, Watamu and Lamu along the shore."},
+  {"slug": "eastern", "name": "Eastern", "blurb": "A huge, varied region that runs from the slopes of Mount Kenya down to dry plains and far north to the deserts near Ethiopia. Expect everything from busy market towns to wide-open wild country."},
+  {"slug": "north-eastern", "name": "North Eastern", "blurb": "A hot, dry region of open semi-desert bordering Somalia and Ethiopia, home mainly to Somali pastoralist communities. Visitors are few, so check current travel advisories before planning a trip."},
+  {"slug": "rift-valley", "name": "Rift Valley", "blurb": "Kenya's largest region, stretching from Lake Turkana in the north to the Maasai Mara in the south. It holds famous lakes, safari country and the highland towns where many of Kenya's runners train."},
+  {"slug": "western", "name": "Western", "blurb": "A lush, densely populated region near the Ugandan border, with sugar cane, maize and green hills. It is known for lively culture, music and the Kakamega rainforest."},
+  {"slug": "nyanza", "name": "Nyanza", "blurb": "The region around the Kenyan shore of Lake Victoria, with Kisumu as its main city. Think fresh fish, lake views and the green, hilly tea country of Kisii."}
+]

@@ -1,0 +1,405 @@
+{
+  "notes": [
+    {
+      "value": 50,
+      "colour": "#A0522D",
+      "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: green energy (wind and geothermal power).",
+      "verify": "Colour: the 2019 KSh 50 is often described as red-brown rather than green; check against a CBK image. Confirm the exact back imagery."
+    },
+    {
+      "value": 100,
+      "colour": "#7B3F8C",
+      "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: agriculture.",
+      "verify": "Colour is an approximation (purple with orange tones); confirm against a CBK image."
+    },
+    {
+      "value": 200,
+      "colour": "#2F7FB5",
+      "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: social services (health, education, sport).",
+      "verify": "Colour is an approximation (blue); confirm the exact back scenes."
+    },
+    {
+      "value": 500,
+      "colour": "#2E8B6E",
+      "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: tourism and wildlife.",
+      "verify": "Colour is an approximation (green/teal); confirm which animal(s) appear on the back."
+    },
+    {
+      "value": 1000,
+      "colour": "#B5651D",
+      "feature": "Front: the Kenyatta International Convention Centre (KICC). Back theme: governance (Parliament Buildings).",
+      "verify": "Colour is an approximation (brown/orange); confirm the back shows Parliament Buildings."
+    }
+  ],
+  "coins": [
+    {
+      "value": 1,
+      "colour": "#C0C0C0",
+      "feature": "Silver-coloured. The 2018 series shows a giraffe.",
+      "verify": "Confirm the giraffe is on the KSh 1 (and not only the 50 cents) and the coin's colour."
+    },
+    {
+      "value": 5,
+      "colour": "#D4AF37",
+      "feature": "Gold-coloured. The 2018 series shows a rhino.",
+      "verify": "Confirm animal mapping (rhino) and colour."
+    },
+    {
+      "value": 10,
+      "colour": "#D4AF37",
+      "feature": "Two-tone (bi-metallic). The 2018 series shows a lion.",
+      "verify": "Confirm animal mapping (lion) and which metal is the centre versus the ring."
+    },
+    {
+      "value": 20,
+      "colour": "#C0C0C0",
+      "feature": "Two-tone (bi-metallic), the largest everyday coin. The 2018 series shows an elephant.",
+      "verify": "Confirm animal mapping (elephant) and which metal is the centre versus the ring."
+    }
+  ],
+  "priceFormats": [
+    { "example": "KSh 500", "meaning": "500 Kenyan shillings. The most common written form." },
+    { "example": "Ksh 500", "meaning": "Same thing, just different capitalisation." },
+    { "example": "Kshs. 500", "meaning": "Same thing. The 's' is plural; you will see it on receipts and older signs." },
+    { "example": "500/=", "meaning": "500 shillings, no cents. The '/=' means 'and nothing after it'. Common on handwritten signs and receipts." },
+    { "example": "500/-", "meaning": "Same as 500/=: 500 shillings exactly." },
+    { "example": "KES 500", "meaning": "The international currency code. Used by banks, apps and card machines." },
+    { "example": "500 bob", "meaning": "Slang for 500 shillings. 'Bob' means shilling, from old British slang." },
+    { "example": "1k", "meaning": "1,000 shillings. Also heard as 'thao' in Sheng." },
+    { "example": "soo", "meaning": "Sheng for 100 shillings, e.g. 'nipe soo' (give me a hundred)." }
+  ],
+  "mobileMoney": [
+    {
+      "name": "M-Pesa",
+      "provider": "Safaricom",
+      "country": "KE",
+      "summary": "Kenya's dominant mobile money service: almost every shop, taxi and market stall can take it.",
+      "tags": ["most widely accepted", "paybill", "till"]
+    },
+    {
+      "name": "Airtel Money",
+      "provider": "Airtel Kenya",
+      "country": "KE",
+      "summary": "A smaller alternative to M-Pesa; you can send to M-Pesa numbers, but fewer shops display Airtel tills.",
+      "tags": ["alternative"]
+    },
+    {
+      "name": "MTN MoMo",
+      "provider": "MTN Uganda",
+      "country": "UG",
+      "summary": "Uganda's largest mobile money network, used for everything from boda rides to utility bills.",
+      "tags": ["most widely accepted"]
+    },
+    {
+      "name": "Airtel Money",
+      "provider": "Airtel Uganda",
+      "country": "UG",
+      "summary": "Uganda's second big mobile money network, widely accepted alongside MTN MoMo."
+    },
+    {
+      "name": "M-Pesa",
+      "provider": "Vodacom Tanzania",
+      "country": "TZ",
+      "summary": "Tanzania's largest mobile money service; it is a separate system from Kenya's M-Pesa.",
+      "tags": ["most widely accepted"]
+    },
+    {
+      "name": "Mixx by Yas",
+      "provider": "Yas (formerly Tigo)",
+      "country": "TZ",
+      "summary": "The service formerly known as Tigo Pesa, still a major option in Tanzania.",
+      "verify": "Confirm the rebrand from Tigo Pesa to Mixx by Yas and the current provider name."
+    },
+    {
+      "name": "Airtel Money",
+      "provider": "Airtel Tanzania",
+      "country": "TZ",
+      "summary": "A widely used alternative in Tanzania, especially outside the big cities."
+    },
+    {
+      "name": "HaloPesa",
+      "provider": "Halotel",
+      "country": "TZ",
+      "summary": "A smaller Tanzanian mobile money service run by Halotel.",
+      "verify": "Confirm HaloPesa is still operating under this name."
+    },
+    {
+      "name": "MTN MoMo",
+      "provider": "MTN Rwanda",
+      "country": "RW",
+      "summary": "Rwanda's main mobile money network; most shops and motos accept it.",
+      "tags": ["most widely accepted"]
+    },
+    {
+      "name": "Airtel Money",
+      "provider": "Airtel Rwanda",
+      "country": "RW",
+      "summary": "The second mobile money option in Rwanda.",
+      "verify": "Confirm current branding and reach in Rwanda."
+    },
+    {
+      "name": "telebirr",
+      "provider": "Ethio Telecom",
+      "country": "ET",
+      "summary": "Ethiopia's largest mobile money service, run by the state telecoms company.",
+      "tags": ["most widely accepted"]
+    },
+    {
+      "name": "M-Pesa Ethiopia",
+      "provider": "Safaricom Ethiopia",
+      "country": "ET",
+      "summary": "Safaricom's newer Ethiopian service, launched in 2023 and still growing.",
+      "verify": "Confirm launch year and current acceptance in Addis Ababa."
+    }
+  ],
+  "mpesaSteps": [
+    {
+      "slug": "send-money",
+      "title": "Send Money",
+      "when": "Paying a person: a friend, a driver, a small trader who gives you their phone number.",
+      "steps": [
+        "Open the M-PESA app (or dial *334# / open the SIM Toolkit menu).",
+        "Choose Send Money.",
+        "Enter the recipient's phone number.",
+        "Enter the amount.",
+        "Enter your M-Pesa PIN and confirm.",
+        "Check the name shown in the confirmation before you finish, then wait for the SMS from MPESA."
+      ],
+      "example": "Your boda rider says 'send to 0712 345 678'. Send KSh 200, check the name matches, and show him the SMS. Small traders may instead use Pochi la Biashara, which also works through Send Money."
+    },
+    {
+      "slug": "paybill",
+      "title": "Pay Bill",
+      "when": "Paying a business or organisation that gives you a Paybill number and an account number: hotels, utilities, schools, some restaurants.",
+      "steps": [
+        "Open the M-PESA app or menu and choose Lipa na M-PESA.",
+        "Choose Pay Bill.",
+        "Enter the business number (Paybill).",
+        "Enter the account number they gave you (often your name, room or invoice number).",
+        "Enter the amount and your PIN.",
+        "Check the business name on screen, confirm, and keep the SMS as your receipt."
+      ],
+      "example": "Your guesthouse says 'Paybill 123456, account ROOM4'. Pay KSh 3,500 and show the SMS at reception."
+    },
+    {
+      "slug": "till",
+      "title": "Buy Goods (till number)",
+      "when": "Paying in a shop, café, supermarket or petrol station that shows a 'Till Number' sign.",
+      "steps": [
+        "Open the M-PESA app or menu and choose Lipa na M-PESA.",
+        "Choose Buy Goods and Services.",
+        "Enter the till number on the sign.",
+        "Enter the amount.",
+        "Enter your PIN, check the shop name and confirm.",
+        "Show the cashier your confirmation SMS."
+      ],
+      "example": "A café sign says 'Till No. 987654'. Pay KSh 300 for your coffee; there is no account number to type."
+    },
+    {
+      "slug": "withdraw",
+      "title": "Withdraw cash at an agent",
+      "when": "You need cash. M-Pesa agents are small shops with a green M-PESA sign, found almost everywhere.",
+      "steps": [
+        "Find an M-Pesa agent and tell them how much you want.",
+        "Open the M-PESA app or menu and choose Withdraw Cash, then From Agent.",
+        "Enter the agent number shown on their sign.",
+        "Enter the amount and your PIN.",
+        "Check the agent name, confirm, and show the agent your SMS.",
+        "Count your cash before you leave. The agent may ask for your ID."
+      ],
+      "example": "You need KSh 2,000 for a market. Withdraw at the agent by your guesthouse; a small withdrawal fee comes out of your balance."
+    },
+    {
+      "slug": "pochi",
+      "title": "Pochi la Biashara",
+      "when": "Paying a small trader (mama mboga, kiosk, tailor) who uses their personal phone number as a business wallet.",
+      "steps": [
+        "Open the M-PESA app or menu and choose Lipa na M-PESA.",
+        "Choose Pochi la Biashara.",
+        "Enter the trader's phone number.",
+        "Enter the amount and your PIN.",
+        "Check the name and confirm."
+      ],
+      "example": "A vegetable seller says 'Pochi, 0722 000 111'. Pay KSh 150 for tomatoes and onions."
+    }
+  ],
+  "mpesaFees": [
+    { "range": "KSh 1–100", "fee": "Free" },
+    { "range": "KSh 101–500", "fee": "~KSh 7" },
+    { "range": "KSh 501–1,000", "fee": "~KSh 13" },
+    { "range": "KSh 1,001–1,500", "fee": "~KSh 23" },
+    { "range": "KSh 1,501–2,500", "fee": "~KSh 33" },
+    { "range": "KSh 2,501–3,500", "fee": "~KSh 53" },
+    { "range": "KSh 3,501–5,000", "fee": "~KSh 57" },
+    { "range": "KSh 5,001–7,500", "fee": "~KSh 78" },
+    { "range": "KSh 7,501–10,000", "fee": "~KSh 90" },
+    { "range": "KSh 10,001–15,000", "fee": "~KSh 100" },
+    { "range": "KSh 15,001–20,000", "fee": "~KSh 105" },
+    { "range": "KSh 20,001–250,000", "fee": "~KSh 108" }
+  ],
+  "mpesaFeesNote": "These are rough fees for sending money to another registered M-Pesa user. Safaricom changes its tariffs from time to time, so check the current tariff on safaricom.co.ke or in the M-PESA app. Paying a shop by Buy Goods (till) is free for the customer; withdrawing cash at an agent has its own separate fees.",
+  "whyMpesa": [
+    "No change needed: traders often struggle to break KSh 1,000 notes, but M-Pesa pays the exact amount.",
+    "Safer than carrying lots of cash around town.",
+    "Instant SMS receipt for both sides, so there is less argument about whether you paid.",
+    "Works for nearly everything: matatus on some routes, bodas, markets, hotels and bills.",
+    "Paying a till (Buy Goods) costs the customer nothing.",
+    "Agents are everywhere, so you can turn M-Pesa into cash almost anywhere in Kenya."
+  ],
+  "prices": [
+    {
+      "item": "Matatu ride within Nairobi",
+      "category": "transport",
+      "minKES": 30,
+      "maxKES": 150,
+      "note": "Depends on route, time of day and rain; fares rise at rush hour."
+    },
+    {
+      "item": "Boda boda (motorbike taxi), short ride",
+      "category": "transport",
+      "minKES": 100,
+      "maxKES": 300,
+      "note": "Agree the fare before you get on, or book through an app."
+    },
+    {
+      "item": "Uber/Bolt across Nairobi",
+      "category": "transport",
+      "minKES": 400,
+      "maxKES": 1200,
+      "note": "More in heavy traffic or late at night."
+    },
+    {
+      "item": "Taxi from JKIA to Westlands",
+      "category": "transport",
+      "minKES": 2000,
+      "maxKES": 3500,
+      "note": "App rides are usually cheaper than airport taxis.",
+      "verify": "Rough estimate; check current app fares."
+    },
+    {
+      "item": "Shuttle or matatu, Nairobi to Nakuru",
+      "category": "transport",
+      "minKES": 400,
+      "maxKES": 800,
+      "note": "Prices go up around holidays.",
+      "verify": "Rough estimate."
+    },
+    {
+      "item": "SGR train Nairobi–Mombasa, economy",
+      "category": "transport",
+      "minKES": 1500,
+      "maxKES": 1500,
+      "note": "~KSh 1,500 one way; book ahead, especially on Fridays and holidays.",
+      "verify": "Confirm current economy fare with Kenya Railways / Metro Trains Kenya."
+    },
+    {
+      "item": "Local meal (ugali, sukuma wiki and stew)",
+      "category": "food",
+      "minKES": 150,
+      "maxKES": 400,
+      "note": "At a kibanda or simple local restaurant."
+    },
+    {
+      "item": "Chapati",
+      "category": "food",
+      "minKES": 20,
+      "maxKES": 50,
+      "note": "Each, from a roadside stall or local café."
+    },
+    {
+      "item": "Nyama choma, per kg (goat or beef)",
+      "category": "food",
+      "minKES": 800,
+      "maxKES": 1600,
+      "note": "Usually shared; ordered by weight.",
+      "verify": "Prices vary a lot by venue; rough estimate."
+    },
+    {
+      "item": "Coffee in a café",
+      "category": "food",
+      "minKES": 250,
+      "maxKES": 400,
+      "note": "Less at a local kiosk; chai is much cheaper."
+    },
+    {
+      "item": "Bottle of water, 500ml",
+      "category": "food",
+      "minKES": 40,
+      "maxKES": 100,
+      "note": "Cheapest in supermarkets; more in hotels."
+    },
+    {
+      "item": "Main course, mid-range restaurant",
+      "category": "food",
+      "minKES": 800,
+      "maxKES": 1800,
+      "note": "In Nairobi; a little less in smaller towns."
+    },
+    {
+      "item": "Budget guesthouse, per night",
+      "category": "stay",
+      "minKES": 1500,
+      "maxKES": 4000,
+      "note": "Simple room; check reviews and security."
+    },
+    {
+      "item": "Mid-range hotel, per night",
+      "category": "stay",
+      "minKES": 6000,
+      "maxKES": 15000,
+      "note": "Often quoted in US dollars; breakfast frequently included.",
+      "verify": "Wide range; rough estimate."
+    },
+    {
+      "item": "Safaricom data bundle (~1GB)",
+      "category": "connectivity",
+      "minKES": 50,
+      "maxKES": 300,
+      "note": "Cheaper for short-validity bundles, more for a week or longer.",
+      "verify": "Bundle sizes and prices change often; check Safaricom's current offers."
+    },
+    {
+      "item": "SIM card",
+      "category": "connectivity",
+      "minKES": 50,
+      "maxKES": 250,
+      "note": "Register with your passport at an official shop.",
+      "verify": "Confirm current SIM price for visitors."
+    }
+  ],
+  "scams": [
+    {
+      "title": "Check notes for fakes",
+      "body": "Hold notes up to the light to see the watermark and security thread, and feel for raised print. Be extra careful with KSh 1,000 notes at night or in a hurry."
+    },
+    {
+      "title": "The 'wrong send' M-Pesa trick",
+      "body": "Someone calls or texts saying they sent you money by mistake and asks you to send it back. Check your real M-Pesa balance and look for an SMS from 'MPESA' itself; never trust a forwarded or typed-out message. If a genuine error happened, Safaricom can reverse it, so tell them to contact Safaricom."
+    },
+    {
+      "title": "Nobody genuine asks for your PIN",
+      "body": "Safaricom staff will never ask for your M-Pesa PIN over the phone or SMS. Hang up on callers who do, however official they sound. Safaricom's real customer care line is 100 (or 200 for postpay)."
+    },
+    {
+      "title": "Use ATMs on your own",
+      "body": "Choose ATMs inside banks, malls or supermarkets. Politely refuse 'helpers' at the machine, and cover the keypad when you type your PIN."
+    },
+    {
+      "title": "Agree the fare first",
+      "body": "With street taxis, tuk-tuks and boda bodas, agree the price before you set off, or use an app so the fare is fixed."
+    },
+    {
+      "title": "Check the name before you pay",
+      "body": "When you pay by M-Pesa, the confirmation screen shows the recipient's name. If it does not match the shop or person, cancel."
+    }
+  ],
+  "bargaining": [
+    "Bargaining is normal at open markets, curio shops and with some street sellers.",
+    "Do not bargain in supermarkets, malls, chain cafés or anywhere with printed prices.",
+    "Smile, greet first ('Habari?') and keep it friendly; it is a conversation, not a fight.",
+    "At curio markets, opening at roughly half to two-thirds of the first price is common, but aim for a price that is fair to the seller.",
+    "Once you agree a price, stick to it and pay.",
+    "If the price does not work for you, say 'asante' and walk away politely."
+  ],
+  "bigNumbersNote": "Prices in Uganda look huge because the Ugandan shilling has a low value per unit: roughly USh 3,600–3,800 to one US dollar, against about KSh 129 in Kenya, and coins are hardly used day to day. So a USh 10,000 note is only a few dollars. Quick trick: divide a Ugandan price by about 28–29 to get Kenyan shillings (exchange rates move, so treat this as a rough guide)."
+}

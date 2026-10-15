@@ -1,0 +1,37 @@
+package components
+
+import "workshop/internal/data"
+
+templ Flag(c *data.Country) {
+	if c != nil {
+		<span class="flag" aria-hidden="true">
+			for _, col := range c.Flag {
+				<span style={ templ.SafeCSS("background:" + safeColour(col)) }></span>
+			}
+		</span>
+	}
+}
+
+templ CityCard(c data.City, country *data.Country) {
+	<article class="card card-link city-card">
+		<div class="city-card__art">
+			@Landscape(c.Motif, true)
+			if country != nil {
+				<span class="chip chip--surface city-card__country">
+					@Flag(country)
+					{ country.Name }
+				</span>
+			}
+		</div>
+		<div class="city-card__body">
+			<h3><a class="stretched" href={ templ.SafeURL("/cities/" + c.Slug) }>{ c.Name }</a></h3>
+			<p>{ c.Tagline }</p>
+			<div class="cluster">
+				if country != nil {
+					<span class="chip num">{ country.CurrencyCode }</span>
+				}
+				<span class="chip">{ c.Population }</span>
+			</div>
+		</div>
+	</article>
+}

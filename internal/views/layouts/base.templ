@@ -1,0 +1,121 @@
+package layouts
+
+import "workshop/internal/views/components"
+
+templ Base(m Meta) {
+	<!DOCTYPE html>
+	<html lang="en-KE" data-theme="light">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<title>{ m.FullTitle() }</title>
+			if m.Description != "" {
+				<meta name="description" content={ m.Description }/>
+			}
+			if m.NoIndex {
+				<meta name="robots" content="noindex"/>
+			}
+			<link rel="canonical" href={ m.Canonical() }/>
+			<meta property="og:site_name" content={ m.Site.Name }/>
+			<meta property="og:type" content="website"/>
+			<meta property="og:title" content={ m.FullTitle() }/>
+			<meta property="og:description" content={ m.Description }/>
+			<meta property="og:url" content={ m.Canonical() }/>
+			<meta property="og:image" content={ m.Site.BaseURL + "/static/svg/og.svg" }/>
+			<meta name="twitter:card" content="summary_large_image"/>
+			<meta name="theme-color" content="#f6eedc" media="(prefers-color-scheme: light)"/>
+			<meta name="theme-color" content="#12142e" media="(prefers-color-scheme: dark)"/>
+			<link rel="icon" href="/static/svg/logo.svg" type="image/svg+xml"/>
+			<link rel="preload" href="/static/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin/>
+			<link rel="preload" href="/static/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin/>
+			<script src="/static/js/theme.js"></script>
+			<link rel="stylesheet" href="/static/css/app.css"/>
+			<script src="/static/js/htmx.min.js" defer></script>
+			<script src="/static/js/app.js" defer></script>
+		</head>
+		<body hx-indicator=".page-loader">
+			<a class="skip-link" href="#main">Skip to content</a>
+			@siteHeader(m)
+			<main id="main" tabindex="-1">
+				{ children... }
+			</main>
+			@siteFooter(m)
+		</body>
+	</html>
+}
+
+templ siteHeader(m Meta) {
+	<header class="site-header">
+		<div class="wrap site-header__inner">
+			<a href="/" class="brand" aria-label="Karibu Guide, home">
+				@components.Logo("brand__mark")
+				<span class="brand__name" aria-hidden="true">Karibu<b>.</b></span>
+			</a>
+			<nav class="main-nav" aria-label="Main">
+				<ul>
+					for _, n := range Nav {
+						<li>
+							<a class="nav-link" href={ templ.SafeURL(n.Href) } if m.Section == n.Section { aria-current="page" }>{ n.Label }</a>
+						</li>
+					}
+				</ul>
+			</nav>
+			<div class="header-tools">
+				@components.ThemeToggle()
+				<details class="menu" data-menu>
+					<summary class="icon-btn">
+						@components.Icon("menu", "icon-sm icon-menu")
+						@components.Icon("close", "icon-sm icon-close")
+						Menu
+					</summary>
+					<nav class="card menu__panel" aria-label="Main (mobile)">
+						<ul>
+							<li><a class="nav-link" href="/" if m.Section == "home" { aria-current="page" }>Start here</a></li>
+							for _, n := range Nav {
+								<li>
+									<a class="nav-link" href={ templ.SafeURL(n.Href) } if m.Section == n.Section { aria-current="page" }>{ n.Label }</a>
+								</li>
+							}
+							<li><a class="nav-link" href="/about">About &amp; sources</a></li>
+						</ul>
+					</nav>
+				</details>
+			</div>
+		</div>
+		<div class="page-loader" aria-hidden="true"></div>
+	</header>
+}
+
+templ siteFooter(m Meta) {
+	{{ sw, en := m.Proverb() }}
+	<footer class="site-footer">
+		<div class="kanga" aria-hidden="true"></div>
+		<div class="wrap site-footer__grid">
+			<div>
+				<p class="jina" lang="sw">“{ sw }”</p>
+				<p class="mt-2 site-footer__note">{ en }. Printed here the way a proverb sits on a kanga.</p>
+				<p class="mt-5 site-footer__note">
+					Figures marked <span class="approx">~ approx</span> are rough. Content last reviewed
+					<time class="num" datetime={ m.Site.LastReviewed }>{ m.Site.LastReviewed }</time>.
+				</p>
+			</div>
+			<nav aria-label="Footer">
+				<p class="eyebrow">Explore</p>
+				<ul>
+					for _, n := range Nav {
+						<li><a href={ templ.SafeURL(n.Href) }>{ n.Label }</a></li>
+					}
+				</ul>
+			</nav>
+			<div>
+				<p class="eyebrow">About</p>
+				<ul>
+					<li><a href="/about">About &amp; sources</a></li>
+					<li><a href="/glossary#phrasebook">Swahili phrasebook</a></li>
+					<li><a href="/sitemap.xml">Sitemap</a></li>
+				</ul>
+				<p class="mt-5 site-footer__note">A guide for curious first-timers, not an official source. Check rates, fares and travel advisories before you go.</p>
+			</div>
+		</div>
+	</footer>
+}

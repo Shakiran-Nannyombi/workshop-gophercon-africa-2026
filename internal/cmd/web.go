@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"workshop/internal/common/logs"
 	"workshop/internal/common/server"
-	"workshop/web"
+	"workshop/internal/handlers"
 
 	"github.com/urfave/cli/v3"
 )
@@ -18,7 +18,7 @@ func webCmd(app *app) *cli.Command {
 	return &cli.Command{
 		Name:      "web",
 		Aliases:   []string{"w"},
-		Usage:     "Serve the sightings web interface",
+		Usage:     "Serve Karibu Guide",
 		UsageText: "workshop web [-p 8080]",
 		Flags: []cli.Flag{
 			&cli.IntFlag{
@@ -36,7 +36,10 @@ func webCmd(app *app) *cli.Command {
 			ctx, stop := signal.NotifyContext(ctx, os.Interrupt, syscall.SIGTERM)
 			defer stop()
 
-			router := web.New(app.Logger, app.Config, app.Sightings)
+			router, err := handlers.New(app.Logger, handlers.Options{Dev: !app.Config.IsProduction()})
+			if err != nil {
+				return err
+			}
 
 			port := cmd.Int("port")
 			if url := cmd.String("live-reload-url"); url != "" {

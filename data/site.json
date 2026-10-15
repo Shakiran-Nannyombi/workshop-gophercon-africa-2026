@@ -1,0 +1,12 @@
+{
+  "name": "Karibu Guide",
+  "tagline": "Kenya and East Africa, explained from zero",
+  "baseURL": "http://localhost:8080",
+  "lastReviewed": "2026-10-15",
+  "rates": {
+    "asOf": "2026-10-15",
+    "source": "Rough mid-market figures for illustration; check the Central Bank of Kenya or your bank for live rates.",
+    "perUSD": { "USD": 1, "KES": 129, "UGX": 3650, "TZS": 2550, "RWF": 1450, "ETB": 140, "EUR": 0.86, "GBP": 0.75 },
+    "verify": "All rates are approximate placeholders as of the date shown; ETB in particular has moved a lot since the 2024 float. Update before publishing."
+  }
+}

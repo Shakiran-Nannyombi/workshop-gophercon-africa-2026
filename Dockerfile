@@ -1,22 +1,15 @@
 FROM golang:1.27-alpine AS build
 WORKDIR /src
 
-# Modules come from vendor/, so there's nothing to download first.
+# Modules come from vendor/, and the generated templ code and CSS are committed,
+# so the build needs nothing from the network.
 COPY . .
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/workshop .
-
-# Migrate the committed database, or create an empty one if nothing was
-# committed, since the web command refuses to start with pending migrations.
-RUN /out/workshop --db file:/src/workshop.db db migrate up
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/karibu ./cmd/web
 
 FROM gcr.io/distroless/static-debian12
 WORKDIR /app
+COPY --from=build /out/karibu /app/karibu
 
-COPY --from=build /out/workshop /app/workshop
-COPY --from=build /src/workshop.db /app/workshop.db
-
-ENV PORT=8080 \
-	DB_URI=file:/app/workshop.db
-
+ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["/app/workshop", "web"]
+ENTRYPOINT ["/app/karibu"]

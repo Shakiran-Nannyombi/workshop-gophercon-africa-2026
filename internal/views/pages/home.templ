@@ -1,0 +1,143 @@
+package pages
+
+import (
+	"workshop/internal/data"
+	"workshop/internal/views/components"
+	"workshop/internal/views/layouts"
+)
+
+type step struct {
+	N, Title, Body, Href, Icon, Cta string
+}
+
+var startSteps = []step{
+	{"1", "Money", "Shillings, M-Pesa, and what things actually cost.", "/money", "money", "Understand the money"},
+	{"2", "Where am I?", "47 counties, and why “Nairobi” is often not Nairobi.", "/counties", "map", "Read the map"},
+	{"3", "Getting around", "Matatus, boda bodas, ride-hailing and the SGR train.", "/nairobi#getting-around", "bus", "Learn to move"},
+	{"4", "Pick a city", "From Nairobi to Kigali: what each city is like.", "/cities", "city", "Choose a city"},
+}
+
+templ Home(m layouts.Meta, s *data.Store, country string) {
+	@layouts.Base(m) {
+		@components.SectionHero(components.HeroProps{
+			Eyebrow: "Karibu · welcome",
+			Title:   "Kenya, explained from zero.",
+			Lede:    "Confused by the money, the map, or why your Nairobi address says Kiambu? This guide starts where you are: never been, slightly lost, very curious.",
+			Motif:   "savannah",
+			Tall:    true,
+		}) {
+			<div class="mt-8 flex flex-wrap gap-3">
+				<a class="btn btn-gold" href="#start">
+					Start here
+					@components.Icon("arrow", "h-5 w-5")
+				</a>
+				<a class="btn btn-ghost" href="#cities">Pick a city</a>
+			</div>
+		}
+		@quickFacts(s)
+		@startHere()
+		@components.KangaBand()
+		@cityPickerSection(s, country)
+	}
+}
+
+templ quickFacts(s *data.Store) {
+	<section class="wrap -mt-16 relative z-20" aria-label="Three things that confuse everyone">
+		<ul class="reveal-stagger grid gap-4 md:grid-cols-3">
+			<li class="card p-5">
+				<p class="eyebrow">Money</p>
+				<p class="mt-2 font-display text-3xl font-extrabold num">KSh 1,000</p>
+				<p class="mt-1 text-ink-soft">
+					is about <strong class="num">US${ usdFor(s, 1000) }</strong>
+					@components.Approx("")
+				</p>
+			</li>
+			<li class="card p-5">
+				<p class="eyebrow">Map</p>
+				<p class="mt-2 font-display text-3xl font-extrabold">47 counties</p>
+				<p class="mt-1 text-ink-soft">Nairobi is one of them, and also a city.</p>
+			</li>
+			<li class="card p-5">
+				<p class="eyebrow">Surprise</p>
+				<p class="mt-2 font-display text-3xl font-extrabold">Ruaka ≠ Nairobi</p>
+				<p class="mt-1 text-ink-soft">It’s in Kiambu County, just over the border.</p>
+			</li>
+		</ul>
+	</section>
+}
+
+templ startHere() {
+	<section id="start" class="section" aria-labelledby="start-title">
+		<div class="wrap">
+			<p class="eyebrow">The route</p>
+			<h2 id="start-title" class="display-lg mt-2 max-w-3xl">Start here. Four stops, like a matatu route.</h2>
+			<p class="lede mt-4">Each stop answers one confusing thing. Do them in order, or jump to the one that’s bothering you.</p>
+			<ol class="relative mt-12 grid gap-6 md:grid-cols-4 md:gap-5">
+				<li class="pointer-events-none absolute left-7 top-4 bottom-4 w-0 border-l-[3px] border-dashed border-muted md:left-8 md:right-8 md:top-7 md:bottom-auto md:h-0 md:w-auto md:border-l-0 md:border-t-[3px]" aria-hidden="true"></li>
+				for _, st := range startSteps {
+					<li class="reveal relative flex gap-4 md:block">
+						<span class="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-[2.5px] border-line bg-gold font-display text-2xl font-extrabold text-gold-ink shadow-[3px_3px_0_var(--line)] md:h-16 md:w-16">
+							{ st.N }
+						</span>
+						<div class="card card-link mt-0 flex-1 p-5 md:mt-5">
+							<div class="flex items-center gap-2 text-green">
+								@components.Icon(st.Icon, "h-6 w-6")
+								<h3 class="text-2xl text-ink">{ st.Title }</h3>
+							</div>
+							<p class="mt-2 text-ink-soft">{ st.Body }</p>
+							<a class="stretched mt-4 inline-flex items-center gap-1 font-bold text-green underline" href={ templ.SafeURL(st.Href) }>
+								{ st.Cta }
+								@components.Icon("arrow", "h-4 w-4")
+							</a>
+						</div>
+					</li>
+				}
+			</ol>
+		</div>
+	</section>
+}
+
+templ cityPickerSection(s *data.Store, country string) {
+	<section id="cities" class="section kitenge-dots" aria-labelledby="cities-title">
+		<div class="wrap">
+			<p class="eyebrow">City picker</p>
+			<h2 id="cities-title" class="display-lg mt-2">Pick a city.</h2>
+			<p class="lede mt-4">Thirteen cities across five countries. Choose a country to see its cities.</p>
+			@CityPicker(s, country)
+		</div>
+	</section>
+}
+
+templ CityPicker(s *data.Store, country string) {
+	<div id="city-picker" class="mt-8">
+		<div class="flex flex-wrap gap-2" role="group" aria-label="Filter cities by country">
+			for _, c := range s.Countries {
+				<a
+					class="pill gap-2 no-underline"
+					href={ templ.SafeURL("/?country=" + c.Code + "#cities") }
+					hx-get={ "/?country=" + c.Code }
+					hx-target="#city-picker"
+					hx-swap="outerHTML"
+					hx-push-url="false"
+					if c.Code == country {
+						aria-current="true"
+					}
+				>
+					@components.Flag(&c, "")
+					{ c.Name }
+				</a>
+			}
+		</div>
+		{{ cities := citiesIn(s, country) }}
+		if len(cities) == 0 {
+			<p class="mt-8 card p-6">City guides are on their way. See <a class="font-bold text-green underline" href="/cities">all cities</a>.</p>
+		} else {
+			<div class="reveal-stagger is-in mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite">
+				for _, c := range cities {
+					{{ co, _ := s.Country(c.Country) }}
+					@components.CityCard(c, co)
+				}
+			</div>
+		}
+	</div>
+}

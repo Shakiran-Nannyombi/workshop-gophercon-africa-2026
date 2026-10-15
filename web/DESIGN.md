@@ -1,32 +1,19 @@
-# Field Notes
+# Your site
 
-Calm forest field notebook. One home page of sightings.
+Empty starter. No product yet.
 
 ## Palette
 
-| Token | Colour | Use |
-| --- | --- | --- |
-| `--paper` | paper `#F4F1E8` | page background |
-| `--leaf` | leaf green `#2F5D3A` | links, logo, ticked chips, map dots |
-| `--moss` | moss `#7A9E7E` | supporting marks |
-| `--ink` | `#1C261E` | body text |
-| `--muted` | `#3D5344` | secondary text |
-| `--card` | `#FBF8EF` | cards |
-| `--line` | `#C9D4C4` | borders |
-| `--sun` | `#C4A35A` | clear-sky weather icon |
+Leave blank until you choose colours.
 
 ## Lettering
 
-Like a field notebook: Lora for headings (`--font-note`), Raleway for the rest (`--font-label`).
+Leave blank until you choose fonts.
 
 ## Layout
 
-1. Header with leaf mark, the words Field Notes, and links to Photos, Map, Sightings.
-2. A quiet banner: “Notes from the field”.
-3. A short row of recent photos (swipe on a phone).
-4. A clustered map of where they were seen.
-5. Search and chips, then the notes as photo cards. Each card shows who recorded it and the weather of the day.
+One home page at `/`. Header and footer live in `web/views/layout/layout.templ`. The page itself is `web/views/pages/home.templ`.
 
 ## Avoid
 
-Bright greens, pink accents, tight dashboards, hiding a sighting when a photo or weather is missing.
+Do not put animal sightings, GBIF, or workshop demo content on the site.
